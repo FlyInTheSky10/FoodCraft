@@ -1,10 +1,8 @@
 package com.cfyifei.proxy;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
 
@@ -12,10 +10,7 @@ import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.guis.*;
-import com.cfyifei.modelrenderer.GuoItemRenderer;
-import com.cfyifei.modelrenderer.GuoRenderer;
-import com.cfyifei.modelrenderer.PDGItemRenderer;
-import com.cfyifei.modelrenderer.PDGRenderer;
+import com.cfyifei.modelrenderer.*;
 import com.cfyifei.gui.tileentitys.*;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
@@ -38,10 +33,15 @@ public class ClientProxy extends CommonProxy {
 	 public static void registerRenderThings() {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPDG.class, new PDGRenderer());
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGuo.class, new GuoRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGyg.class, new GygRenderer());
+    ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCaiban.class, new CaibanRenderer());
 	 }
 	    public void rendererItem() {
 	        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModGui.PDG), new PDGItemRenderer(new TileEntityPDG(), 0.0D, -0.1D, 0.0D));
 	        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModGui.Guo), new GuoItemRenderer(new TileEntityGuo(), 0.0D, -0.1D, 0.0D));
+	        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModGui.Gyg), new GygItemRenderer(new TileEntityGyg(), 0.0D, -0.1D, 0.0D));
+	        MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModGui.Caiban), new CaibanItemRenderer(new TileEntityCaiban(), 0.0D, -0.1D, 0.0D));
+	        
 	    }
 
 	@Override
@@ -54,6 +54,10 @@ public class ClientProxy extends CommonProxy {
 			    return new GuiPDG(player.inventory, (TileEntityPDG) world.getTileEntity(x, y, z));
 		    case GuiIDs.GUI_Guo:
 			    return new GuiGuo(player.inventory, (TileEntityGuo) world.getTileEntity(x, y, z));
+		    case GuiIDs.GUI_Gyg:
+			    return new GuiGyg(player.inventory, (TileEntityGyg) world.getTileEntity(x, y, z));
+		    case GuiIDs.GUI_Caiban:
+			    return new GuiCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(x, y, z)); 
 	    	default:
 			    return null;
 		}

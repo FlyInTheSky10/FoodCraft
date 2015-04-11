@@ -3,12 +3,8 @@ package com.cfyifei.proxy;
 import com.cfyifei.GuiIDs;
 import com.cfyifei.block.ModBlocks;
 import com.cfyifei.gui.blocks.ModGui;
-import com.cfyifei.gui.containers.ContainerGuo;
-import com.cfyifei.gui.containers.ContainerNmj;
-import com.cfyifei.gui.containers.ContainerPDG;
-import com.cfyifei.gui.tileentitys.TileEntityGuo;
-import com.cfyifei.gui.tileentitys.TileEntityNmj;
-import com.cfyifei.gui.tileentitys.TileEntityPDG;
+import com.cfyifei.gui.containers.*;
+import com.cfyifei.gui.tileentitys.*;
 import com.cfyifei.item.ModItem;
 import com.cfyifei.recipe.Recipe;
 
@@ -57,6 +53,10 @@ public class CommonProxy implements IGuiHandler {
 		  	    return new ContainerPDG(player.inventory, (TileEntityPDG) world.getTileEntity(x, y, z));
 		    case GuiIDs.GUI_Guo:
 		  	    return new ContainerGuo(player.inventory, (TileEntityGuo) world.getTileEntity(x, y, z));
+		    case GuiIDs.GUI_Gyg:
+		  	    return new ContainerGyg(player.inventory, (TileEntityGyg) world.getTileEntity(x, y, z));
+		    case GuiIDs.GUI_Caiban:
+		  	    return new ContainerCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(x, y, z));
 	        default:
 			    return null;
 		}

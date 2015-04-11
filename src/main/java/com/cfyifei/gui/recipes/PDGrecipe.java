@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.cfyifei.RemoveRecipe;
 import com.cfyifei.item.ModItem;
 
 import net.minecraft.block.Block;
@@ -12,7 +13,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 
 
 public class PDGrecipe {
@@ -29,6 +29,12 @@ public class PDGrecipe {
         this.itemregister(Items.egg, new ItemStack(ModItem.ItemJianjidan), 0.5F);
         this.itemregister(ModItem.ItemMianfen, new ItemStack(ModItem.ItemLaobing), 0.5F);
         this.itemregister(ModItem.ItemJiaozi, new ItemStack(ModItem.ItemJianjiao), 0.5F);
+        this.itemregister(ModItem.ItemChaotudoupian, new ItemStack(ModItem.ItemTudoupian), 0.5F);
+
+        this.itemregister(Items.cooked_beef, new ItemStack(Items.beef), 0.5F);
+        this.itemregister(Items.cooked_chicken, new ItemStack(Items.chicken), 0.5F);
+        this.itemregister(Items.cooked_fished, new ItemStack(Items.fish), 0.5F);
+        this.itemregister(Items.cooked_porkchop, new ItemStack(Items.porkchop), 0.5F);
 
     }
    

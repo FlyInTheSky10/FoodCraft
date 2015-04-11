@@ -28,6 +28,7 @@ import net.minecraft.world.World;
 	    {
 	        super(Material.rock);
 	        this.setHardness(3.0f);
+	        this.setBlockBounds(0F, 0F, 0F, 1F, 0.4F, 1F);
 	    }
 
 

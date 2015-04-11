@@ -1,7 +1,7 @@
 package com.cfyifei.block;
 
 import com.cfyifei.FoodCraft;
-import com.cfyifei.gui.blocks.BlockNmj;
+import com.cfyifei.gui.blocks.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;

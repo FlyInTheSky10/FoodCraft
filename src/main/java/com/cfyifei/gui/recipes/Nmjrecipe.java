@@ -12,7 +12,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
+
 
 
 public class Nmjrecipe {
@@ -30,7 +30,9 @@ public class Nmjrecipe {
         this.itemregister(Items.wheat, new ItemStack(ModItem.ItemMianfen , 2), 0.5F);
         this.itemregister(ModItem.ItemHuashen, new ItemStack(ModItem.ItemHuashenyou), 0.5F);
         this.itemregister(ModItem.ItemDouzi, new ItemStack(ModItem.ItemDoujiang), 0.5F);
+        this.itemregister(Items.potato, new ItemStack(ModItem.ItemDianfen,8), 0.5F);
         this.register(new ItemStack(Items.dye,1,3), new ItemStack(ModItem.ItemQiaokelifen), 0.5F);
+        this.itemregister(ModItem.ItemNuomi,  new ItemStack(ModItem.ItemNuomifen,3), 0.5F);
     }
    
 	     

@@ -10,7 +10,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
-
+//此方法来源于借改革模组
 public class RemoveRecipe
 {
 	public static void removeAnyRecipe (ItemStack ItemStack)
@@ -24,10 +24,5 @@ public class RemoveRecipe
 		}
 	}
 
-	public static void removeFurnaceRecipe (int ID, int metadata)
-	{
-		Map<List<Integer>, ItemStack> recipes = FurnaceRecipes.smelting().getSmeltingList();
-		recipes.remove(Arrays.asList(ID, metadata));
-	}
 
 }
