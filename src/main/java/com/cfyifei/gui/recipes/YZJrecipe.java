@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.RemoveRecipe;
 import com.cfyifei.item.ModItem;
 
 import net.minecraft.block.Block;
@@ -15,27 +14,25 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 
-public class PDGrecipe {
-	private static final PDGrecipe smeltingBase = new PDGrecipe();
+
+public class YZJrecipe {
+	private static final YZJrecipe smeltingBase = new YZJrecipe();
     private Map smeltingList = new HashMap();
     private Map experienceList = new HashMap();
-    public static PDGrecipe smelting()
+    public static YZJrecipe smelting()
     {
         return smeltingBase;
     }
     
-    private PDGrecipe()
+    private YZJrecipe()
     {
-        this.itemregister(Items.egg, new ItemStack(ModItem.ItemJianjidan), 0.5F);
-        this.itemregister(ModItem.ItemMianfen, new ItemStack(ModItem.ItemLaobing), 0.5F);
-        this.itemregister(ModItem.ItemJiaozi, new ItemStack(ModItem.ItemJianjiao), 0.5F);
-        this.itemregister(ModItem.ItemChaotudoupian, new ItemStack(ModItem.ItemTudoupian), 0.5F);
-
-        this.itemregister(Items.beef, new ItemStack(Items.cooked_beef), 0.5F);
-        this.itemregister(Items.chicken, new ItemStack(Items.cooked_chicken), 0.5F);
-        this.itemregister(Items.fish, new ItemStack(Items.cooked_fished), 0.5F);
-        this.itemregister(Items.porkchop, new ItemStack(Items.cooked_porkchop), 0.5F);
-
+     /*   this.itemregister(ModItem.ItemDami, new ItemStack(ModItem.Itemfan), 0.7F);
+        this.itemregister(Items.wheat, new ItemStack(ModItem.ItemMianfen , 2), 0.5F);
+        this.itemregister(ModItem.ItemHuashen, new ItemStack(ModItem.ItemHuashenyou), 0.5F);
+        this.itemregister(ModItem.ItemDouzi, new ItemStack(ModItem.ItemDoujiang), 0.5F);
+        this.itemregister(Items.potato, new ItemStack(ModItem.ItemDianfen,8), 0.5F);
+        this.register(new ItemStack(Items.dye,1,3), new ItemStack(ModItem.ItemQiaokelifen), 0.5F);*/
+        this.itemregister(ModItem.ItemNuomi,  new ItemStack(ModItem.ItemNuomifen,3), 0.5F);
     }
    
 	     

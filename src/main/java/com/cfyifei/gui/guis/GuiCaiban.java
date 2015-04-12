@@ -23,7 +23,7 @@ public class GuiCaiban extends GuiContainer{
 		super(new ContainerCaiban(playerInv, tileEntityCaiban));
 		this.tile = tileEntityCaiban;
 		this.doesGuiPauseGame();
-		// TODO 自动生成的构造函数存根
+
 	}
 
 	@Override

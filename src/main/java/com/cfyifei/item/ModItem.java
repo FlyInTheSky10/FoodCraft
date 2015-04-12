@@ -54,7 +54,7 @@ public class ModItem{
 	public static Item ItemTangyuan;
 	public static Item ItemHuashentangyuanxian;
 	public static Item ItemNuomituan;
-
+	public static Item ItemJikuai,ItemShutiao,ItemAeljichi,ItemJimihua,ItemAeljichifan,ItemYuanweijikuai;
 
 
 	public static void init() {
@@ -350,6 +350,36 @@ public class ModItem{
 		ItemTangyuan.setTextureName("FoodCraft:ItemTangyuan");
 		ItemTangyuan.setCreativeTab(FoodCraft.FcTab);	
 		
+		ItemJikuai = new ITemFood(3, 7F, false, "ItemJikuai");
+		ItemJikuai.setUnlocalizedName("ItemJikuai");
+		ItemJikuai.setTextureName("FoodCraft:ItemJikuai");
+		ItemJikuai.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemShutiao = new ITemFood(3, 6F, false, "ItemShutiao");
+		ItemShutiao.setUnlocalizedName("ItemShutiao");
+		ItemShutiao.setTextureName("FoodCraft:ItemShutiao");
+		ItemShutiao.setCreativeTab(FoodCraft.FcTab);	
+		 
+		ItemAeljichi = new ITemFood(3, 7F, false, "ItemAeljichi");
+		ItemAeljichi.setUnlocalizedName("ItemAeljichi");
+		ItemAeljichi.setTextureName("FoodCraft:ItemAeljichi");
+		ItemAeljichi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJimihua = new ITemFood(3, 7F, false, "ItemJimihua");
+		ItemJimihua.setUnlocalizedName("ItemJimihua");
+		ItemJimihua.setTextureName("FoodCraft:ItemJimihua");
+		ItemJimihua.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemYuanweijikuai = new ITemFood(3, 7F, false, "ItemYuanweijikuai");
+		ItemYuanweijikuai.setUnlocalizedName("ItemYuanweijikuai");
+		ItemYuanweijikuai.setTextureName("FoodCraft:ItemYuanweijikuai");
+		ItemYuanweijikuai.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemAeljichifan = new ITemFood(3, 10F, false, "ItemAeljichifan");
+		ItemAeljichifan.setUnlocalizedName("ItemAeljichifan");
+		ItemAeljichifan.setTextureName("FoodCraft:ItemAeljichifan");
+		ItemAeljichifan.setCreativeTab(FoodCraft.FcTab);	
+
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
 		GameRegistry.registerItem(ItemCaidao, "ItemCaidao");
@@ -400,6 +430,13 @@ public class ModItem{
 		GameRegistry.registerItem(ItemXifan, "ItemXifan");
 		GameRegistry.registerItem(ItemZongzi, "ItemZongzi");
 		GameRegistry.registerItem(ItemTangyuan, "ItemTangyuan");
+		
+		GameRegistry.registerItem(ItemJikuai, "ItemJikuai");
+		GameRegistry.registerItem(ItemYuanweijikuai, "ItemYuanweijikuai");
+		GameRegistry.registerItem(ItemShutiao, "ItemShutiao");
+		GameRegistry.registerItem(ItemJimihua, "ItemJimihua");
+		GameRegistry.registerItem(ItemAeljichi, "ItemAeljichi");
+		
 		GameRegistry.registerItem(ItemDangeng, "ItemDangeng");
 		GameRegistry.registerItem(ItemMogudunjitang, "ItemMogudunjitang");
 		
@@ -412,6 +449,7 @@ public class ModItem{
 		GameRegistry.registerItem(ItemMapodoufufan, "ItemMapodoufufan");
 		GameRegistry.registerItem(ItemHongshaoroufan, "ItemHongshaoroufan");
 		GameRegistry.registerItem(ItemHuiguoroufan, "ItemHuiguoroufan");
+		GameRegistry.registerItem(ItemAeljichifan, "ItemAeljichifan");
 		
 	}
 }

@@ -1,6 +1,7 @@
 package com.cfyifei.gui.containers;
 
 import com.cfyifei.gui.tileentitys.TileEntityGyg;
+import com.cfyifei.gui.tileentitys.TileEntityYZJ;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -19,17 +20,15 @@ public class ContainerYZJ extends Container{
 	  private int lastCookTime;
 	    private int lastBurnTime;
 	    private int lastItemBurnTime;
-       private TileEntityGyg furnaceIn;
+       private TileEntityYZJ furnaceIn;
 	private int lastWater;
-	public ContainerYZJ(InventoryPlayer par1InventoryPlayer, TileEntityGyg tileEntityGyg)
+	public ContainerYZJ(InventoryPlayer par1InventoryPlayer, TileEntityYZJ tileEntityYZJ)
        {
-    	   this.furnaceIn = tileEntityGyg;
-    	   this.addSlotToContainer(new Slot(tileEntityGyg, 0, 47, 31));
-    	   this.addSlotToContainer(new Slot(tileEntityGyg, 1, 71, 31));
-    	   this.addSlotToContainer(new Slot(tileEntityGyg, 2, 95, 31));
-    	   this.addSlotToContainer(new Slot(tileEntityGyg, 3, 37, 59));
-    	   this.addSlotToContainer(new Slot(tileEntityGyg, 4, 95, 59));
-           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, tileEntityGyg, 5, 145, 31));
+    	   this.furnaceIn = tileEntityYZJ;
+    	   this.addSlotToContainer(new Slot(tileEntityYZJ, 0, 58, 31));
+    	   this.addSlotToContainer(new Slot(tileEntityYZJ, 1, 95, 60));
+    	   this.addSlotToContainer(new Slot(tileEntityYZJ, 2, 37, 59));
+           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, tileEntityYZJ, 3, 130, 31));
            int var3;
            for (var3 = 0; var3 < 3; ++var3)
            {

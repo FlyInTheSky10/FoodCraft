@@ -67,14 +67,14 @@ public class TileEntityPDG extends TileEntity implements IInventory{
 
 	@Override
 	public int getSizeInventory() {
-		// TODO 自动生成的方法存根
+		
 		return stack.length;
 
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int var1) {
-		// TODO 自动生成的方法存根
+		
 		return stack[var1];
 	}
 
@@ -135,43 +135,43 @@ public class TileEntityPDG extends TileEntity implements IInventory{
 
 	@Override
 	public String getInventoryName() {
-		// TODO 自动生成的方法存根
+		
 		return "PDG";
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO 自动生成的方法存根
+		
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO 自动生成的方法存根
+		
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer var1) {
-		// TODO 自动生成的方法存根
+		
 		return true;
 	}
 
 	@Override
 	public void openInventory() {
-		// TODO 自动生成的方法存根
+		
 		
 	}
 
 	@Override
 	public void closeInventory() {
-		// TODO 自动生成的方法存根
+		
 		
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-		// TODO 自动生成的方法存根
+		
 		return false;
 	}
 

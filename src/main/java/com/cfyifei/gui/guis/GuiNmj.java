@@ -22,7 +22,7 @@ public class GuiNmj extends GuiContainer{
 		super(new ContainerNmj(playerInv, furnaceInv));
 		this.tile = furnaceInv;
 		this.doesGuiPauseGame();
-		// TODO 自动生成的构造函数存根
+
 	}
 
 	@Override

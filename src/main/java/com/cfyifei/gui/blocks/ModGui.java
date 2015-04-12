@@ -14,6 +14,8 @@ public class ModGui {
 	public static Block Guo;
 	public static Block Gyg;
 	public static Block Caiban;
+	public static Block YZJ;
+	public static Block lit_YZJ;
 	
 	public static void init() {
 		Nmj = new BlockNmj(false);
@@ -29,6 +31,20 @@ public class ModGui {
 		lit_Nmj.setHardness(3f);
 		lit_Nmj.setStepSound(Block.soundTypeStone);
 		lit_Nmj.setLightLevel(0.875F);
+		
+		YZJ = new BlockYZJ(false);
+		YZJ.setBlockName("YZJ");
+		YZJ.setHarvestLevel("pickaxe", 2);
+		YZJ.setHardness(3f);
+		YZJ.setStepSound(Block.soundTypeStone);
+		YZJ.setCreativeTab(FoodCraft.FcTab);
+
+		lit_YZJ = new BlockYZJ(true);
+		lit_YZJ.setBlockName("litYZJ");
+		lit_YZJ.setHarvestLevel("pickaxe", 2);
+		lit_YZJ.setHardness(3f);
+		lit_YZJ.setStepSound(Block.soundTypeStone);
+		lit_YZJ.setLightLevel(0.875F);
 		
 		PDG = new BlockPDG(Material.rock);
 		PDG.setBlockName("PDG");
@@ -59,6 +75,8 @@ public class ModGui {
 		Caiban.setCreativeTab(FoodCraft.FcTab);
 		GameRegistry.registerBlock(lit_Nmj,"lit_Milling machine");
 		GameRegistry.registerBlock(Nmj,"Milling machine");
+		GameRegistry.registerBlock(lit_YZJ,"litYZJ");
+		GameRegistry.registerBlock(YZJ,"YZJ");
 		GameRegistry.registerBlock(PDG,"PDG");
 		GameRegistry.registerBlock(Guo,"Guo");
 		GameRegistry.registerBlock(Gyg,"Gyg");
@@ -68,8 +86,8 @@ public class ModGui {
 		 GameRegistry.registerTileEntity(TileEntityPDG.class, "TileEntityPDG");
 		 GameRegistry.registerTileEntity(TileEntityGuo.class, "TileEntityGuo");
 		 GameRegistry.registerTileEntity(TileEntityGyg.class, "TileEntityGyg");
-		 GameRegistry.registerTileEntity(TileEntityCaiban.class, "TileEntity Caiban");
-		
+		 GameRegistry.registerTileEntity(TileEntityCaiban.class, "TileEntityCaiban");
+		 GameRegistry.registerTileEntity(TileEntityYZJ.class, "TileEntityYZJ");
 	}
 
 

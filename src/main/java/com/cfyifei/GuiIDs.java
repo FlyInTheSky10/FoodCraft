@@ -6,4 +6,5 @@ public class GuiIDs {
 	public static final int GUI_Guo = 2;
 	public static final int GUI_Gyg = 3;
 	public static final int GUI_Caiban = 4;
+	public static final int GUI_YZJ = 5;
 }

@@ -4,9 +4,12 @@ import java.util.Random;
 
 
 
+
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
-import com.cfyifei.gui.tileentitys.TileEntityNmj;
+
+
+import com.cfyifei.gui.tileentitys.TileEntityYZJ;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -56,7 +59,7 @@ public class BlockYZJ extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityNmj();
+		return new TileEntityYZJ();
 	}
 	
 	@Override
@@ -64,7 +67,7 @@ public class BlockYZJ extends BlockContainer{
             int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
             float par8, float par9) {
 		ItemStack stack = par5EntityPlayer.inventory.mainInventory[par5EntityPlayer.inventory.currentItem];
-		par5EntityPlayer.openGui(FoodCraft.instance, GuiIDs.GUI_NMJ, par1World,par2, par3, par4);
+		par5EntityPlayer.openGui(FoodCraft.instance, GuiIDs.GUI_YZJ, par1World,par2, par3, par4);
         return true;
 	}
     public void onBlockAdded(World World, int X, int Y, int Z)
@@ -133,22 +136,22 @@ public class BlockYZJ extends BlockContainer{
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.front_side = reg.registerIcon("foodcraft:nmj_side");//4b
+        this.front_side = reg.registerIcon("foodcraft:yzj_side");//4b
         
        
         if(ifburn){
-        	this.top = reg.registerIcon("foodcraft:nmj_top_on");
+        	this.top = reg.registerIcon("foodcraft:yzj_top_on");
     	}
     	else{
-    		this.top = reg.registerIcon("foodcraft:nmj_top");//topon
+    		this.top = reg.registerIcon("foodcraft:yzj_top");//topon
     	}
         
         
        if(ifburn){
-        	this.front_on = reg.registerIcon("foodcraft:nmj_nmj_on");//kzoff
+        	this.front_on = reg.registerIcon("foodcraft:yzj_yzj_on");//kzoff
           	}
           	else{
-          		this.front_on = reg.registerIcon("foodcraft:nmj_nmj_off");//kzon
+          		this.front_on = reg.registerIcon("foodcraft:yzj_yzj_off");//kzon
           	}
         
  
@@ -158,7 +161,7 @@ public class BlockYZJ extends BlockContainer{
     {
 	   if (!EE)
 	    {
-            TileEntityNmj tileentity = (TileEntityNmj)World.getTileEntity(x, y, z);
+            TileEntityYZJ tileentity = (TileEntityYZJ)World.getTileEntity(x, y, z);
 
             if (tileentity != null)
             {
@@ -230,11 +233,7 @@ public class BlockYZJ extends BlockContainer{
         	World.setBlockMetadataWithNotify(x, y, z, 4, 2);
         }
 
-        if (ItemStack.hasDisplayName())
-        {
-            ((TileEntityNmj)World.getTileEntity(x, y, z)).name(ItemStack.getDisplayName());
-            
-        }
+        
     }
 
     public static void updateFurnaceBlockState(boolean B, World W, int x, int y, int z)
@@ -245,11 +244,11 @@ public class BlockYZJ extends BlockContainer{
 
           if (B)
           {
-              W.setBlock(x, y, z, ModGui.lit_Nmj);
+              W.setBlock(x, y, z, ModGui.lit_YZJ);
           }
           else
           {
-              W.setBlock(x, y, z, ModGui.Nmj);
+              W.setBlock(x, y, z, ModGui.YZJ);
 
           }
 
@@ -264,12 +263,12 @@ public class BlockYZJ extends BlockContainer{
         }
 public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return Item.getItemFromBlock(ModGui.Nmj);
+        return Item.getItemFromBlock(ModGui.YZJ);
     }
 @SideOnly(Side.CLIENT)
 public Item getItem(World w, int x, int y, int z)
 {
-    return Item.getItemFromBlock(ModGui.Nmj);
+    return Item.getItemFromBlock(ModGui.YZJ);
 }
     }
 

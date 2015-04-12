@@ -22,7 +22,7 @@ public class GuiGuo extends GuiContainer{
 		super(new ContainerGuo(playerInv, tileEntityGuo));
 		this.tile = tileEntityGuo;
 		this.doesGuiPauseGame();
-		// TODO 自动生成的构造函数存根
+
 	}
 
 	@Override

@@ -1,16 +1,12 @@
 package com.cfyifei.gui.tileentitys;
 
-import com.cfyifei.gui.recipes.Nmjrecipe;
+import com.cfyifei.gui.recipes.YZJrecipe;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.EntityAuraFX;
-import net.minecraft.client.particle.EntitySmokeFX;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -29,17 +25,22 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+
+
+import com.cfyifei.gui.blocks.BlockYZJ;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.item.ModItem;
 
 
 public class TileEntityYZJ extends TileEntity implements IInventory{
-	private ItemStack stack[] = new ItemStack[6];
+	private ItemStack stack[] = new ItemStack[4];
 	public int tableBurnTime = 0;
+	public int maxBurnTime = 0;
     public int currentItemBurnTime;
     public int furnaceCookTime;
-    public int water;
-	public ItemStack cai;
+	private String field_145958_o;
+	public int water;
+
 
 	@Override
     public void updateEntity() {
@@ -54,32 +55,31 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 	        
 	        if (!this.worldObj.isRemote)
 	        {
-	            if (this.tableBurnTime == 0 && this.canSmelt()  && water >= 2)
+	            if (this.tableBurnTime == 0 && this.canSmelt())
 	            {
-	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[4]);
+	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[1]);
 
 	                if (this.tableBurnTime > 0)
 	                {
 	                    flag1 = true;
 
-	                    if (this.stack[4] != null)
+	                    if (this.stack[1] != null)
 	                    {
-	                        --this.stack[4].stackSize;
+	                        --this.stack[1].stackSize;
 
-	                        if (this.stack[4].stackSize == 0)
+	                        if (this.stack[1].stackSize == 0)
 	                        {
-	                            this.stack[4] = stack[4].getItem().getContainerItem(stack[4]);
+	                            this.stack[1] = stack[1].getItem().getContainerItem(stack[1]);
 	                        }
 	                    }
 	                }
 	            }
 
-	            if (this.isBurning() && this.canSmelt() && water >= 2 && isst())
+	            if (this.isBurning() && this.canSmelt() && this.water >= 2)
 	            {
-	            	
-	            	
 	                ++this.furnaceCookTime;
-	                if (this.furnaceCookTime == 480)
+
+	                if (this.furnaceCookTime == 400)
 	                {
 	                    this.furnaceCookTime = 0;
 	                    this.smeltItem();
@@ -93,7 +93,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 	            if (flag != this.tableBurnTime > 0)//没有燃烧时间
 	            {
 	                flag1 = true;
-	                //BlockNmj.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
+	                BlockYZJ.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
 	            }
 	        }
 
@@ -101,45 +101,33 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 	        {
 	            this.markDirty();
 	        }
-	        if (stack[3] != null){
+	        if (stack[2] != null){
 	        	if(water != 8){
-	        	if(stack[3].getItem() == Items.water_bucket){
-	        		ItemStack bucketitemstack = new ItemStack(Items.bucket);
-	        		stack[3] = bucketitemstack.copy();	  
-	        		++water;
-	        		}
 	        	
-	        	if(stack[3].getItem() == ModItem.Itemwater){
+	        	
+	        	if(stack[2].getItem() == ModItem.ItemHuashenyou){
 	        			        		
-	        			--stack[3].stackSize;
+	        			--stack[2].stackSize;
 	        			++water;	        			        		
 	        		}	
 	        	}
-	        	if(stack[3].stackSize == 0){
-	    			stack[3] = null;	  
+	        	if(stack[2].stackSize == 0){
+	    			stack[2] = null;	  
 	    		}
 	        }
-	        
 	}
 		 
-	private boolean isst() {
-		if(stack[5] != null){
-		int result = stack[5].stackSize + cai.stackSize;
-        boolean e =  result <= getInventoryStackLimit() && result <= this.stack[5].getMaxStackSize();
-		return e; 
-		}
-		return true;
-	}
+
 	@Override
 	public int getSizeInventory() {
-		// TODO 自动生成的方法存根
+		
 		return stack.length;
 
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int var1) {
-		// TODO 自动生成的方法存根
+		
 		return stack[var1];
 	}
 
@@ -200,50 +188,50 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 
 	@Override
 	public String getInventoryName() {
-		// TODO 自动生成的方法存根
-		return "Gyg";
+		
+		return "Mill";
 	}
 
 	@Override
 	public boolean hasCustomInventoryName() {
-		// TODO 自动生成的方法存根
+		
 		return false;
 	}
 
 	@Override
 	public int getInventoryStackLimit() {
-		// TODO 自动生成的方法存根
+		
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer var1) {
-		// TODO 自动生成的方法存根
+		
 		return true;
 	}
 
 	@Override
 	public void openInventory() {
-		// TODO 自动生成的方法存根
+		
 		
 	}
 
 	@Override
 	public void closeInventory() {
-		// TODO 自动生成的方法存根
+		
 		
 	}
 
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-		// TODO 自动生成的方法存根
+		
 		return false;
 	}
 
 	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.readFromNBT(par1NBTTagCompound);
-        NBTTagList var2 = par1NBTTagCompound.getTagList("Gyg", 10);
+        NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
         for (int var3 = 0; var3 < var2.tagCount(); ++var3)
         {
@@ -276,7 +264,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
                 var2.appendTag(var4);
             }
         }
-        par1NBTTagCompound.setTag("Gyg", var2);
+        par1NBTTagCompound.setTag("Items", var2);
        
     }
     
@@ -296,58 +284,46 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 
                 if (block == Blocks.wooden_slab)
                 {
-                    return 100;
+                    return 150;
                 }
 
                 if (block.getMaterial() == Material.wood)
                 {
-                    return 200;
+                    return 300;
                 }
                 if (block == Blocks.coal_block)
                 {
-                    return 10000;
+                    return 16000;
                 }
             }
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 100;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 100;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 100;
-            if (item == Items.stick) return 20;
-            if (item == Items.coal) return 1000;
-            if (item == Items.lava_bucket) return 10000;
-            if (item == Item.getItemFromBlock(Blocks.sapling)) return 20;
-            if (item == Items.blaze_rod) return 1900;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item == Items.stick) return 100;
+            if (item == Items.coal) return 1600;
+            if (item == Items.lava_bucket) return 20000;
+            if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
+            if (item == Items.blaze_rod) return 2400;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
     
     private boolean canSmelt()
     {
-        if (this.stack[0] == null || this.stack[1] == null || this.stack[2] == null)
+        if (this.stack[0] == null)
         {
             return false;
         }
         else
         {
-      if(stack[0].getItem() == ModItem.Itemfan || stack[1].getItem() == ModItem.Itemfan || stack[2].getItem() == ModItem.Itemfan){
-    	  cai = new ItemStack(ModItem.ItemBaifan);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == ModItem.ItemBaifan || stack[1].getItem() == ModItem.ItemBaifan || stack[2].getItem() == ModItem.ItemBaifan){
-    	  cai = new ItemStack(ModItem.ItemXifan,3);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == Items.egg || stack[1].getItem() == ModItem.ItemJiangyou || stack[2].getItem() == ModItem.ItemCong){
-    	  cai = new ItemStack(ModItem.ItemDangeng);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == Items.mushroom_stew || stack[1].getItem() == ModItem.ItemJitui || stack[2].getItem() == ModItem.ItemYan){
-    	  cai = new ItemStack(ModItem.ItemMogudunjitang);
-    	  return true;
-    	  }
+            ItemStack itemstack = YZJrecipe.smelting().getSmeltingResult(this.stack[0]);
+            if (itemstack == null) return false;
+            if (this.stack[3] == null) return true;
+            if (!this.stack[3].isItemEqual(itemstack)) return false;
+            int result = stack[3].stackSize + itemstack.stackSize;
+            return result <= getInventoryStackLimit() && result <= this.stack[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
-        return false;
     }
-    
     public boolean isBurning()
     {
         return this.tableBurnTime > 0;
@@ -357,33 +333,23 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
     {
         if (this.canSmelt())
         {
-            ItemStack itemstack = cai;
+            ItemStack itemstack = YZJrecipe.smelting().getSmeltingResult(this.stack[0]);
 
-            if (this.stack[5] == null)
+            if (this.stack[3] == null)
             {
-                this.stack[5] = itemstack.copy();
+                this.stack[3] = itemstack.copy();
             }
-            else if (this.stack[5].getItem() == itemstack.getItem())
+            else if (this.stack[3].getItem() == itemstack.getItem())
             {
-                this.stack[5].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+                this.stack[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
 
             --this.stack[0].stackSize;
-            --this.stack[1].stackSize;
-            --this.stack[2].stackSize;
-            water = water - 2;
-            
+            --water;
+            --water;
             if (this.stack[0].stackSize <= 0)
             {
                 this.stack[0] = null;
-            }
-            if (this.stack[1].stackSize <= 0)
-            {
-                this.stack[1] = null;
-            }
-            if (this.stack[2].stackSize <= 0)
-            {
-                this.stack[2] = null;
             }
         }
     }
@@ -400,11 +366,17 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
     
     public float getCookProgressScaled(int int1)
     {
-        return this.furnaceCookTime * int1 / 480;
+        return this.furnaceCookTime * int1 / 400;
     }
 
-    public int getWater()
+    public void name(String int1)
     {
-        return this.water * 7;
-    }
+        this.field_145958_o = int1;
+       }
+
+
+	public int getWater() {
+		return this.water * 7;
+	}
+
 }
