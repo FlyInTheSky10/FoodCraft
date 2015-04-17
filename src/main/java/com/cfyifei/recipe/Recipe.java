@@ -45,7 +45,9 @@ public class Recipe{
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDoufu), new Object[] {ModItem.ItemDoujiang,ModItem.ItemYan});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemCu), new Object[] {ModItem.ItemDouzi,ModItem.ItemDouzi,ModItem.ItemDouzi,Items.sugar,Items.sugar,Items.sugar,Items.glass_bottle});
 	
-
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemChunjuan), new Object[] {ModItem.ItemDoufusi,ModItem.ItemLuobosi,ModItem.ItemShucai,Items.cooked_porkchop});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.Itemwater), new Object[] {Items.water_bucket});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemAeljichifan), new Object[] {ModItem.ItemAeljichi,ModItem.Itemfan});
 	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemZongzi), new Object[] {ModItem.ItemNuomi,Items.cooked_porkchop,Items.string,ModItem.ItemZongye});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemNuomituan), new Object[] {ModItem.ItemNuomifen,ModItem.ItemNuomifen,ModItem.ItemNuomifen,ModItem.Itemwater});
@@ -53,6 +55,11 @@ public class Recipe{
 	
 	GameRegistry.addRecipe(new ItemStack(ModGui.Nmj, 1), new Object[] {"AAA", "DBD", "ECE", 'A', Items.wheat,'B',ModBlocks.BlockWaike,'C',ModItem.ItemDianluban,'E',Items.milk_bucket,'D',Blocks.glass});
 	GameRegistry.addRecipe(new ItemStack(ModGui.PDG, 1), new Object[] {"AAA", "EBE", " C ", 'A', ModItem.ItemTiepian,'B',ModBlocks.BlockWaike,'C',ModItem.ItemDianluban,'E',new ItemStack(Items.dye)});
+	GameRegistry.addRecipe(new ItemStack(ModGui.Guo, 1), new Object[] {"AAA", "EBE", " C ", 'A', Items.iron_ingot,'B',ModBlocks.BlockWaike,'C',ModItem.ItemDianluban,'E',new ItemStack(Items.dye)});
+	GameRegistry.addRecipe(new ItemStack(ModGui.Gyg, 1), new Object[] {"AAA", "EBE", "XCX", 'A', Items.iron_ingot,'B',ModBlocks.BlockWaike,'C',ModItem.ItemDianluban,'E',new ItemStack(Items.dye),'X',new ItemStack(Items.dye,1,15)});
+	GameRegistry.addRecipe(new ItemStack(ModGui.Caiban, 1), new Object[] {"AAA", "ABA", "AAA", 'A', Blocks.planks,'B',ModItem.ItemCaidao});
+	GameRegistry.addRecipe(new ItemStack(ModGui.YZJ, 1), new Object[] {"AAA", "DBD", "CCC", 'A', ModItem.ItemHuashenyou,'B',ModBlocks.BlockWaike,'C',ModItem.ItemDianluban,'D',Blocks.glass});
+	
 	GameRegistry.addSmelting(new ItemStack(ModItem.Itemwater), new ItemStack(ModItem.ItemYan, 2), 1f);
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemMianpi, 2), new Object[] {ModItem.ItemMianfen,ModItem.ItemMianfen,ModItem.ItemMianfen,ModItem.Itemwater});
 	
@@ -60,6 +67,8 @@ public class Recipe{
 	
 	registerChestLoot(new ItemStack(ModItem.ItemNuomi), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemDouban), 1, 1, 16);
+	registerChestLoot(new ItemStack(ModItem.ItemCong), 1, 1, 16);
+	registerChestLoot(new ItemStack(ModItem.ItemZongye), 1, 10, 64);
 	}
     public static void registerChestLoot(ItemStack loot, int min, int max, int rarity)
     {

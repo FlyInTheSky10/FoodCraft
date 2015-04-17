@@ -26,13 +26,18 @@ public class YZJrecipe {
     
     private YZJrecipe()
     {
-     /*   this.itemregister(ModItem.ItemDami, new ItemStack(ModItem.Itemfan), 0.7F);
-        this.itemregister(Items.wheat, new ItemStack(ModItem.ItemMianfen , 2), 0.5F);
-        this.itemregister(ModItem.ItemHuashen, new ItemStack(ModItem.ItemHuashenyou), 0.5F);
-        this.itemregister(ModItem.ItemDouzi, new ItemStack(ModItem.ItemDoujiang), 0.5F);
-        this.itemregister(Items.potato, new ItemStack(ModItem.ItemDianfen,8), 0.5F);
-        this.register(new ItemStack(Items.dye,1,3), new ItemStack(ModItem.ItemQiaokelifen), 0.5F);*/
-        this.itemregister(ModItem.ItemNuomi,  new ItemStack(ModItem.ItemNuomifen,3), 0.5F);
+        this.itemregister(ModItem.ItemJitui,  new ItemStack(ModItem.ItemZhajitui), 0.5F);//chicken leg
+        this.itemregister(ModItem.ItemMahua,  new ItemStack(ModItem.ItemZhamahua), 0.5F);//ma hua
+        this.itemregister(ModItem.ItemChunjuan,  new ItemStack(ModItem.ItemZhachunjuan), 0.5F);//spring roll
+        this.itemregister(Items.bread,  new ItemStack(ModItem.ItemZhamianbao), 0.5F);//bread
+        this.itemregister(ModItem.ItemTudoupian,  new ItemStack(ModItem.ItemShupian), 0.5F);//potato chips
+        this.itemregister(ModItem.ItemNiangao,  new ItemStack(ModItem.ItemZhaniangao), 0.5F);//new year cake
+        this.itemregister(ModItem.ItemDoufu,  new ItemStack(ModItem.ItemZhadoufu), 0.5F);//tofu
+        this.itemregister(ModItem.ItemTudousi,  new ItemStack(ModItem.ItemShutiao), 0.5F);//french fries
+        this.itemregister(ModItem.ItemDajirou,  new ItemStack(ModItem.ItemYuanweijikuai), 0.5F);//Original Recipe chicken
+        this.itemregister(ModItem.ItemZhongjirou,  new ItemStack(ModItem.ItemJikuai), 0.5F);//fried chicken
+        this.itemregister(ModItem.ItemXiaojirou,  new ItemStack(ModItem.ItemJimihua), 0.5F);//popcorn chicken
+        this.itemregister(ModItem.ItemJichi,  new ItemStack(ModItem.ItemAeljichi), 0.5F);//orlean chicken wings
     }
    
 	     

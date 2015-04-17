@@ -93,6 +93,15 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
                  this.stack[1] = null;
              }
          }
+      
+      if(stack[1] == null && stack[2] != null  && stack[3] == null ){
+       	--this.stack[2].stackSize;       	
+       	if (this.stack[2].stackSize <= 0)
+           {
+               this.stack[2] = null;
+           }
+       }
+      
       if(stack[1] != null && stack[2] != null  && stack[3] == null ){
        	--this.stack[1].stackSize;       	
        	--this.stack[2].stackSize;     	
@@ -112,11 +121,19 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
 	private ItemStack canchao() {
    if(stack[1] != null && stack[2] != null){
 	   if(stack[1].getItem() == Items.cooked_porkchop && stack[2].getItem() == ModItem.ItemShucai)return new ItemStack(ModItem.ItemJiaozixian,2);
+	   if(stack[1].getItem() == Items.cooked_chicken && stack[2].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemDajirou,4);
+	   if(stack[1].getItem() == ModItem.ItemDajirou && stack[2].getItem() == ModItem.ItemDajirou)return new ItemStack(ModItem.ItemZhongjirou,4);
+	   if(stack[1].getItem() == ModItem.ItemZhongjirou && stack[2].getItem() == ModItem.ItemZhongjirou)return new ItemStack(ModItem.ItemXiaojirou,4);
    }
    if(stack[1] != null){
 	   if(stack[1].getItem() == Items.potato)return new ItemStack(ModItem.ItemTudoupian,3);
 	   if(stack[1].getItem() == ModItem.ItemTudoupian)return new ItemStack(ModItem.ItemTudousi,8);
-	   if(stack[1].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJitui,2);
+	   if(stack[1].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJitui,2);	   
+	   if(stack[1].getItem() == ModItem.ItemDoufu)return new ItemStack(ModItem.ItemDoufusi,3);	   
+	   if(stack[1].getItem() == Items.carrot)return new ItemStack(ModItem.ItemLuobosi,3);	   
+   }	
+   if(stack[2] != null){
+	   if(stack[2].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJichi,6);	   
    }	
 
 		return null;
