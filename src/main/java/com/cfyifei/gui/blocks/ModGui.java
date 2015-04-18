@@ -37,7 +37,7 @@ public class ModGui {
 		Nt.setBlockName("Nt");
 		Nt.setHarvestLevel("pickaxe", 2);
 		Nt.setHardness(3f);
-		Nt.setStepSound(Block.soundTypeStone);
+		Nt.setStepSound(Block.soundTypeWood);
 		Nt.setCreativeTab(FoodCraft.FcTab);
 
 		
@@ -80,7 +80,7 @@ public class ModGui {
 		Caiban = new BlockCaiban(Material.rock);
 		Caiban.setBlockName("Caiban");
 		Caiban.setHarvestLevel("pickaxe", 2);
-		Caiban.setStepSound(Block.soundTypeStone);
+		Caiban.setStepSound(Block.soundTypeWood);
 		Caiban.setBlockTextureName("foodcraft:pdg_");
 		Caiban.setCreativeTab(FoodCraft.FcTab);
 		GameRegistry.registerBlock(lit_Nmj,"lit_Milling machine");

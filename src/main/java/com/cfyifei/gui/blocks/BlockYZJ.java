@@ -136,14 +136,14 @@ public class BlockYZJ extends BlockContainer{
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.front_side = reg.registerIcon("foodcraft:yzj_side");//4b
+        this.front_side = reg.registerIcon("foodcraft:nmj_side");//4b
         
        
         if(ifburn){
-        	this.top = reg.registerIcon("foodcraft:yzj_top_on");
+        	this.top = reg.registerIcon("foodcraft:nmj_top_on");
     	}
     	else{
-    		this.top = reg.registerIcon("foodcraft:yzj_top");//topon
+    		this.top = reg.registerIcon("foodcraft:nmj_top");//topon
     	}
         
         

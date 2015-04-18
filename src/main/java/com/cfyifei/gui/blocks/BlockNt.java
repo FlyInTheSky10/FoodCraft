@@ -114,23 +114,16 @@ public class BlockNt extends BlockContainer{
     {
 
     	//return i == 1 ? this.top : (i == 0 ? this.top : (i != Metadata ? this.front_side : this.front_off));
-        if (i == 0)
+        if (i == 2 || i == 3 || i == 4 || i == 5)
         {
           return this.front_side;
         }
-        if (i == 1)
+        if (i == 1  || i == 0)
         {
         		return this.top;
         		
         }
-        
-        if ((i == 3) && (Metadata == 0))
-        {
-
-        		return this.front_on;
-        }
-
-        return i != Metadata ? this.front_side : this.front_on;
+        return this.front_side;
         }
     
 
@@ -139,21 +132,8 @@ public class BlockNt extends BlockContainer{
     {
         this.front_side = reg.registerIcon("foodcraft:nt_side");//4b
         
-       
-        if(ifburn){
-        	this.top = reg.registerIcon("foodcraft:nt_top_on");
-    	}
-    	else{
-    		this.top = reg.registerIcon("foodcraft:nt_top");//topon
-    	}
-        
-        
-       if(ifburn){
-        	this.front_on = reg.registerIcon("foodcraft:nt_nt_on");//kzoff
-          	}
-          	else{
-          		this.front_on = reg.registerIcon("foodcraft:nt_nt_off");//kzon
-          	}
+        	this.top = reg.registerIcon("minecraft:planks_oak");
+
         
  
     }
