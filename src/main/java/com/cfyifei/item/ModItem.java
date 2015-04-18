@@ -64,6 +64,7 @@ public class ModItem{
 	public static Item ItemDajirou,ItemZhongjirou,ItemXiaojirou;
 	public static Item ItemJichi;
 	public static Item ItemDoufusi,ItemLuobosi;
+	public static Item ItemHongjiu,ItemBaijiu,ItemPingguojiu,ItemPutaojiu;
 
 
 	public static void init() {
@@ -469,6 +470,26 @@ public class ModItem{
 		ItemLuobosi.setTextureName("FoodCraft:ItemLuobosi");
 		ItemLuobosi.setCreativeTab(FoodCraft.FcTab);	
 		
+		ItemHongjiu = new ITemFood(3, 4F, false, "ItemHongjiu");
+		ItemHongjiu.setUnlocalizedName("ItemHongjiu");
+		ItemHongjiu.setTextureName("FoodCraft:ItemHongjiu");
+		ItemHongjiu.setCreativeTab(FoodCraft.FcTab);	
+
+		ItemBaijiu = new ITemFood(3, 4F, false, "ItemBaijiu");
+		ItemBaijiu.setUnlocalizedName("ItemBaijiu");
+		ItemBaijiu.setTextureName("FoodCraft:ItemBaijiu");
+		ItemBaijiu.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemPingguojiu = new ITemFood(3, 4F, false, "ItemPingguojiu");
+		ItemPingguojiu.setUnlocalizedName("ItemPingguojiu");
+		ItemPingguojiu.setTextureName("FoodCraft:ItemPingguojiu");
+		ItemPingguojiu.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemPutaojiu = new ITemFood(3, 4F, false, "ItemPutaojiu");
+		ItemPutaojiu.setUnlocalizedName("ItemPutaojiu");
+		ItemPutaojiu.setTextureName("FoodCraft:ItemPutaojiu");
+		ItemPutaojiu.setCreativeTab(FoodCraft.FcTab);	
+		
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
 		GameRegistry.registerItem(ItemCaidao, "ItemCaidao");
@@ -545,6 +566,11 @@ public class ModItem{
 
 		GameRegistry.registerItem(ItemDangeng, "ItemDangeng");
 		GameRegistry.registerItem(ItemMogudunjitang, "ItemMogudunjitang");
+		
+		GameRegistry.registerItem(ItemHongjiu, "ItemHongjiu");
+		GameRegistry.registerItem(ItemBaijiu, "ItemBaijiu");
+		GameRegistry.registerItem(ItemPutaojiu, "ItemPutaojiu");
+		GameRegistry.registerItem(ItemPingguojiu, "ItemPingguojiu");
 		
 		GameRegistry.registerItem(ItemFanqiechaojidanfan, "ItemFanqiechaojidanfan");
 		GameRegistry.registerItem(ItemDisanxian, "ItemDisanxian");

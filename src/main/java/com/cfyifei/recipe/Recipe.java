@@ -38,13 +38,11 @@ public class Recipe{
 	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.Itemwater), new Object[] {Items.water_bucket});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemQiaokeli), new Object[] {ModItem.ItemQiaokelifen,Items.sugar});
-	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJiangyou), new Object[] {ModItem.ItemDouzi,ModItem.ItemDouzi,ModItem.ItemDouzi,ModItem.ItemMianfen,ModItem.ItemMianfen,ModItem.ItemMianfen,ModItem.ItemYan,ModItem.ItemYan,Items.glass_bottle});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemNuomi,2), new Object[] {ModItem.ItemNuomi,Items.bone});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDouban,2), new Object[] {ModItem.ItemDouban,Items.bone});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDoufugan), new Object[] {ModItem.ItemDoufu,ModItem.ItemJiangyou});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDoufu), new Object[] {ModItem.ItemDoujiang,ModItem.ItemYan});
-	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemCu), new Object[] {ModItem.ItemDouzi,ModItem.ItemDouzi,ModItem.ItemDouzi,Items.sugar,Items.sugar,Items.sugar,Items.glass_bottle});
-	
+
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemChunjuan), new Object[] {ModItem.ItemDoufusi,ModItem.ItemLuobosi,ModItem.ItemShucai,Items.cooked_porkchop});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.Itemwater), new Object[] {Items.water_bucket});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemAeljichifan), new Object[] {ModItem.ItemAeljichi,ModItem.Itemfan});
@@ -65,6 +63,36 @@ public class Recipe{
 	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJiaozi), new Object[] {ModItem.ItemJiaozixian,ModItem.ItemMianpi});
 	
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.Blocksugar, 1), new Object[] {"AAA", "AAA", "AAA", 'A', Items.sugar});
+	GameRegistry.addShapelessRecipe(new ItemStack(Items.sugar,9), new Object[] {ModBlocks.Blocksugar});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockDami, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemDami});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDami,9), new Object[] {ModBlocks.BlockDami});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockHuashenk, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemHuashen});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemHuashen,9), new Object[] {ModBlocks.BlockHuashenk});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockLuobo, 1), new Object[] {"AAA", "AAA", "AAA", 'A', Items.carrot});
+	GameRegistry.addShapelessRecipe(new ItemStack(Items.carrot,9), new Object[] {ModBlocks.BlockLuobo});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockTudou, 1), new Object[] {"AAA", "AAA", "AAA", 'A', Items.potato});
+	GameRegistry.addShapelessRecipe(new ItemStack(Items.potato,9), new Object[] {ModBlocks.BlockTudou});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockYan, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemYan});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemYan,9), new Object[] {ModBlocks.BlockYan});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockDouzik, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemDouzi});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDouzi,9), new Object[] {ModBlocks.BlockDouzik});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockRuomi, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemNuomi});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemNuomi,9), new Object[] {ModBlocks.BlockRuomi});
+
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockDouban, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemDouban});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDouban,9), new Object[] {ModBlocks.BlockDouban});
+	
+	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockQiaokeli, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemQiaokeli});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemQiaokeli,9), new Object[] {ModBlocks.BlockQiaokeli});
 	registerChestLoot(new ItemStack(ModItem.ItemNuomi), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemDouban), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemCong), 1, 1, 16);

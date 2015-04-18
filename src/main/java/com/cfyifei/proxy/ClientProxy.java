@@ -60,6 +60,8 @@ public class ClientProxy extends CommonProxy {
 			    return new GuiCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(x, y, z)); 
 		    case GuiIDs.GUI_YZJ:
 			    return new GuiYZJ(player.inventory, (TileEntityYZJ) world.getTileEntity(x, y, z));   
+		    case GuiIDs.GUI_Nt:
+			    return new GuiNt(player.inventory, (TileEntityNt) world.getTileEntity(x, y, z));   
 	    	default:
 			    return null;
 		}
