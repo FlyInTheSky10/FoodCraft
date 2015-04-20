@@ -17,6 +17,7 @@ public class ModBlocks {
 
 
 	public static void init() {
+		
 		BlockShuidao = new BlockShuiDao();
 		BlockShuidao.setBlockName("BlockShuidao");
 		BlockShuidao.setHarvestLevel("pickaxe", -1);

@@ -78,6 +78,7 @@ item.ItemHongjiu.name=Red wine
 item.ItemBaijiu.name=Chinese spirits
 item.ItemPingguojiu.name=Cider
 item.ItemPutaojiu.name=Wine
+item.ItemJichi.name=Chicken wings
 tile.Nmj.name=Mill machine
 tile.PDG.name=Pan
 tile.Guo.name=Wok

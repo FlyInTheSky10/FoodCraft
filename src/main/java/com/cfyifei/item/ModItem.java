@@ -455,7 +455,7 @@ public class ModItem{
 		ItemXiaojirou.setTextureName("FoodCraft:ItemXiaojirou");
 		ItemXiaojirou.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemJichi = new ItemKb();
+		ItemJichi = new ITemFood(3, 2F, false, "ItemJichi");
 		ItemJichi.setUnlocalizedName("ItemJichi");
 		ItemJichi.setTextureName("FoodCraft:ItemJichi");
 		ItemJichi.setCreativeTab(FoodCraft.FcTab);	
@@ -470,22 +470,22 @@ public class ModItem{
 		ItemLuobosi.setTextureName("FoodCraft:ItemLuobosi");
 		ItemLuobosi.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemHongjiu = new ITemFood(3, 4F, false, "ItemHongjiu");
+		ItemHongjiu = new ItemFoodJiu(3, 4F, false, "ItemHongjiu").setAlwaysEdible();
 		ItemHongjiu.setUnlocalizedName("ItemHongjiu");
 		ItemHongjiu.setTextureName("FoodCraft:ItemHongjiu");
 		ItemHongjiu.setCreativeTab(FoodCraft.FcTab);	
 
-		ItemBaijiu = new ITemFood(3, 4F, false, "ItemBaijiu");
+		ItemBaijiu = new ItemFoodJiu(3, 4F, false, "ItemBaijiu").setAlwaysEdible();
 		ItemBaijiu.setUnlocalizedName("ItemBaijiu");
 		ItemBaijiu.setTextureName("FoodCraft:ItemBaijiu");
 		ItemBaijiu.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemPingguojiu = new ITemFood(3, 4F, false, "ItemPingguojiu");
+		ItemPingguojiu = new ItemFoodJiu(3, 4F, false, "ItemPingguojiu").setAlwaysEdible();
 		ItemPingguojiu.setUnlocalizedName("ItemPingguojiu");
 		ItemPingguojiu.setTextureName("FoodCraft:ItemPingguojiu");
 		ItemPingguojiu.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemPutaojiu = new ITemFood(3, 4F, false, "ItemPutaojiu");
+		ItemPutaojiu = new ItemFoodJiu(3, 4F, false, "ItemPutaojiu").setAlwaysEdible();
 		ItemPutaojiu.setUnlocalizedName("ItemPutaojiu");
 		ItemPutaojiu.setTextureName("FoodCraft:ItemPutaojiu");
 		ItemPutaojiu.setCreativeTab(FoodCraft.FcTab);	
