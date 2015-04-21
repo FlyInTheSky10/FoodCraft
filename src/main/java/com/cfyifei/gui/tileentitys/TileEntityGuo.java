@@ -34,8 +34,15 @@ public class TileEntityGuo extends TileEntity implements IInventory{
 
 	@Override
     public void updateEntity() {
-	        isfire = BlockGuo.update(this.worldObj ,this.xCoord, this.yCoord, this.zCoord);
-	        
+		TileEntityZl te = (TileEntityZl)this.worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
+		if(te != null){
+	if(te.isBurning()){
+		isfire = true;
+	}
+}
+		else{
+			isfire =worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire;
+		}
 
 	        if (this.tableBurnTime > 0)
 	        {

@@ -122,9 +122,6 @@ import net.minecraft.world.World;
 
 	    	        super.breakBlock(World, x, y, z, Block, var1);
 	    	    }
-	  public static boolean update(World world,int x,int y,int z){
-		  //world.setBlock(x, y - 1, z,Blocks.stone);
-		  return world.getBlock(x, y - 1, z) == Blocks.fire;
-	  }
+
 	}
 
