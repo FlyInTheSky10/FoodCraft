@@ -10,6 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionHelper;
@@ -64,7 +65,8 @@ public class ModItem{
 	public static Item ItemDajirou,ItemZhongjirou,ItemXiaojirou;
 	public static Item ItemJichi;
 	public static Item ItemDoufusi,ItemLuobosi;
-	public static Item ItemHongjiu,ItemBaijiu,ItemPingguojiu,ItemPutaojiu;
+	public static Item ItemHongjiu,ItemBaijiu,ItemPingguojiu,ItemPutaojiu,ItemJinputaojiu, ItemJinpingguojiu;
+	public static Item ItemJinputao;
 
 
 	public static void init() {
@@ -490,6 +492,21 @@ public class ModItem{
 		ItemPutaojiu.setTextureName("FoodCraft:ItemPutaojiu");
 		ItemPutaojiu.setCreativeTab(FoodCraft.FcTab);	
 		
+		ItemJinputao = new ITemFood(3, 20F, false, "ItemJinputao" ,true);
+		ItemJinputao.setUnlocalizedName("ItemJinputao");
+		ItemJinputao.setTextureName("FoodCraft:ItemJinputao");
+		ItemJinputao.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJinputaojiu = new ItemFoodJinputaojiu(3, 8F, false, "ItemJinputaojiu").setAlwaysEdible();
+		ItemJinputaojiu.setUnlocalizedName("ItemJinputaojiu");
+		ItemJinputaojiu.setTextureName("FoodCraft:ItemJinputaojiu");
+		ItemJinputaojiu.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJinpingguojiu = new ItemFoodJinpingguojiu(3, 8F, false, "ItemJinpingguojiu").setAlwaysEdible();
+		ItemJinpingguojiu.setUnlocalizedName("ItemJinpingguojiu");
+		ItemJinpingguojiu.setTextureName("FoodCraft:ItemJinpingguojiu");
+		ItemJinpingguojiu.setCreativeTab(FoodCraft.FcTab);	
+		
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
 		GameRegistry.registerItem(ItemCaidao, "ItemCaidao");
@@ -506,7 +523,7 @@ public class ModItem{
 		GameRegistry.registerItem(ItemCong, "ItemCong");	
 		
 		GameRegistry.registerItem(ItemPutao, "ItemPutao");	
-		
+		GameRegistry.registerItem(ItemJinputao, "ItemJinputao");	
 		GameRegistry.registerItem(Itemfan, "Itemfan");
 		GameRegistry.registerItem(ItemMianfen, "ItemMianfen");
 		GameRegistry.registerItem(ItemYan, "ItemYan");
@@ -571,6 +588,9 @@ public class ModItem{
 		GameRegistry.registerItem(ItemBaijiu, "ItemBaijiu");
 		GameRegistry.registerItem(ItemPutaojiu, "ItemPutaojiu");
 		GameRegistry.registerItem(ItemPingguojiu, "ItemPingguojiu");
+		
+		GameRegistry.registerItem(ItemJinputaojiu, "ItemJinputaojiu");
+		GameRegistry.registerItem(ItemJinpingguojiu, "ItemJinpingguojiu");
 		
 		GameRegistry.registerItem(ItemFanqiechaojidanfan, "ItemFanqiechaojidanfan");
 		GameRegistry.registerItem(ItemDisanxian, "ItemDisanxian");
