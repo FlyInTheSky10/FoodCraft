@@ -9,7 +9,8 @@ import java.util.Random;
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
 
-import com.cfyifei.gui.tileentitys.TileEntityZl;
+
+import com.cfyifei.gui.tileentitys.TileEntityTpj;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -35,7 +36,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BlockZl extends BlockContainer{
+public class BlockTpj extends BlockContainer{
 
     private final Random Random = new Random();
 	private boolean ifburn;
@@ -50,9 +51,8 @@ public class BlockZl extends BlockContainer{
 	private IIcon top_on;
     @SideOnly(Side.CLIENT)
 	private IIcon front_on;
-	private IIcon front_down;
 	
-	public BlockZl(boolean E) {
+	public BlockTpj(boolean E) {
 		super(Material.rock);
 		ifburn = E;
 	}
@@ -60,7 +60,7 @@ public class BlockZl extends BlockContainer{
 
 	@Override
 	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityZl();
+		return new TileEntityTpj();
 	}
 	
 	@Override
@@ -68,7 +68,7 @@ public class BlockZl extends BlockContainer{
             int par4, EntityPlayer par5EntityPlayer, int par6, float par7,
             float par8, float par9) {
 		ItemStack stack = par5EntityPlayer.inventory.mainInventory[par5EntityPlayer.inventory.currentItem];
-		par5EntityPlayer.openGui(FoodCraft.instance, GuiIDs.GUI_Zl, par1World,par2, par3, par4);
+		par5EntityPlayer.openGui(FoodCraft.instance, GuiIDs.GUI_Tpj, par1World,par2, par3, par4);
         return true;
 	}
     public void onBlockAdded(World World, int X, int Y, int Z)
@@ -116,7 +116,7 @@ public class BlockZl extends BlockContainer{
     	//return i == 1 ? this.top : (i == 0 ? this.top : (i != Metadata ? this.front_side : this.front_off));
         if (i == 0)
         {
-          return this.front_down;
+          return this.front_side;
         }
         if (i == 1)
         {
@@ -137,14 +137,23 @@ public class BlockZl extends BlockContainer{
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister reg)
     {
-        this.front_side = reg.registerIcon("foodcraft:zl_side");//4b
-        this.front_down = reg.registerIcon("foodcraft:zl_down");//4b
-
-        	this.top = reg.registerIcon("foodcraft:zl_top");
- 
-        	this.front_on = reg.registerIcon("foodcraft:zl_side");//kzoff
-          	
-
+        this.front_side = reg.registerIcon("foodcraft:nmj_side");//4b
+        
+       
+        if(ifburn){
+        	this.top = reg.registerIcon("foodcraft:nmj_top_on");
+    	}
+    	else{
+    		this.top = reg.registerIcon("foodcraft:nmj_top");//topon
+    	}
+        
+        
+       if(ifburn){
+        	this.front_on = reg.registerIcon("foodcraft:yzj_yzj_on");//kzoff
+          	}
+          	else{
+          		this.front_on = reg.registerIcon("foodcraft:yzj_yzj_off");//kzon
+          	}
         
  
     }
@@ -153,7 +162,7 @@ public class BlockZl extends BlockContainer{
     {
 	   if (!EE)
 	    {
-            TileEntityZl tileentity = (TileEntityZl)World.getTileEntity(x, y, z);
+            TileEntityTpj tileentity = (TileEntityTpj)World.getTileEntity(x, y, z);
 
             if (tileentity != null)
             {
@@ -236,11 +245,11 @@ public class BlockZl extends BlockContainer{
 
           if (B)
           {
-              W.setBlock(x, y, z, ModGui.lit_Zl);
+              W.setBlock(x, y, z, ModGui.lit_Tpj);
           }
           else
           {
-              W.setBlock(x, y, z, ModGui.Zl);
+              W.setBlock(x, y, z, ModGui.Tpj);
 
           }
 
@@ -255,53 +264,12 @@ public class BlockZl extends BlockContainer{
         }
 public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return Item.getItemFromBlock(ModGui.Zl);
+        return Item.getItemFromBlock(ModGui.Tpj);
     }
 @SideOnly(Side.CLIENT)
 public Item getItem(World w, int x, int y, int z)
 {
-    return Item.getItemFromBlock(ModGui.Zl);
-}
-
-@SideOnly(Side.CLIENT)
-public void randomDisplayTick(World w, int x, int y, int z, Random random)
-{
-    if (this.ifburn)
-    {
-    	if (random.nextInt(24) == 0)
-        {
-      w .playSound((double)((float)x + 0.5F), (double)((float)y + 0.5F), (double)((float)z + 0.5F), "fire.fire", 1.0F + random.nextFloat(), random.nextFloat() * 0.7F + 0.3F, false);
-        }
-    	w.spawnParticle("smoke", (double)(x + 0.25F), (double)(y + 1.2F), (double)(z + 0.25F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.25F), (double)(y + 1.2F), (double)(z + 0.25F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.5F), (double)(y + 1.2F), (double)(z + 0.25F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.5F), (double)(y + 1.2F), (double)(z + 0.25F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.25F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.25F), 0.0D, 0.0D, 0.0D);
-        
-        
-    	w.spawnParticle("smoke", (double)(x + 0.25F), (double)(y + 1.2F), (double)(z + 0.5F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.25F), (double)(y + 1.2F), (double)(z + 0.5F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.5F), (double)(y + 1.2F), (double)(z + 0.5F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.5F), (double)(y + 1.2F), (double)(z + 0.5F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.5F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.5F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.25F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.25F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.5F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.5F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        
-    	w.spawnParticle("smoke", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        w.spawnParticle("flame", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        
-  
-    }
+    return Item.getItemFromBlock(ModGui.Tpj);
 }
     }
 

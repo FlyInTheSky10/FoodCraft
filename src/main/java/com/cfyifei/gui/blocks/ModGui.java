@@ -20,7 +20,23 @@ public class ModGui {
 	public static Block lit_Nt;
 	public static Block Zl;
 	public static Block lit_Zl;
+	public static Block Tpj;
+	public static Block lit_Tpj;
 	public static void init() {
+		Tpj = new BlockTpj(false);
+		Tpj.setBlockName("Tpj");
+		Tpj.setHarvestLevel("pickaxe", 2);
+		Tpj.setHardness(3f);
+		Tpj.setStepSound(Block.soundTypeStone);
+		Tpj.setCreativeTab(FoodCraft.FcTab);
+
+		lit_Tpj = new BlockTpj(true);
+		lit_Tpj.setBlockName("litTpj");
+		lit_Tpj.setHarvestLevel("pickaxe", 2);
+		lit_Tpj.setHardness(3f);
+		lit_Tpj.setStepSound(Block.soundTypeStone);
+		lit_Tpj.setLightLevel(0.875F);
+		
 		Nmj = new BlockNmj(false);
 		Nmj.setBlockName("Nmj");
 		Nmj.setHarvestLevel("pickaxe", 2);
@@ -105,6 +121,8 @@ public class ModGui {
 		GameRegistry.registerBlock(YZJ,"YZJ");
 		GameRegistry.registerBlock(lit_Zl,"lit_Zl");
 		GameRegistry.registerBlock(Zl,"Zl");
+		GameRegistry.registerBlock(lit_Tpj,"lit_Tpj");
+		GameRegistry.registerBlock(Tpj,"Tpj");
 		GameRegistry.registerBlock(Nt,"Nt");
 		GameRegistry.registerBlock(PDG,"PDG");
 		GameRegistry.registerBlock(Guo,"Guo");
@@ -120,6 +138,7 @@ public class ModGui {
 		 GameRegistry.registerTileEntity(TileEntityYZJ.class, "TileEntityYZJ");
 		 GameRegistry.registerTileEntity(TileEntityNt.class, "TileEntityNt");
 		 GameRegistry.registerTileEntity(TileEntityZl.class, "TileEntityZl");
+		 GameRegistry.registerTileEntity(TileEntityTpj.class, "TileEntityTpj");
 	}
 
 

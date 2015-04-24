@@ -338,7 +338,10 @@ public class TileEntityNt extends TileEntity implements IInventory{
     	   if(stack[0].getItem() == ModItem.ItemPutaojiu && stack[1].getItem() == ModItem.ItemPutaojiu && stack[2].getItem() == ModItem.ItemPutaojiu) cai = new ItemStack(ModItem.ItemHongjiu,9);
     	   if(stack[0].getItem() == ModItem.ItemDami && stack[1].getItem() == ModItem.ItemDami && stack[2].getItem() == ModItem.ItemDami) cai = new ItemStack(ModItem.ItemBaijiu,3);
     	   if(stack[0].getItem() == Items.apple && stack[1].getItem() == Items.apple && stack[2].getItem() == Items.apple) cai = new ItemStack(ModItem.ItemPingguojiu,3);
+    	   if(stack[0].getItem() == Items.golden_apple && stack[1].getItem() == Items.golden_apple && stack[2].getItem() == Items.golden_apple) cai = new ItemStack(ModItem.ItemJinpingguojiu,3);
+      	   if(stack[0].getItem() == ModItem.ItemJinputao && stack[1].getItem() == ModItem.ItemJinputao && stack[2].getItem() == ModItem.ItemJinputao) cai = new ItemStack(ModItem.ItemJinputaojiu,3);
        }
+       
        else{
     	   cai = null;
        }

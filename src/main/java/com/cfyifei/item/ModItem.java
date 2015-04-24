@@ -19,6 +19,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 
 public class ModItem{
+
 	static public Item ItemCong;
 	static public Item ItemZongye;
 	static public Item ItemXifan;
@@ -67,7 +68,9 @@ public class ModItem{
 	public static Item ItemDoufusi,ItemLuobosi;
 	public static Item ItemHongjiu,ItemBaijiu,ItemPingguojiu,ItemPutaojiu,ItemJinputaojiu, ItemJinpingguojiu;
 	public static Item ItemJinputao;
-
+	public static Item ItemQiaokelishui,ItemQiaokelinai,ItemHuluobozhi,ItemPutaozhi,ItemPingguozhi,ItemShucaizhi
+	,ItemJinputaozhi,ItemJinpingguozhi,ItemDounai,ItemKele,ItemXuebi;
+	public static Item ItemQiaokelinaiice,ItemPutaozhiice,ItemPingguozhiice,ItemJinputaozhiice,ItemJinpingguozhiice;
 
 	public static void init() {
 		//×ö²Ë¹¤¾ß	
@@ -507,6 +510,87 @@ public class ModItem{
 		ItemJinpingguojiu.setTextureName("FoodCraft:ItemJinpingguojiu");
 		ItemJinpingguojiu.setCreativeTab(FoodCraft.FcTab);	
 		
+		ItemQiaokelishui = new ItemYingliao(3, 4F, false, "ItemQiaokelishui");
+		ItemQiaokelishui.setUnlocalizedName("ItemQiaokelishui");
+		ItemQiaokelishui.setTextureName("FoodCraft:ItemQiaokelishui");
+		ItemQiaokelishui.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemQiaokelinai = new ItemMilk(3, 4F, false, "ItemQiaokelinai").setAlwaysEdible();
+		ItemQiaokelinai.setUnlocalizedName("ItemQiaokelinai");
+		ItemQiaokelinai.setTextureName("FoodCraft:ItemQiaokelinai");
+		ItemQiaokelinai.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemHuluobozhi = new ItemYingliao(3, 4F, false, "ItemHuluobozhi");
+		ItemHuluobozhi.setUnlocalizedName("ItemHuluobozhi");
+		ItemHuluobozhi.setTextureName("FoodCraft:ItemHuluobozhi");
+		ItemHuluobozhi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemPutaozhi = new ItemYingliao(3, 4F, false, "ItemPutaozhi");
+		ItemPutaozhi.setUnlocalizedName("ItemPutaozhi");
+		ItemPutaozhi.setTextureName("FoodCraft:ItemPutaozhi");
+		ItemPutaozhi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemPingguozhi = new ItemYingliao(3, 4F, false, "ItemPingguozhi");
+		ItemPingguozhi.setUnlocalizedName("ItemPingguozhi");
+		ItemPingguozhi.setTextureName("FoodCraft:ItemPingguozhi");
+		ItemPingguozhi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemShucaizhi = new ItemYingliao(3, 4F, false, "ItemShucaizhi");
+		ItemShucaizhi.setUnlocalizedName("ItemShucaizhi");
+		ItemShucaizhi.setTextureName("FoodCraft:ItemShucaizhi");
+		ItemShucaizhi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJinputaozhi = new ItemYingliao(3, 4F, false, "ItemJinputaozhi",true , 0);
+		ItemJinputaozhi.setUnlocalizedName("ItemJinputaozhi");
+		ItemJinputaozhi.setTextureName("FoodCraft:ItemJinputaozhi");
+		ItemJinputaozhi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJinpingguozhi = new ItemYingliao(3, 4F, false, "ItemJinpingguozhi",true , 1);
+		ItemJinpingguozhi.setUnlocalizedName("ItemJinpingguozhi");
+		ItemJinpingguozhi.setTextureName("FoodCraft:ItemJinpingguozhi");
+		ItemJinpingguozhi.setCreativeTab(FoodCraft.FcTab);	
+		
+	
+		ItemDounai = new ItemYingliao(3, 4F, false, "ItemDounai");
+		ItemDounai.setUnlocalizedName("ItemDounai");
+		ItemDounai.setTextureName("FoodCraft:ItemDounai");
+		ItemDounai.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemKele = new ItemYingliao(3, 4F, false, "ItemKele");
+		ItemKele.setUnlocalizedName("ItemKele");
+		ItemKele.setTextureName("FoodCraft:ItemKele");
+		ItemKele.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemXuebi = new ItemYingliao(3, 4F, false, "ItemXuebi");
+		ItemXuebi.setUnlocalizedName("ItemXuebi");
+		ItemXuebi.setTextureName("FoodCraft:ItemXuebi");
+		ItemXuebi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemQiaokelinaiice = new ItemMilk(3, 4.5F, false, "ItemQiaokelinaiice").setAlwaysEdible();
+		ItemQiaokelinaiice.setUnlocalizedName("ItemQiaokelinaiice");
+		ItemQiaokelinaiice.setTextureName("FoodCraft:ItemQiaokelinaiice");
+		ItemQiaokelinaiice.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemPutaozhiice = new ItemYingliao(3, 4.5F, false, "ItemPutaozhiice");
+		ItemPutaozhiice.setUnlocalizedName("ItemPutaozhiice");
+		ItemPutaozhiice.setTextureName("FoodCraft:ItemPutaozhiice");
+		ItemPutaozhiice.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemPingguozhiice = new ItemYingliao(3, 4.5F, false, "ItemPingguozhiice");
+		ItemPingguozhiice.setUnlocalizedName("ItemPingguozhiice");
+		ItemPingguozhiice.setTextureName("FoodCraft:ItemPingguozhiice");
+		ItemPingguozhiice.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJinputaozhiice = new ItemYingliao(3, 4.5F, false, "ItemJinputaozhiice" , true , 0);
+		ItemJinputaozhiice.setUnlocalizedName("ItemJinputaozhiice");
+		ItemJinputaozhiice.setTextureName("FoodCraft:ItemJinputaozhiice");
+		ItemJinputaozhiice.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemJinpingguozhiice = new ItemYingliao(3, 4.5F, false, "ItemJinpingguozhiice" , true , 1);
+		ItemJinpingguozhiice.setUnlocalizedName("ItemJinpingguozhiice");
+		ItemJinpingguozhiice.setTextureName("FoodCraft:ItemJinpingguozhiice");
+		ItemJinpingguozhiice.setCreativeTab(FoodCraft.FcTab);	
+
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
 		GameRegistry.registerItem(ItemCaidao, "ItemCaidao");
@@ -592,6 +676,27 @@ public class ModItem{
 		GameRegistry.registerItem(ItemJinputaojiu, "ItemJinputaojiu");
 		GameRegistry.registerItem(ItemJinpingguojiu, "ItemJinpingguojiu");
 		
+		GameRegistry.registerItem(ItemQiaokelishui, "ItemQiaokelishui");
+		GameRegistry.registerItem(ItemHuluobozhi, "ItemHuluobozhi");
+		GameRegistry.registerItem(ItemPutaozhi, "ItemPutaozhi");
+		GameRegistry.registerItem(ItemPingguozhi, "ItemPingguozhi");
+		GameRegistry.registerItem(ItemShucaizhi, "ItemShucaizhi");
+		
+		GameRegistry.registerItem(ItemJinputaozhi, "ItemJinputaozhi");
+		GameRegistry.registerItem(ItemJinpingguozhi, "ItemJinpingguozhi");
+
+		GameRegistry.registerItem(ItemKele, "ItemKele");
+		GameRegistry.registerItem(ItemXuebi, "ItemXuebi");
+		
+		GameRegistry.registerItem(ItemQiaokelinai, "ItemQiaokelinai");
+		GameRegistry.registerItem(ItemDounai, "ItemDounai");
+		
+		GameRegistry.registerItem(ItemQiaokelinaiice, "ItemQiaokelinaiice");
+		GameRegistry.registerItem(ItemPutaozhiice, "ItemPutaozhiice");
+		GameRegistry.registerItem(ItemPingguozhiice, "ItemPingguozhiice");
+		GameRegistry.registerItem(ItemJinputaozhiice, "ItemJinputaozhiice");
+		GameRegistry.registerItem(ItemJinpingguozhiice, "ItemJinpingguozhiice");
+
 		GameRegistry.registerItem(ItemFanqiechaojidanfan, "ItemFanqiechaojidanfan");
 		GameRegistry.registerItem(ItemDisanxian, "ItemDisanxian");
 		GameRegistry.registerItem(ItemYuxiangrousi, "ItemYuxiangrousi");

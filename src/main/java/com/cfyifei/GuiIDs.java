@@ -9,4 +9,5 @@ public class GuiIDs {
 	public static final int GUI_YZJ = 5;
 	public static final int GUI_Nt = 6;
 	public static final int GUI_Zl = 7;
+	public static final int GUI_Tpj = 8;
 }

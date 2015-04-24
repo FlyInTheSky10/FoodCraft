@@ -63,6 +63,7 @@ public class Recipe{
 	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJiaozi), new Object[] {ModItem.ItemJiaozixian,ModItem.ItemMianpi});
 	
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemJinputao, 1), new Object[] {"AAA", "ABA", "AAA", 'A', Blocks.gold_block,'B', ModItem.ItemPutao});
 	
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.Blocksugar, 1), new Object[] {"AAA", "AAA", "AAA", 'A', Items.sugar});
 	GameRegistry.addShapelessRecipe(new ItemStack(Items.sugar,9), new Object[] {ModBlocks.Blocksugar});

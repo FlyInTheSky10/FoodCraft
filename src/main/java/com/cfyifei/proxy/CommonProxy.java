@@ -63,6 +63,8 @@ public class CommonProxy implements IGuiHandler {
 		    	return new ContainerNt(player.inventory, (TileEntityNt) world.getTileEntity(x, y, z));	
 		    case GuiIDs.GUI_Zl:
 		    	return new ContainerZl(player.inventory, (TileEntityZl) world.getTileEntity(x, y, z));	
+		    case GuiIDs.GUI_Tpj:
+		    	return new ContainerTpj(player.inventory, (TileEntityTpj) world.getTileEntity(x, y, z));	
 	        default:
 			    return null;
 		}

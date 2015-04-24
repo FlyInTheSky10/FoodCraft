@@ -44,6 +44,7 @@ public class BlockNmj extends BlockContainer{
 	private IIcon top_on;
     @SideOnly(Side.CLIENT)
 	private IIcon front_on;
+    private int xx = 0;
 	
 	public BlockNmj(boolean E) {
 		super(Material.rock);
@@ -268,7 +269,8 @@ public Item getItem(World w, int x, int y, int z)
 {
     return Item.getItemFromBlock(ModGui.Nmj);
 }
-    }
+
+}
 
   
 
