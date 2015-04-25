@@ -247,6 +247,12 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 					return true;
 				}
 			}
+			if(stack[1].getItem() == Items.melon){
+				if(water >= 1){
+					coldcai = new ItemStack(ModItem.ItemXiguazhi);
+					return true;
+				}
+			}
 			
 			coldcai = null;
 		}

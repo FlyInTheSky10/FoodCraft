@@ -149,10 +149,10 @@ public class BlockTpj extends BlockContainer{
         
         
        if(ifburn){
-        	this.front_on = reg.registerIcon("foodcraft:yzj_yzj_on");//kzoff
+        	this.front_on = reg.registerIcon("foodcraft:tpj_tpj_on");//kzoff
           	}
           	else{
-          		this.front_on = reg.registerIcon("foodcraft:yzj_yzj_off");//kzon
+          		this.front_on = reg.registerIcon("foodcraft:tpj_tpj_off");//kzon
           	}
         
  

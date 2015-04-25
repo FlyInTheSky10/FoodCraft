@@ -18,14 +18,15 @@ public class Recipe{
 	public static void init() {
 		Items.egg.setMaxStackSize(64);
 		Items.snowball.setMaxStackSize(64);
-
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemTiepian, 16), new Object[] {"###", "#X#","###", '#',Items.iron_ingot,'X',Blocks.stone});	
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCaidao, 2), new Object[] {"## ", "## ","X  ", '#',ModItem.ItemTiepian,'X',Items.stick});
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.cake));
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.bread));
+	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.pumpkin_pie));
 	
 	GameRegistry.addRecipe(new ItemStack(Items.cake, 1), new Object[] {"AAA", "BEB", "CCC", 'A', Items.milk_bucket, 'B', Items.sugar, 'C', ModItem.ItemMianfen, 'E', Items.egg});
 	GameRegistry.addRecipe(new ItemStack(Items.bread, 1), new Object[] {"AAA", "   ", "   ", 'A', ModItem.ItemMianfen});
+	GameRegistry.addRecipe(new ItemStack(Items.pumpkin_pie, 1), new Object[] {"AAA", "BBB", "CCC", 'A', ModItem.ItemNuomifen,'B',Blocks.pumpkin,Items.egg});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemHuashen,'B',Blocks.iron_block});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemDouzi,'B',Blocks.iron_block});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemDami,'B',Blocks.iron_block});
@@ -94,6 +95,14 @@ public class Recipe{
 	
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockQiaokeli, 1), new Object[] {"AAA", "AAA", "AAA", 'A', ModItem.ItemQiaokeli});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemQiaokeli,9), new Object[] {ModBlocks.BlockQiaokeli});
+	
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemQiaokelinaiice), new Object[] {ModItem.ItemQiaokelinai,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemPutaozhiice), new Object[] {ModItem.ItemPutaozhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemPingguozhiice), new Object[] {ModItem.ItemPingguozhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJinpingguozhiice), new Object[] {ModItem.ItemJinpingguozhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJinputaozhiice), new Object[] {ModItem.ItemJinputaozhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemXiguazhiice), new Object[] {ModItem.ItemXiguazhi,Items.snowball});
+	
 	registerChestLoot(new ItemStack(ModItem.ItemNuomi), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemDouban), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemCong), 1, 1, 16);

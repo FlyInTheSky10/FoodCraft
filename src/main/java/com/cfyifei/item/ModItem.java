@@ -26,7 +26,7 @@ public class ModItem{
 	static public Item ItemDangeng;
 	static public Item ItemTiepian,ItemCaidao,ItemDami,Itemfan,ItemMianfen,ItemHuashen,
 	ItemDouzi,ItemHuashenyou,ItemDoujiang,ItemDianluban,ItemJianjidan,ItemLaobing,
-	ItemMianpi,ItemJiaozixian,ItemJiaozi,ItemJianjiao,ItemQiaokeli,ItemQiaokelifen,ItemShucai,ItemFanqie,ItemLajiao;
+	ItemMianpi,ItemJiaozixian,ItemJiaozi,ItemJianjiao,ItemQiaokeli,ItemQiaokelifen,ItemShucai,ItemFanqie,ItemLajiao,ItemMianfensi;
 	public static Item ItemQiezi;
 	public static Item ItemPutao;
 	public static Item ItemYan;
@@ -69,8 +69,8 @@ public class ModItem{
 	public static Item ItemHongjiu,ItemBaijiu,ItemPingguojiu,ItemPutaojiu,ItemJinputaojiu, ItemJinpingguojiu;
 	public static Item ItemJinputao;
 	public static Item ItemQiaokelishui,ItemQiaokelinai,ItemHuluobozhi,ItemPutaozhi,ItemPingguozhi,ItemShucaizhi
-	,ItemJinputaozhi,ItemJinpingguozhi,ItemDounai,ItemKele,ItemXuebi;
-	public static Item ItemQiaokelinaiice,ItemPutaozhiice,ItemPingguozhiice,ItemJinputaozhiice,ItemJinpingguozhiice;
+	,ItemJinputaozhi,ItemJinpingguozhi,ItemDounai,ItemKele,ItemXuebi,ItemXiguazhi;
+	public static Item ItemQiaokelinaiice,ItemPutaozhiice,ItemPingguozhiice,ItemJinputaozhiice,ItemJinpingguozhiice,ItemXiguazhiice;
 
 	public static void init() {
 		//×ö²Ë¹¤¾ß	
@@ -590,7 +590,22 @@ public class ModItem{
 		ItemJinpingguozhiice.setUnlocalizedName("ItemJinpingguozhiice");
 		ItemJinpingguozhiice.setTextureName("FoodCraft:ItemJinpingguozhiice");
 		ItemJinpingguozhiice.setCreativeTab(FoodCraft.FcTab);	
-
+		
+		ItemXiguazhi = new ItemYingliao(3, 4F, false, "ItemXiguazhi");
+		ItemXiguazhi.setUnlocalizedName("ItemXiguazhi");
+		ItemXiguazhi.setTextureName("FoodCraft:ItemXiguazhi");
+		ItemXiguazhi.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemXiguazhiice = new ItemYingliao(3, 4.5F, false, "ItemXiguazhiice");
+		ItemXiguazhiice.setUnlocalizedName("ItemXiguazhiice");
+		ItemXiguazhiice.setTextureName("FoodCraft:ItemXiguazhiice");
+		ItemXiguazhiice.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemMianfensi = new ItemKb();
+		ItemMianfensi.setUnlocalizedName("ItemMianfensi");
+		ItemMianfensi.setTextureName("FoodCraft:ItemMianfensi");
+		ItemMianfensi.setCreativeTab(FoodCraft.FcTab);	
+		
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
 		GameRegistry.registerItem(ItemCaidao, "ItemCaidao");
@@ -681,6 +696,7 @@ public class ModItem{
 		GameRegistry.registerItem(ItemPutaozhi, "ItemPutaozhi");
 		GameRegistry.registerItem(ItemPingguozhi, "ItemPingguozhi");
 		GameRegistry.registerItem(ItemShucaizhi, "ItemShucaizhi");
+		GameRegistry.registerItem(ItemXiguazhi, "ItemXiguazhi");
 		
 		GameRegistry.registerItem(ItemJinputaozhi, "ItemJinputaozhi");
 		GameRegistry.registerItem(ItemJinpingguozhi, "ItemJinpingguozhi");
@@ -695,6 +711,7 @@ public class ModItem{
 		GameRegistry.registerItem(ItemPutaozhiice, "ItemPutaozhiice");
 		GameRegistry.registerItem(ItemPingguozhiice, "ItemPingguozhiice");
 		GameRegistry.registerItem(ItemJinputaozhiice, "ItemJinputaozhiice");
+		GameRegistry.registerItem(ItemXiguazhiice, "ItemXiguazhiice");
 		GameRegistry.registerItem(ItemJinpingguozhiice, "ItemJinpingguozhiice");
 
 		GameRegistry.registerItem(ItemFanqiechaojidanfan, "ItemFanqiechaojidanfan");

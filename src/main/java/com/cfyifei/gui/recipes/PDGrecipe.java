@@ -29,12 +29,14 @@ public class PDGrecipe {
         this.itemregister(Items.egg, new ItemStack(ModItem.ItemJianjidan), 0.5F);
         this.itemregister(ModItem.ItemMianfen, new ItemStack(ModItem.ItemLaobing), 0.5F);
         this.itemregister(ModItem.ItemJiaozi, new ItemStack(ModItem.ItemJianjiao), 0.5F);
-        this.itemregister(ModItem.ItemChaotudoupian, new ItemStack(ModItem.ItemTudoupian), 0.5F);
-
+        this.itemregister(ModItem.ItemTudoupian, new ItemStack(ModItem.ItemChaotudoupian), 0.5F);
+        this.itemregister(ModItem.ItemMianfensi, new ItemStack(ModItem.ItemMahua), 0.5F);
+        
         this.itemregister(Items.beef, new ItemStack(Items.cooked_beef), 0.5F);
         this.itemregister(Items.chicken, new ItemStack(Items.cooked_chicken), 0.5F);
         this.itemregister(Items.fish, new ItemStack(Items.cooked_fished), 0.5F);
         this.itemregister(Items.porkchop, new ItemStack(Items.cooked_porkchop), 0.5F);
+        
 
     }
    
