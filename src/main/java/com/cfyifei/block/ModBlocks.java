@@ -9,11 +9,12 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 
 public class ModBlocks {
+
 	static public Block BlockShuidao,BlockDouzi,BlockHuashen,BlockWaike,BlockLuhuo,BlockShucai,BlockFanqie,BlockLajiao;
 	public static Block BlockPutao;
 	public static Block BlockQiezi;
 	public static Block Blocksugar,BlockDami,BlockHuashenk,BlockLuobo,
-	BlockTudou,BlockYan,BlockDouzik,BlockRuomi,BlockDouban,BlockQiaokeli;
+	BlockTudou,BlockYan,BlockDouzik,BlockRuomi,BlockDouban,BlockQiaokeli,BlockCong;
 
 
 	public static void init() {
@@ -64,6 +65,7 @@ public class ModBlocks {
 		BlockPutao.setBlockName("BlockPutao");
 		BlockPutao.setHarvestLevel("pickaxe", -1);
 		BlockPutao.setStepSound(Block.soundTypeGrass);
+		
 	
 		Blocksugar = new BlockKB(Material.grass).setBlockName("Blocksugar").setBlockTextureName("FoodCraft:blocksugar")
 				.setHardness(0.5F).setStepSound(Block.soundTypeSnow).setCreativeTab(FoodCraft.FcTab);
@@ -94,7 +96,7 @@ public class ModBlocks {
 		
 		BlockQiaokeli = new BlockKB(Material.grass).setBlockName("BlockQiaokeli").setBlockTextureName("FoodCraft:blockqiaokeli")
 				.setHardness(0.5F).setStepSound(Block.soundTypeSnow).setCreativeTab(FoodCraft.FcTab);
-		
+
 		GameRegistry.registerBlock(BlockDouzi,"BlockDouzi");
 		GameRegistry.registerBlock(BlockShuidao,"BlockShuidao");
 		GameRegistry.registerBlock(BlockHuashen,"BlockHuashen");
@@ -103,7 +105,7 @@ public class ModBlocks {
 		GameRegistry.registerBlock(BlockShucai,"BlockShucai");
 		GameRegistry.registerBlock(BlockPutao,"BlockPutao");
 		GameRegistry.registerBlock(BlockQiezi,"BlockQiezi");
-		
+
 		GameRegistry.registerBlock(Blocksugar,"Blocksugar");
 		GameRegistry.registerBlock(BlockDami,"BlockDami");
 		GameRegistry.registerBlock(BlockHuashenk,"BlockHuashenk");

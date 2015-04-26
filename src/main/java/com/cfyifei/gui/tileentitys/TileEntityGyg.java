@@ -328,20 +328,28 @@ public class TileEntityGyg extends TileEntity implements IInventory{
         }
         else
         {
-      if(stack[0].getItem() == ModItem.Itemfan || stack[1].getItem() == ModItem.Itemfan || stack[2].getItem() == ModItem.Itemfan){
+      if(stack[0].getItem() == ModItem.Itemfan && stack[1].getItem() == ModItem.Itemfan && stack[2].getItem() == ModItem.Itemfan){
     	  cai = new ItemStack(ModItem.ItemBaifan);
     	  return true;
     	  }
-      if(stack[0].getItem() == ModItem.ItemBaifan || stack[1].getItem() == ModItem.ItemBaifan || stack[2].getItem() == ModItem.ItemBaifan){
+      if(stack[0].getItem() == ModItem.ItemBaifan && stack[1].getItem() == ModItem.ItemBaifan&& stack[2].getItem() == ModItem.ItemBaifan){
     	  cai = new ItemStack(ModItem.ItemXifan,3);
     	  return true;
     	  }
-      if(stack[0].getItem() == Items.egg || stack[1].getItem() == ModItem.ItemJiangyou || stack[2].getItem() == ModItem.ItemCong){
+      if(stack[0].getItem() == Items.egg && stack[1].getItem() == ModItem.ItemJiangyou && stack[2].getItem() == ModItem.ItemCong){
     	  cai = new ItemStack(ModItem.ItemDangeng);
     	  return true;
     	  }
-      if(stack[0].getItem() == Items.mushroom_stew || stack[1].getItem() == ModItem.ItemJitui || stack[2].getItem() == ModItem.ItemYan){
+      if(stack[0].getItem() == Item.getItemFromBlock(Blocks.brown_mushroom) && stack[1].getItem() == ModItem.ItemJitui && stack[2].getItem() == ModItem.ItemYan){
     	  cai = new ItemStack(ModItem.ItemMogudunjitang);
+    	  return true;
+    	  }
+      if(stack[0].getItem() == Items.cooked_fished && stack[1].getItem() ==  ModItem.ItemCong && stack[2].getItem() == ModItem.ItemCong){
+    	  cai = new ItemStack(ModItem.ItemQingzhenyu);
+    	  return true;
+    	  }
+      if(stack[0].getItem() == ModItem.ItemBaifan && stack[1].getItem() ==  Items.egg && stack[2].getItem() == Items.cooked_porkchop){
+    	  cai = new ItemStack(ModItem.ItemPidanshourouzhou);
     	  return true;
     	  }
         }

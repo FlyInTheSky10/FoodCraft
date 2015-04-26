@@ -55,7 +55,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 	        
 	        if (!this.worldObj.isRemote)
 	        {
-	            if (this.tableBurnTime == 0 && this.canSmelt())
+	            if (this.tableBurnTime == 0 && this.canSmelt() && this.water >= 2)
 	            {
 	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[1]);
 

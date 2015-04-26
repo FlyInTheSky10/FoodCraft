@@ -24,9 +24,16 @@ public class Recipe{
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.bread));
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.pumpkin_pie));
 	
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemMian, 1), new Object[] {"ABA", "ABA", "ABA", 'A', ModItem.ItemMianfen, 'B', ModItem.Itemwater});
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemGuoqiaomixian, 1), new Object[] {"ABA", "ABA", "ABA", 'A', ModItem.Itemfan, 'B', ModItem.Itemwater});
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemYifen, 1), new Object[] {"ABA", "ABA", "ABA", 'A', Items.wheat, 'B', ModItem.Itemwater});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemYifenpork), new Object[] {ModItem.ItemYifen,Items.cooked_porkchop});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemYifenchicken), new Object[] {ModItem.ItemYifen,Items.cooked_chicken});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemYifenbeef), new Object[] {ModItem.ItemYifen,Items.cooked_beef});
+	
 	GameRegistry.addRecipe(new ItemStack(Items.cake, 1), new Object[] {"AAA", "BEB", "CCC", 'A', Items.milk_bucket, 'B', Items.sugar, 'C', ModItem.ItemMianfen, 'E', Items.egg});
 	GameRegistry.addRecipe(new ItemStack(Items.bread, 1), new Object[] {"AAA", "   ", "   ", 'A', ModItem.ItemMianfen});
-	GameRegistry.addRecipe(new ItemStack(Items.pumpkin_pie, 1), new Object[] {"AAA", "BBB", "CCC", 'A', ModItem.ItemNuomifen,'B',Blocks.pumpkin,Items.egg});
+	GameRegistry.addRecipe(new ItemStack(Items.pumpkin_pie, 1), new Object[] {"AAA", "BBB", "CCC", 'A', ModItem.ItemNuomifen,'B',Blocks.pumpkin,'C',Items.egg});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemHuashen,'B',Blocks.iron_block});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemDouzi,'B',Blocks.iron_block});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemDami,'B',Blocks.iron_block});
@@ -107,6 +114,8 @@ public class Recipe{
 	registerChestLoot(new ItemStack(ModItem.ItemDouban), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemCong), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemZongye), 1, 10, 64);
+	registerChestLoot(new ItemStack(ModItem.ItemKafei), 1, 1, 10);
+	registerChestLoot(new ItemStack(ModItem.ItemGalikuai), 1, 10, 64);
 	}
     public static void registerChestLoot(ItemStack loot, int min, int max, int rarity)
     {

@@ -252,7 +252,17 @@ public class TileEntityGuo extends TileEntity implements IInventory{
     	ItemStack itemstack8 =new ItemStack(ModItem.ItemHongshaoroufan,1);
     	ItemStack itemstack9 =new ItemStack(ModItem.ItemHuiguoroufan,1);
     	ItemStack itemstack10 =new ItemStack(ModItem.ItemTangyuan,1);
+    	ItemStack itemstack11 =new ItemStack(ModItem.ItemBaiqiuji,1);
+    	ItemStack itemstack12 =new ItemStack(ModItem.ItemKoushuiji,1);
+    	ItemStack itemstack13 =new ItemStack(ModItem.ItemLaziji,1);
+    	ItemStack itemstack14 =new ItemStack(ModItem.ItemCongyouji,1);
+    	ItemStack itemstack15 =new ItemStack(ModItem.ItemKelejichifan,1);
+    	ItemStack itemstack16 =new ItemStack(ModItem.ItemMalayu,1);
+    	ItemStack itemstack17 =new ItemStack(ModItem.ItemSuancaiyu,1);
+    	ItemStack itemstack18 =new ItemStack(ModItem.ItemGalijiroufan,1);
+    	ItemStack itemstack19 =new ItemStack(ModItem.ItemShuizhuniurou,1);
             if (this.stack[12] == null)
+
             {
                 if(cai == 1) this.stack[12] = itemstack.copy();
                 if(cai == 2) this.stack[12] = itemstack2.copy();
@@ -264,12 +274,75 @@ public class TileEntityGuo extends TileEntity implements IInventory{
                 if(cai == 8) this.stack[12] = itemstack8.copy();
                 if(cai == 9) this.stack[12] = itemstack9.copy();
                 if(cai == 10) this.stack[12] = itemstack10.copy();
+                if(cai == 11) this.stack[12] = itemstack11.copy();
+                if(cai == 12) this.stack[12] = itemstack12.copy();
+                if(cai == 13) this.stack[12] = itemstack13.copy();
+                if(cai == 14) this.stack[12] = itemstack14.copy(); 
+                if(cai == 15) this.stack[12] = itemstack15.copy(); 
+                if(cai == 16) this.stack[12] = itemstack16.copy(); 
+                if(cai == 17) this.stack[12] = itemstack17.copy(); 
+                if(cai == 18) this.stack[12] = itemstack18.copy(); 
+                if(cai == 19) this.stack[12] = itemstack19.copy(); 
+                
             }
-            else if (this.stack[12].getItem() == itemstack.getItem() || this.stack[12].getItem() == itemstack2.getItem() || this.stack[12].getItem() == itemstack3.getItem() || this.stack[12].getItem() == itemstack4.getItem() || this.stack[12].getItem() == itemstack5.getItem() || this.stack[12].getItem() == itemstack6.getItem() || this.stack[12].getItem() == itemstack7.getItem() || this.stack[12].getItem() == itemstack8.getItem() || this.stack[12].getItem() == itemstack9.getItem() || this.stack[12].getItem() == itemstack10.getItem())
+            else if (this.stack[12].getItem() == itemstack.getItem() || this.stack[12].getItem() == itemstack2.getItem() || 
+            		this.stack[12].getItem() == itemstack3.getItem() || this.stack[12].getItem() == itemstack4.getItem() || 
+            		this.stack[12].getItem() == itemstack5.getItem() || this.stack[12].getItem() == itemstack6.getItem() || 
+            		this.stack[12].getItem() == itemstack7.getItem() || this.stack[12].getItem() == itemstack8.getItem() || 
+            		this.stack[12].getItem() == itemstack9.getItem() || this.stack[12].getItem() == itemstack10.getItem() || 
+            		this.stack[12].getItem() == itemstack11.getItem()  || this.stack[12].getItem() == itemstack12.getItem()  || 
+            		this.stack[12].getItem() == itemstack13.getItem()   || this.stack[12].getItem() == itemstack14.getItem()   ||
+            		this.stack[12].getItem() == itemstack15.getItem() || this.stack[12].getItem() == itemstack16.getItem()|| 
+            		this.stack[12].getItem() == itemstack16.getItem() || this.stack[12].getItem() == itemstack17.getItem()|| 
+            		this.stack[12].getItem() == itemstack18.getItem() || this.stack[12].getItem() == itemstack19.getItem())
             {
             	
  this.stack[12].stackSize += 1; // Forge BugFix: Results may have multiple items
 
+            }
+            if(cai == 15) {
+            	--this.stack[0].stackSize;
+            	--this.stack[1].stackSize;
+            	--this.stack[4].stackSize;
+            	--this.stack[5].stackSize;
+            	--this.stack[6].stackSize;
+              	if (this.stack[0].stackSize <= 0)
+                {
+                    this.stack[0] = null;
+                }
+                if (this.stack[1].stackSize <= 0)
+                {
+                    this.stack[1] = null;
+                }
+                if (this.stack[4].stackSize <= 0)
+                {
+                    this.stack[4] = null;
+                }
+                if (this.stack[5].stackSize <= 0)
+                {
+                    this.stack[5] = null;
+                }
+                if (this.stack[6].stackSize <= 0)
+                {
+                    this.stack[6] = null;
+                }
+            }
+            if(cai == 11) {
+            	--this.stack[0].stackSize;
+            	--this.stack[1].stackSize;
+            	--this.stack[4].stackSize;
+              	if (this.stack[0].stackSize <= 0)
+                {
+                    this.stack[0] = null;
+                }
+                if (this.stack[1].stackSize <= 0)
+                {
+                    this.stack[1] = null;
+                }
+                if (this.stack[4].stackSize <= 0)
+                {
+                    this.stack[4] = null;
+                }
             }
             if(cai == 10) {
             	--this.stack[0].stackSize;
@@ -283,7 +356,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
                     this.stack[1] = null;
                 }
             }
-            if(cai == 9) {
+            if(cai == 9 || cai == 12 || cai == 13) {
             	--this.stack[0].stackSize;
             	--this.stack[1].stackSize;
             	--this.stack[2].stackSize;
@@ -361,7 +434,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
             }
             
             
-            if(cai == 1 || cai == 5 || cai == 6 || cai == 7) {
+            if(cai == 1 || cai == 5 || cai == 6 || cai == 7 || cai == 14 || cai == 16 || cai == 19) {
             	--this.stack[0].stackSize;
             	--this.stack[1].stackSize;
             	--this.stack[2].stackSize;
@@ -395,7 +468,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
                 }
             }
             
-            if(cai == 2 ||cai == 3||cai == 4) {
+            if(cai == 2 ||cai == 3||cai == 4 || cai == 17 || cai == 18) {
             	--this.stack[0].stackSize;
             	--this.stack[1].stackSize;
             	--this.stack[2].stackSize;
@@ -464,7 +537,15 @@ public class TileEntityGuo extends TileEntity implements IInventory{
     	if(stack[0].getItem() == ModItem.ItemDoufu && stack[1].getItem() == ModItem.ItemDouban && stack[2].getItem() == ModItem.ItemBaifan) {
     		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemDianfen)return 7;
     	}
-
+    	if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemShucai) {
+    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou)return 14;
+    	}
+    	if(stack[0].getItem() == Items.cooked_fished && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemCong) {
+    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou)return 16;
+    	}
+    	if(stack[0].getItem() == Items.cooked_beef && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemShucai) {
+    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemDianfen)return 19;
+    	}
 }    
     	//上4下4
     	  if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null &&  this.stack[3] != null && this.stack[4] != null && this.stack[5] != null && this.stack[6] != null && this.stack[7] != null)
@@ -478,7 +559,12 @@ public class TileEntityGuo extends TileEntity implements IInventory{
      		  if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemHuashen && stack[2].getItem() == ModItem.ItemLajiao && this.stack[3].getItem() == ModItem.ItemBaifan) {
   	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemCu)return 4;	  
 }
-  		          		 
+    		  if(stack[0].getItem() == Items.cooked_fished && stack[1].getItem() == ModItem.ItemCong && stack[2].getItem() == ModItem.ItemLajiao && this.stack[3].getItem() == ModItem.ItemShucai) {
+    	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 17;	  
+  }
+    		  if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemGalikuai && stack[2].getItem() == Items.potato && this.stack[3].getItem() == ModItem.ItemBaifan) {
+  	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 18;	  
+}	 
      		  
     }
     	  //上2下5
@@ -492,6 +578,12 @@ public class TileEntityGuo extends TileEntity implements IInventory{
  	    	 if(stack[0].getItem() == Items.cooked_porkchop && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemBaifan) {
  		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemDouban)return 9;	  
  	}
+ 	    	 if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemCong) {
+		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemCu)return 12;	  
+	}
+ 	    	 if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemHuashen) {
+		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemJiangyou)return 13;	  
+	}
  	     }
     	  //上2下0
     	  if (this.stack[0] != null && this.stack[1] != null){
@@ -499,6 +591,27 @@ public class TileEntityGuo extends TileEntity implements IInventory{
   	    		return 10;
   	}
   	     }
+    	  
+    	  //上2下1
+    	  if (this.stack[0] != null && this.stack[1] != null && this.stack[4] != null){
+   	    	 if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemCong) {
+   	    		if(stack[4].getItem() == Items.sugar){
+   	    		 return 11;
+   	    		}
+   	}
+   	    	 
+   	     }
+    	 
+    	  //上2下3
+    	 if (this.stack[0] != null && this.stack[1] != null && this.stack[4] != null && this.stack[5] != null && this.stack[6] != null){
+   	    	 if(stack[0].getItem() == ModItem.ItemJichi && stack[1].getItem() == ModItem.ItemKele) {
+   	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou){
+   	    		 return 15;
+   	    		}
+   	}
+   	    	 
+   	     }
+    	  
     	  return 0;
     }
     }

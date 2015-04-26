@@ -624,6 +624,18 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 					return false;
 				}
 			}
+			if(stack[1].getItem() == Item.getItemFromBlock(Blocks.leaves)){
+				if(water >= 1){
+					cai = new ItemStack(ModItem.ItemCha);
+					return true;
+				}
+			}
+			if(stack[1].getItem() == ModItem.ItemCha){
+				if(milk >= 1){
+					cai = new ItemStack(ModItem.ItemNaicha);
+					return false;
+				}
+			}
 			cai = null;
 		}
 		return false;
