@@ -38,6 +38,8 @@ public class YZJrecipe {
         this.itemregister(ModItem.ItemZhongjirou,  new ItemStack(ModItem.ItemJikuai), 0.5F);//fried chicken
         this.itemregister(ModItem.ItemXiaojirou,  new ItemStack(ModItem.ItemJimihua), 0.5F);//popcorn chicken
         this.itemregister(ModItem.ItemJichi,  new ItemStack(ModItem.ItemAeljichi), 0.5F);//orlean chicken wings
+        this.itemregister(ModItem.ItemMianfen,  new ItemStack(ModItem.ItemYoutiao), 0.5F);//youtiao
+        this.itemregister(ModItem.ItemXiangchang,  new ItemStack(ModItem.ItemZhaxiangchang), 0.5F);
     }
    
 	     

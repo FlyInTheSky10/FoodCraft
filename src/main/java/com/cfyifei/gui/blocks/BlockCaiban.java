@@ -4,7 +4,9 @@ import java.util.Random;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
+import com.cfyifei.achievement.AchievementFcList;
 import com.cfyifei.gui.tileentitys.TileEntityCaiban;
+
 
 
 
@@ -56,7 +58,7 @@ import net.minecraft.world.World;
 	        
 	        //This is the icon to use for showing the block in your hand.
 	        public void registerIcons(IIconRegister icon) {
-	                this.blockIcon = icon.registerIcon("foodcraft:textures/blocks/caiban.png");
+	                this.blockIcon = icon.registerIcon("foodcraft:textures/blocks/caiban0.png");
 	        }
 	        public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 	        {
@@ -73,6 +75,7 @@ import net.minecraft.world.World;
 	                float par8, float par9) {
 	    		ItemStack stack = par5EntityPlayer.inventory.mainInventory[par5EntityPlayer.inventory.currentItem];
 	    		par5EntityPlayer.openGui(FoodCraft.instance, GuiIDs.GUI_Caiban, par1World,par2, par3, par4);
+	    		par5EntityPlayer.triggerAchievement(AchievementFcList.GetCaiban);
 	            return true;
 	    	}
 	    	 public void breakBlock(World World, int x, int y, int z, Block Block, int var1)

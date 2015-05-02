@@ -34,7 +34,7 @@ public class CaibanRenderer extends TileEntitySpecialRenderer {
     //This is the texture of your block. It's pathed to be the same place as your other blocks here.
             //Outdated bindTextureByName("/mods/roads/textures/blocks/TrafficLightPoleRed.png");
    //Use in 1.6.2  this
-            ResourceLocation textures = (new ResourceLocation("foodcraft:textures/blocks/caiban.png")); 
+            ResourceLocation textures = (new ResourceLocation("foodcraft:textures/blocks/caiban0.png")); 
     //the ':' is very important
     //binding the textures
             Minecraft.getMinecraft().renderEngine.bindTexture(textures);

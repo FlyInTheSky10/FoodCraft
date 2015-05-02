@@ -1,6 +1,7 @@
 package com.cfyifei.plant.items;
 
 import com.cfyifei.FoodCraft;
+import com.cfyifei.achievement.AchievementFcList;
 import com.cfyifei.block.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -63,5 +64,10 @@ public class ItemShuidao extends Item implements IPlantable{
 	    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
 	    {
 	        return 0;
+	    }
+	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	    {
+	    	par3EntityPlayer.triggerAchievement(AchievementFcList.GetDami);
+	        return par1ItemStack;
 	    }
 }

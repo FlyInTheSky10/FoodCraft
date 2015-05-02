@@ -4,8 +4,10 @@ import java.util.Random;
 
 
 
+
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
+import com.cfyifei.achievement.AchievementFcList;
 import com.cfyifei.gui.tileentitys.TileEntityNmj;
 
 import cpw.mods.fml.relauncher.Side;
@@ -63,6 +65,7 @@ public class BlockNmj extends BlockContainer{
             float par8, float par9) {
 		ItemStack stack = par5EntityPlayer.inventory.mainInventory[par5EntityPlayer.inventory.currentItem];
 		par5EntityPlayer.openGui(FoodCraft.instance, GuiIDs.GUI_NMJ, par1World,par2, par3, par4);
+		par5EntityPlayer.triggerAchievement(AchievementFcList.GetNmj);
         return true;
 	}
     public void onBlockAdded(World World, int X, int Y, int Z)

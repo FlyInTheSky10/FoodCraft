@@ -332,8 +332,8 @@ public class TileEntityNt extends TileEntity implements IInventory{
 	}
 	public void cai() {
        if(stack[0] != null && stack[1] != null && stack[2] != null){
-    	   if(stack[0].getItem() == ModItem.ItemDouzi && stack[1].getItem() == ModItem.ItemMianfen && stack[2].getItem() == ModItem.ItemYan) cai = new ItemStack(ModItem.ItemJiangyou,8);
-    	   if(stack[0].getItem() == ModItem.ItemDouzi && stack[1].getItem() == ModItem.ItemDouzi && stack[2].getItem() == Items.sugar) cai = new ItemStack(ModItem.ItemCu,8);
+    	   if(stack[0].getItem() == ModItem.ItemDouzi && stack[1].getItem() == ModItem.ItemMianfen && stack[2].getItem() == ModItem.ItemYan) cai = new ItemStack(ModItem.ItemJiangyou,16);
+    	   if(stack[0].getItem() == ModItem.ItemDouzi && stack[1].getItem() == ModItem.ItemDouzi && stack[2].getItem() == Items.sugar) cai = new ItemStack(ModItem.ItemCu,16);
     	   if(stack[0].getItem() == ModItem.ItemPutao && stack[1].getItem() == ModItem.ItemPutao && stack[2].getItem() == ModItem.ItemPutao) cai = new ItemStack(ModItem.ItemPutaojiu,3);
     	   if(stack[0].getItem() == ModItem.ItemPutaojiu && stack[1].getItem() == ModItem.ItemPutaojiu && stack[2].getItem() == ModItem.ItemPutaojiu) cai = new ItemStack(ModItem.ItemHongjiu,9);
     	   if(stack[0].getItem() == ModItem.ItemDami && stack[1].getItem() == ModItem.ItemDami && stack[2].getItem() == ModItem.ItemDami) cai = new ItemStack(ModItem.ItemBaijiu,3);

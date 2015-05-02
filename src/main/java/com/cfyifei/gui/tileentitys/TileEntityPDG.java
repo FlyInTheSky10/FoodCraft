@@ -34,15 +34,19 @@ public class TileEntityPDG extends TileEntity implements IInventory{
 
 	@Override
     public void updateEntity() {
-		TileEntityZl te = (TileEntityZl)this.worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-		if(te != null){
-	if(te.isBurning()){
+		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) != Blocks.fire ||worldObj.getBlock(xCoord, yCoord - 1, zCoord) != ModGui.lit_Zl){
+	isfire = false;
+}		
+		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire){
+	isfire = true;
+}
+else{
+	if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == ModGui.lit_Zl){
 		isfire = true;
 	}
 }
-		else{
-			isfire =worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire;
-		}
+		//	isfire = worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire;
+
 	        
 
 	        if (this.tableBurnTime > 0)

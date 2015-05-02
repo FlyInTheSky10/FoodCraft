@@ -1,6 +1,7 @@
 package com.cfyifei.plant.items;
 
 import com.cfyifei.FoodCraft;
+import com.cfyifei.achievement.AchievementFcList;
 import com.cfyifei.block.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -64,4 +65,10 @@ public class ItemHuashen extends Item implements IPlantable{
 	    {
 	        return 0;
 	    }
+	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	    {
+	    	par3EntityPlayer.triggerAchievement(AchievementFcList.GetHuashen);
+	        return par1ItemStack;
+	    }
+
 }

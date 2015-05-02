@@ -134,7 +134,7 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
 	   if(stack[1].getItem() == ModItem.ItemMianpi)return new ItemStack(ModItem.ItemMianfensi,3);	   
    }	
    if(stack[2] != null){
-	   if(stack[2].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJichi,6);	   
+	   if(stack[2].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJichi,2);	   
    }	
 
 		return null;

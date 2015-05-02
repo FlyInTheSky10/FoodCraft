@@ -34,15 +34,18 @@ public class TileEntityGuo extends TileEntity implements IInventory{
 
 	@Override
     public void updateEntity() {
-		TileEntityZl te = (TileEntityZl)this.worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
-		if(te != null){
-	if(te.isBurning()){
+		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) != Blocks.fire ||worldObj.getBlock(xCoord, yCoord - 1, zCoord) != ModGui.lit_Zl){
+	isfire = false;
+}		
+		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire){
+	isfire = true;
+}
+else{
+	if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == ModGui.lit_Zl){
 		isfire = true;
 	}
 }
-		else{
-			isfire =worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire;
-		}
+
 
 	        if (this.tableBurnTime > 0)
 	        {
@@ -261,6 +264,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
     	ItemStack itemstack17 =new ItemStack(ModItem.ItemSuancaiyu,1);
     	ItemStack itemstack18 =new ItemStack(ModItem.ItemGalijiroufan,1);
     	ItemStack itemstack19 =new ItemStack(ModItem.ItemShuizhuniurou,1);
+     	ItemStack itemstack20 =new ItemStack(ModItem.ItemRibendoufu,1);
             if (this.stack[12] == null)
 
             {
@@ -283,6 +287,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
                 if(cai == 17) this.stack[12] = itemstack17.copy(); 
                 if(cai == 18) this.stack[12] = itemstack18.copy(); 
                 if(cai == 19) this.stack[12] = itemstack19.copy(); 
+                if(cai == 20) this.stack[12] = itemstack20.copy(); 
                 
             }
             else if (this.stack[12].getItem() == itemstack.getItem() || this.stack[12].getItem() == itemstack2.getItem() || 
@@ -294,7 +299,8 @@ public class TileEntityGuo extends TileEntity implements IInventory{
             		this.stack[12].getItem() == itemstack13.getItem()   || this.stack[12].getItem() == itemstack14.getItem()   ||
             		this.stack[12].getItem() == itemstack15.getItem() || this.stack[12].getItem() == itemstack16.getItem()|| 
             		this.stack[12].getItem() == itemstack16.getItem() || this.stack[12].getItem() == itemstack17.getItem()|| 
-            		this.stack[12].getItem() == itemstack18.getItem() || this.stack[12].getItem() == itemstack19.getItem())
+            		this.stack[12].getItem() == itemstack18.getItem() || this.stack[12].getItem() == itemstack19.getItem()||
+            		this.stack[12].getItem() == itemstack20.getItem())
             {
             	
  this.stack[12].stackSize += 1; // Forge BugFix: Results may have multiple items
@@ -468,7 +474,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
                 }
             }
             
-            if(cai == 2 ||cai == 3||cai == 4 || cai == 17 || cai == 18) {
+            if(cai == 2 ||cai == 3||cai == 4 || cai == 17 || cai == 18 || cai == 20) {
             	--this.stack[0].stackSize;
             	--this.stack[1].stackSize;
             	--this.stack[2].stackSize;
@@ -565,6 +571,9 @@ public class TileEntityGuo extends TileEntity implements IInventory{
     		  if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemGalikuai && stack[2].getItem() == Items.potato && this.stack[3].getItem() == ModItem.ItemBaifan) {
   	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 18;	  
 }	 
+     		  if(stack[0].getItem() == Items.egg && stack[1].getItem() == ModItem.ItemCong && stack[2].getItem() == ModItem.ItemLajiao && this.stack[3].getItem() == ModItem.ItemBaifan) {
+    	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 20;	  
+  }	 
      		  
     }
     	  //ио2об5
