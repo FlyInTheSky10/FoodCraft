@@ -20,6 +20,7 @@ import net.minecraft.world.World;
 
 import com.cfyifei.gui.blocks.BlockGuo;
 import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.recipes.Guorecipe;
 import com.cfyifei.item.ModItem;
 
 
@@ -30,7 +31,7 @@ public class TileEntityGuo extends TileEntity implements IInventory{
     public int furnaceCookTime;
 	private String field_145958_o;
 	public boolean isfire;
-	public int cai;
+	public ItemStack cai;
 
 	@Override
     public void updateEntity() {
@@ -56,7 +57,7 @@ else{
 	        if (!this.worldObj.isRemote)
 	        {
 	        	cai = this.canchao();
-	            if (isfire && cai != 0 && isst())
+	            if (isfire && cai != null && isst())
 	            {
 	                ++this.furnaceCookTime;
 
@@ -244,280 +245,31 @@ else{
     public void smeltItem()
     {
 
-           // ItemStack itemstack = Guorecipe.smelting().getSmeltingResult(this.stack[0]);
-    	ItemStack itemstack =new ItemStack(ModItem.ItemFanqiechaojidanfan,1);
-    	ItemStack itemstack2 =new ItemStack(ModItem.ItemDisanxian,1);
-    	ItemStack itemstack3 =new ItemStack(ModItem.ItemYuxiangrousi,1);
-    	ItemStack itemstack4 =new ItemStack(ModItem.ItemGongbaojiding,1);
-    	ItemStack itemstack5 =new ItemStack(ModItem.ItemChaotudousifan,1);
-    	ItemStack itemstack6 =new ItemStack(ModItem.ItemDuojiaoyutou,1);
-    	ItemStack itemstack7 =new ItemStack(ModItem.ItemMapodoufufan,1);
-    	ItemStack itemstack8 =new ItemStack(ModItem.ItemHongshaoroufan,1);
-    	ItemStack itemstack9 =new ItemStack(ModItem.ItemHuiguoroufan,1);
-    	ItemStack itemstack10 =new ItemStack(ModItem.ItemTangyuan,1);
-    	ItemStack itemstack11 =new ItemStack(ModItem.ItemBaiqiuji,1);
-    	ItemStack itemstack12 =new ItemStack(ModItem.ItemKoushuiji,1);
-    	ItemStack itemstack13 =new ItemStack(ModItem.ItemLaziji,1);
-    	ItemStack itemstack14 =new ItemStack(ModItem.ItemCongyouji,1);
-    	ItemStack itemstack15 =new ItemStack(ModItem.ItemKelejichifan,1);
-    	ItemStack itemstack16 =new ItemStack(ModItem.ItemMalayu,1);
-    	ItemStack itemstack17 =new ItemStack(ModItem.ItemSuancaiyu,1);
-    	ItemStack itemstack18 =new ItemStack(ModItem.ItemGalijiroufan,1);
-    	ItemStack itemstack19 =new ItemStack(ModItem.ItemShuizhuniurou,1);
-     	ItemStack itemstack20 =new ItemStack(ModItem.ItemRibendoufu,1);
+          
             if (this.stack[12] == null)
-
             {
-                if(cai == 1) this.stack[12] = itemstack.copy();
-                if(cai == 2) this.stack[12] = itemstack2.copy();
-                if(cai == 3) this.stack[12] = itemstack3.copy();
-                if(cai == 4) this.stack[12] = itemstack4.copy();
-                if(cai == 5) this.stack[12] = itemstack5.copy();
-                if(cai == 6) this.stack[12] = itemstack6.copy();
-                if(cai == 7) this.stack[12] = itemstack7.copy();
-                if(cai == 8) this.stack[12] = itemstack8.copy();
-                if(cai == 9) this.stack[12] = itemstack9.copy();
-                if(cai == 10) this.stack[12] = itemstack10.copy();
-                if(cai == 11) this.stack[12] = itemstack11.copy();
-                if(cai == 12) this.stack[12] = itemstack12.copy();
-                if(cai == 13) this.stack[12] = itemstack13.copy();
-                if(cai == 14) this.stack[12] = itemstack14.copy(); 
-                if(cai == 15) this.stack[12] = itemstack15.copy(); 
-                if(cai == 16) this.stack[12] = itemstack16.copy(); 
-                if(cai == 17) this.stack[12] = itemstack17.copy(); 
-                if(cai == 18) this.stack[12] = itemstack18.copy(); 
-                if(cai == 19) this.stack[12] = itemstack19.copy(); 
-                if(cai == 20) this.stack[12] = itemstack20.copy(); 
-                
+                this.stack[12] = cai.copy(); 
             }
-            else if (this.stack[12].getItem() == itemstack.getItem() || this.stack[12].getItem() == itemstack2.getItem() || 
-            		this.stack[12].getItem() == itemstack3.getItem() || this.stack[12].getItem() == itemstack4.getItem() || 
-            		this.stack[12].getItem() == itemstack5.getItem() || this.stack[12].getItem() == itemstack6.getItem() || 
-            		this.stack[12].getItem() == itemstack7.getItem() || this.stack[12].getItem() == itemstack8.getItem() || 
-            		this.stack[12].getItem() == itemstack9.getItem() || this.stack[12].getItem() == itemstack10.getItem() || 
-            		this.stack[12].getItem() == itemstack11.getItem()  || this.stack[12].getItem() == itemstack12.getItem()  || 
-            		this.stack[12].getItem() == itemstack13.getItem()   || this.stack[12].getItem() == itemstack14.getItem()   ||
-            		this.stack[12].getItem() == itemstack15.getItem() || this.stack[12].getItem() == itemstack16.getItem()|| 
-            		this.stack[12].getItem() == itemstack16.getItem() || this.stack[12].getItem() == itemstack17.getItem()|| 
-            		this.stack[12].getItem() == itemstack18.getItem() || this.stack[12].getItem() == itemstack19.getItem()||
-            		this.stack[12].getItem() == itemstack20.getItem())
+            else if (this.stack[12].getItem() == cai.getItem())
             {
             	
- this.stack[12].stackSize += 1; // Forge BugFix: Results may have multiple items
+ this.stack[12].stackSize += cai.stackSize; // Forge BugFix: Results may have multiple items
 
             }
-            if(cai == 15) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-            	--this.stack[4].stackSize;
-            	--this.stack[5].stackSize;
-            	--this.stack[6].stackSize;
-              	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-                if (this.stack[4].stackSize <= 0)
-                {
-                    this.stack[4] = null;
-                }
-                if (this.stack[5].stackSize <= 0)
-                {
-                    this.stack[5] = null;
-                }
-                if (this.stack[6].stackSize <= 0)
-                {
-                    this.stack[6] = null;
-                }
-            }
-            if(cai == 11) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-            	--this.stack[4].stackSize;
-              	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-                if (this.stack[4].stackSize <= 0)
-                {
-                    this.stack[4] = null;
-                }
-            }
-            if(cai == 10) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-              	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-            }
-            if(cai == 9 || cai == 12 || cai == 13) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-            	--this.stack[2].stackSize;
-            	--this.stack[4].stackSize;
-            	--this.stack[5].stackSize;
-            	--this.stack[6].stackSize;
-            	--this.stack[7].stackSize;
-            	
-            	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-                if (this.stack[2].stackSize <= 0)
-                {
-                    this.stack[2] = null;
-                }
-                if (this.stack[4].stackSize <= 0)
-                {
-                    this.stack[4] = null;
-                }
-                if (this.stack[5].stackSize <= 0)
-                {
-                    this.stack[5] = null;
-                }
-                if (this.stack[6].stackSize <= 0)
-                {
-                    this.stack[6] = null;
-                }
-                if (this.stack[7].stackSize <= 0)
-                {
-                    this.stack[7] = null;
-                }
-            }
-            if(cai == 8) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-            	--this.stack[4].stackSize;
-            	--this.stack[5].stackSize;
-            	--this.stack[6].stackSize;
-            	--this.stack[7].stackSize;
-            	--this.stack[8].stackSize;
-            	
-            	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-                if (this.stack[4].stackSize <= 0)
-                {
-                    this.stack[4] = null;
-                }
-                if (this.stack[5].stackSize <= 0)
-                {
-                    this.stack[5] = null;
-                }
-                if (this.stack[6].stackSize <= 0)
-                {
-                    this.stack[6] = null;
-                }
-                if (this.stack[7].stackSize <= 0)
-                {
-                    this.stack[7] = null;
-                }
-                if (this.stack[8].stackSize <= 0)
-                {
-                    this.stack[8] = null;
-                }
-            }
-            
-            
-            if(cai == 1 || cai == 5 || cai == 6 || cai == 7 || cai == 14 || cai == 16 || cai == 19) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-            	--this.stack[2].stackSize;
-            	--this.stack[4].stackSize;
-            	--this.stack[5].stackSize;
-            	--this.stack[6].stackSize;
-                
-            	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-                if (this.stack[2].stackSize <= 0)
-                {
-                    this.stack[2] = null;
-                }
-                if (this.stack[4].stackSize <= 0)
-                {
-                    this.stack[4] = null;
-                }
-                if (this.stack[5].stackSize <= 0)
-                {
-                    this.stack[5] = null;
-                }
-                if (this.stack[6].stackSize <= 0)
-                {
-                    this.stack[6] = null;
-                }
-            }
-            
-            if(cai == 2 ||cai == 3||cai == 4 || cai == 17 || cai == 18 || cai == 20) {
-            	--this.stack[0].stackSize;
-            	--this.stack[1].stackSize;
-            	--this.stack[2].stackSize;
-            	--this.stack[3].stackSize;
-            	--this.stack[4].stackSize;
-            	--this.stack[5].stackSize;
-            	--this.stack[6].stackSize;
-            	--this.stack[7].stackSize;
-                
-            	if (this.stack[0].stackSize <= 0)
-                {
-                    this.stack[0] = null;
-                }
-                if (this.stack[1].stackSize <= 0)
-                {
-                    this.stack[1] = null;
-                }
-                if (this.stack[2].stackSize <= 0)
-                {
-                    this.stack[2] = null;
-                }
-                if (this.stack[3].stackSize <= 0)
-                {
-                    this.stack[3] = null;
-                }
-                if (this.stack[4].stackSize <= 0)
-                {
-                    this.stack[4] = null;
-                }
-                if (this.stack[5].stackSize <= 0)
-                {
-                    this.stack[5] = null;
-                }
-                if (this.stack[6].stackSize <= 0)
-                {
-                    this.stack[6] = null;
-                }
-                if (this.stack[7].stackSize <= 0)
-                {
-                    this.stack[7] = null;
-                }
-            }
-        }
+if (stack[0] != null){--stack[0].stackSize;if (stack[0].stackSize <= 0){stack[0] = null;}}
+if (stack[1] != null){--stack[1].stackSize;if (stack[1].stackSize <= 0){stack[1] = null;}}
+if (stack[2] != null){--stack[2].stackSize;if (stack[2].stackSize <= 0){stack[2] = null;}}
+if (stack[3] != null){--stack[3].stackSize;if (stack[3].stackSize <= 0){stack[3] = null;}}
+if (stack[4] != null){--stack[4].stackSize;if (stack[4].stackSize <= 0){stack[4] = null;}}
+if (stack[5] != null){--stack[5].stackSize;if (stack[5].stackSize <= 0){stack[5] = null;}}
+if (stack[6] != null){--stack[6].stackSize;if (stack[6].stackSize <= 0){stack[6] = null;}}
+if (stack[7] != null){--stack[7].stackSize;if (stack[7].stackSize <= 0){stack[7] = null;}}
+if (stack[8] != null){--stack[8].stackSize;if (stack[8].stackSize <= 0){stack[8] = null;}}
+if (stack[9] != null){--stack[9].stackSize;if (stack[9].stackSize <= 0){stack[9] = null;}}
+if (stack[10] != null){--stack[10].stackSize;if (stack[10].stackSize <= 0){stack[10] = null;}}
+if (stack[11] != null){--stack[11].stackSize;if (stack[11].stackSize <= 0){stack[11] = null;}}
+
+}
     
 
     @SideOnly(Side.CLIENT)
@@ -526,101 +278,17 @@ else{
         return this.furnaceCookTime * int1 / 500;
     }
 
-    public int canchao(){
-    	//上3下3
+    public ItemStack canchao(){
     	
-    	  if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null && this.stack[4] != null && this.stack[5] != null && this.stack[6] != null)
-{
-    	if(stack[0].getItem() == Items.egg && stack[1].getItem() == ModItem.ItemFanqie && stack[2].getItem() == ModItem.ItemBaifan) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar)return 1;
-    	}
-    	if(stack[0].getItem() == ModItem.ItemTudousi && stack[1].getItem() == ModItem.ItemCong && stack[2].getItem() == ModItem.ItemBaifan) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou)return 5;
-    	}
-    	if(stack[0].getItem() == Items.fish && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemBaifan) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou)return 6;
-    	}
-    	if(stack[0].getItem() == ModItem.ItemDoufu && stack[1].getItem() == ModItem.ItemDouban && stack[2].getItem() == ModItem.ItemBaifan) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemDianfen)return 7;
-    	}
-    	if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemShucai) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou)return 14;
-    	}
-    	if(stack[0].getItem() == Items.cooked_fished && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemCong) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou)return 16;
-    	}
-    	if(stack[0].getItem() == Items.cooked_beef && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemShucai) {
-    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemDianfen)return 19;
-    	}
-}    
-    	//上4下4
-    	  if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null &&  this.stack[3] != null && this.stack[4] != null && this.stack[5] != null && this.stack[6] != null && this.stack[7] != null)
-{
-    		  if(stack[0].getItem() == ModItem.ItemLajiao && stack[1].getItem() == Items.potato && stack[2].getItem() == ModItem.ItemQiezi && this.stack[3].getItem() == ModItem.ItemBaifan) {
-    	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemJiangyou)return 2;	  
-}
-     		  if(stack[0].getItem() == Items.cooked_porkchop && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == Items.carrot && this.stack[3].getItem() == ModItem.ItemBaifan) {
-  	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemCu)return 3;	  
-}
-     		  if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemHuashen && stack[2].getItem() == ModItem.ItemLajiao && this.stack[3].getItem() == ModItem.ItemBaifan) {
-  	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemCu)return 4;	  
-}
-    		  if(stack[0].getItem() == Items.cooked_fished && stack[1].getItem() == ModItem.ItemCong && stack[2].getItem() == ModItem.ItemLajiao && this.stack[3].getItem() == ModItem.ItemShucai) {
-    	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 17;	  
-  }
-    		  if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemGalikuai && stack[2].getItem() == Items.potato && this.stack[3].getItem() == ModItem.ItemBaifan) {
-  	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 18;	  
-}	 
-     		  if(stack[0].getItem() == Items.egg && stack[1].getItem() == ModItem.ItemCong && stack[2].getItem() == ModItem.ItemLajiao && this.stack[3].getItem() == ModItem.ItemBaifan) {
-    	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou && stack[7].getItem() == ModItem.ItemDianfen)return 20;	  
-  }	 
-     		  
-    }
-    	  //上2下5
-    	  if (this.stack[0] != null && this.stack[1] != null && this.stack[4] != null &&  this.stack[5] != null && this.stack[6] != null && this.stack[7] != null && this.stack[8] != null){
-    	    	 if(stack[0].getItem() == Items.cooked_porkchop && stack[1].getItem() == ModItem.ItemBaifan) {
-    		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemJiangyou && stack[8].getItem() == ModItem.ItemCu)return 8;	  
-    	}
-    	     }
-    	  //上3下4
-    	  if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null &&  this.stack[4] != null && this.stack[5] != null && this.stack[6] != null && this.stack[7] != null){
- 	    	 if(stack[0].getItem() == Items.cooked_porkchop && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemBaifan) {
- 		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemDouban)return 9;	  
- 	}
- 	    	 if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemCong) {
-		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemCu)return 12;	  
-	}
- 	    	 if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemLajiao && stack[2].getItem() == ModItem.ItemHuashen) {
-		    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == Items.sugar && stack[7].getItem() == ModItem.ItemJiangyou)return 13;	  
-	}
- 	     }
-    	  //上2下0
-    	  if (this.stack[0] != null && this.stack[1] != null){
-  	    	 if(stack[0].getItem() == ModItem.ItemNuomituan && stack[1].getItem() == ModItem.ItemHuashentangyuanxian) {
-  	    		return 10;
-  	}
-  	     }
-    	  
-    	  //上2下1
-    	  if (this.stack[0] != null && this.stack[1] != null && this.stack[4] != null){
-   	    	 if(stack[0].getItem() == Items.cooked_chicken && stack[1].getItem() == ModItem.ItemCong) {
-   	    		if(stack[4].getItem() == Items.sugar){
-   	    		 return 11;
-   	    		}
-   	}
-   	    	 
-   	     }
-    	 
-    	  //上2下3
-    	 if (this.stack[0] != null && this.stack[1] != null && this.stack[4] != null && this.stack[5] != null && this.stack[6] != null){
-   	    	 if(stack[0].getItem() == ModItem.ItemJichi && stack[1].getItem() == ModItem.ItemKele) {
-   	    		if(stack[4].getItem() == ModItem.ItemHuashenyou && stack[5].getItem() == ModItem.ItemYan && stack[6].getItem() == ModItem.ItemJiangyou){
-   	    		 return 15;
-   	    		}
-   	}
-   	    	 
-   	     }
-    	  
-    	  return 0;
+    	ItemStack hj = Guorecipe.smelting().getOutput(stack[0], stack[1], stack[2], stack[3], 
+    			stack[4], stack[5], stack[6], stack[7], stack[8], stack[9], 
+    			stack[10], stack[11]);
+        if(hj != null){
+        	return hj;
+        }
+        else{
+        	return null;
+        }
+    	
     }
     }

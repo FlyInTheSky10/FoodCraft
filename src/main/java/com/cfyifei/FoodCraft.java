@@ -1,7 +1,10 @@
 package com.cfyifei;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import com.cfyifei.item.ModItem;
 import com.cfyifei.proxy.CommonProxy;
+import com.cfyifei.util.FcSubscribeEvent;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -33,6 +36,7 @@ public class FoodCraft{
 		@EventHandler
 		public void init(FMLInitializationEvent event) {
 			proxy.init(event);
+			MinecraftForge.EVENT_BUS.register(new FcSubscribeEvent());
 		}
 		
 		@EventHandler

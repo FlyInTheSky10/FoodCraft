@@ -27,8 +27,10 @@ import net.minecraft.world.World;
 
 
 
+
 import com.cfyifei.gui.blocks.BlockTpj;
 import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.recipes.Tpjrecipe;
 import com.cfyifei.item.ModItem;
 
 
@@ -204,56 +206,24 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	 */
 	
 	public boolean gettp2() {
+		
 		if(stack[1] !=null){
 			
-			if(stack[1].getItem() == Items.apple){
-				if(water >= 1){
-					coldcai = new ItemStack(ModItem.ItemPingguozhi);
+			if(water >= 1){
+				ItemStack is1 = Tpjrecipe.smelting().getOutput(stack[1], false, true);
+				if(is1 != null){
+					coldcai = is1;
 					return true;
-				}
-			}	
-			if(stack[1].getItem() == ModItem.ItemPutao){
-				if(water >= 1){
-					coldcai = new ItemStack(ModItem.ItemPutaozhi);
-					return true;
-				}
+				}								
 			}
-			
-			if(stack[1].getItem() == Items.golden_apple){
-				if(water >= 1){
-					if(stack[1].getItemDamage() == 1){
-					coldcai = new ItemStack(ModItem.ItemJinpingguozhi);
-					return true;
-					}
-				}
-			}	
-			if(stack[1].getItem() == ModItem.ItemJinputao){
-				if(water >= 1){
-					coldcai = new ItemStack(ModItem.ItemJinputaozhi);
-					return true;
-				}
+						
+			if(milk >= 1){
+				ItemStack is1 = Tpjrecipe.smelting().getOutput(stack[1], true, true);
+				if(is1 != null){
+					coldcai = is1;
+					return false;
+				}								
 			}
-			if(stack[1].getItem() == Items.dye){
-				if(water >= 1){
-					if(stack[1].getItemDamage() == 15){
-					coldcai = new ItemStack(ModItem.ItemXuebi);
-					return true;
-					}
-				}
-			}
-			if(stack[1].getItem() == Items.dye){
-				if(water >= 1){
-					coldcai = new ItemStack(ModItem.ItemKele);
-					return true;
-				}
-			}
-			if(stack[1].getItem() == Items.melon){
-				if(water >= 1){
-					coldcai = new ItemStack(ModItem.ItemXiguazhi);
-					return true;
-				}
-			}
-			
 			coldcai = null;
 		}
 		return false;
@@ -593,49 +563,22 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	public boolean gettp() {
 		if(stack[1] !=null){
 			
-			if(stack[1].getItem() == ModItem.ItemQiaokeli){
-				if(water >= 1){
-					cai = new ItemStack(ModItem.ItemQiaokelishui);
+			if(water >= 1){
+				ItemStack is1 = Tpjrecipe.smelting().getOutput(stack[1], false, false);
+				if(is1 != null){
+					cai = is1;
 					return true;
-				}
-				else{
-					if(milk >= 1){
-						cai = new ItemStack(ModItem.ItemQiaokelinai);
-						return false;
-					}						
-				}		
+				}								
+			}
+						
+			if(milk >= 1){
+				ItemStack is1 = Tpjrecipe.smelting().getOutput(stack[1], true, false);
+				if(is1 != null){
+					cai = is1;
+					return false;
+				}								
+			}
 
-			}	
-			if(stack[1].getItem() == Items.carrot){
-				if(water >= 1){
-					cai = new ItemStack(ModItem.ItemHuluobozhi);
-					return true;
-				}
-			}
-			if(stack[1].getItem() == ModItem.ItemShucai){
-				if(water >= 1){
-					cai = new ItemStack(ModItem.ItemShucaizhi);
-					return true;
-				}
-			}
-			if(stack[1].getItem() == ModItem.ItemDoujiang){
-				if(milk >= 1){
-					cai = new ItemStack(ModItem.ItemDounai);
-					return false;
-				}
-			}
-			if(stack[1].getItem() == Item.getItemFromBlock(Blocks.leaves)){
-				if(water >= 1){
-					cai = new ItemStack(ModItem.ItemCha);
-					return true;
-				}
-			}
-			if(stack[1].getItem() == ModItem.ItemCha){
-				if(milk >= 1){
-					cai = new ItemStack(ModItem.ItemNaicha);
-					return false;
-				}
-			}
 			cai = null;
 		}
 		return false;

@@ -1,6 +1,8 @@
 package com.cfyifei.gui.tileentitys;
 
+import com.cfyifei.gui.recipes.Gygrecipe;
 import com.cfyifei.gui.recipes.Nmjrecipe;
+
 
 
 
@@ -90,10 +92,10 @@ public class TileEntityGyg extends TileEntity implements IInventory{
 	            {
 	                this.furnaceCookTime = 0;
 	            }
-	            if (flag != this.tableBurnTime > 0)//没有燃烧时间
+	            if (flag != this.tableBurnTime > 0)
 	            {
 	                flag1 = true;
-	                //BlockNmj.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
+	                
 	            }
 	        }
 
@@ -328,30 +330,20 @@ public class TileEntityGyg extends TileEntity implements IInventory{
         }
         else
         {
-      if(stack[0].getItem() == ModItem.Itemfan && stack[1].getItem() == ModItem.Itemfan && stack[2].getItem() == ModItem.Itemfan){
-    	  cai = new ItemStack(ModItem.ItemBaifan);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == ModItem.ItemBaifan && stack[1].getItem() == ModItem.ItemBaifan&& stack[2].getItem() == ModItem.ItemBaifan){
-    	  cai = new ItemStack(ModItem.ItemXifan,3);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == Items.egg && stack[1].getItem() == ModItem.ItemJiangyou && stack[2].getItem() == ModItem.ItemCong){
-    	  cai = new ItemStack(ModItem.ItemDangeng);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == Item.getItemFromBlock(Blocks.brown_mushroom) && stack[1].getItem() == ModItem.ItemJitui && stack[2].getItem() == ModItem.ItemYan){
-    	  cai = new ItemStack(ModItem.ItemMogudunjitang);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == Items.cooked_fished && stack[1].getItem() ==  ModItem.ItemCong && stack[2].getItem() == ModItem.ItemCong){
-    	  cai = new ItemStack(ModItem.ItemQingzhenyu);
-    	  return true;
-    	  }
-      if(stack[0].getItem() == ModItem.ItemBaifan && stack[1].getItem() ==  Items.egg && stack[2].getItem() == Items.cooked_porkchop){
-    	  cai = new ItemStack(ModItem.ItemPidanshourouzhou);
-    	  return true;
-    	  }
+        	cai = Gygrecipe.smelting().getOutput(stack[0].getItem(),stack[1].getItem(),stack[2].getItem());
+        	
+        	if(cai != null){
+        		if(stack[5] != null){
+        			if(stack[5].getItem() == cai.getItem()){
+        				return true;
+        			}
+        			else{
+        				return false;
+        			}
+        		}
+        		return true;
+        	}
+        	
         }
         return false;
     }

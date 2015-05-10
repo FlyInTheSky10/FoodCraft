@@ -1,7 +1,6 @@
 package com.cfyifei.plant.items;
 
 import com.cfyifei.FoodCraft;
-import com.cfyifei.achievement.AchievementFcList;
 import com.cfyifei.block.ModBlocks;
 
 import net.minecraft.block.Block;
@@ -15,60 +14,10 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemDouzi extends Item implements IPlantable{
+public class ItemDouzi extends ItemCropPlant{
 
-	public ItemDouzi()
+	public ItemDouzi(Block b)
     {
-        super();
-        this.setCreativeTab(FoodCraft.FcTab);
+        super(b);
     }
-	   public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
-	    {
-	        if (par7 != 1)
-	        {
-	            return false;
-	        }
-	        else if (par2EntityPlayer.canPlayerEdit(par4, par5, par6, par7, par1ItemStack) && par2EntityPlayer.canPlayerEdit(par4, par5 + 1, par6, par7, par1ItemStack))
-	        {
-	            if (par3World.getBlock(par4, par5, par6).canSustainPlant(par3World, par4, par5, par6, ForgeDirection.UP, this) && par3World.isAirBlock(par4, par5 + 1, par6))
-	            {
-	                par3World.setBlock(par4, par5 + 1, par6, ModBlocks.BlockDouzi);
-	                --par1ItemStack.stackSize;
-	                return true;
-	            }
-	            else
-	            {
-	                return false;
-	            }
-	        }
-	        else
-	        {
-	            return false;
-	        }
-	    }
-	   
-	   
-	    @Override
-	    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
-	    {
-	        return EnumPlantType.Crop;
-	    }
-
-	    @Override
-	    public Block getPlant(IBlockAccess world, int x, int y, int z)
-	    {
-	        return ModBlocks.BlockDouzi;
-	    }
-
-	    @Override
-	    public int getPlantMetadata(IBlockAccess world, int x, int y, int z)
-	    {
-	        return 0;
-	    }
-	    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	    {
-	    	par3EntityPlayer.triggerAchievement(AchievementFcList.GetDouzi);
-	        return par1ItemStack;
-	    }
-
 }

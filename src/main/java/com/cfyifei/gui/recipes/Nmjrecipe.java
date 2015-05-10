@@ -54,9 +54,9 @@ public class Nmjrecipe {
 	    }
 
  
- private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
+ private boolean GG(ItemStack ItemStack1, ItemStack ItemStack2)
  {
-     return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
+     return ItemStack2.getItem() == ItemStack1.getItem() && (ItemStack2.getItemDamage() == 32767 || ItemStack2.getItemDamage() == ItemStack1.getItemDamage());
  }
 
 public ItemStack getSmeltingResult(ItemStack itemStack) {
@@ -72,7 +72,7 @@ public ItemStack getSmeltingResult(ItemStack itemStack) {
 
         entry = (Entry)iterator.next();
     }
-    while (!this.func_151397_a(itemStack, (ItemStack)entry.getKey()));
+    while (!this.GG(itemStack, (ItemStack)entry.getKey()));
 
     return (ItemStack)entry.getValue();
 }

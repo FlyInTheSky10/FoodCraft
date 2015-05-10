@@ -14,7 +14,7 @@ public class ItemFoodJiu extends ItemFood{
 
 
 		public ItemFoodJiu(int amount, float saturation, boolean isWolfFood, String name) {
-			super(amount, saturation, isWolfFood);
+			super((int)saturation, saturation, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}

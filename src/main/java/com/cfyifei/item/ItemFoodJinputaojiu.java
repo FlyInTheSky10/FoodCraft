@@ -14,7 +14,7 @@ public class ItemFoodJinputaojiu extends ItemFood{
 
 
 		public ItemFoodJinputaojiu(int amount, float saturation, boolean isWolfFood, String name) {
-			super(amount, saturation, isWolfFood);
+			super((int)saturation, saturation, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}

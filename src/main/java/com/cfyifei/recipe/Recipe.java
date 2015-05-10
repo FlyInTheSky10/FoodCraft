@@ -1,13 +1,16 @@
 package com.cfyifei.recipe;
 
 
-import com.cfyifei.RemoveRecipe;
+
 import com.cfyifei.block.ModBlocks;
 import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.recipes.Gygrecipe;
 import com.cfyifei.item.ModItem;
 
 
 
+
+import com.cfyifei.util.RemoveRecipe;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.init.Blocks;
@@ -23,7 +26,6 @@ public class Recipe{
 		Items.egg.setMaxStackSize(64);
 		Items.snowball.setMaxStackSize(64);
 
-		
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemTiepian, 16), new Object[] {"###", "#X#","###", '#',Items.iron_ingot,'X',Blocks.stone});	
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCaidao, 2), new Object[] {"## ", "## ","X  ", '#',ModItem.ItemTiepian,'X',Items.stick});
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.cake));
@@ -68,7 +70,7 @@ public class Recipe{
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemDianluban, 1), new Object[] {"AAA", "CBC", "AAA", 'A', ModItem.ItemDami,'B',Items.iron_ingot,'C',Items.redstone});
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemDianluban, 1), new Object[] {"AAA", "CBC", "AAA", 'A', Items.wheat,'B',Items.iron_ingot,'C',Items.redstone});
 	
-	//GameRegistry.addShapelessRecipe(new ItemStack(ModItem.Itemwater), new Object[] {Items.water_bucket});
+
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemQiaokeli), new Object[] {ModItem.ItemQiaokelifen,Items.sugar});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemNuomi,2), new Object[] {ModItem.ItemNuomi,Items.bone});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDouban,2), new Object[] {ModItem.ItemDouban,Items.bone});
@@ -76,7 +78,6 @@ public class Recipe{
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDoufu), new Object[] {ModItem.ItemDoujiang,ModItem.ItemYan});
 
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemChunjuan), new Object[] {ModItem.ItemDoufusi,ModItem.ItemLuobosi,ModItem.ItemShucai,Items.cooked_porkchop});
-	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.Itemwater), new Object[] {Items.water_bucket});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemAeljichifan), new Object[] {ModItem.ItemAeljichi,ModItem.ItemBaifan});
 	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemZongzi), new Object[] {ModItem.ItemNuomi,Items.cooked_porkchop,Items.string,ModItem.ItemZongye});

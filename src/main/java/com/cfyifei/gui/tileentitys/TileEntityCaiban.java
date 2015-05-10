@@ -11,15 +11,17 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
-
 import net.minecraft.item.ItemStack;
-
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
+import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.recipes.Caibanrecipe;
 import com.cfyifei.item.ModItem;
 
 
@@ -94,15 +96,17 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
              }
          }
       
-      if(stack[1] == null && stack[2] != null  && stack[3] == null ){
-       	--this.stack[2].stackSize;       	
+      if(stack[1] != null && stack[2] != null  && stack[3] != null ){
+    	--this.stack[1].stackSize;   
+    	--this.stack[2].stackSize;   
+    	--this.stack[3].stackSize;   
        	if (this.stack[2].stackSize <= 0)
            {
                this.stack[2] = null;
            }
        }
       
-      if(stack[1] != null && stack[2] != null  && stack[3] == null ){
+      if(stack[1] != null && stack[2] != null  && stack[3] == null){
        	--this.stack[1].stackSize;       	
        	--this.stack[2].stackSize;     	
        	if (this.stack[1].stackSize <= 0)
@@ -119,22 +123,14 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
 
 
 	private ItemStack canchao() {
-   if(stack[1] != null && stack[2] != null){
-	   if(stack[1].getItem() == Items.cooked_porkchop && stack[2].getItem() == ModItem.ItemShucai)return new ItemStack(ModItem.ItemJiaozixian,2);
-	   if(stack[1].getItem() == Items.cooked_chicken && stack[2].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemDajirou,4);
-	   if(stack[1].getItem() == ModItem.ItemDajirou && stack[2].getItem() == ModItem.ItemDajirou)return new ItemStack(ModItem.ItemZhongjirou,4);
-	   if(stack[1].getItem() == ModItem.ItemZhongjirou && stack[2].getItem() == ModItem.ItemZhongjirou)return new ItemStack(ModItem.ItemXiaojirou,4);
+   if(stack[1] != null && stack[2] != null && stack[3] == null){//1,2 not null
+	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),stack[2].getItem(),null);
    }
-   if(stack[1] != null){
-	   if(stack[1].getItem() == Items.potato)return new ItemStack(ModItem.ItemTudoupian,3);
-	   if(stack[1].getItem() == ModItem.ItemTudoupian)return new ItemStack(ModItem.ItemTudousi,8);
-	   if(stack[1].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJitui,2);	   
-	   if(stack[1].getItem() == ModItem.ItemDoufu)return new ItemStack(ModItem.ItemDoufusi,3);	   
-	   if(stack[1].getItem() == Items.carrot)return new ItemStack(ModItem.ItemLuobosi,3);	   
-	   if(stack[1].getItem() == ModItem.ItemMianpi)return new ItemStack(ModItem.ItemMianfensi,3);	   
+   if(stack[1] != null && stack[2] == null && stack[3] == null){//1 not null
+	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),null,null);  
    }	
-   if(stack[2] != null){
-	   if(stack[2].getItem() == Items.cooked_chicken)return new ItemStack(ModItem.ItemJichi,2);	   
+   if(stack[2] != null && stack[1] != null && stack[3] != null){//1,2,3 not null
+	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),stack[2].getItem(),stack[3].getItem());
    }	
 
 		return null;
@@ -228,10 +224,10 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer var1) {
-
-		return true;
-	}
+    public boolean isUseableByPlayer(EntityPlayer p_70300_1_)
+    {
+        return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : p_70300_1_.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+    }
 
 	@Override
 	public void openInventory() {
@@ -288,4 +284,16 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
         par1NBTTagCompound.setTag("ItemsCaiban", var2);
        
     }
+    
+    @Override
+	public void onDataPacket(NetworkManager net, S35PacketUpdateTileEntity packet) {
+		this.readFromNBT(packet.func_148857_g());
+	}
+	
+	@Override
+	public Packet getDescriptionPacket() {
+		NBTTagCompound tag = new NBTTagCompound();
+		this.writeToNBT(tag);
+		return new S35PacketUpdateTileEntity(xCoord,yCoord,zCoord, 0, tag);
+	}
     }

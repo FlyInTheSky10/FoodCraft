@@ -1,6 +1,7 @@
 package com.cfyifei.item;
 
 import com.cfyifei.block.ModBlocks;
+import com.cfyifei.util.FcUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -61,7 +62,6 @@ if(par1ItemStack.getItemDamage() >= 16){
 	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 	
 }
-
 
             }
         }

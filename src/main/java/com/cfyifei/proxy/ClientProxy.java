@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy {
         this.registerRenderThings();
         this.rendererItem();
 		
-		NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, this);
+	
 	}
 	 public static void registerRenderThings() {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPDG.class, new PDGRenderer());
@@ -44,31 +44,5 @@ public class ClientProxy extends CommonProxy {
 	        
 	    }
 
-	@Override
-	public Object getClientGuiElement(int id, EntityPlayer player, World world,
-		int x, int y, int z) {
-		switch(id) {
-		    case GuiIDs.GUI_NMJ:
-		    	return new GuiNmj(player.inventory, (TileEntityNmj) world.getTileEntity(x, y, z));
-		    case GuiIDs.GUI_PDG:
-			    return new GuiPDG(player.inventory, (TileEntityPDG) world.getTileEntity(x, y, z));
-		    case GuiIDs.GUI_Guo:
-			    return new GuiGuo(player.inventory, (TileEntityGuo) world.getTileEntity(x, y, z));
-		    case GuiIDs.GUI_Gyg:
-			    return new GuiGyg(player.inventory, (TileEntityGyg) world.getTileEntity(x, y, z));
-		    case GuiIDs.GUI_Caiban:
-			    return new GuiCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(x, y, z)); 
-		    case GuiIDs.GUI_YZJ:
-			    return new GuiYZJ(player.inventory, (TileEntityYZJ) world.getTileEntity(x, y, z));   
-		    case GuiIDs.GUI_Nt:
-			    return new GuiNt(player.inventory, (TileEntityNt) world.getTileEntity(x, y, z));   
-		    case GuiIDs.GUI_Zl:
-			    return new GuiZl(player.inventory, (TileEntityZl) world.getTileEntity(x, y, z));   
-		    case GuiIDs.GUI_Tpj:
-			    return new GuiTpj(player.inventory, (TileEntityTpj) world.getTileEntity(x, y, z));   
-	    	default:
-			    return null;
-		}
-	}
 
 }

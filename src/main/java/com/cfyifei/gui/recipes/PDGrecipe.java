@@ -5,7 +5,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.RemoveRecipe;
 import com.cfyifei.item.ModItem;
 
 import net.minecraft.block.Block;

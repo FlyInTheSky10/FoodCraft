@@ -10,21 +10,21 @@ import net.minecraft.world.World;
 
 public class ItemYingliao extends ItemFood{
 public boolean e;
-public int e1;
+public int e1 = 10;
 
 		public ItemYingliao(int amount, float saturation, boolean isWolfFood, String name) {
-			super(amount, saturation, isWolfFood);
+			super((int)saturation, saturation, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}
 		public ItemYingliao(int amount, float saturation, boolean isWolfFood, String name, boolean is) {
-			super(amount, saturation, isWolfFood);
+			super((int)saturation, saturation, isWolfFood);
 			this.setUnlocalizedName(name);
            e = is;
 		}
 		
 		public ItemYingliao(int amount, float saturation, boolean isWolfFood, String name, boolean is, int r) {
-			super(amount, saturation, isWolfFood);
+			super((int)saturation, saturation, isWolfFood);
 			this.setUnlocalizedName(name);
            e = is;
            e1 = r;

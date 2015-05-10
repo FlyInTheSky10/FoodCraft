@@ -1,4 +1,4 @@
-package com.cfyifei;
+package com.cfyifei.util;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,7 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.item.crafting.IRecipe;
-
+/**
+ * 
+ * This class is not my.
+ *
+ */
 public class RemoveRecipe
 {
 	public static void removeAnyRecipe (ItemStack ItemStack)

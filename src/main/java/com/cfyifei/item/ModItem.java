@@ -16,73 +16,30 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
-
+import com.cfyifei.block.ModBlocks;
 
 
 public class ModItem{
 
-	static public Item ItemCong;
-	static public Item ItemZongye;
-	static public Item ItemXifan;
-	static public Item ItemDangeng;
-	static public Item ItemTiepian,ItemCaidao,ItemDami,Itemfan,ItemMianfen,ItemHuashen,
-	ItemDouzi,ItemHuashenyou,ItemDoujiang,ItemDianluban,ItemJianjidan,ItemLaobing,
-	ItemMianpi,ItemJiaozixian,ItemJiaozi,ItemJianjiao,ItemQiaokeli,ItemQiaokelifen,ItemShucai,ItemFanqie,ItemLajiao,ItemMianfensi;
-	public static Item ItemQiezi;
-	public static Item ItemPutao;
-	public static Item ItemYan;
-	public static Item Itemwater;
-	public static Item ItemDoufu;
-	public static Item ItemJiangyou;
-	public static Item ItemNuomi;
-	public static Item ItemDoufugan;
-	public static Item ItemBaifan;
-	public static Item ItemFanqiechaojidanfan;
-	public static Item ItemDisanxian;
-	public static Item ItemCu;
-	public static Item ItemYuxiangrousi;
-	public static Item ItemGongbaojiding;
-	public static Item ItemJitui;
-	public static Item ItemTudoupian;
-	public static Item ItemTudousi;
-	public static Item ItemChaotudousifan;
-	public static Item ItemChaotudoupian;
-	public static Item ItemDuojiaoyutou;
-	public static Item ItemDouban;
-	public static Item ItemMapodoufufan;
-	public static Item ItemDianfen;
-	public static Item ItemHongshaoroufan;
-	public static Item ItemHuiguoroufan;
-	public static Item ItemMogudunjitang;
-	public static Item ItemZongzi;
-	public static Item ItemNuomifen;
-	public static Item ItemTangyuan;
-	public static Item ItemHuashentangyuanxian;
-	public static Item ItemNuomituan;
-	public static Item ItemMahua;
-	public static Item ItemNiangao;
-	public static Item ItemChunjuan;
-	public static Item ItemJikuai,ItemShutiao,ItemAeljichi,ItemJimihua,ItemAeljichifan,ItemYuanweijikuai,ItemZhadoufu,ItemZhaniangao
-	,ItemShupian,ItemZhamianbao,ItemZhachunjuan,ItemZhamahua,ItemZhajitui;
-	public static Item ItemDajirou,ItemZhongjirou,ItemXiaojirou;
-	public static Item ItemJichi;
-	public static Item ItemDoufusi,ItemLuobosi;
-	public static Item ItemHongjiu,ItemBaijiu,ItemPingguojiu,ItemPutaojiu,ItemJinputaojiu, ItemJinpingguojiu;
-	public static Item ItemJinputao;
-	public static Item ItemQiaokelishui,ItemQiaokelinai,ItemHuluobozhi,ItemPutaozhi,ItemPingguozhi,ItemShucaizhi
-	,ItemJinputaozhi,ItemJinpingguozhi,ItemDounai,ItemKele,ItemXuebi,ItemXiguazhi;
-	public static Item ItemQiaokelinaiice,ItemPutaozhiice,ItemPingguozhiice,ItemJinputaozhiice,ItemJinpingguozhiice,ItemXiguazhiice;
-	public static Item ItemCha,ItemNaicha,ItemKafei;
-	public static Item ItemBaiqiuji,ItemCongyouji,ItemKoushuiji,ItemLaziji;
-	public static Item ItemQingzhenyu,ItemMalayu,ItemSuancaiyu,ItemKelejichifan,ItemGalikuai,ItemGalijiroufan,ItemShuizhuniurou;
-	public static Item ItemMian,ItemGuoqiaomixian,ItemYifen,ItemYifenpork,ItemYifenbeef,ItemYifenchicken,ItemPidanshourouzhou,
-	ItemYuebing,ItemMantou,ItemSuancaibing,ItemYoutiao,ItemLatiao,ItemHetaosu;
-	public static Item ItemAici,ItemCiba,ItemChangfen,ItemXiangchang,ItemRegou,ItemLachang,ItemLarou,
-	ItemZhaxiangchang,ItemRibendoufu,ItemLabazhou,ItemLaweixunliao,ItemNainao,ItemPisa,ItemHanbaobao,ItemJinghuashuitong;
-	public static Item ItemSCBlock,ItemSCPlant,ItemSCMW1,ItemSCMW2,ItemSCKFC,ItemSCCn,ItemSCYz,ItemSCJ,ItemSCShui1,ItemSCShui2,ItemSCFan1,ItemSCFan2,ItemSCFan3,ItemSCTh;
-	public static Item ItemAnbizhishi,ItemAnlanzhishi,ItemZongjiqianguzhishi;
-	public static Item ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,ItemZongjiTools4;
-	
+	static public Item ItemCong,ItemZongye,ItemXifan,ItemDangeng,ItemTiepian,ItemCaidao,ItemDami,Itemfan,ItemMianfen,ItemHuashen,
+	ItemDouzi,ItemHuashenyou,ItemDoujiang,ItemDianluban,ItemJianjidan,ItemLaobing,ItemMianpi,ItemJiaozixian,ItemJiaozi,ItemJianjiao,
+	ItemQiaokeli,ItemQiaokelifen,ItemShucai,ItemFanqie,ItemLajiao,ItemMianfensi,ItemQiezi,ItemPutao,ItemYan,Itemwater,ItemDoufu,
+	ItemJiangyou,ItemNuomi, ItemDoufugan,ItemBaifan,ItemFanqiechaojidanfan,ItemDisanxian,ItemCu,ItemYuxiangrousi,ItemGongbaojiding,
+    ItemJitui,ItemTudoupian,ItemTudousi,ItemChaotudousifan,ItemChaotudoupian,ItemDuojiaoyutou,ItemDouban,ItemMapodoufufan,
+	ItemDianfen,ItemHongshaoroufan,ItemHuiguoroufan,ItemMogudunjitang,ItemZongzi,ItemNuomifen,ItemTangyuan,
+	ItemHuashentangyuanxian,ItemNuomituan,ItemMahua,ItemNiangao,ItemChunjuan,ItemJikuai,ItemShutiao,ItemAeljichi,ItemJimihua,
+	ItemAeljichifan,ItemYuanweijikuai,ItemZhadoufu,ItemZhaniangao,ItemShupian,ItemZhamianbao,ItemZhachunjuan,ItemZhamahua,
+	ItemZhajitui,ItemDajirou,ItemZhongjirou,ItemXiaojirou,ItemJichi,ItemDoufusi,ItemLuobosi,ItemHongjiu,ItemBaijiu,ItemPingguojiu,
+	ItemPutaojiu,ItemJinputaojiu, ItemJinpingguojiu,ItemJinputao,ItemQiaokelishui,ItemQiaokelinai,ItemHuluobozhi,ItemPutaozhi,
+	ItemPingguozhi,ItemShucaizhi,ItemJinputaozhi,ItemJinpingguozhi,ItemDounai,ItemKele,ItemXuebi,ItemXiguazhi,ItemQiaokelinaiice,
+	ItemPutaozhiice,ItemPingguozhiice,ItemJinputaozhiice,ItemJinpingguozhiice,ItemXiguazhiice,ItemCha,ItemNaicha,ItemKafei,
+	ItemBaiqiuji,ItemCongyouji,ItemKoushuiji,ItemLaziji,ItemQingzhenyu,ItemMalayu,ItemSuancaiyu,ItemKelejichifan,ItemGalikuai,
+	ItemGalijiroufan,ItemShuizhuniurou,ItemMian,ItemGuoqiaomixian,ItemYifen,ItemYifenpork,ItemYifenbeef,ItemYifenchicken,
+	ItemPidanshourouzhou,ItemYuebing,ItemMantou,ItemSuancaibing,ItemYoutiao,ItemLatiao,ItemHetaosu,ItemAici,ItemCiba,ItemChangfen,
+	ItemXiangchang,ItemRegou,ItemLachang,ItemLarou,ItemZhaxiangchang,ItemRibendoufu,ItemLabazhou,ItemLaweixunliao,ItemNainao,
+	ItemPisa,ItemHanbaobao,ItemJinghuashuitong,ItemSCBlock,ItemSCPlant,ItemSCMW1,ItemSCMW2,ItemSCKFC,ItemSCCn,ItemSCYz,
+	ItemSCJ,ItemSCShui1,ItemSCShui2,ItemSCFan1,ItemSCFan2,ItemSCFan3,ItemSCTh,ItemAnbizhishi,ItemAnlanzhishi,ItemZongjiqianguzhishi,
+ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,ItemZongjiTools4,ItemNull;
 	public static void init() {
 		//×ö²Ë¹¤¾ß	
 		ItemTiepian = new ItemKb();
@@ -107,25 +64,25 @@ public class ModItem{
 		ItemJinghuashuitong.setTextureName("FoodCraft:ItemJinghuashuitong");
 		ItemJinghuashuitong.setCreativeTab(FoodCraft.FcTab);
 	//·¹	
-		ItemDami = new ItemShuidao();
+		ItemDami = new ItemShuidao(ModBlocks.BlockShuidao);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemDami), 2);
 		ItemDami.setUnlocalizedName("ItemDami");
 		ItemDami.setTextureName("FoodCraft:ItemDami");
 		ItemDami.setCreativeTab(FoodCraft.FcTab);
 		
-		ItemHuashen = new ItemHuashen();
+		ItemHuashen = new ItemHuashen(ModBlocks.BlockHuashen);
 		ItemHuashen.setUnlocalizedName("ItemHuashen");
 		MinecraftForge.addGrassSeed(new ItemStack(ItemHuashen), 2);
 		ItemHuashen.setTextureName("FoodCraft:ItemHuashen");
 		ItemHuashen.setCreativeTab(FoodCraft.FcTab);
 		
-		ItemShucai = new ItemShucai();
+		ItemShucai = new ItemShucai(ModBlocks.BlockShucai);
 		ItemShucai.setUnlocalizedName("ItemShucai");
 		MinecraftForge.addGrassSeed(new ItemStack(ItemShucai), 1);
 		ItemShucai.setTextureName("FoodCraft:ItemShucai");
 		ItemShucai.setCreativeTab(FoodCraft.FcTab);
 		
-		ItemDouzi = new ItemDouzi();
+		ItemDouzi = new ItemDouzi(ModBlocks.BlockDouzi);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemDouzi), 2);
 		ItemDouzi.setUnlocalizedName("ItemDouzi");
 		ItemDouzi.setTextureName("FoodCraft:ItemDouzi");
@@ -197,25 +154,25 @@ public class ModItem{
 		ItemQiaokeli.setTextureName("FoodCraft:ItemQiaokeli");
 		ItemQiaokeli.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemLajiao = new ItemLajiao();
+		ItemLajiao = new ItemLajiao(ModBlocks.BlockLajiao);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemLajiao), 2);
 		ItemLajiao.setUnlocalizedName("ItemLajiao");
 		ItemLajiao.setTextureName("FoodCraft:ItemLajiao");
 		ItemLajiao.setCreativeTab(FoodCraft.FcTab);
 		
-		ItemFanqie = new ItemFanqie();
+		ItemFanqie = new ItemFanqie(ModBlocks.BlockFanqie);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemFanqie), 2);
 		ItemFanqie.setUnlocalizedName("ItemFanqie");
 		ItemFanqie.setTextureName("FoodCraft:ItemFanqie");
 		ItemFanqie.setCreativeTab(FoodCraft.FcTab);
 		
-		ItemPutao = new ItemPutao();
+		ItemPutao = new ItemPutao(ModBlocks.BlockPutao);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemPutao), 2);
 		ItemPutao.setUnlocalizedName("ItemPutao");
 		ItemPutao.setTextureName("FoodCraft:ItemPutao");
 		ItemPutao.setCreativeTab(FoodCraft.FcTab);
 		
-		ItemQiezi = new ItemQiezi();
+		ItemQiezi = new ItemQiezi(ModBlocks.BlockQiezi);
 		MinecraftForge.addGrassSeed(new ItemStack(ItemQiezi), 2);
 		ItemQiezi.setUnlocalizedName("ItemQiezi");
 		ItemQiezi.setTextureName("FoodCraft:ItemQiezi");
