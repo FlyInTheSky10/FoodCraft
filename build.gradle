@@ -16,30 +16,26 @@ buildscript {
 }
 
 apply plugin: 'forge'
+apply plugin: 'checkstyle'
 
 version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+group= "com.cfyifei"
+archivesBaseName = "FoodCraft"
 
 minecraft {
     version = "1.7.2-10.12.2.1147"
     assetDir = "eclipse/assets"
 }
 
+repositories {
+    maven {
+        name = "sponge"
+        url = "http://repo.spongepowered.org/maven/"
+    }
+}
+
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
+    checkstyle 'org.spongepowered:checkstyle:6.1.1-sponge1'
 }
 
 processResources
@@ -61,3 +57,16 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+checkstyle {
+    configFile = file('checkstyle.xml')
+    configProperties = [
+            "name" : 'FoodCraft1.7.2',
+            "organization" : 'InfinityStudio',
+            "url" : 'https://github.com/InfinityStudio/FoodCraft1.7.2',
+            "year" : '2015',
+            "basedir": project.projectDir,
+            "severity": 'warning'
+    ]
+}
+tasks.jar.dependsOn "check"
