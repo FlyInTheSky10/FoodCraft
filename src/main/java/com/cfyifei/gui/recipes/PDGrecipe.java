@@ -35,7 +35,8 @@ public class PDGrecipe {
         this.itemregister(Items.chicken, new ItemStack(Items.cooked_chicken), 0.5F);
         this.itemregister(Items.fish, new ItemStack(Items.cooked_fished), 0.5F);
         this.itemregister(Items.porkchop, new ItemStack(Items.cooked_porkchop), 0.5F);
-        
+        this.itemregister(ModItem.ItemYangrou, new ItemStack(ModItem.ItemShuyangrou), 0.5F);
+        this.itemregister(ModItem.ItemYouyurou, new ItemStack(ModItem.ItemShuyouyurou), 0.5F);
 
     }
    

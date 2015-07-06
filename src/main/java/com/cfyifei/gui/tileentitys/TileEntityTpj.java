@@ -168,13 +168,14 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	        			stack[0] = new ItemStack(Items.glass_bottle);
 	        			++water;	        			        		
 	        		}	
+	        	if(stack[0].getItem().equals(ModItem.Itemwater)){
+        			--stack[0].stackSize;
+        			++water;	      
+        		}	
 	        	}
-	        	if(stack[0].stackSize == 0){
-	    			stack[0] = null;	  
-	    		}
 	        	}
 	        	
-	        	
+	        	 
 				if(milk != 8){
 		        	
 					if(water == 0){
@@ -184,11 +185,13 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 		        			++milk;	        			        		
 		        		}	
 		        	}
-		        	if(stack[0].stackSize == 0){
+	        }
+	        }
+	       	 if (stack[0] != null){
+	        	 if(stack[0].stackSize == 0){
 		    			stack[0] = null;	  
 		    		}
-	        }
-	        }
+	        	 }
 	        }
 	}
 		 

@@ -39,7 +39,8 @@ public class ModItem{
 	ItemXiangchang,ItemRegou,ItemLachang,ItemLarou,ItemZhaxiangchang,ItemRibendoufu,ItemLabazhou,ItemLaweixunliao,ItemNainao,
 	ItemPisa,ItemHanbaobao,ItemJinghuashuitong,ItemSCBlock,ItemSCPlant,ItemSCMW1,ItemSCMW2,ItemSCKFC,ItemSCCn,ItemSCYz,
 	ItemSCJ,ItemSCShui1,ItemSCShui2,ItemSCFan1,ItemSCFan2,ItemSCFan3,ItemSCTh,ItemAnbizhishi,ItemAnlanzhishi,ItemZongjiqianguzhishi,
-ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,ItemZongjiTools4,ItemNull;
+ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,ItemZongjiTools4,ItemNull,ItemYangrou,ItemShuyangrou,
+ItemYouyurou,ItemShuyouyurou,ItemYouyusi;
 	public static void init() {
 		//×ö²Ë¹¤¾ß	
 		ItemTiepian = new ItemKb();
@@ -208,17 +209,17 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemBaifan.setTextureName("FoodCraft:ItemBaifan");
 		ItemBaifan.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemFanqiechaojidanfan = new ITemFood(3, 9F, false, "ItemFanqiechaojidanfan");
+		ItemFanqiechaojidanfan = new ITemFood(3, 18F, false, "ItemFanqiechaojidanfan");
 		ItemFanqiechaojidanfan.setUnlocalizedName("ItemFanqiechaojidanfan");
 		ItemFanqiechaojidanfan.setTextureName("FoodCraft:ItemFanqiechaojidanfan");
 		ItemFanqiechaojidanfan.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemDisanxian = new ITemFood(3, 9F, false, "ItemDisanxian");
+		ItemDisanxian = new ITemFood(3, 18F, false, "ItemDisanxian");
 		ItemDisanxian.setUnlocalizedName("ItemDisanxian");
 		ItemDisanxian.setTextureName("FoodCraft:ItemDisanxian");
 		ItemDisanxian.setCreativeTab(FoodCraft.FcTab);	
 	
-		ItemYuxiangrousi = new ITemFood(3, 9F, false, "ItemYuxiangrousi");
+		ItemYuxiangrousi = new ITemFood(3, 18F, false, "ItemYuxiangrousi");
 		ItemYuxiangrousi.setUnlocalizedName("ItemYuxiangrousi");
 		ItemYuxiangrousi.setTextureName("FoodCraft:ItemYuxiangrousi");
 		ItemYuxiangrousi.setCreativeTab(FoodCraft.FcTab);	
@@ -228,7 +229,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemCu.setTextureName("FoodCraft:ItemCu");
 		ItemCu.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemGongbaojiding = new ITemFood(3, 9F, false, "ItemGongbaojiding");
+		ItemGongbaojiding = new ITemFood(3, 18F, false, "ItemGongbaojiding");
 		ItemGongbaojiding.setUnlocalizedName("ItemGongbaojiding");
 		ItemGongbaojiding.setTextureName("FoodCraft:ItemGongbaojiding");
 		ItemGongbaojiding.setCreativeTab(FoodCraft.FcTab);	
@@ -248,7 +249,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemTudousi.setTextureName("FoodCraft:ItemTudousi");
 		ItemTudousi.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemChaotudousifan = new ITemFood(3, 9F, false, "ItemChaotudousifan");
+		ItemChaotudousifan = new ITemFood(3, 18F, false, "ItemChaotudousifan");
 		ItemChaotudousifan.setUnlocalizedName("ItemChaotudousifan");
 		ItemChaotudousifan.setTextureName("FoodCraft:ItemChaotudousifan");
 		ItemChaotudousifan.setCreativeTab(FoodCraft.FcTab);	
@@ -258,7 +259,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemChaotudoupian.setTextureName("FoodCraft:ItemChaotudoupian");
 		ItemChaotudoupian.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemDuojiaoyutou = new ITemFood(3, 9F, false, "ItemDuojiaoyutou");
+		ItemDuojiaoyutou = new ITemFood(3, 18F, false, "ItemDuojiaoyutou");
 		ItemDuojiaoyutou.setUnlocalizedName("ItemDuojiaoyutou");
 		ItemDuojiaoyutou.setTextureName("FoodCraft:ItemDuojiaoyutou");
 		ItemDuojiaoyutou.setCreativeTab(FoodCraft.FcTab);	
@@ -268,7 +269,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemDouban.setTextureName("FoodCraft:ItemDouban");
 		ItemDouban.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemMapodoufufan = new ITemFood(3, 9F, false, "ItemMapodoufufan");
+		ItemMapodoufufan = new ITemFood(3, 18F, false, "ItemMapodoufufan");
 		ItemMapodoufufan.setUnlocalizedName("ItemMapodoufufan");
 		ItemMapodoufufan.setTextureName("FoodCraft:ItemMapodoufufan");
 		ItemMapodoufufan.setCreativeTab(FoodCraft.FcTab);	
@@ -278,17 +279,17 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemDianfen.setTextureName("FoodCraft:ItemDianfen");
 		ItemDianfen.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemHongshaoroufan = new ITemFood(3, 9F, false, "ItemHongshaoroufan");
+		ItemHongshaoroufan = new ITemFood(3, 18F, false, "ItemHongshaoroufan");
 		ItemHongshaoroufan.setUnlocalizedName("ItemHongshaoroufan");
 		ItemHongshaoroufan.setTextureName("FoodCraft:ItemHongshaoroufan");
 		ItemHongshaoroufan.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemHuiguoroufan = new ITemFood(3, 9F, false, "ItemHuiguoroufan");
+		ItemHuiguoroufan = new ITemFood(3, 18F, false, "ItemHuiguoroufan");
 		ItemHuiguoroufan.setUnlocalizedName("ItemHuiguoroufan");
 		ItemHuiguoroufan.setTextureName("FoodCraft:ItemHuiguoroufan");
 		ItemHuiguoroufan.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemXifan = new ITemFood(3, 2F, false, "ItemXifan");
+		ItemXifan = new ITemFood(3, 4F, false, "ItemXifan");
 		ItemXifan.setUnlocalizedName("ItemXifan");
 		ItemXifan.setTextureName("FoodCraft:ItemXifan");
 		ItemXifan.setCreativeTab(FoodCraft.FcTab);	
@@ -348,7 +349,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemShutiao.setTextureName("FoodCraft:ItemShutiao");
 		ItemShutiao.setCreativeTab(FoodCraft.FcTab);	
 		 
-		ItemAeljichi = new ITemFood(3, 4F, false, "ItemAeljichi");
+		ItemAeljichi = new ITemFood(3, 6F, false, "ItemAeljichi");
 		ItemAeljichi.setUnlocalizedName("ItemAeljichi");
 		ItemAeljichi.setTextureName("FoodCraft:ItemAeljichi");
 		ItemAeljichi.setCreativeTab(FoodCraft.FcTab);	
@@ -363,7 +364,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemYuanweijikuai.setTextureName("FoodCraft:ItemYuanweijikuai");
 		ItemYuanweijikuai.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemAeljichifan = new ITemFood(3, 10F, false, "ItemAeljichifan");
+		ItemAeljichifan = new ITemFood(3, 20F, false, "ItemAeljichifan");
 		ItemAeljichifan.setUnlocalizedName("ItemAeljichifan");
 		ItemAeljichifan.setTextureName("FoodCraft:ItemAeljichifan");
 		ItemAeljichifan.setCreativeTab(FoodCraft.FcTab);	
@@ -594,57 +595,57 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemKafei.setTextureName("FoodCraft:ItemKafei");
 		ItemKafei.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemBaiqiuji = new ITemFood(3, 9F, false, "ItemBaiqiuji");
+		ItemBaiqiuji = new ITemFood(3, 18F, false, "ItemBaiqiuji");
 		ItemBaiqiuji.setUnlocalizedName("ItemBaiqiuji");
 		ItemBaiqiuji.setTextureName("FoodCraft:ItemBaiqiuji");
 		ItemBaiqiuji.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemCongyouji = new ITemFood(3, 9F, false, "ItemCongyouji");
+		ItemCongyouji = new ITemFood(3, 18F, false, "ItemCongyouji");
 		ItemCongyouji.setUnlocalizedName("ItemCongyouji");
 		ItemCongyouji.setTextureName("FoodCraft:ItemCongyouji");
 		ItemCongyouji.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemKoushuiji = new ITemFood(3, 9F, false, "ItemKoushuiji");
+		ItemKoushuiji = new ITemFood(3, 18F, false, "ItemKoushuiji");
 		ItemKoushuiji.setUnlocalizedName("ItemKoushuiji");
 		ItemKoushuiji.setTextureName("FoodCraft:ItemKoushuiji");
 		ItemKoushuiji.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemLaziji = new ITemFood(3, 9F, false, "ItemLaziji");
+		ItemLaziji = new ITemFood(3, 18F, false, "ItemLaziji");
 		ItemLaziji.setUnlocalizedName("ItemLaziji");
 		ItemLaziji.setTextureName("FoodCraft:ItemLaziji");
 		ItemLaziji.setCreativeTab(FoodCraft.FcTab);	
 
-		ItemQingzhenyu = new ITemFood(3, 9F, false, "ItemQingzhenyu");
+		ItemQingzhenyu = new ITemFood(3, 18F, false, "ItemQingzhenyu");
 		ItemQingzhenyu.setUnlocalizedName("ItemQingzhenyu");
 		ItemQingzhenyu.setTextureName("FoodCraft:ItemQingzhenyu");
 		ItemQingzhenyu.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemMalayu = new ITemFood(3, 9F, false, "ItemMalayu");
+		ItemMalayu = new ITemFood(3, 18F, false, "ItemMalayu");
 		ItemMalayu.setUnlocalizedName("ItemMalayu");
 		ItemMalayu.setTextureName("FoodCraft:ItemMalayu");
 		ItemMalayu.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemSuancaiyu = new ITemFood(3, 9F, false, "ItemSuancaiyu");
+		ItemSuancaiyu = new ITemFood(3, 18F, false, "ItemSuancaiyu");
 		ItemSuancaiyu.setUnlocalizedName("ItemSuancaiyu");
 		ItemSuancaiyu.setTextureName("FoodCraft:ItemSuancaiyu");
 		ItemSuancaiyu.setCreativeTab(FoodCraft.FcTab);	
 
-		ItemKelejichifan = new ITemFood(3, 9F, false, "ItemKelejichifan");
+		ItemKelejichifan = new ITemFood(3, 20F, false, "ItemKelejichifan");
 		ItemKelejichifan.setUnlocalizedName("ItemKelejichifan");
 		ItemKelejichifan.setTextureName("FoodCraft:ItemKelejichifan");
 		ItemKelejichifan.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemGalijiroufan = new ITemFood(3, 9F, false, "ItemGalijiroufan");
+		ItemGalijiroufan = new ITemFood(3, 18F, false, "ItemGalijiroufan");
 		ItemGalijiroufan.setUnlocalizedName("ItemGalijiroufan");
 		ItemGalijiroufan.setTextureName("FoodCraft:ItemGalijiroufan");
 		ItemGalijiroufan.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemGalikuai = new ITemFood(3, 9F, false, "ItemGalikuai");
+		ItemGalikuai = new ITemFood(3, 18F, false, "ItemGalikuai");
 		ItemGalikuai.setUnlocalizedName("ItemGalikuai");
 		ItemGalikuai.setTextureName("FoodCraft:ItemGalikuai");
 		ItemGalikuai.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemShuizhuniurou = new ITemFood(3, 9F, false, "ItemShuizhuniurou");
+		ItemShuizhuniurou = new ITemFood(3, 18F, false, "ItemShuizhuniurou");
 		ItemShuizhuniurou.setUnlocalizedName("ItemShuizhuniurou");
 		ItemShuizhuniurou.setTextureName("FoodCraft:ItemShuizhuniurou");
 		ItemShuizhuniurou.setCreativeTab(FoodCraft.FcTab);	
@@ -659,22 +660,22 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemGuoqiaomixian.setTextureName("FoodCraft:ItemGuoqiaomixian");
 		ItemGuoqiaomixian.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemYifen = new ITemFood(3, 4.5F, false, "ItemYifen");
+		ItemYifen = new ITemFood(3, 8F, false, "ItemYifen");
 		ItemYifen.setUnlocalizedName("ItemYifen");
 		ItemYifen.setTextureName("FoodCraft:ItemYifen");
 		ItemYifen.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemYifenpork = new ITemFood(3, 9F, false, "ItemYifenpork");
+		ItemYifenpork = new ITemFood(3, 18F, false, "ItemYifenpork");
 		ItemYifenpork.setUnlocalizedName("ItemYifenpork");
 		ItemYifenpork.setTextureName("FoodCraft:ItemYifenpork");
 		ItemYifenpork.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemYifenbeef = new ITemFood(3, 9F, false, "ItemYifenbeef");
+		ItemYifenbeef = new ITemFood(3, 18F, false, "ItemYifenbeef");
 		ItemYifenbeef.setUnlocalizedName("ItemYifenbeef");
 		ItemYifenbeef.setTextureName("FoodCraft:ItemYifenbeef");
 		ItemYifenbeef.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemYifenchicken = new ITemFood(3, 9F, false, "ItemYifenchicken");
+		ItemYifenchicken = new ITemFood(3, 18F, false, "ItemYifenchicken");
 		ItemYifenchicken.setUnlocalizedName("ItemYifenchicken");
 		ItemYifenchicken.setTextureName("FoodCraft:ItemYifenchicken");
 		ItemYifenchicken.setCreativeTab(FoodCraft.FcTab);	
@@ -724,7 +725,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemCiba.setTextureName("FoodCraft:ItemCiba");
 		ItemCiba.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemChangfen = new ITemFood(3, 4.5F, false, "ItemChangfen");
+		ItemChangfen = new ITemFood(3, 8F, false, "ItemChangfen");
 		ItemChangfen.setUnlocalizedName("ItemChangfen");
 		ItemChangfen.setTextureName("FoodCraft:ItemChangfen");
 		ItemChangfen.setCreativeTab(FoodCraft.FcTab);	
@@ -754,7 +755,7 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemZhaxiangchang.setTextureName("FoodCraft:ItemZhaxiangchang");
 		ItemZhaxiangchang.setCreativeTab(FoodCraft.FcTab);	
 		
-		ItemRibendoufu = new ITemFood(3, 4.5F, false, "ItemRibendoufu");
+		ItemRibendoufu = new ITemFood(3, 8F, false, "ItemRibendoufu");
 		ItemRibendoufu.setUnlocalizedName("ItemRibendoufu");
 		ItemRibendoufu.setTextureName("FoodCraft:ItemRibendoufu");
 		ItemRibendoufu.setCreativeTab(FoodCraft.FcTab);	
@@ -784,8 +785,31 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		ItemHanbaobao.setTextureName("FoodCraft:ItemHanbaobao");
 		ItemHanbaobao.setCreativeTab(FoodCraft.FcTab);	
 
+		ItemYangrou = new ITemFood(3, 4F, false, "ItemYangrou");
+		ItemYangrou.setUnlocalizedName("ItemYangrou");
+		ItemYangrou.setTextureName("FoodCraft:ItemYangrou");
+		ItemYangrou.setCreativeTab(FoodCraft.FcTab);	
 		
+		ItemShuyangrou = new ITemFood(3, 8F, false, "ItemShuyangrou");
+		ItemShuyangrou.setUnlocalizedName("ItemShuyangrou");
+		ItemShuyangrou.setTextureName("FoodCraft:ItemShuyangrou");
+		ItemShuyangrou.setCreativeTab(FoodCraft.FcTab);	
 
+		ItemYouyurou = new ITemFood(3, 3F, false, "ItemYouyurou");
+		ItemYouyurou.setUnlocalizedName("ItemYouyurou");
+		ItemYouyurou.setTextureName("FoodCraft:ItemYouyurou");
+		ItemYouyurou.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemShuyouyurou = new ITemFood(3, 6F, false, "ItemShuyouyurou");
+		ItemShuyouyurou.setUnlocalizedName("ItemShuyouyurou");
+		ItemShuyouyurou.setTextureName("FoodCraft:ItemShuyouyurou");
+		ItemShuyouyurou.setCreativeTab(FoodCraft.FcTab);	
+		
+		ItemYouyusi = new ITemFood(3, 3F, false, "ItemYouyusi");
+		ItemYouyusi.setUnlocalizedName("ItemYouyusi");
+		ItemYouyusi.setTextureName("FoodCraft:ItemYouyusi");
+		ItemYouyusi.setCreativeTab(FoodCraft.FcTab);	
+		
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemJinghuashuitong, "ItemJinghuashuitong");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
@@ -801,9 +825,8 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		GameRegistry.registerItem(ItemFanqie, "ItemFanqie");	
 		GameRegistry.registerItem(ItemQiezi, "ItemQiezi");	
 		GameRegistry.registerItem(ItemCong, "ItemCong");	
-		
 		GameRegistry.registerItem(ItemPutao, "ItemPutao");	
-		GameRegistry.registerItem(ItemJinputao, "ItemJinputao");	
+		GameRegistry.registerItem(ItemJinputao, "ItemJinputao");			
 		GameRegistry.registerItem(Itemfan, "Itemfan");
 		GameRegistry.registerItem(ItemMianfen, "ItemMianfen");
 		GameRegistry.registerItem(ItemYan, "ItemYan");
@@ -835,7 +858,11 @@ ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,I
 		GameRegistry.registerItem(ItemGalikuai, "ItemGalikuai");	
 		GameRegistry.registerItem(ItemLaweixunliao, "ItemLaweixunliao");	
 		
-	
+		GameRegistry.registerItem(ItemYangrou, "ItemYangrou");
+		GameRegistry.registerItem(ItemShuyangrou, "ItemShuyangrou");
+		GameRegistry.registerItem(ItemYouyurou, "ItemYouyurou");
+		GameRegistry.registerItem(ItemShuyouyurou, "ItemShuyouyurou");
+		GameRegistry.registerItem(ItemYouyusi, "ItemYouyusi");
 		
 		GameRegistry.registerItem(ItemJianjidan, "ItemJianjidan");
 		GameRegistry.registerItem(ItemDoujiang, "ItemDoujiang");

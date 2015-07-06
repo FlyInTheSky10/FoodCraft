@@ -58,14 +58,13 @@ public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, Enti
                 	par1ItemStack.setItemDamage(par1ItemStack.getItemDamage() +1);
   
 if(par1ItemStack.getItemDamage() >= 16){
-	--par1ItemStack.stackSize;
+	par1ItemStack = new ItemStack(Items.bucket);
 	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 	
 }
 
             }
         }
-
         return par1ItemStack;
     }
 }

@@ -85,6 +85,13 @@ public class TileEntityNt extends TileEntity implements IInventory{
 	        			++water;	      
 	        			
 	        		}	
+	        		if(stack[3].getItem().equals(ModItem.Itemwater)){
+	        			--stack[3].stackSize;
+	        			++water;	      
+	        		}	
+	        		if(stack[3].stackSize == 0){
+		    			stack[3] = null;	  
+		    		}
 	        	}
 	        }
 	        }

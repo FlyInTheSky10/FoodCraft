@@ -25,7 +25,7 @@ public class Recipe{
 	public static void init() {
 		Items.egg.setMaxStackSize(64);
 		Items.snowball.setMaxStackSize(64);
-
+		Items.bread.setTextureName("foodcraft:bread");
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemTiepian, 16), new Object[] {"###", "#X#","###", '#',Items.iron_ingot,'X',Blocks.stone});	
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCaidao, 2), new Object[] {"## ", "## ","X  ", '#',ModItem.ItemTiepian,'X',Items.stick});
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.cake));

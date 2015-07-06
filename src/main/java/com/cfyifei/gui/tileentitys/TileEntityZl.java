@@ -88,7 +88,9 @@ public class TileEntityZl extends TileEntity implements IInventory{
 
 	public boolean canSmelt() {
 		if(this.worldObj.getBlock(xCoord, yCoord + 1, zCoord) == ModGui.PDG || 
-				this.worldObj.getBlock(xCoord, yCoord + 1, zCoord) == ModGui.Guo)return true;
+				this.worldObj.getBlock(xCoord, yCoord + 1, zCoord) == ModGui.Guo){
+			return true;
+					}
 		return false;
 		
 	}
@@ -260,26 +262,26 @@ public class TileEntityZl extends TileEntity implements IInventory{
 
                 if (block == Blocks.wooden_slab)
                 {
-                    return 15;
+                    return 300;
                 }
 
                 if (block.getMaterial() == Material.wood)
                 {
-                    return 30;
+                    return 600;
                 }
                 if (block == Blocks.coal_block)
                 {
-                    return 1600;
+                    return 32000;
                 }
             }
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 20;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 20;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 20;
-            if (item == Items.stick) return 10;
-            if (item == Items.coal) return 160;
-            if (item == Items.lava_bucket) return 2000;
-            if (item == Item.getItemFromBlock(Blocks.sapling)) return 10;
-            if (item == Items.blaze_rod) return 240;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 400;
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 400;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 400;
+            if (item == Items.stick) return 400;
+            if (item == Items.coal) return 3200;
+            if (item == Items.lava_bucket) return 40000;
+            if (item == Item.getItemFromBlock(Blocks.sapling)) return 200;
+            if (item == Items.blaze_rod) return 4800;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }

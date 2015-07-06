@@ -16,7 +16,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 
 
-@Mod(modid="FoodCraft", name="FoodCraft", version="1.1.0")
+@Mod(modid="FoodCraft", name="FoodCraft", version="1.1.10")
 
 public class FoodCraft{
 	public static final FcTab FcTab = new FcTab();

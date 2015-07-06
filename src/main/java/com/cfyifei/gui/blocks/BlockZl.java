@@ -34,7 +34,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-
+import org.lwjgl.opengl.GL11;
 public class BlockZl extends BlockContainer{
 
     private final Random Random = new Random();
@@ -299,8 +299,6 @@ public void randomDisplayTick(World w, int x, int y, int z, Random random)
         
     	w.spawnParticle("smoke", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
         w.spawnParticle("flame", (double)(x + 0.75F), (double)(y + 1.2F), (double)(z + 0.75F), 0.0D, 0.0D, 0.0D);
-        
-  
     }
 }
     }
