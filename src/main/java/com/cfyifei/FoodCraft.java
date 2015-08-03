@@ -20,38 +20,36 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
-
-
 @Mod(modid="FoodCraft", name="FoodCraft", version="1.2.0")
 
 public class FoodCraft{
-	public static boolean IC2IsLoad = false;
-	public static final CreativeTabs FcTabJiqi = new CreativeTabs("Jiqi"){//»úÆ÷&¹¤¾ß
+	public static boolean IC2IsLoad = false, MTIsLoad = false;
+	public static final CreativeTabs FcTabJiqi = new CreativeTabs("Jiqi"){//ï¿½ï¿½ï¿½ï¿½&ï¿½ï¿½ï¿½ï¿½
 		public Item getTabIconItem() {
 			return Item.getItemFromBlock(ModGui.Nmj);
 		}
 	};
-	public static final CreativeTabs FcTabZhiwu = new CreativeTabs("Zhiwu"){//Ö²Îï
+	public static final CreativeTabs FcTabZhiwu = new CreativeTabs("Zhiwu"){//Ö²ï¿½ï¿½
 		public Item getTabIconItem() {
 			return ModItem.ItemLajiao;
 		}
 	};
-	public static final CreativeTabs FcTabYingliao = new CreativeTabs("Yingliao"){//ÒûÁÏ
+	public static final CreativeTabs FcTabYingliao = new CreativeTabs("Yingliao"){//ï¿½ï¿½ï¿½ï¿½
 		public Item getTabIconItem() {
 			return ModItem.ItemPutaozhi;
 		}
 	};
-	public static final CreativeTabs FcTabZhushi = new CreativeTabs("Zhushi"){//Ö÷Ê³
+	public static final CreativeTabs FcTabZhushi = new CreativeTabs("Zhushi"){//ï¿½ï¿½Ê³
 		public Item getTabIconItem() {
 			return ModItem.ItemChaotudousifan;
 		}
 	};
-	public static final CreativeTabs FcTabShicai = new CreativeTabs("Shicai"){//Ê³²Ä
+	public static final CreativeTabs FcTabShicai = new CreativeTabs("Shicai"){//Ê³ï¿½ï¿½
 		public Item getTabIconItem() {
 			return ModItem.ItemMianfen;
 		}
 	};
-	public static final CreativeTabs FcTabXiaodian = new CreativeTabs("Xiaodian"){//ÁãÊ³
+	public static final CreativeTabs FcTabXiaodian = new CreativeTabs("Xiaodian"){//ï¿½ï¿½Ê³
 		public Item getTabIconItem() {
 			return ModItem.ItemJianjiao;
 		}
@@ -67,7 +65,8 @@ public class FoodCraft{
 		@EventHandler
 		public void preInit(FMLPreInitializationEvent event) {
 			NERLogManager.log("Loading foodcraft, Version: 1.2.0");
-				IC2IsLoad = Loader.isModLoaded("IC2");	
+				IC2IsLoad = Loader.isModLoaded("IC2");
+				MTIsLoad = Loader.isModLoaded("MineTweaker3");
 	        NERConfigHandler.initConfig(event);
 	        NERConfigHandler.getConfig();
 			proxy.preInit(event);

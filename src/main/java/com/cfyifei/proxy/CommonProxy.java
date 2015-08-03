@@ -7,10 +7,12 @@ import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.*;
 import com.cfyifei.gui.tileentitys.*;
 import com.cfyifei.item.ModItem;
+import com.cfyifei.minetweaker.MinetweakerCompat;
 import com.cfyifei.plant.blocks.Plant;
 import com.cfyifei.recipe.Recipe;
 import com.cfyifei.util.GUIHandler;
 
+import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -34,7 +36,8 @@ public class CommonProxy{
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		if (com.cfyifei.FoodCraft.MTIsLoad)
+			MineTweakerAPI.registerClassRegistry(MinetweakerCompat.class);
 	}
 	
 	public void registerBlockModels() {
