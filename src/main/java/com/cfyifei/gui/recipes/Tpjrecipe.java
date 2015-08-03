@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.cfyifei.item.ModItem;
-import com.cfyifei.util.FcItemStack;
-import com.cfyifei.util.FcTpjItemStack;
+import com.cfyifei.itemstack.FoodcraftItemStack;
+import com.cfyifei.itemstack.TpjMaking;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -18,7 +18,7 @@ import net.minecraft.item.ItemStack;
 
 public class Tpjrecipe {
 	private static final Tpjrecipe smeltingBase = new Tpjrecipe();
-	public Map stack1 = new HashMap();
+	public Map<TpjMaking, ItemStack> stack1 = new HashMap();
 	public static Tpjrecipe smelting()
     {
         return smeltingBase;
@@ -33,6 +33,10 @@ public class Tpjrecipe {
 		addrecipeItem(ModItem.ItemDoujiang, true, false, new ItemStack(ModItem.ItemDounai));
 		addrecipeItem(Item.getItemFromBlock(Blocks.leaves), false, false, new ItemStack(ModItem.ItemCha));
 		addrecipeItem(ModItem.ItemCha, true, false, new ItemStack(ModItem.ItemNaicha));
+		addrecipeItem(ModItem.ItemBailuobo, false, false, new ItemStack(ModItem.ItemBailuobozhi));
+		addrecipeItem(ModItem.ItemFanqie, false, false, new ItemStack(ModItem.ItemFanqiezhi));
+		addrecipeItem(ModItem.ItemYumi, false, false, new ItemStack(ModItem.ItemYumizhi));
+		addrecipeItem(ModItem.ItemHuanggua, false, false, new ItemStack(ModItem.ItemHuangguazhi));
 		//cold
 		addrecipeItem(Items.apple, false, true, new ItemStack(ModItem.ItemPingguozhi));
 		addrecipeItem(ModItem.ItemPutao, false, true, new ItemStack(ModItem.ItemPutaozhi));
@@ -41,17 +45,36 @@ public class Tpjrecipe {
 		addrecipe(new ItemStack(Items.dye,1,15), false, true, new ItemStack(ModItem.ItemXuebi));
 		addrecipeItem(Items.dye, false, true, new ItemStack(ModItem.ItemKele));
 		addrecipeItem(Items.melon, false, true, new ItemStack(ModItem.ItemXiguazhi));
+		
+		addrecipeItem(ModItem.ItemLi, false, true, new ItemStack(ModItem.ItemLizizhi));
+		addrecipeItem(ModItem.ItemLizhi, false, true, new ItemStack(ModItem.ItemLizhizhi));
+		addrecipeItem(ModItem.ItemTaozi, false, true, new ItemStack(ModItem.ItemTaozizhi));
+		addrecipeItem(ModItem.ItemJuzi, false, true, new ItemStack(ModItem.ItemJuzizhi));
+		addrecipeItem(ModItem.ItemPipa, false, true, new ItemStack(ModItem.ItemPipazhi));
+		addrecipeItem(ModItem.ItemMangguo, false, true, new ItemStack(ModItem.ItemMangguozhi));
+		addrecipeItem(ModItem.ItemNingmeng, false, true, new ItemStack(ModItem.ItemNingmengzhi));
+		addrecipeItem(ModItem.ItemYouzi, false, true, new ItemStack(ModItem.ItemYouzizhi));
+		addrecipeItem(ModItem.ItemShizi, false, true, new ItemStack(ModItem.ItemShizizhi));	
+		addrecipeItem(ModItem.ItemMugua, false, true, new ItemStack(ModItem.ItemMuguazhi));		
+		addrecipeItem(ModItem.ItemShanzha, false, true, new ItemStack(ModItem.ItemShanzhazhi));	
+		addrecipeItem(ModItem.ItemShiliu, false, true, new ItemStack(ModItem.ItemShiliuzhi));
+		addrecipeItem(ModItem.ItemHongzao, false, true, new ItemStack(ModItem.ItemHongzaozhi));
+		addrecipeItem(ModItem.ItemCaomei, false, true, new ItemStack(ModItem.ItemCaomeizhi));
+		addrecipeItem(ModItem.ItemYezi, false, true, new ItemStack(ModItem.ItemYezizhi));
+		addrecipeItem(ModItem.ItemYingtao, false, true, new ItemStack(ModItem.ItemYingtaozhi));	
+		addrecipeItem(ModItem.ItemXiangjiao, false, true, new ItemStack(ModItem.ItemXiangjiaozhi));		
+		addrecipeItem(ModItem.ItemYezizhi, true, true, new ItemStack(ModItem.ItemYenai));				
 	}
 	
 	public void addrecipeItem(Item Input ,boolean isMilk ,boolean iscold,ItemStack Output){
-		stack1.put(new FcTpjItemStack(new ItemStack(Input), isMilk, iscold), Output);
+		stack1.put(new TpjMaking(new ItemStack(Input), isMilk, iscold), Output);
 	}
 	
 	public void addrecipe(ItemStack Input ,boolean isMilk ,boolean iscold,ItemStack Output){
 
-		stack1.put(new FcTpjItemStack(Input, isMilk, iscold), Output);
+		stack1.put(new TpjMaking(Input, isMilk, iscold), Output);
 	}
-	 private boolean GG(FcTpjItemStack ItemStack1, FcTpjItemStack ItemStack2)
+	 private boolean GG(TpjMaking ItemStack1, TpjMaking ItemStack2)
 	 {
 	     return ItemStack2.Item.getItemDamage() == ItemStack1.Item.getItemDamage() &&
 	    		 ItemStack2.Item.getItem() == ItemStack1.Item.getItem() &&
@@ -62,7 +85,7 @@ public class Tpjrecipe {
 	 
 	public ItemStack getOutput(ItemStack Input ,boolean isMilk ,boolean iscold){
 
-		FcTpjItemStack fis = new FcTpjItemStack(Input, isMilk, iscold);
+		TpjMaking fis = new TpjMaking(Input, isMilk, iscold);
 		
 		Iterator iterator1 = stack1.entrySet().iterator();
 	    Entry entry1;
@@ -76,7 +99,7 @@ public class Tpjrecipe {
 
 	        entry1 = (Entry)iterator1.next();
 	    }
-	    while (!GG(fis, (FcTpjItemStack)entry1.getKey()));
+	    while (!GG(fis, (TpjMaking)entry1.getKey()));
 
 	    ItemStack is1 = (ItemStack)entry1.getValue();
 	    
@@ -84,6 +107,10 @@ public class Tpjrecipe {
 	    return is1;	    	    
 	    
 
+	}
+
+	public Map<TpjMaking, ItemStack> getSmeltingList() {
+		return this.stack1;
 	}
 	
 	

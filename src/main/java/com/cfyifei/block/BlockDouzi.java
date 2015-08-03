@@ -80,7 +80,15 @@ public class BlockDouzi extends BlockCrops
     @Override
     public Item getItemDropped(int par1, Random par2Random, int par3)
     {
-        return par1 >= 7 ? this.func_149865_P() : par1 >= 5 ? ModItem.ItemDouzi : this.func_149866_i();
+    	if(par1 >= 7){
+    		return this.func_149865_P();
+    	}else{
+    		if(par1 >= 5){
+        		return ModItem.ItemDoujiao;
+        	}else{
+        		return  this.func_149866_i();
+        	}
+    	}
     }
 
     @Override

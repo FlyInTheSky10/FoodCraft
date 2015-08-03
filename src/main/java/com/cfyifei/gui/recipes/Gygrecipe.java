@@ -8,7 +8,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.cfyifei.item.ModItem;
-import com.cfyifei.util.FcItemStack;
+import com.cfyifei.itemstack.CookingOutput;
+import com.cfyifei.itemstack.FoodcraftItemStack;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -17,7 +18,7 @@ import net.minecraft.item.ItemStack;
 
 public class Gygrecipe {
 	private static final Gygrecipe smeltingBase = new Gygrecipe();
-	public Map stack1 = new HashMap();
+	public Map<FoodcraftItemStack,ItemStack> stack1 = new HashMap();
 	public static Gygrecipe smelting()
     {
         return smeltingBase;
@@ -34,9 +35,9 @@ public class Gygrecipe {
 	
 	public void addrecipe(Item Input1 ,Item Input2 ,Item Input3 ,ItemStack Output){
 		Item[] Items = {Input1,Input2,Input3};
-		stack1.put(new FcItemStack(Items), Output);
+		stack1.put(new FoodcraftItemStack(Items), Output);
 	}
-	 private boolean GG(FcItemStack ItemStack1, FcItemStack ItemStack2)
+	 private boolean GG(FoodcraftItemStack ItemStack1, FoodcraftItemStack ItemStack2)
 	 {
 	     return ItemStack2.Stack[0] == ItemStack1.Stack[0] &&
 	            ItemStack2.Stack[1] == ItemStack1.Stack[1] &&
@@ -46,7 +47,7 @@ public class Gygrecipe {
 	 
 	public ItemStack getOutput(Item Input1,Item Input2,Item Input3){
 		Item[] Items = {Input1,Input2,Input3};
-		FcItemStack fis = new FcItemStack(Items);
+		FoodcraftItemStack fis = new FoodcraftItemStack(Items);
 		
 		Iterator iterator1 = stack1.entrySet().iterator();
 	    Entry entry1;
@@ -60,7 +61,7 @@ public class Gygrecipe {
 
 	        entry1 = (Entry)iterator1.next();
 	    }
-	    while (!GG(fis, (FcItemStack)entry1.getKey()));
+	    while (!GG(fis, (FoodcraftItemStack)entry1.getKey()));
 
 	    ItemStack is1 = (ItemStack)entry1.getValue();
 	    
@@ -68,6 +69,10 @@ public class Gygrecipe {
 	    return is1;	    	    
 	    
 
+	}
+
+	public Map<FoodcraftItemStack, ItemStack> getSmeltingList() {
+		return this.stack1;
 	}
 	
 	

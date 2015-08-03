@@ -1,7 +1,7 @@
 package com.cfyifei.item;
 
 import com.cfyifei.block.ModBlocks;
-import com.cfyifei.util.FcUtil;
+import com.cfyifei.util.FoodcraftUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;

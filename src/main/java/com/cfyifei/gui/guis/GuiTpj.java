@@ -62,6 +62,9 @@ public class GuiTpj extends GuiContainer{
         this.drawTexturedModalRect(k + 18, l + 14 + 58 - i3, 187, 31 + 58 - i3, 11,(int) (58 * ((float)i3 / 58)));
     	  }
       }
+      if(mouseX >= k + 18 && mouseX <= k + 18 + 11 && mouseY >= l + 14 && mouseY <= l + 14 + 58){
+      	this.drawCreativeTabHoveringText(this.tile.getWater() + "/56", mouseX, mouseY);
+      }
     }
 	
     

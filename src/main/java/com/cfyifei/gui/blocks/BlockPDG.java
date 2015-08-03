@@ -1,9 +1,12 @@
 package com.cfyifei.gui.blocks;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
+import com.cfyifei.block.ModBlocks;
+import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.gui.tileentitys.TileEntityPDG;
 
 import cpw.mods.fml.relauncher.Side;
@@ -11,25 +14,29 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 	public class BlockPDG extends BlockContainer{
 	    private final Random Random = new Random();
+		private int frequencyOfUse;
 		public BlockPDG(Material Material)
 	    {
 	        super(Material.rock);
 	        this.setHardness(3.0f);
 	        this.setBlockBounds(0F, 0F, 0F, 1F, 0.3F, 1F);
 	    }
-
 
 		@Override
 		public TileEntity createNewTileEntity(World var1, int var2) {
@@ -58,7 +65,8 @@ import net.minecraft.world.World;
 	        }
 	        public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 	        {
-	            return Item.getItemFromBlock(ModGui.PDG);
+	        	return NERConfigHandler.booleanwrench ? 
+	        			Item.getItemFromBlock(ModBlocks.BlockWaike) : Item.getItemFromBlock(ModGui.PDG);
 	        }
 	        @SideOnly(Side.CLIENT)
 	        public Item getItem(World w, int x, int y, int z)
@@ -115,12 +123,27 @@ import net.minecraft.world.World;
 	    	                        }
 	    	                    }
 	    	                }
-
 	    	                World.func_147453_f(x, y, z, Block);
 	    	            }
-	    	        
-
 	    	        super.breakBlock(World, x, y, z, Block, var1);
+	    	    }
+
+
+	    	 public static int getFrequencyOfUse(ItemStack item)
+	    	  {
+	    	    if (item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
+	    	    return item.getTagCompound().getInteger("frequencyOfUse");
+	    	  }
+	    	 
+
+	    	    public void onBlockPlacedBy(World w, int x, int y, int z, EntityLivingBase elb, ItemStack is) 
+	    	    {
+	    	    	if (is.getTagCompound() != null)
+	    	        {
+	    	          int xh = getFrequencyOfUse(is);
+	    	          TileEntityPDG tep = (TileEntityPDG)w.getTileEntity(x,y,z);
+	    	          tep.frequencyOfUse = xh;
+	    	        }
 	    	    }
 
 	}

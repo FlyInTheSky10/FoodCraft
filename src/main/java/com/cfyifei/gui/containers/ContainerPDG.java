@@ -16,15 +16,22 @@ import net.minecraft.item.ItemStack;
 
 
 public class ContainerPDG extends Container{
-	  private int lastCookTime;
+	  private int lastfrequencyOfUse;
+	private int lastCookTime;
 	    private int lastBurnTime;
 	    private int lastItemBurnTime;
        private TileEntityPDG furnaceIn;
+	private int lastNowheat;
+	private int lastMax;
+	private int lastMin;
 	public ContainerPDG(InventoryPlayer par1InventoryPlayer, TileEntityPDG furnaceInv)
        {
     	   this.furnaceIn = furnaceInv;
-    	   this.addSlotToContainer(new Slot(furnaceInv, 0, 48, 39));
-           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, furnaceInv, 1, 111, 39));
+    	   this.addSlotToContainer(new Slot(furnaceInv, 0, 45, 39));
+           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, furnaceInv, 1, 108, 39));
+           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, furnaceInv, 2, 137, 39));
+           //JinghuaYou
+           this.addSlotToContainer(new Slot(furnaceInv, 3, 18, 39));
            int var3;
            for (var3 = 0; var3 < 3; ++var3)
            {
@@ -50,6 +57,10 @@ public class ContainerPDG extends Container{
 	        par1ICrafting.sendProgressBarUpdate(this, 0, this.furnaceIn.furnaceCookTime);
 	        par1ICrafting.sendProgressBarUpdate(this, 1, this.furnaceIn.tableBurnTime);
 	        par1ICrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
+	        par1ICrafting.sendProgressBarUpdate(this, 3, this.furnaceIn.frequencyOfUse);      
+	        par1ICrafting.sendProgressBarUpdate(this, 4, this.furnaceIn.Nowheat);  
+	        par1ICrafting.sendProgressBarUpdate(this, 5, this.furnaceIn.min);  
+	        par1ICrafting.sendProgressBarUpdate(this, 6, this.furnaceIn.max);  
 	    }
 
 	    @SideOnly(Side.CLIENT)
@@ -68,6 +79,22 @@ public class ContainerPDG extends Container{
 	        if (par1 == 2)
 	        {
 	            this.furnaceIn.currentItemBurnTime = par2;
+	        }
+	        if (par1 == 3)
+	        {
+	            this.furnaceIn.frequencyOfUse = par2;
+	        }
+	        if (par1 == 4)
+	        {
+	            this.furnaceIn.Nowheat = par2;
+	        }
+	        if (par1 == 5)
+	        {
+	            this.furnaceIn.min = par2;
+	        }
+	        if (par1 == 6)
+	        {
+	            this.furnaceIn.max = par2;
 	        }
 	    }
 	    
@@ -93,17 +120,37 @@ public class ContainerPDG extends Container{
 	            {
 	                icrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
 	            }
+	            if (this.lastfrequencyOfUse != this.furnaceIn.frequencyOfUse)
+	            {
+	                icrafting.sendProgressBarUpdate(this, 3, this.furnaceIn.frequencyOfUse);
+	            }
+	            if (this.lastNowheat != this.furnaceIn.Nowheat)
+	            {
+	                icrafting.sendProgressBarUpdate(this, 4, this.furnaceIn.Nowheat);
+	            }
+	            if (this.lastMin != this.furnaceIn.min)
+	            {
+	                icrafting.sendProgressBarUpdate(this, 5, this.furnaceIn.min);
+	            }
+	            if (this.lastMax != this.furnaceIn.max)
+	            {
+	                icrafting.sendProgressBarUpdate(this, 6, this.furnaceIn.max);
+	            }
+	            
 	        }
 
 	        this.lastCookTime = this.furnaceIn.furnaceCookTime;
 	        this.lastBurnTime = this.furnaceIn.tableBurnTime;
 	        this.lastItemBurnTime = this.furnaceIn.currentItemBurnTime;
+	        this.lastfrequencyOfUse = this.furnaceIn.frequencyOfUse; 
+	        lastNowheat = this.furnaceIn.Nowheat;
+	        lastMin = this.furnaceIn.min;
+	        lastMax = this.furnaceIn.max;
 	    }
 	    
 	   
 	    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	    {
-			return null;
-	 
+	        return null;
 	}
 }

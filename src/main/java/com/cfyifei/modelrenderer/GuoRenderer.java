@@ -3,6 +3,8 @@ package com.cfyifei.modelrenderer;
 import org.lwjgl.opengl.GL11;
 
 import com.cfyifei.gui.blocks.ModelGuo;
+import com.cfyifei.gui.tileentitys.TileEntityGuo;
+import com.cfyifei.gui.tileentitys.TileEntityPDG;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;

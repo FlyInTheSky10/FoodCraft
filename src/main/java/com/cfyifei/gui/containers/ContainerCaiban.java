@@ -27,12 +27,12 @@ public class ContainerCaiban extends Container{
        {
     	   this.furnaceIn = tileEntityCaiban;
 
-    	   this.addSlotToContainer(new Slot(tileEntityCaiban, 0, 16, 26));
-    	   this.addSlotToContainer(new Slot(tileEntityCaiban, 1, 55, 26));
-    	   this.addSlotToContainer(new Slot(tileEntityCaiban, 2, 82, 26));
-    	  this.addSlotToContainer(new Slot(tileEntityCaiban, 3, 109, 26));
+    	   this.addSlotToContainer(new Slot(tileEntityCaiban, 0, 31, 26));
+    	   this.addSlotToContainer(new Slot(tileEntityCaiban, 1, 70, 26));
+    	   this.addSlotToContainer(new Slot(tileEntityCaiban, 2, 97, 26));
+    	  this.addSlotToContainer(new Slot(tileEntityCaiban, 3, 124, 26));
 
-           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, tileEntityCaiban, 4, 82, 58));
+           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, tileEntityCaiban, 4, 97, 58));
            int var3;
            for (var3 = 0; var3 < 3; ++var3)
            {

@@ -6,8 +6,10 @@ import com.cfyifei.item.ModItem;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockCrops;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
@@ -23,7 +25,10 @@ public class BlockShuiDao extends BlockCrops
         super();
     }
 
- 
+    protected boolean canPlaceBlockOn(Block p_149854_1_)
+    {
+        return p_149854_1_ == Blocks.farmland;
+    }
     @Override
     public IIcon getIcon(int par1, int par2)
     {

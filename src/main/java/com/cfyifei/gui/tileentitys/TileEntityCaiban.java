@@ -88,51 +88,50 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
          
          }
        
-      if(stack[1] != null && stack[2] == null  && stack[3] == null ){
-         	--this.stack[1].stackSize;       	
-         	if (this.stack[1].stackSize <= 0)
-             {
-                 this.stack[1] = null;
-             }
+      if(this.stack[1] != null){--stack[1].stackSize;}
+      if(this.stack[2] != null){--stack[2].stackSize;}
+      if(this.stack[3] != null){--stack[3].stackSize;}
+         if(stack[1] != null){
+      if (this.stack[1].stackSize <= 0)
+         {
+             this.stack[1] = null;
          }
-      
-      if(stack[1] != null && stack[2] != null  && stack[3] != null ){
-    	--this.stack[1].stackSize;   
-    	--this.stack[2].stackSize;   
-    	--this.stack[3].stackSize;   
-       	if (this.stack[2].stackSize <= 0)
-           {
-               this.stack[2] = null;
-           }
-       }
-      
-      if(stack[1] != null && stack[2] != null  && stack[3] == null){
-       	--this.stack[1].stackSize;       	
-       	--this.stack[2].stackSize;     	
-       	if (this.stack[1].stackSize <= 0)
-           {
-               this.stack[1] = null;
-           }
-      	if (this.stack[2].stackSize <= 0)
-        {
-            this.stack[2] = null;
-        }
-       }
+         }
+         if(stack[2] != null){
+         if (this.stack[2].stackSize <= 0)
+         {
+             this.stack[2] = null;
+         }
+         }
+         if(stack[3] != null){
+         if (this.stack[3].stackSize <= 0)
+         {
+             this.stack[3] = null;
+         }
+         }
         }	
 	
 
 
 	private ItemStack canchao() {
-   if(stack[1] != null && stack[2] != null && stack[3] == null){//1,2 not null
-	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),stack[2].getItem(),null);
-   }
    if(stack[1] != null && stack[2] == null && stack[3] == null){//1 not null
 	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),null,null);  
    }	
-   if(stack[2] != null && stack[1] != null && stack[3] != null){//1,2,3 not null
-	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),stack[2].getItem(),stack[3].getItem());
+   if(stack[1] != null && stack[2] != null && stack[3] == null){//1,2 not null
+	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),stack[2].getItem(),null);
+   }
+   if(stack[1] != null && stack[2] == null && stack[3] != null){//1,3 not null
+	   return Caibanrecipe.smelting().getOutput(stack[1].getItem(),null,stack[3].getItem());
    }	
-
+   if(stack[1] == null && stack[2] != null && stack[3] == null){//2 not null
+	   return Caibanrecipe.smelting().getOutput(null,stack[2].getItem(),null);
+   }	
+   if(stack[1] == null && stack[2] != null && stack[3] != null){//2,3 not null
+	   return Caibanrecipe.smelting().getOutput(null,stack[2].getItem(),stack[3].getItem());
+   }	
+   if(stack[1] == null && stack[2] != null && stack[3] != null){//3 not null
+	   return Caibanrecipe.smelting().getOutput(null,null,stack[3].getItem());
+   }	
 		return null;
 		 
 	}

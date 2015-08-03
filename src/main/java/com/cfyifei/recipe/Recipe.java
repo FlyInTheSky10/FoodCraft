@@ -2,6 +2,7 @@ package com.cfyifei.recipe;
 
 
 
+import com.cfyifei.FoodCraft;
 import com.cfyifei.block.ModBlocks;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.recipes.Gygrecipe;
@@ -10,6 +11,7 @@ import com.cfyifei.item.ModItem;
 
 
 
+import com.cfyifei.nei.NEIAPI;
 import com.cfyifei.util.RemoveRecipe;
 
 import net.minecraft.enchantment.Enchantment;
@@ -27,7 +29,7 @@ public class Recipe{
 		Items.snowball.setMaxStackSize(64);
 		Items.bread.setTextureName("foodcraft:bread");
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemTiepian, 16), new Object[] {"###", "#X#","###", '#',Items.iron_ingot,'X',Blocks.stone});	
-	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCaidao, 2), new Object[] {"## ", "## ","X  ", '#',ModItem.ItemTiepian,'X',Items.stick});
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCaidao, 1), new Object[] {"## ", "## ","X  ", '#',ModItem.ItemTiepian,'X',Items.stick});
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.cake));
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.bread));
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.pumpkin_pie));
@@ -37,6 +39,8 @@ public class Recipe{
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemYuebing, 1), new Object[] {"AAA", "XBX", "AAA", 'A', ModItem.ItemMianfen, 'B', Items.egg,'X',new ItemStack(Items.dye,1,11)});
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemNiangao, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemNuomifen,'B',ModItem.Itemfan});
 
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemWrench, 1), new Object[] {"A A", " A ", " A ", 'A', Items.iron_ingot});
+	
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCiba, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemNuomifen, 'B', ModItem.Itemwater});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemAici), new Object[] {ModItem.ItemCiba,Blocks.leaves});
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemChangfen, 1), new Object[] {"AAA", "BBB", "CDE", 'A', ModItem.Itemfan, 'B', ModItem.Itemwater, 'C', ModItem.ItemCong, 'D', Items.cooked_porkchop, 'E', ModItem.ItemJiangyou});
@@ -58,7 +62,7 @@ public class Recipe{
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemYifenbeef), new Object[] {ModItem.ItemYifen,Items.cooked_beef});
 	
 	GameRegistry.addRecipe(new ItemStack(Items.cake, 1), new Object[] {"AAA", "BEB", "CCC", 'A', Items.milk_bucket, 'B', Items.sugar, 'C', ModItem.ItemMianfen, 'E', Items.egg});
-	GameRegistry.addRecipe(new ItemStack(Items.bread, 1), new Object[] {"AAA", "   ", "   ", 'A', ModItem.ItemMianfen});
+	GameRegistry.addRecipe(new ItemStack(Items.bread, 1), new Object[] {"AAA", 'A', ModItem.ItemMianfen});
 	GameRegistry.addRecipe(new ItemStack(Items.pumpkin_pie, 1), new Object[] {"AAA", "BBB", "CCC", 'A', ModItem.ItemNuomifen,'B',Blocks.pumpkin,'C',Items.egg});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemHuashen,'B',Blocks.iron_block});
 	GameRegistry.addRecipe(new ItemStack(ModBlocks.BlockWaike, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemDouzi,'B',Blocks.iron_block});
@@ -94,9 +98,13 @@ public class Recipe{
 	GameRegistry.addRecipe(new ItemStack(ModGui.Nt, 1), new Object[] {"ABA", "CDC", "ABA", 'A', Blocks.planks,'B',ModItem.ItemDianluban,'C',Items.diamond,'D',ModBlocks.BlockWaike});
 	GameRegistry.addRecipe(new ItemStack(ModGui.Zl, 1), new Object[] {"ABA", "CDC", "FBF", 'A', Items.flint_and_steel,'B',ModItem.ItemDianluban,'C',Items.diamond,'D',ModBlocks.BlockWaike,'F',Items.redstone});
 	
-	
+	GameRegistry.addSmelting(new ItemStack(ModItem.ItemYouyurou), new ItemStack(ModItem.ItemShuyouyurou), 0.5f);	
+	GameRegistry.addSmelting(new ItemStack(ModItem.ItemYumi), new ItemStack(ModItem.ItemKaoyumi), 0.5f);
+	GameRegistry.addSmelting(new ItemStack(ModItem.ItemHongshu), new ItemStack(ModItem.ItemKaohongshu), 0.5f);
 	GameRegistry.addSmelting(new ItemStack(ModItem.Itemwater), new ItemStack(ModItem.ItemYan, 2), 0.5f);
 	GameRegistry.addSmelting(new ItemStack(Items.milk_bucket), new ItemStack(ModItem.ItemNainao), 0.5f);
+	GameRegistry.addSmelting(new ItemStack(ModItem.ItemYangrou), new ItemStack(ModItem.ItemShuyangrou), 0.5f);
+	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemMianpi, 2), new Object[] {ModItem.ItemMianfen,ModItem.ItemMianfen,ModItem.ItemMianfen,ModItem.Itemwater});
 	
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJiaozi), new Object[] {ModItem.ItemJiaozixian,ModItem.ItemMianpi});
@@ -140,6 +148,18 @@ public class Recipe{
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJinputaozhiice), new Object[] {ModItem.ItemJinputaozhi,Items.snowball});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemXiguazhiice), new Object[] {ModItem.ItemXiguazhi,Items.snowball});
 	
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemLizhizhiice), new Object[] {ModItem.ItemLizhizhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemTaozizhiice), new Object[] {ModItem.ItemTaozizhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJuzizhiice), new Object[] {ModItem.ItemJuzizhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemMangguozhiice), new Object[] {ModItem.ItemMangguozhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemNingmengzhiice), new Object[] {ModItem.ItemNingmengzhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemMuguazhiice), new Object[] {ModItem.ItemMuguazhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemCaomeizhiice), new Object[] {ModItem.ItemCaomeizhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemYezizhiice), new Object[] {ModItem.ItemYezizhi,Items.snowball});
+	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemXiangjiaozhiice), new Object[] {ModItem.ItemXiangjiaozhi,Items.snowball});
+	
+	
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemJinkela, 8), new Object[] {"AAA", "ABA", "AAA", 'A', new ItemStack(Items.dye,1,15),  'B', Items.gold_ingot});
 	
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemSCBlock, 1), new Object[] {
 		"ABC", 
@@ -290,24 +310,27 @@ public class Recipe{
 		'A', ModItem.ItemAnbizhishi, 'B', ModItem.ItemZongjiqianguzhishi, 'D', Items.emerald,
 		});	
 	
-	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemCong,16), new Object[] {ModItem.ItemSCBlock});
+	/*GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemCong,16), new Object[] {ModItem.ItemSCBlock});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemLaweixunliao,16), new Object[] {ModItem.ItemSCPlant});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemXiangchang,16), new Object[] {ModItem.ItemSCShui1});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGalikuai,16), new Object[] {ModItem.ItemSCShui2});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemZongye,16), new Object[] {ModItem.ItemSCYz});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDouban,16), new Object[] {ModItem.ItemSCCn});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemNuomi,16), new Object[] {ModItem.ItemSCKFC});
+	*/
 	
-	
-	registerChestLoot(new ItemStack(ModItem.ItemNuomi), 1, 1, 16);
+	//registerChestLoot(new ItemStack(ModItem.ItemNuomi), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemDouban), 1, 1, 16);
-	registerChestLoot(new ItemStack(ModItem.ItemCong), 1, 1, 16);
+	//registerChestLoot(new ItemStack(ModItem.ItemCong), 1, 1, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemZongye), 1, 10, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemKafei), 1, 1, 10);
 	registerChestLoot(new ItemStack(ModItem.ItemGalikuai), 1, 10, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemHetaosu), 1, 10, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemXiangchang), 1, 10, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemLaweixunliao), 1, 10, 32);
+	if(FoodCraft.IC2IsLoad){
+	new IC2RecipeAdder();
+	}
 	}
     public static void registerChestLoot(ItemStack loot, int min, int max, int rarity)
     {

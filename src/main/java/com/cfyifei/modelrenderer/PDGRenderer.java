@@ -7,6 +7,8 @@ import com.cfyifei.gui.blocks.ModelPDG;
 
 
 
+import com.cfyifei.gui.tileentitys.TileEntityPDG;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.OpenGlHelper;

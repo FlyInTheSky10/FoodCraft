@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -14,16 +15,17 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemCropPlant extends Item implements IPlantable{
+public class ItemCropPlant extends ItemSeeds{
   
 	private Block bb;
 
 	public ItemCropPlant(Block b)
     {
-        super();
-        this.setCreativeTab(FoodCraft.FcTab);
+        super(b, Blocks.farmland);
+        this.setCreativeTab(FoodCraft.FcTabZhiwu);
         this.bb = b;
     }
+	@Override
 	   public boolean onItemUse(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, World par3World, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
 	    {
 	        if (par7 != 1)

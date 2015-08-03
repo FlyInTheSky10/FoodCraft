@@ -83,4 +83,8 @@ public ItemStack getSmeltingResult(ItemStack itemStack) {
 
     return (ItemStack)entry.getValue();
 }
+
+public Map<ItemStack, ItemStack> getSmeltingList() {
+	return this.smeltingList;
+}
 }

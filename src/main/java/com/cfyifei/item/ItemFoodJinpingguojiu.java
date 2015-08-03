@@ -25,13 +25,12 @@ public class ItemFoodJinpingguojiu extends ItemFood{
 	   
 	    protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	    {
-	    
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.invisibility.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.resistance.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 36000, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.nightVision.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.invisibility.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.waterBreathing.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.resistance.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.field_76444_x.id, 3600, 4));
 	            }
 	        
 	    public EnumAction getItemUseAction(ItemStack par1ItemStack)

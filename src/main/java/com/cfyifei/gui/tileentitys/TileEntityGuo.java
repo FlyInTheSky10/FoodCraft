@@ -2,11 +2,17 @@ package com.cfyifei.gui.tileentitys;
 
 
 
+import java.util.List;
+
+import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -16,22 +22,29 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 import com.cfyifei.gui.blocks.BlockGuo;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.recipes.Guorecipe;
 import com.cfyifei.item.ModItem;
+import com.cfyifei.itemstack.CookingOutput;
 
 
 public class TileEntityGuo extends TileEntity implements IInventory{
-	private ItemStack stack[] = new ItemStack[13];
+	private ItemStack stack[] = new ItemStack[14];
 	public int tableBurnTime = 0;
-    public int currentItemBurnTime;
+    public int currentItemBurnTime = 50;
     public int furnaceCookTime;
+    public int frequencyOfUse;
 	private String field_145958_o;
 	public boolean isfire;
 	public ItemStack cai;
+	public int max;
+	public int min;
+	private int w;
+	public int Nowheat = 0;
 
 	@Override
     public void updateEntity() {
@@ -47,21 +60,64 @@ else{
 	}
 }
 
-
 	        if (this.tableBurnTime > 0)
 	        {
 	            --this.tableBurnTime;
 	            
 	        }
-	        
 	        if (!this.worldObj.isRemote)
+	        	
 	        {
+	        	AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.xCoord - 20, this.yCoord - 20, this.zCoord -20, this.xCoord + 20, this.yCoord + 20, this.zCoord + 20);
+	        	List<EntityLivingBase> l1 = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
+	        	for(EntityLivingBase elb : l1){
+	        		if(isfire){
+		    			if(!(elb==null)){
+			    			if((int)(elb.posX)-1 == this.xCoord && (int)(elb.posZ) == this.zCoord && (int)(elb.posY) == this.yCoord){
+			    				if(elb instanceof EntityPlayer){
+			    					if(((EntityPlayer)elb).capabilities.isCreativeMode){
+			    						continue;
+			    					}
+			    				}
+			    				if(!elb.isBurning()){
+		    					elb.setFire(3);
+		    				}
+		    				
+		    			}
+	        	}
+	    			}
+	    			
+	    		}
 	        	cai = this.canchao();
 	            if (isfire && cai != null && isst())
 	            {
 	                ++this.furnaceCookTime;
 
-	    
+	                if(w == 16){
+		            	   Nowheat += (float)((float)currentItemBurnTime/2F);
+		            	   w = 0;
+		               }
+		                	w++;
+		                	 
+		                	if(Nowheat > max){
+		                		if (stack[0] != null){--stack[0].stackSize;if (stack[0].stackSize <= 0){stack[0] = null;}}
+		                		if (stack[1] != null){--stack[1].stackSize;if (stack[1].stackSize <= 0){stack[1] = null;}}
+		                		if (stack[2] != null){--stack[2].stackSize;if (stack[2].stackSize <= 0){stack[2] = null;}}
+		                		if (stack[3] != null){--stack[3].stackSize;if (stack[3].stackSize <= 0){stack[3] = null;}}
+		                		if (stack[4] != null){--stack[4].stackSize;if (stack[4].stackSize <= 0){stack[4] = null;}}
+		                		if (stack[5] != null){--stack[5].stackSize;if (stack[5].stackSize <= 0){stack[5] = null;}}
+		                		if (stack[6] != null){--stack[6].stackSize;if (stack[6].stackSize <= 0){stack[6] = null;}}
+		                		if (stack[7] != null){--stack[7].stackSize;if (stack[7].stackSize <= 0){stack[7] = null;}}
+		                		if (stack[8] != null){--stack[8].stackSize;if (stack[8].stackSize <= 0){stack[8] = null;}}
+		                		if (stack[9] != null){--stack[9].stackSize;if (stack[9].stackSize <= 0){stack[9] = null;}}
+		                		if (stack[10] != null){--stack[10].stackSize;if (stack[10].stackSize <= 0){stack[10] = null;}}
+		                		if (stack[11] != null){--stack[11].stackSize;if (stack[11].stackSize <= 0){stack[11] = null;}}
+			                	 this.stack[13] = new ItemStack(Items.coal);
+			                	this.furnaceCookTime = 0;
+			                	Nowheat = 0;
+			                }
+			                
+		                	 
 	                if (this.furnaceCookTime == 500)
 	                {
 	                    this.furnaceCookTime = 0;
@@ -71,6 +127,7 @@ else{
 	            else
 	            {
 	                this.furnaceCookTime = 0;
+	                Nowheat = 0;
 	            }
 	          }
 	}
@@ -212,6 +269,9 @@ else{
         }
         this.tableBurnTime = par1NBTTagCompound.getShort("tableBurnTime");
         this.furnaceCookTime = par1NBTTagCompound.getShort("furnaceCookTime");
+        this.currentItemBurnTime = par1NBTTagCompound.getShort("currentItemBurnTime");
+        this.frequencyOfUse = par1NBTTagCompound.getShort("frequencyOfUse");
+        this.Nowheat = par1NBTTagCompound.getShort("Nowheat");
     }
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
@@ -219,6 +279,9 @@ else{
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
+        par1NBTTagCompound.setShort("currentItemBurnTime", (short)this.currentItemBurnTime);
+        par1NBTTagCompound.setShort("frequencyOfUse", (short)this.frequencyOfUse);
+        par1NBTTagCompound.setShort("Nowheat", (short)this.Nowheat);     
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < this.stack.length; ++var3)
         {
@@ -244,8 +307,27 @@ else{
    
     public void smeltItem()
     {
-
-          
+    	 if(Nowheat < min){
+        	 this.stack[13] = new ItemStack(stack[0].getItem());	
+        	 if (stack[0] != null){--stack[0].stackSize;if (stack[0].stackSize <= 0){stack[0] = null;}}
+        	 if (stack[1] != null){--stack[1].stackSize;if (stack[1].stackSize <= 0){stack[1] = null;}}
+        	 if (stack[2] != null){--stack[2].stackSize;if (stack[2].stackSize <= 0){stack[2] = null;}}
+        	 if (stack[3] != null){--stack[3].stackSize;if (stack[3].stackSize <= 0){stack[3] = null;}}
+        	 if (stack[4] != null){--stack[4].stackSize;if (stack[4].stackSize <= 0){stack[4] = null;}}
+        	 if (stack[5] != null){--stack[5].stackSize;if (stack[5].stackSize <= 0){stack[5] = null;}}
+        	 if (stack[6] != null){--stack[6].stackSize;if (stack[6].stackSize <= 0){stack[6] = null;}}
+        	 if (stack[7] != null){--stack[7].stackSize;if (stack[7].stackSize <= 0){stack[7] = null;}}
+        	 if (stack[8] != null){--stack[8].stackSize;if (stack[8].stackSize <= 0){stack[8] = null;}}
+        	 if (stack[9] != null){--stack[9].stackSize;if (stack[9].stackSize <= 0){stack[9] = null;}}
+        	 if (stack[10] != null){--stack[10].stackSize;if (stack[10].stackSize <= 0){stack[10] = null;}}
+        	 if (stack[11] != null){--stack[11].stackSize;if (stack[11].stackSize <= 0){stack[11] = null;}}
+        	 Nowheat = 0;
+        	 return;
+         }
+    	 Nowheat = 0;
+     	if(frequencyOfUse < 3000){
+     		frequencyOfUse += 1;
+     	}
             if (this.stack[12] == null)
             {
                 this.stack[12] = cai.copy(); 
@@ -280,15 +362,29 @@ if (stack[11] != null){--stack[11].stackSize;if (stack[11].stackSize <= 0){stack
 
     public ItemStack canchao(){
     	
-    	ItemStack hj = Guorecipe.smelting().getOutput(stack[0], stack[1], stack[2], stack[3], 
+    	CookingOutput hj = Guorecipe.smelting().getOutput(stack[0], stack[1], stack[2], stack[3], 
     			stack[4], stack[5], stack[6], stack[7], stack[8], stack[9], 
     			stack[10], stack[11]);
-        if(hj != null){
-        	return hj;
+    	if(hj != null){
+        if(hj.is != null){
+        	min = hj.min;
+        	max = hj.max;
+        	return hj.is;
         }
         else{
         	return null;
         }
+    	}
+        else{
+        	return null;
+        }
     	
+    }
+
+
+    @SideOnly(Side.CLIENT)
+    public float getBurnTimeRemainingScaled(int int1)
+    {
+        return (((float)this.currentItemBurnTime)* int1) / 100F;
     }
     }

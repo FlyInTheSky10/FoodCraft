@@ -44,7 +44,10 @@ public class GuiGyg extends GuiContainer{
         this.drawTexturedModalRect(k + 118, l + 30, 176, 14, (int)(i1 + 1), 16);
         int i2 = this.tile.getWater();
         this.drawTexturedModalRect(k + 18, l + 14 + 58 - i2, 176, 31 + 58 - i2, 11,(int) (58 * ((float)i2 / 58)));
-
+        
+        if(mouseX >= k + 18 && mouseX <= k + 18 + 11 && mouseY >= l + 14 && mouseY <= l + 14 + 58){
+        	this.drawCreativeTabHoveringText(this.tile.getWater() + "/56", mouseX, mouseY);
+        }
     }
 	
     

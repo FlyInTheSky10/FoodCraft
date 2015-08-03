@@ -66,7 +66,7 @@ public class BlockQiezi extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return  ModItem.ItemQiezi;
+        return  ModItem.ItemQiezizhong;
     }
 
 

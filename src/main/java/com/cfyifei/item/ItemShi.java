@@ -21,7 +21,7 @@ public class ItemShi extends Item {
 
 		this.setUnlocalizedName(x);
 		this.setTextureName("FoodCraft:"+x);
-		this.setCreativeTab(FoodCraft.FcTab);	
+		this.setCreativeTab(CreativeTabs.tabTools);	
 		GameRegistry.registerItem(this, x);
  }
 }

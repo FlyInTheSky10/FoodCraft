@@ -11,7 +11,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 import com.cfyifei.item.ModItem;
-import com.cfyifei.util.FcItemStack;
+import com.cfyifei.itemstack.FoodcraftItemStack;
 
 public class Ntrecipe {
 	private static final Ntrecipe smeltingBase = new Ntrecipe();
@@ -31,13 +31,20 @@ public class Ntrecipe {
 		addrecipe(Items.apple, Items.apple, Items.apple, new ItemStack(ModItem.ItemPingguojiu,3));
 		addrecipe(Items.golden_apple, Items.golden_apple, Items.golden_apple, new ItemStack(ModItem.ItemJinpingguojiu,3));
 		addrecipe(ModItem.ItemJinputao, ModItem.ItemJinputao, ModItem.ItemJinputao, new ItemStack(ModItem.ItemJinputaojiu,3));
+
+		addrecipe(ModItem.ItemLi, ModItem.ItemLi, ModItem.ItemLi, new ItemStack(ModItem.ItemLizijiu,3));
+		addrecipe(ModItem.ItemLizhi, ModItem.ItemLizhi, ModItem.ItemLizhi, new ItemStack(ModItem.ItemLizhijiu,3));
+		addrecipe(ModItem.ItemTaozi, ModItem.ItemTaozi, ModItem.ItemTaozi, new ItemStack(ModItem.ItemTaozijiu,3));
+		addrecipe(ModItem.ItemShiliu, ModItem.ItemShiliu, ModItem.ItemShiliu, new ItemStack(ModItem.ItemShiliujiu,3));
+		addrecipe(ModItem.ItemNingmeng, ModItem.ItemNingmeng, ModItem.ItemNingmeng, new ItemStack(ModItem.ItemNingmengjiu,3));
+		addrecipe(ModItem.ItemMangguo, ModItem.ItemMangguo, ModItem.ItemMangguo, new ItemStack(ModItem.ItemMangguojiu,3));
 	}
 	
 	public void addrecipe(Item Input1 ,Item Input2 ,Item Input3 ,ItemStack Output){
 		Item[] Items = {Input1,Input2,Input3};
-		stack1.put(new FcItemStack(Items), Output);
+		stack1.put(new FoodcraftItemStack(Items), Output);
 	}
-	 private boolean GG(FcItemStack ItemStack1, FcItemStack ItemStack2)
+	 private boolean GG(FoodcraftItemStack ItemStack1, FoodcraftItemStack ItemStack2)
 	 {
 	     return ItemStack2.Stack[0] == ItemStack1.Stack[0] &&
 	            ItemStack2.Stack[1] == ItemStack1.Stack[1] &&
@@ -47,7 +54,7 @@ public class Ntrecipe {
 	 
 	public ItemStack getOutput(Item Input1,Item Input2,Item Input3){
 		Item[] Items = {Input1,Input2,Input3};
-		FcItemStack fis = new FcItemStack(Items);
+		FoodcraftItemStack fis = new FoodcraftItemStack(Items);
 		
 		Iterator iterator1 = stack1.entrySet().iterator();
 	    Entry entry1;
@@ -61,7 +68,7 @@ public class Ntrecipe {
 
 	        entry1 = (Entry)iterator1.next();
 	    }
-	    while (!GG(fis, (FcItemStack)entry1.getKey()));
+	    while (!GG(fis, (FoodcraftItemStack)entry1.getKey()));
 
 	    ItemStack is1 = (ItemStack)entry1.getValue();
 	    
@@ -69,6 +76,10 @@ public class Ntrecipe {
 	    return is1;	    	    
 	    
 
+	}
+
+	public Map<FoodcraftItemStack, ItemStack> getSmeltingList() {
+		return this.stack1;
 	}
 	
 	

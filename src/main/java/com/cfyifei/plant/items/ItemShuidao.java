@@ -20,5 +20,9 @@ public class ItemShuidao extends ItemCropPlant{
     {
         super(b);
     }
-
+	@Override
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
+    {
+        return EnumPlantType.Crop;
+    }
 }

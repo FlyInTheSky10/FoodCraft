@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.cfyifei.item.ModItem;
+import com.cfyifei.itemstack.CookingOutput;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -16,7 +17,7 @@ import net.minecraft.item.ItemStack;
 
 public class PDGrecipe {
 	private static final PDGrecipe smeltingBase = new PDGrecipe();
-    private Map smeltingList = new HashMap();
+    private Map<ItemStack,CookingOutput> smeltingList = new HashMap();
     private Map experienceList = new HashMap();
     public static PDGrecipe smelting()
     {
@@ -25,36 +26,29 @@ public class PDGrecipe {
     
     private PDGrecipe()
     {
-        this.itemregister(Items.egg, new ItemStack(ModItem.ItemJianjidan), 0.5F);
-        this.itemregister(ModItem.ItemMianfen, new ItemStack(ModItem.ItemLaobing), 0.5F);
-        this.itemregister(ModItem.ItemJiaozi, new ItemStack(ModItem.ItemJianjiao), 0.5F);
-        this.itemregister(ModItem.ItemTudoupian, new ItemStack(ModItem.ItemChaotudoupian), 0.5F);
-        this.itemregister(ModItem.ItemMianfensi, new ItemStack(ModItem.ItemMahua), 0.5F);
-        
-        this.itemregister(Items.beef, new ItemStack(Items.cooked_beef), 0.5F);
-        this.itemregister(Items.chicken, new ItemStack(Items.cooked_chicken), 0.5F);
-        this.itemregister(Items.fish, new ItemStack(Items.cooked_fished), 0.5F);
-        this.itemregister(Items.porkchop, new ItemStack(Items.cooked_porkchop), 0.5F);
-        this.itemregister(ModItem.ItemYangrou, new ItemStack(ModItem.ItemShuyangrou), 0.5F);
-        this.itemregister(ModItem.ItemYouyurou, new ItemStack(ModItem.ItemShuyouyurou), 0.5F);
-
+        this.itemregister(Items.egg, new ItemStack(ModItem.ItemJianjidan), 0.5F, 250, 400);
+        this.itemregister(ModItem.ItemMianfen, new ItemStack(ModItem.ItemLaobing), 0.5F, 250, 350);
+        this.itemregister(ModItem.ItemJiaozi, new ItemStack(ModItem.ItemJianjiao), 0.5F, 350, 400);
+        this.itemregister(ModItem.ItemTudoupian, new ItemStack(ModItem.ItemChaotudoupian), 0.5F, 225, 325);
+        this.itemregister(ModItem.ItemMianfensi, new ItemStack(ModItem.ItemMahua), 0.5F, 300, 380);
+        this.itemregister(ModItem.ItemYumi, new ItemStack(ModItem.ItemBaoyumihua), 0.5F, 250, 330);
     }
    
 	     
 	
-	public void blockregister(Block Block, ItemStack ItemStack, float xp)
+	public void blockregister(Block Block, ItemStack ItemStack, float xp, int min, int max)
     {
-        this.itemregister(Item.getItemFromBlock(Block), ItemStack, xp);
+        this.itemregister(Item.getItemFromBlock(Block), ItemStack, xp, min, max);
     }
 	  
-	public void itemregister(Item Item, ItemStack ItemStack, float xp)
+	public void itemregister(Item Item, ItemStack ItemStack, float xp, int min, int max)
 	    {
-	        this.register(new ItemStack(Item, 1, 32767), ItemStack, xp);
+	        this.register(new ItemStack(Item, 1, 32767), ItemStack, xp, min, max);
 	    }
 
- public void register(ItemStack ItemStack, ItemStack ItemStack2, float xp)
+ public void register(ItemStack ItemStack, ItemStack ItemStack2, float xp ,int min, int max)
 	    {
-	        this.smeltingList.put(ItemStack, ItemStack2);
+	        this.smeltingList.put(ItemStack, new CookingOutput(ItemStack2,min,max));
 	        this.experienceList.put(ItemStack2, Float.valueOf(xp));
 	    }
 
@@ -64,7 +58,7 @@ public class PDGrecipe {
      return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
  }
 
-public ItemStack getSmeltingResult(ItemStack itemStack) {
+public CookingOutput getSmeltingResult(ItemStack itemStack) {
     Iterator iterator = this.smeltingList.entrySet().iterator();
     Entry entry;
 
@@ -79,6 +73,10 @@ public ItemStack getSmeltingResult(ItemStack itemStack) {
     }
     while (!this.func_151397_a(itemStack, (ItemStack)entry.getKey()));
 
-    return (ItemStack)entry.getValue();
+    return (CookingOutput)entry.getValue();
+}
+
+public Map<ItemStack, CookingOutput> getSmeltingList() {
+	return this.smeltingList;
 }
 }

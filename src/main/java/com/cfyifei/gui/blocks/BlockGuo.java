@@ -4,9 +4,14 @@ import java.util.Random;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
+import com.cfyifei.block.ModBlocks;
+import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.gui.tileentitys.TileEntityGuo;
 
 
+
+
+import com.cfyifei.gui.tileentitys.TileEntityPDG;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -14,6 +19,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -60,12 +66,14 @@ import net.minecraft.world.World;
 	        }
 	        public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
 	        {
-	            return Item.getItemFromBlock(ModGui.Guo);
+	        	return NERConfigHandler.booleanwrench ? 
+	        			Item.getItemFromBlock(ModBlocks.BlockWaike) : Item.getItemFromBlock(ModGui.Guo);
+	           
 	        }
 	        @SideOnly(Side.CLIENT)
 	        public Item getItem(World w, int x, int y, int z)
 	        {
-	            return Item.getItemFromBlock(ModGui.Guo);
+	        	 return Item.getItemFromBlock(ModGui.Guo);
 	        }
 	    	@Override
 	    	public boolean onBlockActivated(World par1World, int par2, int par3,
@@ -128,5 +136,21 @@ import net.minecraft.world.World;
 		  //world.setBlock(x, y - 1, z,Blocks.stone);
 		  return world.getBlock(x, y - 1, z) == Blocks.fire;
 	  }
+	  public static int getFrequencyOfUse(ItemStack item)
+	  {
+	    if (item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
+	    return item.getTagCompound().getInteger("frequencyOfUse");
+	  }
+	 
+
+	    public void onBlockPlacedBy(World w, int x, int y, int z, EntityLivingBase elb, ItemStack is) 
+	    {
+	    	if (is.getTagCompound() != null)
+	        {
+	          int xh = getFrequencyOfUse(is);
+	          TileEntityGuo tep = (TileEntityGuo)w.getTileEntity(x,y,z);
+	          tep.frequencyOfUse = xh;
+	        }
+	    }
 	}
 

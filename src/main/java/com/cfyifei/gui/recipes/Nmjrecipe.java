@@ -17,7 +17,7 @@ import net.minecraft.item.ItemStack;
 
 public class Nmjrecipe {
 	private static final Nmjrecipe smeltingBase = new Nmjrecipe();
-    private Map smeltingList = new HashMap();
+	public Map smeltingList = new HashMap();
     private Map experienceList = new HashMap();
     public static Nmjrecipe smelting()
     {
@@ -33,6 +33,7 @@ public class Nmjrecipe {
         this.itemregister(Items.potato, new ItemStack(ModItem.ItemDianfen,8), 0.5F);
         this.register(new ItemStack(Items.dye,1,3), new ItemStack(ModItem.ItemQiaokelifen), 0.5F);
         this.itemregister(ModItem.ItemNuomi,  new ItemStack(ModItem.ItemNuomifen,3), 0.5F);
+        this.itemregister(ModItem.ItemHongdou,  new ItemStack(ModItem.ItemDousha,2), 0.5F);
     }
    
 	     
@@ -76,4 +77,9 @@ public ItemStack getSmeltingResult(ItemStack itemStack) {
 
     return (ItemStack)entry.getValue();
 }
+
+    public Map getSmeltingList()
+    {
+        return this.smeltingList;
+    }
 }

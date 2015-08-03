@@ -8,6 +8,7 @@ import com.google.common.collect.Sets;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
@@ -25,7 +26,7 @@ public class ItemAnTools extends ItemTool{
 	 super(9f, EnumHelper.addToolMaterial("An", 3, 5000, 8.0F, 3.0F, 15), new HashSet());
 	 this.setUnlocalizedName(x);
 	 this.setTextureName("foodcraft:"+x);
-	 this.setCreativeTab(FoodCraft.FcTab);
+	 this.setCreativeTab(CreativeTabs.tabTools);
 	 GameRegistry.registerItem(this, x);
 	 }
 

@@ -27,12 +27,12 @@ public class ItemFoodJinputaojiu extends ItemFood{
 	    {
 	    	
 	 
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.heal.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 36000, 4));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 36000, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.heal.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 3600, 4));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 3600, 4));
 	       
 	            }
 	        

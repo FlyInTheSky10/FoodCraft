@@ -1,5 +1,7 @@
 package com.cfyifei.gui.tileentitys;
 
+import java.util.List;
+
 import com.cfyifei.gui.recipes.PDGrecipe;
 
 import cpw.mods.fml.relauncher.Side;
@@ -7,6 +9,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -16,20 +19,26 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 import com.cfyifei.gui.blocks.BlockPDG;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.ContainerPDG;
+import com.cfyifei.itemstack.CookingOutput;
 
 
 public class TileEntityPDG extends TileEntity implements IInventory{
-	private ItemStack stack[] = new ItemStack[3];
-	public int tableBurnTime = 0;
-    public int currentItemBurnTime;
+	private ItemStack stack[] = new ItemStack[4];
+	public int Nowheat = 0;
+	public int tableBurnTime = 1;//max
+    public int currentItemBurnTime = 50;
     public int furnaceCookTime;
-	private String field_145958_o;
+    public int frequencyOfUse;
 	public boolean isfire;
+	public int max;
+	public int min;
+	private int w;
 
 
 	@Override
@@ -49,20 +58,51 @@ else{
 
 	        
 
-	        if (this.tableBurnTime > 0)
-	        {
-	            --this.tableBurnTime;
-	            
-	        }
-	        
 	        if (!this.worldObj.isRemote)
 	        {
-
+	        	AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.xCoord - 20, this.yCoord - 20, this.zCoord -20, this.xCoord + 20, this.yCoord + 20, this.zCoord + 20);
+	        	List<EntityLivingBase> l1 = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
+	        	for(EntityLivingBase elb : l1){
+	        		if(isfire){
+		    			if(!(elb==null)){
+			    			if((int)(elb.posX)-1 == this.xCoord && (int)(elb.posZ) == this.zCoord && (int)(elb.posY) == this.yCoord){
+			    				if(elb instanceof EntityPlayer){
+			    					if(((EntityPlayer)elb).capabilities.isCreativeMode){
+			    						continue;
+			    					}
+			    				}
+			    				if(!elb.isBurning()){
+		    					elb.setFire(3);
+		    				}
+		    				
+		    			}
+	        	}
+	    			}
+	        		else{
+	        			if(currentItemBurnTime < 0){
+	        				currentItemBurnTime = 0;
+	        			}
+	        		}
+	    			
+	    		}
 	            if (isfire && this.canSmelt())
 	            {
-	                ++this.furnaceCookTime;
-
-	              // this.worldObj.setBlock(this.xCoord, this.yCoord, this.zCoord,this.worldObj.getBlock(this.xCoord, this.yCoord, this.zCoord-2));
+	                this.furnaceCookTime = this.furnaceCookTime + 1;
+	               if(w == 16){
+	            	   Nowheat += (float)((float)currentItemBurnTime/2F);
+	            	   w = 0;
+	               }
+	                	w++;
+	                if(Nowheat > max){
+	                	 --this.stack[0].stackSize;
+	                	 this.stack[2] = new ItemStack(Items.coal);
+	                	this.furnaceCookTime = 0;
+	                	Nowheat = 0;
+	                	if(stack[0].stackSize <= 0){
+	                		stack[0]=null;
+	                	}
+	                }
+	                
 	                if (this.furnaceCookTime == 400)
 	                {
 	                    this.furnaceCookTime = 0;
@@ -72,6 +112,7 @@ else{
 	            else
 	            {
 	                this.furnaceCookTime = 0;
+	                Nowheat = 0;
 	            }
 	          }
 	}
@@ -92,7 +133,6 @@ else{
 
 	@Override
     public ItemStack decrStackSize(int par1, int par2) {
-            // TODO Auto-generated method stub
             if (this.stack[par1] != null)
     {
         ItemStack var3;
@@ -203,6 +243,9 @@ else{
         }
         this.tableBurnTime = par1NBTTagCompound.getShort("tableBurnTime");
         this.furnaceCookTime = par1NBTTagCompound.getShort("furnaceCookTime");
+        this.currentItemBurnTime = par1NBTTagCompound.getShort("currentItemBurnTime");
+        this.frequencyOfUse = par1NBTTagCompound.getShort("frequencyOfUse");
+        this.Nowheat = par1NBTTagCompound.getShort("Nowheat");
     }
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
@@ -210,6 +253,9 @@ else{
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
+        par1NBTTagCompound.setShort("currentItemBurnTime", (short)this.currentItemBurnTime);
+        par1NBTTagCompound.setShort("frequencyOfUse", (short)this.frequencyOfUse);
+        par1NBTTagCompound.setShort("Nowheat", (short)this.Nowheat);     
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < this.stack.length; ++var3)
         {
@@ -235,7 +281,13 @@ else{
         }
         else
         {
-            ItemStack itemstack = PDGrecipe.smelting().getSmeltingResult(this.stack[0]);
+            CookingOutput pdgc = PDGrecipe.smelting().getSmeltingResult(this.stack[0]);
+            if(pdgc == null){
+            	return false;
+            }
+        	ItemStack itemstack = pdgc.is;
+            this.min = pdgc.min;
+            this.max = pdgc.max;
             if (itemstack == null) return false;
             if (this.stack[1] == null) return true;
             if (!this.stack[1].isItemEqual(itemstack)) return false;
@@ -243,17 +295,23 @@ else{
             return result <= getInventoryStackLimit() && result <= this.stack[1].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
-    public boolean isBurning()
-    {
-        return this.tableBurnTime > 0;
-    }
-   
+
     public void smeltItem()
     {
         if (this.canSmelt())
         {
-            ItemStack itemstack = PDGrecipe.smelting().getSmeltingResult(this.stack[0]);
-
+        	 CookingOutput pdgc = PDGrecipe.smelting().getSmeltingResult(this.stack[0]);
+             ItemStack itemstack = pdgc.is;
+             if(Nowheat < min){
+            	 this.stack[2] = new ItemStack(stack[0].getItem());
+            	 --this.stack[0].stackSize;
+            	 if (this.stack[0].stackSize <= 0)
+                 {
+                     this.stack[0] = null;
+                 }
+            	 Nowheat = 0;
+            	 return;
+             }
             if (this.stack[1] == null)
             {
                 this.stack[1] = itemstack.copy();
@@ -269,6 +327,10 @@ else{
             {
                 this.stack[0] = null;
             }
+            Nowheat = 0;
+        	if(frequencyOfUse < 3000){
+        		frequencyOfUse += 1;
+        	}
         }
     }
 
@@ -278,4 +340,14 @@ else{
         return this.furnaceCookTime * int1 / 400;
     }
 
+
+    @SideOnly(Side.CLIENT)
+    public float getBurnTimeRemainingScaled(int int1)
+    {
+        return (((float)this.currentItemBurnTime)* int1) / 100F;
+    }
+    
+    public void setcurrentItemBurnTime(int a){
+    	currentItemBurnTime = a;
+    }
 }

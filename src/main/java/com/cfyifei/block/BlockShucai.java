@@ -66,7 +66,7 @@ public class BlockShucai extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return  ModItem.ItemShucai;
+        return  ModItem.ItemShucaizhong;
     }
 
 

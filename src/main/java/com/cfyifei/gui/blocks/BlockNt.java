@@ -7,9 +7,11 @@ import java.util.Random;
 
 
 
+
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
-
+import com.cfyifei.block.ModBlocks;
+import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.gui.tileentitys.TileEntityNt;
 
 import cpw.mods.fml.relauncher.Side;
@@ -219,7 +221,8 @@ public class BlockNt extends BlockContainer{
 
 public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_)
     {
-        return Item.getItemFromBlock(ModGui.Nt);
+	return NERConfigHandler.booleanwrench ? 
+			Item.getItemFromBlock(ModBlocks.BlockWaike) : Item.getItemFromBlock(ModGui.Nt);
     }
 @SideOnly(Side.CLIENT)
 public Item getItem(World w, int x, int y, int z)

@@ -15,14 +15,7 @@ public class FcAPI {
 	 *
 	 */
 	public static String getVersion(){
-		return "1.1.5";
-	}
-	/**
-	 * Get the mod creativeTab.
-	 *
-	 */
-	public static CreativeTabs getCreativeTab(){
-		return FoodCraft.FcTab;
+		return "1.2.0";
 	}
 	
 	

@@ -7,6 +7,7 @@ import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.*;
 import com.cfyifei.gui.tileentitys.*;
 import com.cfyifei.item.ModItem;
+import com.cfyifei.plant.blocks.Plant;
 import com.cfyifei.recipe.Recipe;
 import com.cfyifei.util.GUIHandler;
 
@@ -28,6 +29,7 @@ public class CommonProxy{
 		ModGui.init();
 		ModItem.init();
 		Recipe.init();
+		Plant.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new GUIHandler());
 	}
 	

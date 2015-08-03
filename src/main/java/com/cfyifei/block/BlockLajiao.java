@@ -66,7 +66,7 @@ public class BlockLajiao extends BlockCrops
     @Override
     protected Item func_149866_i()
     {
-        return  ModItem.ItemLajiao;
+        return  ModItem.ItemLajiaozhong;
     }
 
 
