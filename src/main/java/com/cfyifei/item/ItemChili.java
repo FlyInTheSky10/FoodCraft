@@ -6,15 +6,18 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemChili extends ITemFood {
 
-    public ItemChili() {
-	super(3, 1F, false, "ItemLajiao");
-    }
 
-    protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+public class ItemChili extends ITemFood{
 
-	par3EntityPlayer.setFire(3);
-    }
+	public ItemChili() {
+		super(3, 1F, false, "ItemLajiao");
+	}
+	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+    {
+    
+     par3EntityPlayer.setFire(3);
+            }
+
 
 }

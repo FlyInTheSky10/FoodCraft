@@ -14,11 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-public class ItemTest extends Item {
+public class ItemTest extends Item{
+            
 
-    public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+{
 	par3EntityPlayer.getFoodStats().setFoodLevel(0);
-	return par1ItemStack;
-
-    }
+        return par1ItemStack;
+    
+}
 }

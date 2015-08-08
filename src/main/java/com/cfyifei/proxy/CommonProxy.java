@@ -21,37 +21,36 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.IGuiHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 
-public class CommonProxy {
-
-    public void preInit(FMLPreInitializationEvent event) {
-
-    }
-
-    public void init(FMLInitializationEvent event) {
-	ModBlocks.init();
-	ModGui.init();
-	ModItem.init();
-	Recipe.init();
-	Plant.init();
-	NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new GUIHandler());
-    }
-
-    public void postInit(FMLPostInitializationEvent event) {
-	if (com.cfyifei.FoodCraft.MTIsLoad) {
-	    MineTweakerAPI.registerClassRegistry(MinetweakerCompat.class);
+public class CommonProxy{
+	public void preInit(FMLPreInitializationEvent event) {
+		
 	}
-    }
-
-    public void registerBlockModels() {
-
-    }
-
-    public void registerItemModels() {
-
-    }
-
-    public void registerRenders() {
-
-    }
-
+	
+	public void init(FMLInitializationEvent event) {
+		ModBlocks.init();
+		ModGui.init();
+		ModItem.init();
+		Recipe.init();
+		Plant.init();
+		NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new GUIHandler());
+	}
+	
+	public void postInit(FMLPostInitializationEvent event) {
+		if (com.cfyifei.FoodCraft.MTIsLoad)
+			MineTweakerAPI.registerClassRegistry(MinetweakerCompat.class);
+	}
+	
+	public void registerBlockModels() {
+		
+	}
+	
+	public void registerItemModels() {
+		
+	}
+	
+	public void registerRenders() {
+		
+	}
+	
+	
 }

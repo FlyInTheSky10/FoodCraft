@@ -14,10 +14,11 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemShucai extends ItemCropPlant {
+public class ItemShucai extends ItemCropPlant{
 
-    public ItemShucai(Block b) {
-	super(b);
+	public ItemShucai(Block b)
+    {
+        super(b);
     }
 
 }

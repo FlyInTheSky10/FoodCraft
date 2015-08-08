@@ -14,10 +14,11 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemHuashen extends ItemCropPlant {
+public class ItemHuashen extends ItemCropPlant{
 
-    public ItemHuashen(Block b) {
-	super(b);
+	public ItemHuashen(Block b)
+    {
+        super(b);
     }
 
 }

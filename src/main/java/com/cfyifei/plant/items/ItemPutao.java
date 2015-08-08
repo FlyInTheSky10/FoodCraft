@@ -14,10 +14,12 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemPutao extends ItemCropPlant {
 
-    public ItemPutao(Block b) {
-	super(b);
-    }
+	public class ItemPutao extends ItemCropPlant{
 
-}
+		public ItemPutao(Block b)
+	    {
+	        super(b);
+	    }
+
+	}

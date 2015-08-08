@@ -9,33 +9,36 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
 
+
+
+
 public class GygItemRenderer implements IItemRenderer {
 
-    private ModelGYG model;
-    private TileEntity te;
-    private double x, y, z;
+	private ModelGYG model;
+	private TileEntity te;
+	private double x, y, z;
 
-    public GygItemRenderer(TileEntity tileentity, double xloc, double yloc, double zloc) {
-	model = new ModelGYG();
-	if (tileentity == null) {
-	    return;
+	public GygItemRenderer(TileEntity tileentity, double xloc, double yloc, double zloc) {
+		model = new ModelGYG();
+		if (tileentity == null) {
+			return;
+		}
+		te = tileentity;
+		x = xloc;
+		y = yloc;
+		z = zloc;
 	}
-	te = tileentity;
-	x = xloc;
-	y = yloc;
-	z = zloc;
-    }
 
-    public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-	return true;
-    }
+	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+		return true;
+	}
 
-    public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-	return true;
-    }
+	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
+		return true;
+	}
 
-    public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
-	TileEntityRendererDispatcher.instance.renderTileEntityAt(te, x, y, z, 0.0F);
-    }
+	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
+		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, x, y, z, 0.0F);
+	}
 
 }
