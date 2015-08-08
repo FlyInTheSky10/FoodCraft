@@ -14,10 +14,9 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemLajiao extends ItemCropPlant{
+public class ItemLajiao extends ItemCropPlant {
 
-	public ItemLajiao(Block b)
-    {
-        super(b);
+    public ItemLajiao(Block b) {
+	super(b);
     }
 }

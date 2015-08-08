@@ -14,15 +14,14 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemShuidao extends ItemCropPlant{
+public class ItemShuidao extends ItemCropPlant {
 
-	public ItemShuidao(Block b)
-    {
-        super(b);
+    public ItemShuidao(Block b) {
+	super(b);
     }
-	@Override
-    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
-    {
-        return EnumPlantType.Crop;
+
+    @Override
+    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z) {
+	return EnumPlantType.Crop;
     }
 }

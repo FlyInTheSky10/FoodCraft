@@ -10,44 +10,39 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 
-public class ItemFoodJiu extends ItemFood{
+public class ItemFoodJiu extends ItemFood {
 
+    public ItemFoodJiu(int amount, float saturation, boolean isWolfFood, String name) {
+	super((int) saturation, saturation / 3F, isWolfFood);
+	this.setUnlocalizedName(name);
 
-		public ItemFoodJiu(int amount, float saturation, boolean isWolfFood, String name) {
-			super((int)saturation, saturation/3F, isWolfFood);
-			this.setUnlocalizedName(name);
+    }
 
-		}
-	    public boolean hasEffect(ItemStack par1ItemStack)
-	    {
-	        return true;
+    public boolean hasEffect(ItemStack par1ItemStack) {
+	return true;
+    }
+
+    protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+
+	if (!par2World.isRemote) {
+
+	    int e = par2World.rand.nextInt(2);
+	    if (e == 1) {
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.heal.id, 600, 3));
+	    } else {
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 600, 3));
+		par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.confusion.id, 600, 3));
 	    }
-	   
-	    protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-	    {
-	    	
-	            if (!par2World.isRemote)
-	            {
-	            	
-	            	int e = par2World.rand.nextInt(2);
-	            	if(e == 1){
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 600, 3));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 3));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 600, 3));
-	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.heal.id, 600, 3));
-	            	}
-	            	else{
-	                    par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id, 600, 3));
-		                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 600, 3));
-		                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 600, 3));
-		                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.confusion.id, 600, 3));
-	            	}
-	  
-	            }
-	        }
-	    public EnumAction getItemUseAction(ItemStack par1ItemStack)
-	    {
-	        return EnumAction.drink;
-	    }
+
 	}
+    }
 
+    public EnumAction getItemUseAction(ItemStack par1ItemStack) {
+	return EnumAction.drink;
+    }
+}
