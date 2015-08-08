@@ -2,6 +2,8 @@ package com.cfyifei.item;
 
 import java.util.List;
 
+import com.cfyifei.block.ModBlocks;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,13 +13,14 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemDangao extends Item{
 	String[] s = new String[]{"ItemPutaoDG","ItemJinputaoDG","ItemLiDG","ItemTaoziDG","ItemJuziDG","ItemNingmengDG","ItemCaomeiDG","ItemYeziDG"};
-	Block[] block = new Block[]{};
+	Block[] b = new Block[]{ModBlocks.BlockPutaoDG,ModBlocks.BlockJinputaoDG,ModBlocks.BlockLiDG,ModBlocks.BlockTaoziDG,ModBlocks.BlockJuziDG,ModBlocks.BlockNingmengDG,ModBlocks.BlockCaomeiDG,ModBlocks.BlockYeziDG};
 	IIcon[] ii = new IIcon[8];
 	public ItemDangao() {
 		this.setHasSubtypes(true);
@@ -43,7 +46,7 @@ public class ItemDangao extends Item{
  @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister p_94581_1_)
     {
-	 for(int i1 = 0;i1 > 8;i1++){
+	 for(int i1 = 0;i1 < 8;i1++){
 		 ii[i1] = p_94581_1_.registerIcon("foodcraft:" + s[i1]);
 	 }
     }
@@ -109,19 +112,19 @@ public class ItemDangao extends Item{
         }
         else
         {
-            if (p_77648_3_.canPlaceEntityOnSide(this.block[p_77648_1_.getItemDamage()], p_77648_4_, p_77648_5_, p_77648_6_, false, p_77648_7_, (Entity)null, p_77648_1_))
+            if (p_77648_3_.canPlaceEntityOnSide(b[p_77648_1_.getItemDamage()], p_77648_4_, p_77648_5_, p_77648_6_, false, p_77648_7_, (Entity)null, p_77648_1_))
             {
-                int i1 = this.block[p_77648_1_.getItemDamage()].onBlockPlaced(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_, 0);
+                int i1 = b[p_77648_1_.getItemDamage()].onBlockPlaced(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_, 0);
 
-                if (p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, this.block[p_77648_1_.getItemDamage()], i1, 3))
+                if (p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, b[p_77648_1_.getItemDamage()], i1, 3))
                 {
-                    if (p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_) == this.block[p_77648_1_.getItemDamage()])
+                    if (p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_) == b[p_77648_1_.getItemDamage()])
                     {
-                        this.block[p_77648_1_.getItemDamage()].onBlockPlacedBy(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_2_, p_77648_1_);
-                        this.block[p_77648_1_.getItemDamage()].onPostBlockPlaced(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, i1);
+                    	b[p_77648_1_.getItemDamage()].onBlockPlacedBy(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_2_, p_77648_1_);
+                    	b[p_77648_1_.getItemDamage()].onPostBlockPlaced(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, i1);
                     }
 
-                    p_77648_3_.playSoundEffect((double)((float)p_77648_4_ + 0.5F), (double)((float)p_77648_5_ + 0.5F), (double)((float)p_77648_6_ + 0.5F), this.block[p_77648_1_.getItemDamage()].stepSound.func_150496_b(), (this.block[p_77648_1_.getItemDamage()].stepSound.getVolume() + 1.0F) / 2.0F, this.block[p_77648_1_.getItemDamage()].stepSound.getPitch() * 0.8F);
+                    p_77648_3_.playSoundEffect((double)((float)p_77648_4_ + 0.5F), (double)((float)p_77648_5_ + 0.5F), (double)((float)p_77648_6_ + 0.5F), b[p_77648_1_.getItemDamage()].stepSound.func_150496_b(), (b[p_77648_1_.getItemDamage()].stepSound.getVolume() + 1.0F) / 2.0F, b[p_77648_1_.getItemDamage()].stepSound.getPitch() * 0.8F);
                     --p_77648_1_.stackSize;
                 }
             }

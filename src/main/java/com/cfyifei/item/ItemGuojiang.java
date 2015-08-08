@@ -38,7 +38,7 @@ public class ItemGuojiang extends Item{
 	 @SideOnly(Side.CLIENT)
 	    public void registerIcons(IIconRegister p_94581_1_)
 	    {
-		 for(int i1 = 0;i1 > 8;i1++){
+		 for(int i1 = 0;i1 < 8;i1++){
 			 ii[i1] = p_94581_1_.registerIcon("foodcraft:" + s[i1]);
 		 }
 	    }

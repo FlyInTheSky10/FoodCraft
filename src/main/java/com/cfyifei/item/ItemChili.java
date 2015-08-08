@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 public class ItemChili extends ITemFood{
 
 	public ItemChili() {
-		super(3, 3F, false, "ItemLajiao");
+		super(3, 1F, false, "ItemLajiao");
 	}
 	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {

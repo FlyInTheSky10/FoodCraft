@@ -14,7 +14,7 @@ public class ItemFoodJiu extends ItemFood{
 
 
 		public ItemFoodJiu(int amount, float saturation, boolean isWolfFood, String name) {
-			super((int)saturation, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}
@@ -28,8 +28,8 @@ public class ItemFoodJiu extends ItemFood{
 	    	
 	            if (!par2World.isRemote)
 	            {
-	            	Random r = new Random();  
-	            	int e = r.nextInt(2);
+	            	
+	            	int e = par2World.rand.nextInt(2);
 	            	if(e == 1){
 	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 600, 3));
 	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 600, 3));

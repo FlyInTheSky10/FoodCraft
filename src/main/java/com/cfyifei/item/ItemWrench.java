@@ -6,6 +6,9 @@ import com.cfyifei.gui.blocks.BlockTpj;
 import com.cfyifei.gui.blocks.BlockYZJ;
 import com.cfyifei.gui.blocks.BlockZl;
 import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.tileentitys.TileEntityGuo;
+import com.cfyifei.gui.tileentitys.TileEntityPDG;
+import com.cfyifei.util.FoodcraftSubscribeEvent;
 import com.cfyifei.util.FoodcraftUtil;
 
 import net.minecraft.block.material.Material;
@@ -15,6 +18,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -51,6 +56,7 @@ public class ItemWrench extends Item{
 		                return par1ItemStack;
 		            }
 		            //*****************************************************
+		            TileEntity te = par2World.getTileEntity(i, j, k);
 		            if (par2World.getBlock(i, j, k) == ModGui.Caiban)
 		            {
 		            	
@@ -62,10 +68,17 @@ public class ItemWrench extends Item{
 		            }
 		            if (par2World.getBlock(i, j, k) == ModGui.Guo)
 		            {
-		            	
-		            	par2World.setBlockToAir(i, j, k);
 		            	if(!par2World.isRemote){
-		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Guo));
+		            		 if ((te != null) && ((te instanceof TileEntityGuo)))
+		            		  {
+		            			  TileEntityGuo t = (TileEntityGuo)te;
+		            		    ItemStack stack = new ItemStack(ModGui.Guo);
+		            		    FoodcraftSubscribeEvent.setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
+	
+		            		    	par2World.setBlockToAir(i, j, k);
+		            		    	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, stack);
+		            			
+		            		  }
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
@@ -98,10 +111,16 @@ public class ItemWrench extends Item{
 		            }
 		            if (par2World.getBlock(i, j, k) == ModGui.PDG)
 		            {
-		            	
-		            	par2World.setBlockToAir(i, j, k);
 		            	if(!par2World.isRemote){
-		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.PDG));
+		            		 if ((te != null) && ((te instanceof TileEntityPDG)))
+		            		  {
+		            			  TileEntityPDG t = (TileEntityPDG)te;
+		            		    ItemStack stack = new ItemStack(ModGui.PDG);
+		            		    FoodcraftSubscribeEvent.setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
+		            		    	par2World.setBlockToAir(i, j, k);
+		            		    	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, stack);
+		            			
+		            		  }
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
@@ -132,6 +151,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
+
 		          //*****************************************************
 		        }
 		        return par1ItemStack;

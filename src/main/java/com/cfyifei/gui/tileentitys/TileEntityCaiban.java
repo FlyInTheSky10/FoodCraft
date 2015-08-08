@@ -20,6 +20,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+import com.cfyifei.api.IItemKitchenKnife;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.recipes.Caibanrecipe;
 import com.cfyifei.item.ModItem;
@@ -32,20 +33,23 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
     public int furnaceCookTime;
 	private String field_145958_o;
 	public ItemStack cai;
+	public int q = 0;
 
 	@Override
     public void updateEntity() {
 
 	        if (!this.worldObj.isRemote)
 	        {
+	        	
 	        	cai = this.canchao();
 	            if (stack[0] != null)
 	            {
 	            	if (stack[0].getItem() == ModItem.ItemCaidao){
 	            		if(cai != null){	    
 	            			if(isst()){
+	            				q = 0;
 	            			s();
-	            			if(stack[0].getItemDamage() < 59){
+	            			if(stack[0].getItemDamage() < stack[0].getMaxDamage()){
 	            			stack[0].setItemDamage(stack[0].getItemDamage() + 1);
 	            			}
 	            	        
@@ -54,6 +58,23 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
 	            			}
 	            		}
 	            	}
+	            	}
+	            	if(stack[0].getItem() instanceof IItemKitchenKnife){
+	            		if(cai != null){
+	            			if(isst()){
+	            			IItemKitchenKnife iikk = (IItemKitchenKnife)stack[0].getItem();
+
+	            			q = iikk.event(worldObj, xCoord, yCoord, zCoord, cai, cai.stackSize);
+	            			s();
+	            			if(stack[0].getItemDamage() < iikk.getMaxUses()){
+		            			stack[0].setItemDamage(stack[0].getItemDamage() + 1);
+		            			}
+		            	        
+		            			else{
+		            				stack[0] = null;
+		            			}
+	            			}
+	            		}
 	            	}
 	          }
 	            }
@@ -79,12 +100,16 @@ public class TileEntityCaiban extends TileEntity implements IInventory{
          if (this.stack[4] == null)
          {
             this.stack[4] = cai.copy();
-
+            if(this.stack[4].stackSize + q <= 64){
+           	 this.stack[4].stackSize += q;
+            } 
          }
          else if (this.stack[4].getItem() == cai.getItem())
          {
-       
         	 this.stack[4].stackSize += cai.stackSize; // Forge BugFix: Results may have multiple items
+             if(this.stack[4].stackSize + q <= 64){
+            	 this.stack[4].stackSize += q;
+             }
          
          }
        

@@ -14,7 +14,7 @@ public class ItemFoodJinputaojiu extends ItemFood{
 
 
 		public ItemFoodJinputaojiu(int amount, float saturation, boolean isWolfFood, String name) {
-			super((int)saturation, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}
@@ -22,7 +22,7 @@ public class ItemFoodJinputaojiu extends ItemFood{
 	    {
 	        return true;
 	    }
-	   
+	    @Override
 	    protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
 	    {
 	    	

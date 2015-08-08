@@ -6,15 +6,19 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
 public class ItemBinggan extends ITemFood{
 	public ItemBinggan(int amount, float saturation, boolean isWolfFood,
 			String name) {
-		super(amount, saturation, isWolfFood, name);
+		super((int)saturation, saturation, isWolfFood, name);
 		 this.setHasSubtypes(true);
 	}
 
@@ -24,6 +28,17 @@ public class ItemBinggan extends ITemFood{
 	    public boolean hasEffect(ItemStack p_77636_1_)
 	    {
 	        return p_77636_1_.getItemDamage() == 1;
+	    }
+	    @Override
+	    protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	    {
+	    	
+	 if(par1ItemStack.getItemDamage() == 1){
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.jump.id, 1200, 1));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.moveSpeed.id, 1200, 1));
+	                par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 1200, 1));
+	 }
+	       
 	    }
 	 @SideOnly(Side.CLIENT)
 	    public void getSubItems(Item p_150895_1_, CreativeTabs p_150895_2_, List p_150895_3_)
@@ -40,7 +55,7 @@ public class ItemBinggan extends ITemFood{
 	 @SideOnly(Side.CLIENT)
 	    public void registerIcons(IIconRegister p_94581_1_)
 	    {
-		 for(int i1 = 0;i1 > 8;i1++){
+		 for(int i1 = 0;i1 < 8;i1++){
 			 ii[i1] = p_94581_1_.registerIcon("foodcraft:" + s[i1]);
 		 }
 	    }

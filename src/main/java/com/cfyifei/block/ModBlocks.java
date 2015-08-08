@@ -30,7 +30,15 @@ public class ModBlocks {
 	public static Block BlockYumi;
 	public static Block BlockHuanggua;
 	public static Block BlockCaomei;
-
+	
+	public static Block BlockPutaoDG;
+	public static Block BlockJinputaoDG;
+	public static Block BlockLiDG;
+	public static Block BlockTaoziDG;
+	public static Block BlockJuziDG;
+	public static Block BlockNingmengDG;
+	public static Block BlockCaomeiDG;
+	public static Block BlockYeziDG;
 	public static void init() {
 		
 		
@@ -38,7 +46,7 @@ public class ModBlocks {
 		BlockYumi.setBlockName("BlockYumi");
 		BlockYumi.setHarvestLevel("pickaxe", -1);
 		BlockYumi.setStepSound(Block.soundTypeGrass);
-		
+	
 		BlockHuanggua = new BlockHuanggua();
 		BlockHuanggua.setBlockName("BlockHuanggua");
 		BlockHuanggua.setHarvestLevel("pickaxe", -1);
@@ -160,6 +168,17 @@ public class ModBlocks {
 		BlockQiaokeli = new BlockKB(Material.grass).setBlockName("BlockQiaokeli").setBlockTextureName("FoodCraft:blockqiaokeli")
 				.setHardness(0.5F).setStepSound(Block.soundTypeSnow).setCreativeTab(FoodCraft.FcTabJiqi);
 
+
+		BlockPutaoDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockPutaoDG").setBlockTextureName("FoodCraft:BlockPutaoDG");
+		
+		BlockJinputaoDG = new BlockJinputaoDG().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockJinputaoDG").setBlockTextureName("FoodCraft:BlockJinputaoDG");
+		BlockLiDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockLiDG").setBlockTextureName("FoodCraft:BlockLiDG");
+		BlockTaoziDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockTaoziDG").setBlockTextureName("FoodCraft:BlockTaoziDG");
+		BlockJuziDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockJuziDG").setBlockTextureName("FoodCraft:BlockJuziDG");
+		BlockNingmengDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockNingmengDG").setBlockTextureName("FoodCraft:BlockNingmengDG");
+		BlockCaomeiDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockCaomeiDG").setBlockTextureName("FoodCraft:BlockCaomeiDG");
+		BlockYeziDG = new BlockDangao().setHardness(0.5F).setStepSound(Block.soundTypeCloth).setBlockName("BlockYeziDG").setBlockTextureName("FoodCraft:BlockYeziDG");
+		
 		GameRegistry.registerBlock(BlockBailuobo,"BlockBailuobo");
 		GameRegistry.registerBlock(BlockQingjiao,"BlockQingjiao");
 		GameRegistry.registerBlock(BlockHongdou,"BlockHongdou");
@@ -192,5 +211,14 @@ public class ModBlocks {
 		GameRegistry.registerBlock(BlockHuanggua,"BlockHuanggua");
 		GameRegistry.registerBlock(BlockYumi,"BlockYumi");
 		GameRegistry.registerBlock(BlockCaomei,"BlockCaomei");			
+		GameRegistry.registerBlock(BlockPutaoDG,"BlockPutaoDG");	
+		
+		GameRegistry.registerBlock(BlockJinputaoDG,"BlockJinputaoDG");	
+		GameRegistry.registerBlock(BlockLiDG,"BlockLiDG");	
+		GameRegistry.registerBlock(BlockTaoziDG,"BlockTaoziDG");	
+		GameRegistry.registerBlock(BlockJuziDG,"BlockJuziDG");	
+		GameRegistry.registerBlock(BlockNingmengDG,"BlockNingmengDG");	
+		GameRegistry.registerBlock(BlockCaomeiDG,"BlockCaomeiDG");	
+		GameRegistry.registerBlock(BlockYeziDG,"BlockYeziDG");	
 	}
 }

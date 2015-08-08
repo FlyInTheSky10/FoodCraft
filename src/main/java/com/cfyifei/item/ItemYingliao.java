@@ -13,18 +13,18 @@ public boolean e;
 public int e1 = 10;
 
 		public ItemYingliao(int amount, float saturation, boolean isWolfFood, String name) {
-			super((int)saturation, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}
 		public ItemYingliao(int amount, float saturation, boolean isWolfFood, String name, boolean is) {
-			super((int)saturation, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
            e = is;
 		}
 		
 		public ItemYingliao(int amount, float saturation, boolean isWolfFood, String name, boolean is, int r) {
-			super((int)saturation, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
            e = is;
            e1 = r;

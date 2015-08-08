@@ -27,7 +27,7 @@ public class Recipe{
 	public static void init() {
 		Items.egg.setMaxStackSize(64);
 		Items.snowball.setMaxStackSize(64);
-		Items.bread.setTextureName("foodcraft:bread");
+
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemTiepian, 16), new Object[] {"###", "#X#","###", '#',Items.iron_ingot,'X',Blocks.stone});	
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemCaidao, 1), new Object[] {"## ", "## ","X  ", '#',ModItem.ItemTiepian,'X',Items.stick});
 	RemoveRecipe.removeAnyRecipe(new ItemStack(Items.cake));
@@ -36,6 +36,7 @@ public class Recipe{
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemPisa), new Object[] {ModItem.ItemLaobing,Items.cooked_porkchop,Items.carrot,ModItem.ItemNainao,Blocks.brown_mushroom});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemJinghuashuitong), new Object[] {Items.bucket,Blocks.wool});
 	GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemHanbaobao), new Object[] {Items.bread,ModItem.ItemShucai,Items.cooked_porkchop,Items.bread});
+	GameRegistry.addRecipe(new ItemStack(ModItem.ItemYuebing, 1), new Object[] {"AAA", "XBX", "AAA", 'A', ModItem.ItemMianfen, 'B', ModItem.ItemDousha,'X',new ItemStack(Items.dye,1,11)});
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemYuebing, 1), new Object[] {"AAA", "XBX", "AAA", 'A', ModItem.ItemMianfen, 'B', Items.egg,'X',new ItemStack(Items.dye,1,11)});
 	GameRegistry.addRecipe(new ItemStack(ModItem.ItemNiangao, 1), new Object[] {"AAA", "ABA", "AAA", 'A', ModItem.ItemNuomifen,'B',ModItem.Itemfan});
 
@@ -328,7 +329,24 @@ public class Recipe{
 	registerChestLoot(new ItemStack(ModItem.ItemHetaosu), 1, 10, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemXiangchang), 1, 10, 16);
 	registerChestLoot(new ItemStack(ModItem.ItemLaweixunliao), 1, 10, 32);
-	if(FoodCraft.IC2IsLoad){
+	 for(int i1 = 0;i1 < 8;i1++){
+		 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemDangao,1,i1), new Object[] {new ItemStack(ModItem.ItemGuojiang,1,i1),Items.cake});
+	 }
+	 for(int i1 = 0;i1 < 8;i1++){
+		 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemBinggan,1,i1), new Object[] {ModItem.ItemBingganF, new ItemStack(ModItem.ItemGuojiang,1,i1),ModItem.ItemBingganF});
+	 }
+	 GameRegistry.addRecipe(new ItemStack(ModItem.ItemBingganF,3,0), new Object[] {"AAA","BBB","AAA", 'A', ModItem.ItemMianfen, 'B' ,Items.egg});
+	 GameRegistry.addRecipe(new ItemStack(ModItem.ItemBingganXN,1,0), new Object[] {"AAA","ABA","AAA", 'A', ModItem.ItemMianfen,'B' ,Items.egg});
+	 
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,0), new Object[] {ModItem.Itemwater,ModItem.ItemPutao,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,1), new Object[] {ModItem.Itemwater,ModItem.ItemJinputao,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,2), new Object[] {ModItem.Itemwater,ModItem.ItemLi,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,3), new Object[] {ModItem.Itemwater,ModItem.ItemTaozi,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,4), new Object[] {ModItem.Itemwater,ModItem.ItemJuzi,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,5), new Object[] {ModItem.Itemwater,ModItem.ItemNingmeng,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,6), new Object[] {ModItem.Itemwater,ModItem.ItemCaomei,Items.sugar});
+	 GameRegistry.addShapelessRecipe(new ItemStack(ModItem.ItemGuojiang,1,7), new Object[] {ModItem.Itemwater,ModItem.ItemYezi,Items.sugar});
+	 if(FoodCraft.IC2IsLoad){
 	new IC2RecipeAdder();
 	}
 	}

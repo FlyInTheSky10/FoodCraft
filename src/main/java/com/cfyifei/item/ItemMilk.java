@@ -11,12 +11,12 @@ public class ItemMilk extends ItemFood{
 public boolean e;
 
 		public ItemMilk(int amount, float saturation, boolean isWolfFood, String name) {
-			super((int)saturation, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
 
 		}
 		public ItemMilk(int amount, float saturation, boolean isWolfFood, String name, boolean is) {
-			super(amount, saturation, isWolfFood);
+			super((int)saturation, saturation/3F, isWolfFood);
 			this.setUnlocalizedName(name);
            e = is;
 		}
