@@ -23,7 +23,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid="FoodCraft", name="FoodCraft", version="1.2.0")
 
 public class FoodCraft{
-	public static boolean IC2IsLoad = false, MTIsLoad = false;
+	public static boolean IC2IsLoad = false, MTIsLoad = false, NEIIsLoad = false;
 	public static final CreativeTabs FcTabJiqi = new CreativeTabs("Jiqi"){
 		public Item getTabIconItem() {
 			return Item.getItemFromBlock(ModGui.Nmj);
@@ -67,6 +67,7 @@ public class FoodCraft{
 			NERLogManager.log("Loading foodcraft, Version: 1.2.0");
 				IC2IsLoad = Loader.isModLoaded("IC2");
 				MTIsLoad = Loader.isModLoaded("MineTweaker3");
+				NEIIsLoad = Loader.isModLoaded("NotEnoughItems");
 	        NERConfigHandler.initConfig(event);
 	        NERConfigHandler.getConfig();
 			proxy.preInit(event);

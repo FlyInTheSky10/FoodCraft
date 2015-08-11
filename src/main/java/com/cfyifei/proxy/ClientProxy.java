@@ -28,8 +28,9 @@ public class ClientProxy extends CommonProxy {
 		this.registerRenders();
         this.registerRenderThings();
         this.rendererItem();
-		
+		if(FoodCraft.NEIIsLoad){
         new NEIAPI().loadConfig();
+		}
 	}
 	 public static void registerRenderThings() {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPDG.class, new PDGRenderer());

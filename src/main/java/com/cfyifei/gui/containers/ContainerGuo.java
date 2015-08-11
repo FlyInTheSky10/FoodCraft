@@ -42,7 +42,7 @@ public class ContainerGuo extends Container{
     	   this.addSlotToContainer(new Slot(tileEntityGuo, 9, 107, 45));
     	   this.addSlotToContainer(new Slot(tileEntityGuo, 10, 125, 45));
     	   this.addSlotToContainer(new Slot(tileEntityGuo, 11, 143, 45));
-    	   
+
            this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, tileEntityGuo, 12, 125, 19));
            this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, tileEntityGuo, 13, 143, 19));
            int var3;
@@ -63,18 +63,18 @@ public class ContainerGuo extends Container{
 	public boolean canInteractWith(EntityPlayer playerIn) {
 		return true;
 	}
- 
+
 	   public void addCraftingToCrafters(ICrafting par1ICrafting)
 	    {
 	        super.addCraftingToCrafters(par1ICrafting);
 	        par1ICrafting.sendProgressBarUpdate(this, 0, this.furnaceIn.furnaceCookTime);
 	        par1ICrafting.sendProgressBarUpdate(this, 1, this.furnaceIn.tableBurnTime);
-	        par1ICrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);   
-	        par1ICrafting.sendProgressBarUpdate(this, 3, this.furnaceIn.frequencyOfUse);      
-	        par1ICrafting.sendProgressBarUpdate(this, 4, this.furnaceIn.Nowheat);  
-	        par1ICrafting.sendProgressBarUpdate(this, 5, this.furnaceIn.min);  
-	        par1ICrafting.sendProgressBarUpdate(this, 6, this.furnaceIn.max);  
-	        
+	        par1ICrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
+	        par1ICrafting.sendProgressBarUpdate(this, 3, this.furnaceIn.frequencyOfUse);
+	        par1ICrafting.sendProgressBarUpdate(this, 4, this.furnaceIn.Nowheat);
+	        par1ICrafting.sendProgressBarUpdate(this, 5, this.furnaceIn.min);
+	        par1ICrafting.sendProgressBarUpdate(this, 6, this.furnaceIn.max);
+
 	    }
 
 	    @SideOnly(Side.CLIENT)
@@ -111,7 +111,7 @@ public class ContainerGuo extends Container{
 	            this.furnaceIn.max = par2;
 	        }
 	    }
-	    
+
 	    public void detectAndSendChanges()
 	    {
 	        super.detectAndSendChanges();
@@ -155,57 +155,17 @@ public class ContainerGuo extends Container{
 	        this.lastCookTime = this.furnaceIn.furnaceCookTime;
 	        this.lastBurnTime = this.furnaceIn.tableBurnTime;
 	        this.lastItemBurnTime = this.furnaceIn.currentItemBurnTime;
-	        this.lastfrequencyOfUse = this.furnaceIn.frequencyOfUse; 
+	        this.lastfrequencyOfUse = this.furnaceIn.frequencyOfUse;
 	        lastNowheat = this.furnaceIn.Nowheat;
 	        lastMin = this.furnaceIn.min;
 	        lastMax = this.furnaceIn.max;
 	    }
-	    
-	   
+
+
 	    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
 	    {
-	    	ItemStack var3 = null;
-	        Slot var4 = (Slot)this.inventorySlots.get(par2);
-	        
-	        if (var4 != null && var4.getHasStack())
-	        {
-	            ItemStack var5 = var4.getStack();
-	            var3 = var5.copy();
-	            
-	            {
-	            // 点击到玩家的背包的时候将物品送到玩家的快捷栏中
-	            if (par2 > 3 && par2 < 31)
-	            {
-	                if (!this.mergeItemStack(var5, 31, 40, false))
-	                {
-	                    return null;
-	                }
-	            }
-	            // 点击到玩家的快捷栏的时候将物品送到背包中
-	            else if (par2 >= 31 && par2 < 40)
-	            {
-	                if (!this.mergeItemStack(var5, 4, 31, false))
-	                {
-	                    return null;
-	                }
-	            }
-	            if (var5.stackSize == 0)
-	            {
-	                var4.putStack((ItemStack)null);
-	            }
-	            else
-	            {
-	                var4.onSlotChanged();
-	            }
-	            if (var5.stackSize == var3.stackSize)
-	            {
-	                return null;
-	            }
-	            var4.onPickupFromSlot(par1EntityPlayer, var5);
-	        }
-	            }
-	        return var3;
 
-	 
+	        return null;
+
 	}
 }
