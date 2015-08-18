@@ -6,8 +6,8 @@ import java.util.Random;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
-import com.cfyifei.block.ModBlocks;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.block.FoodcraftBlocks;
+import com.cfyifei.item.FoodcraftItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -26,22 +26,21 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class BlockTree extends BlockBush
-{
+public class BlockTree extends BlockBush {
 	public Block fruit;
-    public BlockTree(Block fruit,String name)
-    {
+    public BlockTree(Block fruit,String name) {
     	this.fruit = fruit;
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
         this.setUnlocalizedName(name);
         this.setCreativeTab(FoodCraft.FcTabZhiwu);
     }
+    
 	@Override
 	 public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
 		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
 		if(stack != null){
-			if(stack.getItem() == ModItem.ItemJinkela){
+			if(stack.getItem() == FoodcraftItems.ItemJinkela){
 	            		if(canGlow(worldIn, pos.getX(),pos.getY(),pos.getZ())){
 	            			glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
 	            		}
@@ -53,186 +52,178 @@ public class BlockTree extends BlockBush
 		}
         return true;
 	}
-    /**
-     * Ticks the block if it's been scheduled
-     */
-	 public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-    {
-        if (!worldIn.isRemote)
-        {
+ 
+	
+	 public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        if (!worldIn.isRemote) {
             super.updateTick(worldIn, pos, state, rand);
-            //亮度大于等于9
-            if (rand.nextInt(7) == 0)
-            {
-            		if(canGlow(worldIn,pos.getX(),pos.getY(),pos.getZ())){
+            if (rand.nextInt(7) == 0) {
+            		if(canGlow(worldIn,pos.getX(),pos.getY(),pos.getZ())) {
             			glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
             		}
-               
             }
         }
     }
-public boolean canGlow(World w, int x, int y, int z){
-	if(
-	
-	isBlockAir(w, x, y + 1, z) &&
-	isBlockAir(w, x, y + 2, z) && 
-	isBlockAir(w, x, y + 3, z) && 
-	isBlockAir(w, x, y + 4, z) && 
-	isBlockAir(w, x, y + 5, z) && 
-	isBlockAir(w, x + 1, y + 2, z) && 
-	isBlockAir(w, x + 2, y + 2, z) && 
-	isBlockAir(w, x - 1, y + 2, z) && 
-	isBlockAir(w, x - 2, y + 2, z) &&  
-	isBlockAir(w, x, y + 2, z + 1) && 
-	isBlockAir(w, x, y + 2, z + 2) && 
-	isBlockAir(w, x, y + 2, z - 1) && 
-	isBlockAir(w, x, y + 2, z - 2) && 	
-	 isBlockAir(w, x + 1, y + 2, z + 1) && 
-	 isBlockAir(w, x + 2, y + 2, z + 1) && 
-	 isBlockAir(w, x - 1, y + 2, z + 1) && 
-	 isBlockAir(w, x - 2, y + 2, z + 1) && 	
-	 isBlockAir(w, x + 1, y + 2, z + 2) && 
-	 isBlockAir(w, x + 2, y + 2, z + 2) && 
-	 isBlockAir(w, x - 1, y + 2, z + 2) && 
-	 isBlockAir(w, x - 2, y + 2, z + 2) && 	
-	 isBlockAir(w, x + 1, y + 2, z - 1) && 
-	 isBlockAir(w, x + 2, y + 2, z - 1) && 
-	 isBlockAir(w, x - 1, y + 2, z - 1) && 
-	 isBlockAir(w, x - 2, y + 2, z - 1) && 	
-	 isBlockAir(w, x + 1, y + 2, z - 2) && 
-	 isBlockAir(w, x + 2, y + 2, z - 2) && 
-	 isBlockAir(w, x - 1, y + 2, z - 2) && 
-	 isBlockAir(w, x - 2, y + 2, z - 2) && 
-	 isBlockAir(w, x + 1, y + 3, z) && 
-	 isBlockAir(w, x + 2, y + 3, z) && 
-	 isBlockAir(w, x - 1, y + 3, z) && 
-	 isBlockAir(w, x - 2, y + 3, z) && 	 
-	 isBlockAir(w, x, y + 3, z + 1) && 
-	 isBlockAir(w, x, y + 3, z + 2) && 
-	 isBlockAir(w, x, y + 3, z - 1) && 
-	 isBlockAir(w, x, y + 3, z - 2) && 	 
-	 isBlockAir(w, x + 1, y + 3, z + 1) && 
-	 isBlockAir(w, x + 2, y + 3, z + 1) && 
-	 isBlockAir(w, x - 1, y + 3, z + 1) && 
-	 isBlockAir(w, x - 2, y + 3, z + 1) && 
-	 isBlockAir(w, x + 1, y + 3, z + 2) && 
-	 isBlockAir(w, x + 2, y + 3, z + 2) && 
-	 isBlockAir(w, x - 1, y + 3, z + 2) && 
-	 isBlockAir(w, x - 2, y + 3, z + 2) && 
-	 isBlockAir(w, x + 1, y + 3, z - 1) && 
-	 isBlockAir(w, x + 2, y + 3, z - 1) && 
-	 isBlockAir(w, x - 1, y + 3, z - 1) && 
-	 isBlockAir(w, x - 2, y + 3, z - 1) && 
-	 isBlockAir(w, x + 1, y + 3, z - 2) && 
-	 isBlockAir(w, x + 2, y + 3, z - 2) && 
-	 isBlockAir(w, x - 1, y + 3, z - 2) && 
-	isBlockAir(w, x - 2, y + 3, z - 2) && 
-	isBlockAir(w, x - 1, y + 4, z) && 
-	isBlockAir(w, x - 1, y + 5, z) && 
-	isBlockAir(w, x + 1, y + 4, z) && 
-	isBlockAir(w, x + 1, y + 5, z) && 
-	isBlockAir(w, x, y + 4, z + 1) && 
-	isBlockAir(w, x, y + 5, z + 1) && 
-	isBlockAir(w, x, y + 4, z - 1) && 
-	isBlockAir(w, x, y + 5, z - 1)){
-		//System.out.println(true);
-		return true;
-	}
-	else{
-	//System.out.println(false);
-	return false;
+	 public boolean canGlow(World w, int x, int y, int z) {
+		if(
+		
+		isBlockAir(w, x, y + 1, z) &&
+		isBlockAir(w, x, y + 2, z) && 
+		isBlockAir(w, x, y + 3, z) && 
+		isBlockAir(w, x, y + 4, z) && 
+		isBlockAir(w, x, y + 5, z) && 
+		isBlockAir(w, x + 1, y + 2, z) && 
+		isBlockAir(w, x + 2, y + 2, z) && 
+		isBlockAir(w, x - 1, y + 2, z) && 
+		isBlockAir(w, x - 2, y + 2, z) &&  
+		isBlockAir(w, x, y + 2, z + 1) && 
+		isBlockAir(w, x, y + 2, z + 2) && 
+		isBlockAir(w, x, y + 2, z - 1) && 
+		isBlockAir(w, x, y + 2, z - 2) && 	
+		 isBlockAir(w, x + 1, y + 2, z + 1) && 
+		 isBlockAir(w, x + 2, y + 2, z + 1) && 
+		 isBlockAir(w, x - 1, y + 2, z + 1) && 
+		 isBlockAir(w, x - 2, y + 2, z + 1) && 	
+		 isBlockAir(w, x + 1, y + 2, z + 2) && 
+		 isBlockAir(w, x + 2, y + 2, z + 2) && 
+		 isBlockAir(w, x - 1, y + 2, z + 2) && 
+		 isBlockAir(w, x - 2, y + 2, z + 2) && 	
+		 isBlockAir(w, x + 1, y + 2, z - 1) && 
+		 isBlockAir(w, x + 2, y + 2, z - 1) && 
+		 isBlockAir(w, x - 1, y + 2, z - 1) && 
+		 isBlockAir(w, x - 2, y + 2, z - 1) && 	
+		 isBlockAir(w, x + 1, y + 2, z - 2) && 
+		 isBlockAir(w, x + 2, y + 2, z - 2) && 
+		 isBlockAir(w, x - 1, y + 2, z - 2) && 
+		 isBlockAir(w, x - 2, y + 2, z - 2) && 
+		 isBlockAir(w, x + 1, y + 3, z) && 
+		 isBlockAir(w, x + 2, y + 3, z) && 
+		 isBlockAir(w, x - 1, y + 3, z) && 
+		 isBlockAir(w, x - 2, y + 3, z) && 	 
+		 isBlockAir(w, x, y + 3, z + 1) && 
+		 isBlockAir(w, x, y + 3, z + 2) && 
+		 isBlockAir(w, x, y + 3, z - 1) && 
+		 isBlockAir(w, x, y + 3, z - 2) && 	 
+		 isBlockAir(w, x + 1, y + 3, z + 1) && 
+		 isBlockAir(w, x + 2, y + 3, z + 1) && 
+		 isBlockAir(w, x - 1, y + 3, z + 1) && 
+		 isBlockAir(w, x - 2, y + 3, z + 1) && 
+		 isBlockAir(w, x + 1, y + 3, z + 2) && 
+		 isBlockAir(w, x + 2, y + 3, z + 2) && 
+		 isBlockAir(w, x - 1, y + 3, z + 2) && 
+		 isBlockAir(w, x - 2, y + 3, z + 2) && 
+		 isBlockAir(w, x + 1, y + 3, z - 1) && 
+		 isBlockAir(w, x + 2, y + 3, z - 1) && 
+		 isBlockAir(w, x - 1, y + 3, z - 1) && 
+		 isBlockAir(w, x - 2, y + 3, z - 1) && 
+		 isBlockAir(w, x + 1, y + 3, z - 2) && 
+		 isBlockAir(w, x + 2, y + 3, z - 2) && 
+		 isBlockAir(w, x - 1, y + 3, z - 2) && 
+		isBlockAir(w, x - 2, y + 3, z - 2) && 
+		isBlockAir(w, x - 1, y + 4, z) && 
+		isBlockAir(w, x - 1, y + 5, z) && 
+		isBlockAir(w, x + 1, y + 4, z) && 
+		isBlockAir(w, x + 1, y + 5, z) && 
+		isBlockAir(w, x, y + 4, z + 1) && 
+		isBlockAir(w, x, y + 5, z + 1) && 
+		isBlockAir(w, x, y + 4, z - 1) && 
+		isBlockAir(w, x, y + 5, z - 1)){
+			return true;
+		}
+		else{
+		return false;
 	}
 }
     private void glowTree(World w, int x, int y, int z) {
 		w.setBlockToAir(new BlockPos(x, y, z));
-		//中
+		//A
 		setBlockToTree(w, x, y, z,Blocks.log);
 		setBlockToTree(w, x, y + 1, z,Blocks.log);
 		setBlockToTree(w, x, y + 2, z,Blocks.log);
 		setBlockToTree(w, x, y + 3, z,Blocks.log);
 		setBlockToTree(w, x, y + 4, z,Blocks.log);
-		setBlockToTree(w, x, y + 5, z,Plant.FCleaves);
+		setBlockToTree(w, x, y + 5, z,FoodcraftPlants.FCleaves);
 		
-		//下层
+		//U
 		
-		 setBlockToTree(w, x + 1, y + 2, z,Plant.FCleaves);
-		 setBlockToTree(w, x + 2, y + 2, z,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 2, z,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 2, z,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x + 2, y + 2, z,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 2, z,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x - 2, y + 2, z,fruit);
 		 
-		 setBlockToTree(w, x, y + 2, z + 1,Plant.FCleaves);
+		 setBlockToTree(w, x, y + 2, z + 1,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x, y + 2, z + 2,fruit);
-		 setBlockToTree(w, x, y + 2, z - 1,Plant.FCleaves);
-		 setBlockToTree(w, x, y + 2, z - 2,Plant.FCleaves);
+		 setBlockToTree(w, x, y + 2, z - 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x, y + 2, z - 2,FoodcraftPlants.FCleaves);
 		
-		 setBlockToTree(w, x + 1, y + 2, z + 1,Plant.FCleaves);
-		 setBlockToTree(w, x + 2, y + 2, z + 1,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 2, z + 1,Plant.FCleaves);
-		 setBlockToTree(w, x - 2, y + 2, z + 1,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 2, z + 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x + 2, y + 2, z + 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 2, z + 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 2, y + 2, z + 1,FoodcraftPlants.FCleaves);
 		
-		 setBlockToTree(w, x + 1, y + 2, z + 2,Plant.FCleaves);
-		 setBlockToTree(w, x + 2, y + 2, z + 2,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 2, z + 2,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 2, z + 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x + 2, y + 2, z + 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 2, z + 2,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x - 2, y + 2, z + 2,fruit);
 		
-		 setBlockToTree(w, x + 1, y + 2, z - 1,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 2, z - 1,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x + 2, y + 2, z - 1,fruit);
-		 setBlockToTree(w, x - 1, y + 2, z - 1,Plant.FCleaves);
-		 setBlockToTree(w, x - 2, y + 2, z - 1,Plant.FCleaves);
+		 setBlockToTree(w, x - 1, y + 2, z - 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 2, y + 2, z - 1,FoodcraftPlants.FCleaves);
 		
-		 setBlockToTree(w, x + 1, y + 2, z - 2,Plant.FCleaves);
-		 setBlockToTree(w, x + 2, y + 2, z - 2,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 2, z - 2,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 2, z - 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x + 2, y + 2, z - 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 2, z - 2,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x - 2, y + 2, z - 2,fruit);
 		 
-		//上层
+		//UP
 	
-		 setBlockToTree(w, x + 1, y + 3, z,Plant.FCleaves);
-		 setBlockToTree(w, x + 2, y + 3, z,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 3, z,Plant.FCleaves);
-		 setBlockToTree(w, x - 2, y + 3, z,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 3, z,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x + 2, y + 3, z,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 3, z,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 2, y + 3, z,FoodcraftPlants.FCleaves);
 		 
-		 setBlockToTree(w, x, y + 3, z + 1,Plant.FCleaves);
-		 setBlockToTree(w, x, y + 3, z + 2,Plant.FCleaves);
-		 setBlockToTree(w, x, y + 3, z - 1,Plant.FCleaves);
+		 setBlockToTree(w, x, y + 3, z + 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x, y + 3, z + 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x, y + 3, z - 1,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x, y + 3, z - 2,fruit);
 		 
-		 setBlockToTree(w, x + 1, y + 3, z + 1,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 3, z + 1,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x + 2, y + 3, z + 1,fruit);
-		 setBlockToTree(w, x - 1, y + 3, z + 1,Plant.FCleaves);
-		 setBlockToTree(w, x - 2, y + 3, z + 1,Plant.FCleaves);
+		 setBlockToTree(w, x - 1, y + 3, z + 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 2, y + 3, z + 1,FoodcraftPlants.FCleaves);
 		
-		 setBlockToTree(w, x + 1, y + 3, z + 2,Plant.FCleaves);
-		 setBlockToTree(w, x + 2, y + 3, z + 2,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 3, z + 2,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 3, z + 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x + 2, y + 3, z + 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 3, z + 2,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x - 2, y + 3, z + 2,fruit);
 		
-		 setBlockToTree(w, x + 1, y + 3, z - 1,Plant.FCleaves);
+		 setBlockToTree(w, x + 1, y + 3, z - 1,FoodcraftPlants.FCleaves);
 		 setBlockToTree(w, x + 2, y + 3, z - 1,fruit);
-		 setBlockToTree(w, x - 1, y + 3, z - 1,Plant.FCleaves);
-		 setBlockToTree(w, x - 2, y + 3, z - 1,Plant.FCleaves);
+		 setBlockToTree(w, x - 1, y + 3, z - 1,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 2, y + 3, z - 1,FoodcraftPlants.FCleaves);
 		
 		 setBlockToTree(w, x + 1, y + 3, z - 2,fruit);
-		 setBlockToTree(w, x + 2, y + 3, z - 2,Plant.FCleaves);
-		 setBlockToTree(w, x - 1, y + 3, z - 2,Plant.FCleaves);
-		setBlockToTree(w, x - 2, y + 3, z - 2,Plant.FCleaves);
+		 setBlockToTree(w, x + 2, y + 3, z - 2,FoodcraftPlants.FCleaves);
+		 setBlockToTree(w, x - 1, y + 3, z - 2,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x - 2, y + 3, z - 2,FoodcraftPlants.FCleaves);
 
 		
-		setBlockToTree(w, x - 1, y + 4, z,Plant.FCleaves);
-		setBlockToTree(w, x - 1, y + 5, z,Plant.FCleaves);
-		setBlockToTree(w, x + 1, y + 4, z,Plant.FCleaves);
-		setBlockToTree(w, x + 1, y + 5, z,Plant.FCleaves);
-		setBlockToTree(w, x, y + 4, z + 1,Plant.FCleaves);
-		setBlockToTree(w, x, y + 5, z + 1,Plant.FCleaves);
-		setBlockToTree(w, x, y + 4, z - 1,Plant.FCleaves);
-		setBlockToTree(w, x, y + 5, z - 1,Plant.FCleaves);
+		setBlockToTree(w, x - 1, y + 4, z,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x - 1, y + 5, z,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x + 1, y + 4, z,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x + 1, y + 5, z,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x, y + 4, z + 1,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x, y + 5, z + 1,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x, y + 4, z - 1,FoodcraftPlants.FCleaves);
+		setBlockToTree(w, x, y + 5, z - 1,FoodcraftPlants.FCleaves);
 	}
 
 	private void setBlockToTree(World w, int x, int y, int z, Block leaves) {
 		if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
 				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
 				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Plant.FCleaves){
+				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
 			w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
 		}
 	}
@@ -240,7 +231,7 @@ public boolean canGlow(World w, int x, int y, int z){
 		if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
 				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
 				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Plant.FCleaves){
+				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
 			return true;
 		}
 		else{

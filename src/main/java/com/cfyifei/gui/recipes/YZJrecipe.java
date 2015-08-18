@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -26,20 +26,20 @@ public class YZJrecipe {
     }
     
     private YZJrecipe() {
-        this.itemregister(ModItem.ItemJitui,  new ItemStack(ModItem.ItemZhajitui), 0.5F);//chicken leg
-        this.itemregister(ModItem.ItemMahua,  new ItemStack(ModItem.ItemZhamahua), 0.5F);//ma hua
-        this.itemregister(ModItem.ItemChunjuan,  new ItemStack(ModItem.ItemZhachunjuan), 0.5F);//spring roll
-        this.itemregister(Items.bread,  new ItemStack(ModItem.ItemZhamianbao), 0.5F);//bread
-        this.itemregister(ModItem.ItemTudoupian,  new ItemStack(ModItem.ItemShupian), 0.5F);//potato chips
-        this.itemregister(ModItem.ItemNiangao,  new ItemStack(ModItem.ItemZhaniangao), 0.5F);//new year cake
-        this.itemregister(ModItem.ItemDoufu,  new ItemStack(ModItem.ItemZhadoufu), 0.5F);//tofu
-        this.itemregister(ModItem.ItemTudousi,  new ItemStack(ModItem.ItemShutiao), 0.5F);//french fries
-        this.itemregister(ModItem.ItemDajirou,  new ItemStack(ModItem.ItemYuanweijikuai), 0.5F);//Original Recipe chicken
-        this.itemregister(ModItem.ItemZhongjirou,  new ItemStack(ModItem.ItemJikuai), 0.5F);//fried chicken
-        this.itemregister(ModItem.ItemXiaojirou,  new ItemStack(ModItem.ItemJimihua), 0.5F);//popcorn chicken
-        this.itemregister(ModItem.ItemJichi,  new ItemStack(ModItem.ItemAeljichi), 0.5F);//orlean chicken wings
-        this.itemregister(ModItem.ItemMianfen,  new ItemStack(ModItem.ItemYoutiao), 0.5F);//youtiao
-        this.itemregister(ModItem.ItemXiangchang,  new ItemStack(ModItem.ItemZhaxiangchang), 0.5F);
+        this.itemregister(FoodcraftItems.ItemJitui,  new ItemStack(FoodcraftItems.ItemZhajitui), 0.5F);//chicken leg
+        this.itemregister(FoodcraftItems.ItemMahua,  new ItemStack(FoodcraftItems.ItemZhamahua), 0.5F);//ma hua
+        this.itemregister(FoodcraftItems.ItemChunjuan,  new ItemStack(FoodcraftItems.ItemZhachunjuan), 0.5F);//spring roll
+        this.itemregister(Items.bread,  new ItemStack(FoodcraftItems.ItemZhamianbao), 0.5F);//bread
+        this.itemregister(FoodcraftItems.ItemTudoupian,  new ItemStack(FoodcraftItems.ItemShupian), 0.5F);//potato chips
+        this.itemregister(FoodcraftItems.ItemNiangao,  new ItemStack(FoodcraftItems.ItemZhaniangao), 0.5F);//new year cake
+        this.itemregister(FoodcraftItems.ItemDoufu,  new ItemStack(FoodcraftItems.ItemZhadoufu), 0.5F);//tofu
+        this.itemregister(FoodcraftItems.ItemTudousi,  new ItemStack(FoodcraftItems.ItemShutiao), 0.5F);//french fries
+        this.itemregister(FoodcraftItems.ItemDajirou,  new ItemStack(FoodcraftItems.ItemYuanweijikuai), 0.5F);//Original Recipe chicken
+        this.itemregister(FoodcraftItems.ItemZhongjirou,  new ItemStack(FoodcraftItems.ItemJikuai), 0.5F);//fried chicken
+        this.itemregister(FoodcraftItems.ItemXiaojirou,  new ItemStack(FoodcraftItems.ItemJimihua), 0.5F);//popcorn chicken
+        this.itemregister(FoodcraftItems.ItemJichi,  new ItemStack(FoodcraftItems.ItemAeljichi), 0.5F);//orlean chicken wings
+        this.itemregister(FoodcraftItems.ItemMianfen,  new ItemStack(FoodcraftItems.ItemYoutiao), 0.5F);//youtiao
+        this.itemregister(FoodcraftItems.ItemXiangchang,  new ItemStack(FoodcraftItems.ItemZhaxiangchang), 0.5F);
     }
    
 	     

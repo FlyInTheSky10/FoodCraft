@@ -11,7 +11,7 @@ import java.util.Map.Entry;
 
 import com.cfyifei.gui.recipes.Gygrecipe;
 import com.cfyifei.gui.tileentitys.TileEntityGyg;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.FoodcraftItemStack;
 
 import net.minecraft.block.Block;
@@ -39,7 +39,6 @@ public class GygRecipeHandler extends TemplateRecipeHandler {
                 w += 1;
            }
            ingred = new PositionedStack[foodcraftItemStack.Stack.length];
-            //加槽
 
         	this.ingred[0] = new PositionedStack(is[0], 44 - 5, 27 - 11);
         	this.ingred[1] = new PositionedStack(is[1], 68 - 5, 27 - 11);
@@ -47,16 +46,14 @@ public class GygRecipeHandler extends TemplateRecipeHandler {
         	
             this.result = new PositionedStack(result, 142 - 5, 27 - 11);
             
-            water =  new PositionedStack(new ItemStack(ModItem.Itemwater), 34 - 5, 55 - 11);
+            water =  new PositionedStack(new ItemStack(FoodcraftItems.Itemwater), 34 - 5, 55 - 11);
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
 
         public PositionedStack getResult() {
-        	//获得产物
             return result;
         }
 
@@ -95,19 +92,16 @@ public class GygRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
     	transferRects.add(new RecipeTransferRect(new Rectangle(118 - 5, 30 - 11, 22, 17), "Gygcooking"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
         return com.cfyifei.gui.guis.GuiGyg.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
         return NEIClientUtils.translate("tile.Gyg.name");
     }
 
@@ -159,14 +153,11 @@ public class GygRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
         return "foodcraft:textures/gui/nei/gyg.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     	drawProgressBar(115 - 5, 26 - 11, 176, 14, 22, 17, 48, 0);
         drawProgressBar(119 - 5, 58 - 11, 176, 0, 14, 14, 48, 7);
         
@@ -196,7 +187,6 @@ public class GygRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "Gygcooking";
     }
 

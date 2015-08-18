@@ -16,12 +16,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class CaibanRenderer extends TileEntitySpecialRenderer {
+	
     private final ModelCaiban model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/caiban0.png");
 
     public CaibanRenderer(){
     	model = new ModelCaiban();
     }
+    
     public void render(double x, double y, double z) {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y + 1.5f, (float) z + 0.5f);

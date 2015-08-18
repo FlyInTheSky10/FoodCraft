@@ -16,7 +16,7 @@ import java.util.Map.Entry;
 
 import com.cfyifei.gui.recipes.YZJrecipe;
 import com.cfyifei.gui.tileentitys.TileEntityYZJ;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
@@ -37,19 +37,16 @@ public class YZJRecipeHandler extends TemplateRecipeHandler {
     {
         public SmeltingPair(ItemStack ingred, ItemStack result) {
             ingred.stackSize = 1;
-            //加槽
             this.ingred = new PositionedStack(ingred, 55 - 5, 21 - 11);
             this.result = new PositionedStack(result, 127 - 5, 21 - 11);
-            oil = new PositionedStack(new ItemStack(ModItem.ItemHuashenyou), 34 - 5, 49 - 11);
+            oil = new PositionedStack(new ItemStack(FoodcraftItems.ItemHuashenyou), 34 - 5, 49 - 11);
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
 
         public PositionedStack getResult() {
-        	//获得产物
             return result;
         }
         public List<PositionedStack> getOtherStacks() {
@@ -86,19 +83,16 @@ public class YZJRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
     	transferRects.add(new RecipeTransferRect(new Rectangle(92 - 5, 30 - 11, 22, 17), "frying"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
         return com.cfyifei.gui.guis.GuiYZJ.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
         return NEIClientUtils.translate("tile.YZJ.name");
     }
 
@@ -148,14 +142,12 @@ public class YZJRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
+
         return "foodcraft:textures/gui/nei/yzj.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     	drawProgressBar(89 - 5, 20 - 11, 176, 14, 22, 17, 48, 0);
         drawProgressBar(119 - 5, 52 - 11, 176, 0, 14, 14, 48, 7);
         
@@ -185,7 +177,6 @@ public class YZJRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "frying";
     }
 

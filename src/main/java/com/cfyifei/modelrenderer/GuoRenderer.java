@@ -15,11 +15,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class GuoRenderer extends TileEntitySpecialRenderer {
+	
     private final ModelGuo model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/guo.png");
     
     public GuoRenderer() {
-            this.model = new ModelGuo();
+    	this.model = new ModelGuo();
     }
     public void render(double x, double y, double z) {
         GL11.glPushMatrix();
@@ -28,7 +29,6 @@ public class GuoRenderer extends TileEntitySpecialRenderer {
         this.bindTexture(RL);
         model.renderHatch();
         GL11.glPopMatrix();
-
     }
 
     @Override

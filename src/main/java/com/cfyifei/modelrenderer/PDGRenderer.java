@@ -19,6 +19,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class PDGRenderer extends TileEntitySpecialRenderer {
+	
     private final ModelPDG model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/pdg.png");
     
@@ -32,7 +33,6 @@ public class PDGRenderer extends TileEntitySpecialRenderer {
         this.bindTexture(RL);
         model.renderHatch();
         GL11.glPopMatrix();
-
     }
 
     @Override

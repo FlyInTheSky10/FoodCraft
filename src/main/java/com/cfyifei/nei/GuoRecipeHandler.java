@@ -11,7 +11,7 @@ import java.util.Map.Entry;
 
 import com.cfyifei.gui.recipes.Guorecipe;
 import com.cfyifei.gui.tileentitys.TileEntityNmj;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.CookingOutput;
 import com.cfyifei.itemstack.GuoCooking;
 
@@ -33,7 +33,6 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 	public class SmeltingPair extends CachedRecipe
     {
         public SmeltingPair(GuoCooking guoCooking, ItemStack result) {
-            //加槽'
             this.ingred[0] = new PositionedStack(new ItemStack(guoCooking.StapleInput1), 18 - 5, 17 - 11);
             this.ingred[1] = new PositionedStack(new ItemStack(guoCooking.StapleInput2), 36 - 5, 17 - 11);
             this.ingred[2] = new PositionedStack(new ItemStack(guoCooking.StapleInput3), 54 - 5, 17 - 11);
@@ -50,12 +49,10 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
 
         public PositionedStack getResult() {
-        	//获得产物
             return result;
         }
 
@@ -71,19 +68,16 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
     	transferRects.add(new RecipeTransferRect(new Rectangle(94 - 5, 17 - 11, 24, 17), "Guocooking"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
         return com.cfyifei.gui.guis.GuiGuo.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
         return NEIClientUtils.translate("tile.Guo.name");
     }
 
@@ -142,14 +136,11 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
         return "foodcraft:textures/gui/nei/guo.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     	drawProgressBar(94 - 5, 17 - 11, 176, 14, 24, 17, 48, 0);
         drawProgressBar(82 - 5, 58 - 11, 176, 0, 14, 14, 48, 7);
     }
@@ -168,7 +159,6 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "Guocooking";
     }
 

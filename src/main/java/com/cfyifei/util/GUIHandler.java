@@ -40,7 +40,7 @@ public class GUIHandler implements IGuiHandler{
 	public Object getServerGuiElement(int id, EntityPlayer player, World world,
 		int x, int y, int z) {
 		BlockPos bp = new BlockPos(x,y,z);
-	switch(id) {
+		switch(id) {
 		    case GuiIDs.GUI_NMJ:
 			    return new ContainerNmj(player.inventory, (TileEntityNmj) world.getTileEntity(bp));
 		    case GuiIDs.GUI_PDG:
@@ -91,5 +91,4 @@ public class GUIHandler implements IGuiHandler{
 			    return null;
 		}
 	}
-
 }

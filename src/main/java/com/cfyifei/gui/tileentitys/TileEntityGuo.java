@@ -27,7 +27,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.cfyifei.gui.blocks.BlockGuo;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.recipes.Guorecipe;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.CookingOutput;
 
 public class TileEntityGuo extends TileEntity implements IUpdatePlayerListBox,IInventory {

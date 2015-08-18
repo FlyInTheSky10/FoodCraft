@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.TpjMaking;
 
 import net.minecraft.init.Blocks;
@@ -26,41 +26,41 @@ public class Tpjrecipe {
 	 
 	private Tpjrecipe(){
 		//hot		 
-		addrecipeItem(ModItem.ItemQiaokeli, false, false, new ItemStack(ModItem.ItemQiaokelishui));
-		addrecipeItem(ModItem.ItemQiaokeli, true, false, new ItemStack(ModItem.ItemQiaokelinai));
-		addrecipeItem(Items.carrot, false, false, new ItemStack(ModItem.ItemHuluobozhi));
-		addrecipeItem(ModItem.ItemShucai, false, false, new ItemStack(ModItem.ItemShucaizhi));
-		addrecipeItem(ModItem.ItemDoujiang, true, false, new ItemStack(ModItem.ItemDounai));
-		addrecipeItem(Item.getItemFromBlock(Blocks.leaves), false, false, new ItemStack(ModItem.ItemCha));
-		addrecipeItem(ModItem.ItemCha, true, false, new ItemStack(ModItem.ItemNaicha));
+		addrecipeItem(FoodcraftItems.ItemQiaokeli, false, false, new ItemStack(FoodcraftItems.ItemQiaokelishui));
+		addrecipeItem(FoodcraftItems.ItemQiaokeli, true, false, new ItemStack(FoodcraftItems.ItemQiaokelinai));
+		addrecipeItem(Items.carrot, false, false, new ItemStack(FoodcraftItems.ItemHuluobozhi));
+		addrecipeItem(FoodcraftItems.ItemShucai, false, false, new ItemStack(FoodcraftItems.ItemShucaizhi));
+		addrecipeItem(FoodcraftItems.ItemDoujiang, true, false, new ItemStack(FoodcraftItems.ItemDounai));
+		addrecipeItem(Item.getItemFromBlock(Blocks.leaves), false, false, new ItemStack(FoodcraftItems.ItemCha));
+		addrecipeItem(FoodcraftItems.ItemCha, true, false, new ItemStack(FoodcraftItems.ItemNaicha));
 		//cold
-		addrecipeItem(Items.apple, false, true, new ItemStack(ModItem.ItemPingguozhi));
-		addrecipeItem(ModItem.ItemPutao, false, true, new ItemStack(ModItem.ItemPutaozhi));
-		addrecipeItem(Items.golden_apple, false, true, new ItemStack(ModItem.ItemJinpingguozhi));
-		addrecipeItem(ModItem.ItemJinputao, false, true, new ItemStack(ModItem.ItemJinputaozhi));
-		addrecipe(new ItemStack(Items.dye,1,15), false, true, new ItemStack(ModItem.ItemXuebi));
-		addrecipeItem(Items.dye, false, true, new ItemStack(ModItem.ItemKele));
-		addrecipeItem(Items.melon, false, true, new ItemStack(ModItem.ItemXiguazhi));
+		addrecipeItem(Items.apple, false, true, new ItemStack(FoodcraftItems.ItemPingguozhi));
+		addrecipeItem(FoodcraftItems.ItemPutao, false, true, new ItemStack(FoodcraftItems.ItemPutaozhi));
+		addrecipeItem(Items.golden_apple, false, true, new ItemStack(FoodcraftItems.ItemJinpingguozhi));
+		addrecipeItem(FoodcraftItems.ItemJinputao, false, true, new ItemStack(FoodcraftItems.ItemJinputaozhi));
+		addrecipe(new ItemStack(Items.dye,1,15), false, true, new ItemStack(FoodcraftItems.ItemXuebi));
+		addrecipeItem(Items.dye, false, true, new ItemStack(FoodcraftItems.ItemKele));
+		addrecipeItem(Items.melon, false, true, new ItemStack(FoodcraftItems.ItemXiguazhi));
 		
 
-		addrecipeItem(ModItem.ItemLi, false, true, new ItemStack(ModItem.ItemLizizhi));
-		addrecipeItem(ModItem.ItemLizhi, false, true, new ItemStack(ModItem.ItemLizhizhi));
-		addrecipeItem(ModItem.ItemTaozi, false, true, new ItemStack(ModItem.ItemTaozizhi));
-		addrecipeItem(ModItem.ItemJuzi, false, true, new ItemStack(ModItem.ItemJuzizhi));
-		addrecipeItem(ModItem.ItemPipa, false, true, new ItemStack(ModItem.ItemPipazhi));
-		addrecipeItem(ModItem.ItemMangguo, false, true, new ItemStack(ModItem.ItemMangguozhi));
-		addrecipeItem(ModItem.ItemNingmeng, false, true, new ItemStack(ModItem.ItemNingmengzhi));
-		addrecipeItem(ModItem.ItemYouzi, false, true, new ItemStack(ModItem.ItemYouzizhi));
-		addrecipeItem(ModItem.ItemShizi, false, true, new ItemStack(ModItem.ItemShizizhi));	
-		addrecipeItem(ModItem.ItemMugua, false, true, new ItemStack(ModItem.ItemMuguazhi));		
-		addrecipeItem(ModItem.ItemShanzha, false, true, new ItemStack(ModItem.ItemShanzhazhi));	
-		addrecipeItem(ModItem.ItemShiliu, false, true, new ItemStack(ModItem.ItemShiliuzhi));
-		addrecipeItem(ModItem.ItemHongzao, false, true, new ItemStack(ModItem.ItemHongzaozhi));
-		addrecipeItem(ModItem.ItemCaomei, false, true, new ItemStack(ModItem.ItemCaomeizhi));
-		addrecipeItem(ModItem.ItemYezi, false, true, new ItemStack(ModItem.ItemYezizhi));
-		addrecipeItem(ModItem.ItemYingtao, false, true, new ItemStack(ModItem.ItemYingtaozhi));	
-		addrecipeItem(ModItem.ItemXiangjiao, false, true, new ItemStack(ModItem.ItemXiangjiaozhi));		
-		addrecipeItem(ModItem.ItemYezizhi, true, true, new ItemStack(ModItem.ItemYenai));				
+		addrecipeItem(FoodcraftItems.ItemLi, false, true, new ItemStack(FoodcraftItems.ItemLizizhi));
+		addrecipeItem(FoodcraftItems.ItemLizhi, false, true, new ItemStack(FoodcraftItems.ItemLizhizhi));
+		addrecipeItem(FoodcraftItems.ItemTaozi, false, true, new ItemStack(FoodcraftItems.ItemTaozizhi));
+		addrecipeItem(FoodcraftItems.ItemJuzi, false, true, new ItemStack(FoodcraftItems.ItemJuzizhi));
+		addrecipeItem(FoodcraftItems.ItemPipa, false, true, new ItemStack(FoodcraftItems.ItemPipazhi));
+		addrecipeItem(FoodcraftItems.ItemMangguo, false, true, new ItemStack(FoodcraftItems.ItemMangguozhi));
+		addrecipeItem(FoodcraftItems.ItemNingmeng, false, true, new ItemStack(FoodcraftItems.ItemNingmengzhi));
+		addrecipeItem(FoodcraftItems.ItemYouzi, false, true, new ItemStack(FoodcraftItems.ItemYouzizhi));
+		addrecipeItem(FoodcraftItems.ItemShizi, false, true, new ItemStack(FoodcraftItems.ItemShizizhi));	
+		addrecipeItem(FoodcraftItems.ItemMugua, false, true, new ItemStack(FoodcraftItems.ItemMuguazhi));		
+		addrecipeItem(FoodcraftItems.ItemShanzha, false, true, new ItemStack(FoodcraftItems.ItemShanzhazhi));	
+		addrecipeItem(FoodcraftItems.ItemShiliu, false, true, new ItemStack(FoodcraftItems.ItemShiliuzhi));
+		addrecipeItem(FoodcraftItems.ItemHongzao, false, true, new ItemStack(FoodcraftItems.ItemHongzaozhi));
+		addrecipeItem(FoodcraftItems.ItemCaomei, false, true, new ItemStack(FoodcraftItems.ItemCaomeizhi));
+		addrecipeItem(FoodcraftItems.ItemYezi, false, true, new ItemStack(FoodcraftItems.ItemYezizhi));
+		addrecipeItem(FoodcraftItems.ItemYingtao, false, true, new ItemStack(FoodcraftItems.ItemYingtaozhi));	
+		addrecipeItem(FoodcraftItems.ItemXiangjiao, false, true, new ItemStack(FoodcraftItems.ItemXiangjiaozhi));		
+		addrecipeItem(FoodcraftItems.ItemYezizhi, true, true, new ItemStack(FoodcraftItems.ItemYenai));				
 	}
 	
 	public void addrecipeItem(Item Input ,boolean isMilk ,boolean iscold,ItemStack Output) {

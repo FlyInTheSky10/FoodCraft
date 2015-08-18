@@ -41,7 +41,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.cfyifei.gui.blocks.ModGui;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 
 
 public class TileEntityGyg extends TileEntity implements IUpdatePlayerListBox,IInventory {
@@ -107,7 +107,7 @@ public class TileEntityGyg extends TileEntity implements IUpdatePlayerListBox,II
 	        		++water;
 	        		}
 	        	
-	        	if(stack[3].getItem() == ModItem.Itemwater) {
+	        	if(stack[3].getItem() == FoodcraftItems.Itemwater) {
 	        			        		
 	        			--stack[3].stackSize;
 	        			++water;	        			        		

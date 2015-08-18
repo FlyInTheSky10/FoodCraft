@@ -10,7 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.FoodcraftItemStack;
 
 public class Caibanrecipe {
@@ -24,21 +24,21 @@ public class Caibanrecipe {
 	 
 	private Caibanrecipe(){
 		//3 not null
-		addrecipe(null ,Items.cooked_chicken,null,new ItemStack(ModItem.ItemJichi,2));//1个格都是鸡肉 2个鸡翅
+		addrecipe(null ,Items.cooked_chicken,null,new ItemStack(FoodcraftItems.ItemJichi,2));//1个格都是鸡肉 2个鸡翅
 		//1,2 not null
-		addrecipe(Items.cooked_porkchop ,ModItem.ItemShucai,null,new ItemStack(ModItem.ItemJiaozixian,2));
-		addrecipe(Items.cooked_chicken ,Items.cooked_chicken ,null,new ItemStack(ModItem.ItemDajirou,4));//2个格都是鸡肉 4个大鸡肉
-		addrecipe(ModItem.ItemDajirou ,ModItem.ItemDajirou ,null,new ItemStack(ModItem.ItemZhongjirou,4));
-		addrecipe(ModItem.ItemZhongjirou ,ModItem.ItemZhongjirou ,null,new ItemStack(ModItem.ItemXiaojirou,4));
+		addrecipe(Items.cooked_porkchop ,FoodcraftItems.ItemShucai,null,new ItemStack(FoodcraftItems.ItemJiaozixian,2));
+		addrecipe(Items.cooked_chicken ,Items.cooked_chicken ,null,new ItemStack(FoodcraftItems.ItemDajirou,4));//2个格都是鸡肉 4个大鸡肉
+		addrecipe(FoodcraftItems.ItemDajirou ,FoodcraftItems.ItemDajirou ,null,new ItemStack(FoodcraftItems.ItemZhongjirou,4));
+		addrecipe(FoodcraftItems.ItemZhongjirou ,FoodcraftItems.ItemZhongjirou ,null,new ItemStack(FoodcraftItems.ItemXiaojirou,4));
 		//1 not null
-		addrecipe(Items.potato ,null,null,new ItemStack(ModItem.ItemTudoupian,3));
-		addrecipe(ModItem.ItemTudoupian ,null,null,new ItemStack(ModItem.ItemTudousi,8));
-		addrecipe(Items.cooked_chicken ,null,null,new ItemStack(ModItem.ItemJitui,2));//1个格都是鸡肉 2个鸡腿
-		addrecipe(ModItem.ItemDoufu ,null,null,new ItemStack(ModItem.ItemDoufusi,3));
-		addrecipe(Items.carrot ,null,null,new ItemStack(ModItem.ItemLuobosi,3));
-		addrecipe(ModItem.ItemMianpi ,null,null,new ItemStack(ModItem.ItemMianfensi,3));
-		addrecipe(ModItem.ItemShuyouyurou ,null,null,new ItemStack(ModItem.ItemYouyusi,3));
-		addrecipe(ModItem.ItemBailuobo ,null,null,new ItemStack(ModItem.ItemBailuobosi,3));
+		addrecipe(Items.potato ,null,null,new ItemStack(FoodcraftItems.ItemTudoupian,3));
+		addrecipe(FoodcraftItems.ItemTudoupian ,null,null,new ItemStack(FoodcraftItems.ItemTudousi,8));
+		addrecipe(Items.cooked_chicken ,null,null,new ItemStack(FoodcraftItems.ItemJitui,2));//1个格都是鸡肉 2个鸡腿
+		addrecipe(FoodcraftItems.ItemDoufu ,null,null,new ItemStack(FoodcraftItems.ItemDoufusi,3));
+		addrecipe(Items.carrot ,null,null,new ItemStack(FoodcraftItems.ItemLuobosi,3));
+		addrecipe(FoodcraftItems.ItemMianpi ,null,null,new ItemStack(FoodcraftItems.ItemMianfensi,3));
+		addrecipe(FoodcraftItems.ItemShuyouyurou ,null,null,new ItemStack(FoodcraftItems.ItemYouyusi,3));
+		addrecipe(FoodcraftItems.ItemBailuobo ,null,null,new ItemStack(FoodcraftItems.ItemBailuobosi,3));
 	}
 	
 	public void addrecipe(Item Input1 ,Item Input2 ,Item Input3 ,ItemStack Output){

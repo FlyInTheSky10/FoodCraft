@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.FoodcraftItemStack;
 
 import net.minecraft.init.Blocks;
@@ -25,12 +25,12 @@ public class Gygrecipe {
     }
 	 
 	private Gygrecipe(){
-		addrecipe(ModItem.Itemfan,ModItem.Itemfan,ModItem.Itemfan,new ItemStack(ModItem.ItemBaifan));
-		addrecipe(ModItem.ItemBaifan,ModItem.ItemBaifan,ModItem.ItemBaifan,new ItemStack(ModItem.ItemXifan,3));
-		addrecipe(Items.egg,ModItem.ItemJiangyou,ModItem.ItemCong,new ItemStack(ModItem.ItemDangeng));
-		addrecipe(Item.getItemFromBlock(Blocks.brown_mushroom),ModItem.ItemJitui,ModItem.ItemYan,new ItemStack(ModItem.ItemMogudunjitang));
-		addrecipe(Items.cooked_fish,ModItem.ItemCong,ModItem.ItemCong,new ItemStack(ModItem.ItemQingzhenyu));
-		addrecipe(ModItem.ItemBaifan,Items.egg,Items.cooked_porkchop,new ItemStack(ModItem.ItemPidanshourouzhou));
+		addrecipe(FoodcraftItems.Itemfan,FoodcraftItems.Itemfan,FoodcraftItems.Itemfan,new ItemStack(FoodcraftItems.ItemBaifan));
+		addrecipe(FoodcraftItems.ItemBaifan,FoodcraftItems.ItemBaifan,FoodcraftItems.ItemBaifan,new ItemStack(FoodcraftItems.ItemXifan,3));
+		addrecipe(Items.egg,FoodcraftItems.ItemJiangyou,FoodcraftItems.ItemCong,new ItemStack(FoodcraftItems.ItemDangeng));
+		addrecipe(Item.getItemFromBlock(Blocks.brown_mushroom),FoodcraftItems.ItemJitui,FoodcraftItems.ItemYan,new ItemStack(FoodcraftItems.ItemMogudunjitang));
+		addrecipe(Items.cooked_fish,FoodcraftItems.ItemCong,FoodcraftItems.ItemCong,new ItemStack(FoodcraftItems.ItemQingzhenyu));
+		addrecipe(FoodcraftItems.ItemBaifan,Items.egg,Items.cooked_porkchop,new ItemStack(FoodcraftItems.ItemPidanshourouzhou));
 	}
 	
 	public void addrecipe(Item Input1 ,Item Input2 ,Item Input3 ,ItemStack Output){

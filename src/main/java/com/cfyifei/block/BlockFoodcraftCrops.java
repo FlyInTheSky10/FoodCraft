@@ -2,7 +2,7 @@ package com.cfyifei.block;
 
 import java.util.Random;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 
 import net.minecraft.block.BlockCrops;
 import net.minecraft.block.properties.PropertyInteger;
@@ -32,12 +32,12 @@ public class BlockFoodcraftCrops extends BlockCrops {
 	}
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-    	if(this == ModBlocks.BlockDouzi) {
+    	if(this == FoodcraftBlocks.BlockDouzi) {
     	if(((Integer)state.getValue(AGE)).intValue() == 7) {
     		return this.getCrop();
     	}else {
     		if(((Integer)state.getValue(AGE)) >= 4 && ((Integer)state.getValue(AGE)) <= 4 ) {
-        		return ModItem.ItemDoujiao;
+        		return FoodcraftItems.ItemDoujiao;
         	}else {
         		return  this.getSeed();
         	}

@@ -11,7 +11,7 @@ import java.util.Map.Entry;
 
 import com.cfyifei.gui.recipes.Tpjrecipe;
 import com.cfyifei.gui.tileentitys.TileEntityTpj;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.TpjMaking;
 
 import net.minecraft.block.Block;
@@ -38,7 +38,6 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
         	tpjMaking.Item.stackSize = 1;
         	boolean isMilk = tpjMaking.isMilk;
         	boolean iscold = tpjMaking.iscold;
-            //加槽
             this.ingred = new PositionedStack(tpjMaking.Item, 34 - 5, 27 - 11);
             this.result = new PositionedStack(result, 82 - 5, 27 - 11);
             
@@ -47,7 +46,7 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
             }
 
             if(!isMilk){
-            	slot = new PositionedStack(new ItemStack(ModItem.Itemwater), 34 - 5, 55 - 11);
+            	slot = new PositionedStack(new ItemStack(FoodcraftItems.Itemwater), 34 - 5, 55 - 11);
             }
             
             
@@ -60,12 +59,10 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
 
         public PositionedStack getResult() {
-        	//获得产物
             return result;
         }
         public List<PositionedStack> getOtherStacks() {
@@ -95,19 +92,16 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
     	transferRects.add(new RecipeTransferRect(new Rectangle(58 - 5, 30 - 11, 24, 17), "Tpjmaking"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
         return com.cfyifei.gui.guis.GuiTpj.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
         return NEIClientUtils.translate("tile.Tpj.name");
     }
 
@@ -155,14 +149,11 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
         return "foodcraft:textures/gui/nei/tpj.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     	drawProgressBar(55 - 5, 26 - 11, 176, 14, 24, 17, 48, 0);
     }
 
@@ -180,7 +171,6 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "Tpjmaking";
     }
 

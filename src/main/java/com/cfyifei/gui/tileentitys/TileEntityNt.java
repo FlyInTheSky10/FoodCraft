@@ -1,6 +1,5 @@
 package com.cfyifei.gui.tileentitys;
 
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -33,8 +32,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.cfyifei.gui.blocks.BlockNt;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.recipes.Ntrecipe;
-import com.cfyifei.item.ModItem;
-
+import com.cfyifei.item.FoodcraftItems;
 
 public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IInventory {
 	
@@ -54,47 +52,42 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
 	        boolean flag1 = false;
 
 	        
-	        if (!this.worldObj.isRemote)
-	        {
+	        if (!this.worldObj.isRemote) {
 	        	cai();
 	    
 
-	            if (cai != null && this.water == 8 && canSmelt())
-	            {
+	            if (cai != null && this.water == 8 && canSmelt()) {
 	                ++this.furnaceCookTime;
 
-	                if (this.furnaceCookTime == 3600)
-	                {
+	                if (this.furnaceCookTime == 3600) {
 	                    this.furnaceCookTime = 0;
 	                    this.smeltItem();
 	                    flag1 = true;
 	                }
 	            }
-	            else
-	            {
+	            else {
 	                this.furnaceCookTime = 0;
 	            }
 
-	        if (flag1)
-	        {
+	        if (flag1) {
 	            this.markDirty();
 	        }
-	        if (stack[3] != null){
+	        if (stack[3] != null) {
 	        	if(water != 8){
 	 
-	        		if(stack[3].getItem().equals(Items.potionitem)){
+	        		if(stack[3].getItem().equals(Items.potionitem)) {
 
 	        			stack[3] = new ItemStack(Items.glass_bottle);
 	        			++water;	      
 	        			
 	        		}	
-	        		if(stack[3].getItem().equals(ModItem.Itemwater)){
+	        		if(stack[3].getItem().equals(FoodcraftItems.Itemwater)) {
 
 	        			--stack[3].stackSize;
 	        			++water;	      
 	        			
 	        		}	
-	        		if(stack[3].stackSize <= 0){
+	        		if(stack[3].stackSize <= 0) {
 
 	        			stack[3] = null;      
 	        			
@@ -120,19 +113,15 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
 
 	@Override
     public ItemStack decrStackSize(int par1, int par2) {
-            // TODO Auto-generated method stub
-            if (this.stack[par1] != null)
-    {
+            if (this.stack[par1] != null) {
         ItemStack var3;
 
-        if (this.stack[par1].stackSize <= par2)
-        {
+        if (this.stack[par1].stackSize <= par2) {
             var3 = this.stack[par1];
             this.stack[par1] = null;
             return var3;
         }
-        else
-        {
+        else {
             var3 = this.stack[par1].splitStack(par2);
 
             if (this.stack[par1].stackSize == 0)
@@ -143,23 +132,20 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
             return var3;
         }
     }
-    else
-    {
+    else {
         return null;
     }
     }
 
 	@Override
-	 public ItemStack getStackInSlotOnClosing(int par1)
-    {
+	 public ItemStack getStackInSlotOnClosing(int par1) {
         if (this.stack[par1] != null)
         {
             ItemStack itemstack = this.stack[par1];
             this.stack[par1] = null;
             return itemstack;
         }
-        else
-        {
+        else {
             return null;
         }
     }
@@ -167,50 +153,41 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
 	@Override
 	public void setInventorySlotContents(int var1, ItemStack var2) {
         this.stack[var1] = var2;
-        if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
-        {
+        if (var2 != null && var2.stackSize > this.getInventoryStackLimit()) {
                 var2.stackSize = this.getInventoryStackLimit();
         }
 	}
 
 	@Override
 	public String getName() {
-		
 		return "Nt";
 	}
 
-
 	@Override
-	public int getInventoryStackLimit() {
-		
+	public int getInventoryStackLimit() {	
 		return 64;
 	}
 
 	@Override
-	public boolean isUseableByPlayer(EntityPlayer var1) {
-		
+	public boolean isUseableByPlayer(EntityPlayer var1) {	
 		return true;
 	}
 
 
 
 	@Override
-	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-		
+	public boolean isItemValidForSlot(int var1, ItemStack var2) {	
 		return false;
 	}
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3)
-        {
+        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
             NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
             byte var5 = var4.getByte("Slot");
-            if (var5 >= 0 && var5 < this.stack.length)
-            {
+            if (var5 >= 0 && var5 < this.stack.length) {
                 this.stack[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
@@ -219,17 +196,14 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
         this.water = par1NBTTagCompound.getShort("water");
     }
 
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
-    {
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
         par1NBTTagCompound.setShort("water", (short)this.water);
         NBTTagList var2 = new NBTTagList();
-        for (int var3 = 0; var3 < this.stack.length; ++var3)
-        {
-            if (this.stack[var3] != null)
-            {
+        for (int var3 = 0; var3 < this.stack.length; ++var3) {
+            if (this.stack[var3] != null) {
                 NBTTagCompound var4 = new NBTTagCompound();
                 var4.setByte("Slot", (byte)var3);
                 this.stack[var3].writeToNBT(var4);
@@ -240,31 +214,24 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
        
     }
     
-    public static int getItemBurnTime(ItemStack par0ItemStack)
-    {
-        if (par0ItemStack == null)
-        {
+    public static int getItemBurnTime(ItemStack par0ItemStack) {
+        if (par0ItemStack == null) {
             return 0;
         }
-        else
-        {
+        else {
             net.minecraft.item.Item item = par0ItemStack.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
-            {
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
             	Block block = Block.getBlockFromItem(item);
 
-                if (block == Blocks.wooden_slab)
-                {
+                if (block == Blocks.wooden_slab) {
                     return 150;
                 }
 
-                if (block.getMaterial() == Material.wood)
-                {
+                if (block.getMaterial() == Material.wood) {
                     return 300;
                 }
-                if (block == Blocks.coal_block)
-                {
+                if (block == Blocks.coal_block) {
                     return 16000;
                 }
             }
@@ -280,31 +247,26 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
         }
     }
     
-    private boolean canSmelt()
-    {
-    	if(this.stack[5] != null){
+    private boolean canSmelt() {
+    	if(this.stack[5] != null) {
        	 if (!this.stack[5].isItemEqual(cai)) return false;
          int result = stack[5].stackSize + cai.stackSize;
          return result <= getInventoryStackLimit() && result <= this.stack[5].getMaxStackSize(); 
     	}
 
-    	if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null){ 
+    	if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null) { 
             if (cai == null) return false;
             return true;
     	}
 		return false;
     }
 
-   
     public void smeltItem()
     {
-
-            if (this.stack[5] == null)
-            {
+            if (this.stack[5] == null) {
                 this.stack[5] = cai.copy();
             }
-            else if (this.stack[5].getItem() == cai.getItem())
-            {
+            else if (this.stack[5].getItem() == cai.getItem()) {
                 this.stack[5].stackSize += cai.stackSize; // Forge BugFix: Results may have multiple items
             }
 
@@ -312,22 +274,17 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
             --this.stack[1].stackSize;
             --this.stack[2].stackSize;
 
-            if (this.stack[0].stackSize <= 0)
-            {
+            if (this.stack[0].stackSize <= 0) {
                 this.stack[0] = null;
             }
-            if (this.stack[1].stackSize <= 0)
-            {
+            if (this.stack[1].stackSize <= 0) {
                 this.stack[1] = null;
             }
-            if (this.stack[2].stackSize <= 0)
-            {
+            if (this.stack[2].stackSize <= 0) {
                 this.stack[2] = null;
             }
-        water =  0;;
+        water =  0;
     }
-
-
 
 	public int getWater() {
 		return this.water * 7;
@@ -336,59 +293,43 @@ public class TileEntityNt extends TileEntity implements IUpdatePlayerListBox,IIn
 	       if(stack[0] != null && stack[1] != null && stack[2] != null){
 	    	   cai = Ntrecipe.smelting().getOutput(stack[0].getItem(), stack[1].getItem(), stack[2].getItem());
 	       }
-	       
-	       else{
+	       else {
 	    	   cai = null;
 	       }
 		}
 
-
 	public boolean isBurning() {
 	return this.furnaceCookTime > 0;
 	}
-
 
 	@Override
 	public boolean hasCustomName() {
 		return false;
 	}
 
-
 	@Override
 	public IChatComponent getDisplayName() {
 		return new ChatComponentText(this.getName());
 	}
 
+	@Override
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-
-	}
-
-
-	@Override
-	public void closeInventory(EntityPlayer player) {
-		
-	}
-
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public int getField(int id) {
 		return 0;
 	}
 
-
 	@Override
-	public void setField(int id, int value) {
-		
-	}
-
+	public void setField(int id, int value) {}
 
 	@Override
 	public int getFieldCount() {
 		return 0;
 	}
-
 
 	@Override
 	public void clear() {

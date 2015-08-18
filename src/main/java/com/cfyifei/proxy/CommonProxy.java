@@ -2,12 +2,12 @@ package com.cfyifei.proxy;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
-import com.cfyifei.block.ModBlocks;
+import com.cfyifei.block.FoodcraftBlocks;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.*;
 import com.cfyifei.gui.tileentitys.*;
-import com.cfyifei.item.ModItem;
-import com.cfyifei.plant.blocks.Plant;
+import com.cfyifei.item.FoodcraftItems;
+import com.cfyifei.plant.blocks.FoodcraftPlants;
 import com.cfyifei.recipe.Recipe;
 import com.cfyifei.util.GUIHandler;
 
@@ -24,35 +24,23 @@ import net.minecraftforge.fml.relauncher.Side;
 
 
 public class CommonProxy {
-	public static Side side;
-	public void preInit(FMLPreInitializationEvent event) {
-		
-	}
+
+	public void preInit(FMLPreInitializationEvent event) {}
 	
 	public void init(FMLInitializationEvent event) {
-		ModBlocks.init();
+		FoodcraftBlocks.init();
 		ModGui.init();
-		ModItem.init();
+		FoodcraftItems.init();
 		Recipe.init();
-		Plant.init();
+		FoodcraftPlants.init();
 		NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new GUIHandler());
 	}
 	
-	public void postInit(FMLPostInitializationEvent event) {
-		
-	}
+	public void postInit(FMLPostInitializationEvent event) {}
 	
-	public void registerBlockModels() {
-		
-	}
+	public void registerBlockModels() {}
 	
-	public void registerItemModels() {
-		
-	}
+	public void registerItemModels() {}
 	
-	public void registerRenders() {
-		
-	}
-	
-	
+	public void registerRenders() {}
 }

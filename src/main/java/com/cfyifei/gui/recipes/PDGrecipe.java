@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.CookingOutput;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -25,12 +25,12 @@ public class PDGrecipe {
     }
     
     private PDGrecipe() {
-    	this.itemregister(Items.egg, new ItemStack(ModItem.ItemJianjidan), 0.5F, 250, 400);
-        this.itemregister(ModItem.ItemMianfen, new ItemStack(ModItem.ItemLaobing), 0.5F, 250, 350);
-        this.itemregister(ModItem.ItemJiaozi, new ItemStack(ModItem.ItemJianjiao), 0.5F, 350, 400);
-        this.itemregister(ModItem.ItemTudoupian, new ItemStack(ModItem.ItemChaotudoupian), 0.5F, 225, 325);
-        this.itemregister(ModItem.ItemMianfensi, new ItemStack(ModItem.ItemMahua), 0.5F, 300, 380);
-        this.itemregister(ModItem.ItemYumi, new ItemStack(ModItem.ItemBaoyumihua), 0.5F, 250, 330);
+    	this.itemregister(Items.egg, new ItemStack(FoodcraftItems.ItemJianjidan), 0.5F, 250, 400);
+        this.itemregister(FoodcraftItems.ItemMianfen, new ItemStack(FoodcraftItems.ItemLaobing), 0.5F, 250, 350);
+        this.itemregister(FoodcraftItems.ItemJiaozi, new ItemStack(FoodcraftItems.ItemJianjiao), 0.5F, 350, 400);
+        this.itemregister(FoodcraftItems.ItemTudoupian, new ItemStack(FoodcraftItems.ItemChaotudoupian), 0.5F, 225, 325);
+        this.itemregister(FoodcraftItems.ItemMianfensi, new ItemStack(FoodcraftItems.ItemMahua), 0.5F, 300, 380);
+        this.itemregister(FoodcraftItems.ItemYumi, new ItemStack(FoodcraftItems.ItemBaoyumihua), 0.5F, 250, 330);
     }
    
     public void blockregister(Block Block, ItemStack ItemStack, float xp, int min, int max) {

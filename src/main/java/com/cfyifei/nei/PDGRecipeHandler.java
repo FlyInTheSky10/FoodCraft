@@ -32,20 +32,15 @@ public class PDGRecipeHandler extends TemplateRecipeHandler {
     {
         public SmeltingPair(ItemStack ingred, ItemStack result) {
             ingred.stackSize = 1;
-            //加槽
             this.ingred = new PositionedStack(ingred, 42 - 5, 36 - 11);
             this.result = new PositionedStack(result, 105 - 5, 36 - 11);
-           /* oil = new PositionedStack(new ItemStack((Item)null), 15 - 5, 36 - 11);
-            bad = new PositionedStack(new ItemStack((Item)null), 134 - 5, 36 - 11);*/
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
 
         public PositionedStack getResult() {
-        	//获得产物
             return result;
         }
 
@@ -54,8 +49,6 @@ public class PDGRecipeHandler extends TemplateRecipeHandler {
             PositionedStack stack = getOtherStack();
             if (stack != null)
                 stacks.add(stack);
-            //stacks.add(oil);
-            //stacks.add(bad);
             return stacks;
         }
 
@@ -70,7 +63,6 @@ public class PDGRecipeHandler extends TemplateRecipeHandler {
     public static class FuelPair
     {
         public FuelPair(ItemStack ingred, int burnTime) {
-            //this.stack = new PositionedStack(ingred, 80 - 5, 54 - 11, false);
             this.burnTime = burnTime;
         }
 
@@ -83,19 +75,16 @@ public class PDGRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
     	transferRects.add(new RecipeTransferRect(new Rectangle(72 - 5, 39 - 11, 22, 12), "PDGcooking"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
         return com.cfyifei.gui.guis.GuiPDG.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
         return NEIClientUtils.translate("tile.PDG.name");
     }
 
@@ -143,14 +132,11 @@ public class PDGRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
         return "foodcraft:textures/gui/nei/pdg.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     	drawProgressBar(69 - 5, 36 - 11, 176, 14, 22, 17, 48, 0);
         drawProgressBar(78 - 5, 16 - 11, 176, 0, 14, 14, 48, 7);
     }
@@ -168,7 +154,6 @@ public class PDGRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "PDGcooking";
     }
 

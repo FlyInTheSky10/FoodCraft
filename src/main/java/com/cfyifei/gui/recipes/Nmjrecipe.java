@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -26,14 +26,14 @@ public class Nmjrecipe {
     }
     
     private Nmjrecipe() {
-        this.itemregister(ModItem.ItemDami, new ItemStack(ModItem.Itemfan), 0.7F);
-        this.itemregister(Items.wheat, new ItemStack(ModItem.ItemMianfen , 2), 0.5F);
-        this.itemregister(ModItem.ItemHuashen, new ItemStack(ModItem.ItemHuashenyou), 0.5F);
-        this.itemregister(ModItem.ItemDouzi, new ItemStack(ModItem.ItemDoujiang), 0.5F);
-        this.itemregister(Items.potato, new ItemStack(ModItem.ItemDianfen,8), 0.5F);
-        this.register(new ItemStack(Items.dye,1,3), new ItemStack(ModItem.ItemQiaokelifen), 0.5F);
-        this.itemregister(ModItem.ItemNuomi,  new ItemStack(ModItem.ItemNuomifen,3), 0.5F);
-        this.itemregister(ModItem.ItemHongdou,  new ItemStack(ModItem.ItemDousha,2), 0.5F);
+        this.itemregister(FoodcraftItems.ItemDami, new ItemStack(FoodcraftItems.Itemfan), 0.7F);
+        this.itemregister(Items.wheat, new ItemStack(FoodcraftItems.ItemMianfen , 2), 0.5F);
+        this.itemregister(FoodcraftItems.ItemHuashen, new ItemStack(FoodcraftItems.ItemHuashenyou), 0.5F);
+        this.itemregister(FoodcraftItems.ItemDouzi, new ItemStack(FoodcraftItems.ItemDoujiang), 0.5F);
+        this.itemregister(Items.potato, new ItemStack(FoodcraftItems.ItemDianfen,8), 0.5F);
+        this.register(new ItemStack(Items.dye,1,3), new ItemStack(FoodcraftItems.ItemQiaokelifen), 0.5F);
+        this.itemregister(FoodcraftItems.ItemNuomi,  new ItemStack(FoodcraftItems.ItemNuomifen,3), 0.5F);
+        this.itemregister(FoodcraftItems.ItemHongdou,  new ItemStack(FoodcraftItems.ItemDousha,2), 0.5F);
     }
    
 	     

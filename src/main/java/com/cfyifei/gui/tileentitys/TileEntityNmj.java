@@ -33,7 +33,6 @@ import com.cfyifei.gui.blocks.BlockNmj;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.ContainerNmj;
 
-
 public class TileEntityNmj extends TileEntity implements  IUpdatePlayerListBox,IInventory {
 	
 	private ItemStack stack[] = new ItemStack[3];

@@ -7,8 +7,8 @@ import java.util.Random;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
-import com.cfyifei.block.ModBlocks;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.block.FoodcraftBlocks;
+import com.cfyifei.item.FoodcraftItems;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
@@ -27,21 +27,20 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class TreeBannana extends BlockBush
-{
+public class TreeBannana extends BlockBush {
 	public Block fruit;
-    public TreeBannana(Block fruit)
-    {
+    public TreeBannana(Block fruit) {
     	this.fruit = fruit;
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
         this.setCreativeTab(FoodCraft.FcTabZhiwu);
     }
+    
 	@Override
 	 public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ){ 
 		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
 		if(stack != null){
-			if(stack.getItem() == ModItem.ItemJinkela){
+			if(stack.getItem() == FoodcraftItems.ItemJinkela){
 				if(canGlow(worldIn, pos.getX(),pos.getY(),pos.getZ())){
         			glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
         		}
@@ -53,27 +52,20 @@ public class TreeBannana extends BlockBush
 		}
         return true;
 	}
-    /**
-     * Ticks the block if it's been scheduled
-     */
-	 public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
-	    {
-	        if (!worldIn.isRemote)
-	        {
+ 
+	 public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+	        if (!worldIn.isRemote) {
 	            super.updateTick(worldIn, pos, state, rand);
-	            //亮度大于等于9
-	            if (rand.nextInt(7) == 0)
-	            {
-	            		if(canGlow(worldIn,pos.getX(),pos.getY(),pos.getZ())){
+	            if (rand.nextInt(7) == 0) {
+	            		if(canGlow(worldIn,pos.getX(),pos.getY(),pos.getZ())) {
 	            			glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
 	            		}
-	               
 	            }
 	        }
 	    }
-public boolean canGlow(World w, int x, int y, int z){
+public boolean canGlow(World w, int x, int y, int z) {
 	if(
-			//中
+			//A
 			isBlockAir(w, x, y + 1, z) &&
 			isBlockAir(w, x, y + 2, z) &&
 			isBlockAir(w, x, y + 3, z) &&
@@ -133,13 +125,13 @@ public boolean canGlow(World w, int x, int y, int z){
 			isBlockAir(w, x - 1, y + 3, z)){
 		return true;
 	}
-	else{
-	return false;
+		else{
+			return false;
+		}
 	}
-}
     private void glowTree(World w, int x, int y, int z) {
 		w.setBlockToAir(new BlockPos(x, y, z));
-		//中
+		//A
 		setBlockToTree(w, x, y, z,Blocks.log);
 		setBlockToTree(w, x, y + 1, z,Blocks.log);
 		setBlockToTree(w, x, y + 2, z,Blocks.log);
@@ -151,7 +143,6 @@ public boolean canGlow(World w, int x, int y, int z){
 		setBlockToTree(w, x, y + 8, z,Blocks.leaves);
 		setBlockToTree(w, x, y + 9, z,Blocks.leaves);
 		setBlockToTree(w, x, y + 10, z,Blocks.leaves);
-		
 		//-x
 		setBlockToTree(w, x - 1, y + 6, z,Blocks.leaves);
 		setBlockToTree(w, x - 1, y + 7, z,Blocks.leaves);
@@ -208,7 +199,7 @@ public boolean canGlow(World w, int x, int y, int z){
 		if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
 				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
 				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Plant.FCleaves){
+				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
 			w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
 		}
 	}
@@ -216,7 +207,7 @@ public boolean canGlow(World w, int x, int y, int z){
 			if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
 					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
 					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Plant.FCleaves){
+					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
 				w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
 			}
 	}
@@ -224,7 +215,7 @@ public boolean canGlow(World w, int x, int y, int z){
 			if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
 					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
 					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Plant.FCleaves){
+					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
 				return true;
 			}
 			else{

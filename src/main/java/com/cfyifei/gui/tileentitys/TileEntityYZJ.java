@@ -41,8 +41,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import com.cfyifei.gui.blocks.BlockTpj;
 import com.cfyifei.gui.blocks.BlockYZJ;
 import com.cfyifei.gui.blocks.ModGui;
-import com.cfyifei.item.ModItem;
-
+import com.cfyifei.item.FoodcraftItems;
 
 public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,IInventory{
 	private ItemStack stack[] = new ItemStack[4];
@@ -53,77 +52,64 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
 	private String field_145958_o;
 	public int water;
 
-
 	@Override
     public void update() {
 		
 		boolean flag = this.tableBurnTime > 0;
 	        boolean flag1 = false;
-	        if (this.tableBurnTime > 0)
-	        {
-	            --this.tableBurnTime;
-	            
+	        if (this.tableBurnTime > 0) {
+	            --this.tableBurnTime;  
 	        }
 	        
-	        if (!this.worldObj.isRemote)
-	        {
-	            if (this.tableBurnTime == 0 && this.canSmelt() && this.water >= 2)
-	            {
+	        if (!this.worldObj.isRemote) {
+	            if (this.tableBurnTime == 0 && this.canSmelt() && this.water >= 2) {
 	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[1]);
 
-	                if (this.tableBurnTime > 0)
-	                {
+	                if (this.tableBurnTime > 0) {
 	                    flag1 = true;
 
-	                    if (this.stack[1] != null)
-	                    {
+	                    if (this.stack[1] != null) {
 	                        --this.stack[1].stackSize;
 
-	                        if (this.stack[1].stackSize == 0)
-	                        {
+	                        if (this.stack[1].stackSize == 0) {
 	                            this.stack[1] = stack[1].getItem().getContainerItem(stack[1]);
 	                        }
 	                    }
 	                }
 	            }
 
-	            if (this.isBurning() && this.canSmelt() && this.water >= 2)
-	            {
+	            if (this.isBurning() && this.canSmelt() && this.water >= 2) {
 	                ++this.furnaceCookTime;
 
-	                if (this.furnaceCookTime == 400)
-	                {
+	                if (this.furnaceCookTime == 400) {
 	                    this.furnaceCookTime = 0;
 	                    this.smeltItem();
 	                    flag1 = true;
 	                }
 	            }
-	            else
-	            {
+	            else {
 	                this.furnaceCookTime = 0;
 	            }
-	            if (flag != this.tableBurnTime > 0)//没有燃烧时间
-	            {
+	            if (flag != this.tableBurnTime > 0) {
 	                flag1 = true;
 	                BlockYZJ.setState(this.isBurning(), this.worldObj, this.pos);
 	            }
 	        }
 
-	        if (flag1)
-	        {
+	        if (flag1) {
 	            this.markDirty();
 	        }
-	        if (stack[2] != null){
-	        	if(water != 8){
+	        if (stack[2] != null) {
+	        	if(water != 8) {
 	        	
 	        	
-	        	if(stack[2].getItem() == ModItem.ItemHuashenyou){
+	        	if(stack[2].getItem() == FoodcraftItems.ItemHuashenyou) {
 	        			        		
 	        			--stack[2].stackSize;
 	        			++water;	        			        		
 	        		}	
 	        	}
-	        	if(stack[2].stackSize == 0){
+	        	if(stack[2].stackSize == 0) {
 	    			stack[2] = null;	  
 	    		}
 	        }
@@ -132,59 +118,47 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
 
 	@Override
 	public int getSizeInventory() {
-		
 		return stack.length;
-
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int var1) {
-		
 		return stack[var1];
 	}
 
 	@Override
     public ItemStack decrStackSize(int par1, int par2) {
-            // TODO Auto-generated method stub
-            if (this.stack[par1] != null)
-    {
+            if (this.stack[par1] != null) {
         ItemStack var3;
 
-        if (this.stack[par1].stackSize <= par2)
-        {
+        if (this.stack[par1].stackSize <= par2) {
             var3 = this.stack[par1];
             this.stack[par1] = null;
             return var3;
         }
-        else
-        {
+        else {
             var3 = this.stack[par1].splitStack(par2);
 
-            if (this.stack[par1].stackSize == 0)
-            {
+            if (this.stack[par1].stackSize == 0) {
                 this.stack[par1] = null;
             }
 
             return var3;
         }
     }
-    else
-    {
+    else {
         return null;
     }
     }
 
 	@Override
-	 public ItemStack getStackInSlotOnClosing(int par1)
-    {
-        if (this.stack[par1] != null)
-        {
+	 public ItemStack getStackInSlotOnClosing(int par1) {
+        if (this.stack[par1] != null) {
             ItemStack itemstack = this.stack[par1];
             this.stack[par1] = null;
             return itemstack;
         }
-        else
-        {
+        else {
             return null;
         }
     }
@@ -192,51 +166,39 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
 	@Override
 	public void setInventorySlotContents(int var1, ItemStack var2) {
         this.stack[var1] = var2;
-        if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
-        {
+        if (var2 != null && var2.stackSize > this.getInventoryStackLimit()) {
                 var2.stackSize = this.getInventoryStackLimit();
         }
 	}
 
 	@Override
-	public String getName() {
-		
+	public String getName() {	
 		return "YZJ";
 	}
 
-
-
 	@Override
-	public int getInventoryStackLimit() {
-		
+	public int getInventoryStackLimit() {	
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer var1) {
-		
 		return true;
 	}
 
-
-
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-		
 		return false;
 	}
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3)
-        {
+        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
             NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
             byte var5 = var4.getByte("Slot");
-            if (var5 >= 0 && var5 < this.stack.length)
-            {
+            if (var5 >= 0 && var5 < this.stack.length) {
                 this.stack[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
@@ -245,17 +207,14 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
         this.water = par1NBTTagCompound.getShort("water");
     }
 
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
-    {
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
         par1NBTTagCompound.setShort("water", (short)this.water);
         NBTTagList var2 = new NBTTagList();
-        for (int var3 = 0; var3 < this.stack.length; ++var3)
-        {
-            if (this.stack[var3] != null)
-            {
+        for (int var3 = 0; var3 < this.stack.length; ++var3) {
+            if (this.stack[var3] != null) {
                 NBTTagCompound var4 = new NBTTagCompound();
                 var4.setByte("Slot", (byte)var3);
                 this.stack[var3].writeToNBT(var4);
@@ -266,31 +225,24 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
        
     }
     
-    public static int getItemBurnTime(ItemStack par0ItemStack)
-    {
-        if (par0ItemStack == null)
-        {
+    public static int getItemBurnTime(ItemStack par0ItemStack) {
+        if (par0ItemStack == null) {
             return 0;
         }
-        else
-        {
+        else {
             net.minecraft.item.Item item = par0ItemStack.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
-            {
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
             	Block block = Block.getBlockFromItem(item);
 
-                if (block == Blocks.wooden_slab)
-                {
+                if (block == Blocks.wooden_slab) {
                     return 150;
                 }
 
-                if (block.getMaterial() == Material.wood)
-                {
+                if (block.getMaterial() == Material.wood) {
                     return 300;
                 }
-                if (block == Blocks.coal_block)
-                {
+                if (block == Blocks.coal_block) {
                     return 16000;
                 }
             }
@@ -306,14 +258,11 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
         }
     }
     
-    private boolean canSmelt()
-    {
-        if (this.stack[0] == null)
-        {
+    private boolean canSmelt() {
+        if (this.stack[0] == null) {
             return false;
         }
-        else
-        {
+        else {
             ItemStack itemstack = YZJrecipe.smelting().getSmeltingResult(this.stack[0]);
             if (itemstack == null) return false;
             if (this.stack[3] == null) return true;
@@ -322,125 +271,83 @@ public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,II
             return result <= getInventoryStackLimit() && result <= this.stack[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
-    public boolean isBurning()
-    {
+    public boolean isBurning() {
         return this.tableBurnTime > 0;
     }
    
-    public void smeltItem()
-    {
-        if (this.canSmelt())
-        {
+    public void smeltItem() {
+        if (this.canSmelt()) {
             ItemStack itemstack = YZJrecipe.smelting().getSmeltingResult(this.stack[0]);
 
-            if (this.stack[3] == null)
-            {
+            if (this.stack[3] == null) {
                 this.stack[3] = itemstack.copy();
             }
-            else if (this.stack[3].getItem() == itemstack.getItem())
-            {
+            else if (this.stack[3].getItem() == itemstack.getItem()) {
                 this.stack[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
 
             --this.stack[0].stackSize;
             --water;
             --water;
-            if (this.stack[0].stackSize <= 0)
-            {
+            if (this.stack[0].stackSize <= 0) {
                 this.stack[0] = null;
             }
         }
     }
     @SideOnly(Side.CLIENT)
-    public float getBurnTimeRemainingScaled(int int1)
-    {
-        if (this.currentItemBurnTime == 0)
-        {
+    public float getBurnTimeRemainingScaled(int int1) {
+        if (this.currentItemBurnTime == 0) {
             this.currentItemBurnTime = 200;
         }
 
         return this.tableBurnTime * int1 / this.currentItemBurnTime;
     }
     
-    public float getCookProgressScaled(int int1)
-    {
+    public float getCookProgressScaled(int int1) {
         return this.furnaceCookTime * int1 / 400;
     }
 
-    public void name(String int1)
-    {
+    public void name(String int1) {
         this.field_145958_o = int1;
-       }
-
+    }
 
 	public int getWater() {
 		return this.water * 7;
 	}
-
 
 	@Override
 	public boolean hasCustomName() {
 		return false;
 	}
 
-
-
-
 	@Override
 	public IChatComponent getDisplayName() {
 		return new ChatComponentText(this.getName());
 	}
 
-
-
+	@Override
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-	
-		
-	}
-
-
-
-
-	@Override
-	public void closeInventory(EntityPlayer player) {
-	
-		
-	}
-
-
-
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public int getField(int id) {
 		return 0;
 	}
 
-
-
-
 	@Override
-	public void setField(int id, int value) {
-		
-	}
-
-
-
+	public void setField(int id, int value) {}
 
 	@Override
 	public int getFieldCount() {
 		return 0;
 	}
 
-
-
-
 	@Override
 	public void clear() {
 		for (int i = 0; i < this.stack.length; ++i) {
             this.stack[i] = null;
         }
-	}
-    
+	}  
 }

@@ -14,7 +14,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.config.NERLogManager;
 import com.cfyifei.gui.blocks.ModGui;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.proxy.CommonProxy;
 import com.cfyifei.util.FoodcraftSubscribeEvent;
 
@@ -29,27 +29,27 @@ public class FoodCraft {
 	};
 	public static final CreativeTabs FcTabZhiwu = new CreativeTabs("Zhiwu") {//植物
 		public Item getTabIconItem() {
-			return ModItem.ItemLajiao;
+			return FoodcraftItems.ItemLajiao;
 		}
 	};
 	public static final CreativeTabs FcTabYingliao = new CreativeTabs("Yingliao") {//饮料
 		public Item getTabIconItem() {
-			return ModItem.ItemPutaozhi;
+			return FoodcraftItems.ItemPutaozhi;
 		}
 	};
 	public static final CreativeTabs FcTabZhushi = new CreativeTabs("Zhushi") {//主食
 		public Item getTabIconItem() {
-			return ModItem.ItemChaotudousifan;
+			return FoodcraftItems.ItemChaotudousifan;
 		}
 	};
 	public static final CreativeTabs FcTabShicai = new CreativeTabs("Shicai") {//食材
 		public Item getTabIconItem() {
-			return ModItem.ItemMianfen;
+			return FoodcraftItems.ItemMianfen;
 		}
 	};
 	public static final CreativeTabs FcTabXiaodian = new CreativeTabs("Xiaodian") {//零食
 		public Item getTabIconItem() {
-			return ModItem.ItemJianjiao;
+			return FoodcraftItems.ItemJianjiao;
 		}
 	};
 	

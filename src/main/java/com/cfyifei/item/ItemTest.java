@@ -1,6 +1,6 @@
 package com.cfyifei.item;
 
-import com.cfyifei.block.ModBlocks;
+import com.cfyifei.block.FoodcraftBlocks;
 import com.cfyifei.util.FoodcraftUtil;
 
 import net.minecraft.block.material.Material;
@@ -16,11 +16,8 @@ import net.minecraft.world.World;
 
 public class ItemTest extends Item{
             
-
-public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-{
-	par3EntityPlayer.getFoodStats().setFoodLevel(0);
-        return par1ItemStack;
-    
-}
+	public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
+		par3EntityPlayer.getFoodStats().setFoodLevel(0);
+        return par1ItemStack;   
+	}
 }

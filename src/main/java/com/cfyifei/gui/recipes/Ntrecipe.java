@@ -10,7 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.FoodcraftItemStack;
 
 public class Ntrecipe {
@@ -23,20 +23,20 @@ public class Ntrecipe {
     }
 	 
 	private Ntrecipe(){
-		addrecipe(ModItem.ItemDouzi, ModItem.ItemMianfen, ModItem.ItemYan, new ItemStack(ModItem.ItemJiangyou,16));
-		addrecipe(ModItem.ItemDouzi, ModItem.ItemDouzi, Items.sugar, new ItemStack(ModItem.ItemCu,16));
-		addrecipe(ModItem.ItemPutao, ModItem.ItemPutao, ModItem.ItemPutao, new ItemStack(ModItem.ItemPutaojiu,3));
-		addrecipe(ModItem.ItemPutaojiu, ModItem.ItemPutaojiu, ModItem.ItemPutaojiu, new ItemStack(ModItem.ItemHongjiu,9));
-		addrecipe(ModItem.ItemDami, ModItem.ItemDami, ModItem.ItemDami, new ItemStack(ModItem.ItemBaijiu,3));
-		addrecipe(Items.apple, Items.apple, Items.apple, new ItemStack(ModItem.ItemPingguojiu,3));
-		addrecipe(Items.golden_apple, Items.golden_apple, Items.golden_apple, new ItemStack(ModItem.ItemJinpingguojiu,3));
-		addrecipe(ModItem.ItemJinputao, ModItem.ItemJinputao, ModItem.ItemJinputao, new ItemStack(ModItem.ItemJinputaojiu,3));
-		addrecipe(ModItem.ItemLi, ModItem.ItemLi, ModItem.ItemLi, new ItemStack(ModItem.ItemLizijiu,3));
-		addrecipe(ModItem.ItemLizhi, ModItem.ItemLizhi, ModItem.ItemLizhi, new ItemStack(ModItem.ItemLizhijiu,3));
-		addrecipe(ModItem.ItemTaozi, ModItem.ItemTaozi, ModItem.ItemTaozi, new ItemStack(ModItem.ItemTaozijiu,3));
-		addrecipe(ModItem.ItemShiliu, ModItem.ItemShiliu, ModItem.ItemShiliu, new ItemStack(ModItem.ItemShiliujiu,3));
-		addrecipe(ModItem.ItemNingmeng, ModItem.ItemNingmeng, ModItem.ItemNingmeng, new ItemStack(ModItem.ItemNingmengjiu,3));
-		addrecipe(ModItem.ItemMangguo, ModItem.ItemMangguo, ModItem.ItemMangguo, new ItemStack(ModItem.ItemMangguojiu,3));
+		addrecipe(FoodcraftItems.ItemDouzi, FoodcraftItems.ItemMianfen, FoodcraftItems.ItemYan, new ItemStack(FoodcraftItems.ItemJiangyou,16));
+		addrecipe(FoodcraftItems.ItemDouzi, FoodcraftItems.ItemDouzi, Items.sugar, new ItemStack(FoodcraftItems.ItemCu,16));
+		addrecipe(FoodcraftItems.ItemPutao, FoodcraftItems.ItemPutao, FoodcraftItems.ItemPutao, new ItemStack(FoodcraftItems.ItemPutaojiu,3));
+		addrecipe(FoodcraftItems.ItemPutaojiu, FoodcraftItems.ItemPutaojiu, FoodcraftItems.ItemPutaojiu, new ItemStack(FoodcraftItems.ItemHongjiu,9));
+		addrecipe(FoodcraftItems.ItemDami, FoodcraftItems.ItemDami, FoodcraftItems.ItemDami, new ItemStack(FoodcraftItems.ItemBaijiu,3));
+		addrecipe(Items.apple, Items.apple, Items.apple, new ItemStack(FoodcraftItems.ItemPingguojiu,3));
+		addrecipe(Items.golden_apple, Items.golden_apple, Items.golden_apple, new ItemStack(FoodcraftItems.ItemJinpingguojiu,3));
+		addrecipe(FoodcraftItems.ItemJinputao, FoodcraftItems.ItemJinputao, FoodcraftItems.ItemJinputao, new ItemStack(FoodcraftItems.ItemJinputaojiu,3));
+		addrecipe(FoodcraftItems.ItemLi, FoodcraftItems.ItemLi, FoodcraftItems.ItemLi, new ItemStack(FoodcraftItems.ItemLizijiu,3));
+		addrecipe(FoodcraftItems.ItemLizhi, FoodcraftItems.ItemLizhi, FoodcraftItems.ItemLizhi, new ItemStack(FoodcraftItems.ItemLizhijiu,3));
+		addrecipe(FoodcraftItems.ItemTaozi, FoodcraftItems.ItemTaozi, FoodcraftItems.ItemTaozi, new ItemStack(FoodcraftItems.ItemTaozijiu,3));
+		addrecipe(FoodcraftItems.ItemShiliu, FoodcraftItems.ItemShiliu, FoodcraftItems.ItemShiliu, new ItemStack(FoodcraftItems.ItemShiliujiu,3));
+		addrecipe(FoodcraftItems.ItemNingmeng, FoodcraftItems.ItemNingmeng, FoodcraftItems.ItemNingmeng, new ItemStack(FoodcraftItems.ItemNingmengjiu,3));
+		addrecipe(FoodcraftItems.ItemMangguo, FoodcraftItems.ItemMangguo, FoodcraftItems.ItemMangguo, new ItemStack(FoodcraftItems.ItemMangguojiu,3));
 	}
 	
 	public void addrecipe(Item Input1 ,Item Input2 ,Item Input3 ,ItemStack Output){

@@ -10,7 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.CookingOutput;
 import com.cfyifei.itemstack.GuoCooking;
 
@@ -24,27 +24,27 @@ public class Guorecipe {
     }
 	 
 	private Guorecipe(){
-		addrecipeItem(Items.egg, ModItem.ItemFanqie, ModItem.ItemBaifan, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemFanqiechaojidanfan), 400, 500);
-		addrecipeItem(ModItem.ItemTudousi, ModItem.ItemCong, ModItem.ItemBaifan, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemChaotudousifan), 450, 500);
-		addrecipeItem(Items.cooked_fish, ModItem.ItemLajiao, ModItem.ItemBaifan, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemDuojiaoyutou),350,450);
-		addrecipeItem(ModItem.ItemDoufu, ModItem.ItemDouban, ModItem.ItemBaifan, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemDianfen, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemMapodoufufan), 400, 500);
-		addrecipeItem(ModItem.ItemQingjiao, Items.potato, ModItem.ItemQiezi, ModItem.ItemBaifan,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemDisanxian), 450, 500);
-		addrecipeItem(Items.cooked_porkchop, ModItem.ItemLajiao, Items.carrot, ModItem.ItemBaifan,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemCu, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemYuxiangrousi),350,450);
-		addrecipeItem(Items.cooked_chicken, ModItem.ItemHuashen, ModItem.ItemLajiao, ModItem.ItemBaifan,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemCu, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemGongbaojiding), 400, 500);
-		addrecipeItem(Items.cooked_porkchop, ModItem.ItemBaifan, ModItem.ItemNull, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemJiangyou, ModItem.ItemCu, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemHongshaoroufan), 450, 500);
-		addrecipeItem(Items.cooked_porkchop, ModItem.ItemLajiao, ModItem.ItemBaifan, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemDouban, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemHuiguoroufan),350,450);
-		addrecipeItem(ModItem.ItemNuomituan, ModItem.ItemHuashentangyuanxian, ModItem.ItemNull, ModItem.ItemNull,ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemTangyuan), 400, 500);
-		addrecipeItem(ModItem.ItemDousha, ModItem.ItemHuashentangyuanxian, ModItem.ItemNull, ModItem.ItemNull,ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemTangyuan), 400, 500);
-		addrecipeItem(Items.cooked_chicken, ModItem.ItemCong, ModItem.ItemNull, ModItem.ItemNull,Items.sugar, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemBaiqiuji), 450, 500);
-		addrecipeItem(Items.cooked_chicken, ModItem.ItemLajiao, ModItem.ItemCong, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemDouban, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemKoushuiji), 450, 500);
-		addrecipeItem(Items.cooked_chicken, ModItem.ItemLajiao, ModItem.ItemHuashen, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemLaziji),350,450);
-		addrecipeItem(Items.cooked_chicken, ModItem.ItemQingjiao, ModItem.ItemShucai, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemCongyouji), 400, 500);
-		addrecipeItem(ModItem.ItemJichi, ModItem.ItemKele, ModItem.ItemBaifan, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemKelejichifan), 450, 500);
-		addrecipeItem(Items.cooked_fish, ModItem.ItemLajiao, ModItem.ItemCong, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemMalayu),350,450);
-		addrecipeItem(Items.cooked_fish, ModItem.ItemLajiao, ModItem.ItemCong, ModItem.ItemShucai,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemDianfen, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemSuancaiyu), 450, 500);
-		addrecipeItem(Items.cooked_chicken, ModItem.ItemGalikuai, Items.potato, ModItem.ItemBaifan,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemDianfen, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemGalijiroufan), 400, 500);
-		addrecipeItem(Items.cooked_beef, ModItem.ItemLajiao, ModItem.ItemShucai, ModItem.ItemNull,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemDianfen, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemShuizhuniurou),350,450);
-		addrecipeItem(Items.egg, ModItem.ItemCong, ModItem.ItemLajiao, ModItem.ItemBaifan,ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemDianfen, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, ModItem.ItemNull, new ItemStack(ModItem.ItemRibendoufu),350,450);
+		addrecipeItem(Items.egg, FoodcraftItems.ItemFanqie, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemFanqiechaojidanfan), 400, 500);
+		addrecipeItem(FoodcraftItems.ItemTudousi, FoodcraftItems.ItemCong, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemChaotudousifan), 450, 500);
+		addrecipeItem(Items.cooked_fish, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemDuojiaoyutou),350,450);
+		addrecipeItem(FoodcraftItems.ItemDoufu, FoodcraftItems.ItemDouban, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemDianfen, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemMapodoufufan), 400, 500);
+		addrecipeItem(FoodcraftItems.ItemQingjiao, Items.potato, FoodcraftItems.ItemQiezi, FoodcraftItems.ItemBaifan,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemDisanxian), 450, 500);
+		addrecipeItem(Items.cooked_porkchop, FoodcraftItems.ItemLajiao, Items.carrot, FoodcraftItems.ItemBaifan,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemCu, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemYuxiangrousi),350,450);
+		addrecipeItem(Items.cooked_chicken, FoodcraftItems.ItemHuashen, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemBaifan,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemCu, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemGongbaojiding), 400, 500);
+		addrecipeItem(Items.cooked_porkchop, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemCu, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemHongshaoroufan), 450, 500);
+		addrecipeItem(Items.cooked_porkchop, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemDouban, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemHuiguoroufan),350,450);
+		addrecipeItem(FoodcraftItems.ItemNuomituan, FoodcraftItems.ItemHuashentangyuanxian, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull,FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemTangyuan), 400, 500);
+		addrecipeItem(FoodcraftItems.ItemDousha, FoodcraftItems.ItemHuashentangyuanxian, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull,FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemTangyuan), 400, 500);
+		addrecipeItem(Items.cooked_chicken, FoodcraftItems.ItemCong, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull,Items.sugar, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemBaiqiuji), 450, 500);
+		addrecipeItem(Items.cooked_chicken, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemCong, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemDouban, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemKoushuiji), 450, 500);
+		addrecipeItem(Items.cooked_chicken, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemHuashen, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, Items.sugar, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemLaziji),350,450);
+		addrecipeItem(Items.cooked_chicken, FoodcraftItems.ItemQingjiao, FoodcraftItems.ItemShucai, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemCongyouji), 400, 500);
+		addrecipeItem(FoodcraftItems.ItemJichi, FoodcraftItems.ItemKele, FoodcraftItems.ItemBaifan, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemKelejichifan), 450, 500);
+		addrecipeItem(Items.cooked_fish, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemCong, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemMalayu),350,450);
+		addrecipeItem(Items.cooked_fish, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemCong, FoodcraftItems.ItemShucai,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemDianfen, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemSuancaiyu), 450, 500);
+		addrecipeItem(Items.cooked_chicken, FoodcraftItems.ItemGalikuai, Items.potato, FoodcraftItems.ItemBaifan,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemDianfen, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemGalijiroufan), 400, 500);
+		addrecipeItem(Items.cooked_beef, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemShucai, FoodcraftItems.ItemNull,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemDianfen, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemShuizhuniurou),350,450);
+		addrecipeItem(Items.egg, FoodcraftItems.ItemCong, FoodcraftItems.ItemLajiao, FoodcraftItems.ItemBaifan,FoodcraftItems.ItemHuashenyou, FoodcraftItems.ItemYan, FoodcraftItems.ItemJiangyou, FoodcraftItems.ItemDianfen, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, FoodcraftItems.ItemNull, new ItemStack(FoodcraftItems.ItemRibendoufu),350,450);
 	}
 	
 	public void addrecipeItem(Item StapleInput1,Item StapleInput2,Item StapleInput3,
@@ -82,18 +82,18 @@ ItemStack1.ingredients7 == ItemStack2.ingredients7 && ItemStack1.ingredients8 ==
 			,ItemStack ingredients4,ItemStack ingredients5,ItemStack ingredients6,ItemStack ingredients7
 			,ItemStack ingredients8
 		) {
-		if(ingredients1 != null){Iingredients1 = ingredients1.getItem();}else{Iingredients1 = ModItem.ItemNull;}
-		if(ingredients2 != null){Iingredients2 = ingredients2.getItem();}else{Iingredients2 = ModItem.ItemNull;}
-		if(ingredients3 != null){Iingredients3 = ingredients3.getItem();}else{Iingredients3 = ModItem.ItemNull;}
-		if(ingredients4 != null){Iingredients4 = ingredients4.getItem();}else{Iingredients4 = ModItem.ItemNull;}
-		if(ingredients5 != null){Iingredients5 = ingredients5.getItem();}else{Iingredients5 = ModItem.ItemNull;}
-		if(ingredients6 != null){Iingredients6 = ingredients6.getItem();}else{Iingredients6 = ModItem.ItemNull;}
-		if(ingredients7 != null){Iingredients7 = ingredients7.getItem();}else{Iingredients7 = ModItem.ItemNull;}
-		if(ingredients8 != null){Iingredients8 = ingredients8.getItem();}else{Iingredients8 = ModItem.ItemNull;}
-		if(StapleInput1 != null){IStapleInput1 = StapleInput1.getItem();}else{IStapleInput1 = ModItem.ItemNull;}
-		if(StapleInput2 != null){IStapleInput2 = StapleInput2.getItem();}else{IStapleInput2 = ModItem.ItemNull;}
-		if(StapleInput3 != null){IStapleInput3 = StapleInput3.getItem();}else{IStapleInput3 = ModItem.ItemNull;}
-		if(StapleInput4 != null){IStapleInput4 = StapleInput4.getItem();}else{IStapleInput4 = ModItem.ItemNull;}
+		if(ingredients1 != null){Iingredients1 = ingredients1.getItem();}else{Iingredients1 = FoodcraftItems.ItemNull;}
+		if(ingredients2 != null){Iingredients2 = ingredients2.getItem();}else{Iingredients2 = FoodcraftItems.ItemNull;}
+		if(ingredients3 != null){Iingredients3 = ingredients3.getItem();}else{Iingredients3 = FoodcraftItems.ItemNull;}
+		if(ingredients4 != null){Iingredients4 = ingredients4.getItem();}else{Iingredients4 = FoodcraftItems.ItemNull;}
+		if(ingredients5 != null){Iingredients5 = ingredients5.getItem();}else{Iingredients5 = FoodcraftItems.ItemNull;}
+		if(ingredients6 != null){Iingredients6 = ingredients6.getItem();}else{Iingredients6 = FoodcraftItems.ItemNull;}
+		if(ingredients7 != null){Iingredients7 = ingredients7.getItem();}else{Iingredients7 = FoodcraftItems.ItemNull;}
+		if(ingredients8 != null){Iingredients8 = ingredients8.getItem();}else{Iingredients8 = FoodcraftItems.ItemNull;}
+		if(StapleInput1 != null){IStapleInput1 = StapleInput1.getItem();}else{IStapleInput1 = FoodcraftItems.ItemNull;}
+		if(StapleInput2 != null){IStapleInput2 = StapleInput2.getItem();}else{IStapleInput2 = FoodcraftItems.ItemNull;}
+		if(StapleInput3 != null){IStapleInput3 = StapleInput3.getItem();}else{IStapleInput3 = FoodcraftItems.ItemNull;}
+		if(StapleInput4 != null){IStapleInput4 = StapleInput4.getItem();}else{IStapleInput4 = FoodcraftItems.ItemNull;}
 		GuoCooking fis = new GuoCooking(IStapleInput1, IStapleInput2, IStapleInput3, IStapleInput4, Iingredients1, 
 					Iingredients2, Iingredients3, Iingredients4, Iingredients5, Iingredients6, Iingredients7, Iingredients8);
 		Iterator iterator1 = stack1.entrySet().iterator();

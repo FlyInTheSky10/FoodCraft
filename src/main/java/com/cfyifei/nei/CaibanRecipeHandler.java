@@ -10,7 +10,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import com.cfyifei.gui.recipes.Caibanrecipe;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 import com.cfyifei.itemstack.FoodcraftItemStack;
 
 import net.minecraft.block.Block;
@@ -35,7 +35,7 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
         int w = 0;
            for(Item item : foodcraftItemStack.Stack){
         	   if(item == null){
-        		   is[w] = new ItemStack(ModItem.ItemNull);
+        		   is[w] = new ItemStack(FoodcraftItems.ItemNull);
         		   w += 1;
         		   continue;
         	   }
@@ -43,7 +43,7 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
                 w += 1;
            }
            ingred = new PositionedStack[foodcraftItemStack.Stack.length];
-            //加槽
+            //Add slot
 
         	this.ingred[0] = new PositionedStack(is[0], 70 - 5, 21 - 11);
         	this.ingred[1] = new PositionedStack(is[1], 97 - 5, 21 - 11);
@@ -51,16 +51,16 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
         	
             this.result = new PositionedStack(result, 97 - 5, 53 - 11);
             
-            water =  new PositionedStack(new ItemStack(ModItem.ItemCaidao), 31 - 5, 21 - 11);
+            water =  new PositionedStack(new ItemStack(FoodcraftItems.ItemCaidao), 31 - 5, 21 - 11);
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
+        	//Get ingredient
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
         
         public PositionedStack getResult() {
-        	//获得产物
+        	//Get result
             return result;
         }
 
@@ -83,19 +83,19 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
+    	//Gui click
     	transferRects.add(new RecipeTransferRect(new Rectangle(97 - 5, 43 - 11, 15, 13), "Chopping"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
+    	//GUI class
         return com.cfyifei.gui.guis.GuiCaiban.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
+    	//Name
         return NEIClientUtils.translate("tile.Caiban.name");
     }
 
@@ -145,14 +145,14 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
+    	//Texture
         return "foodcraft:textures/gui/nei/caiban.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
+    	//Bar
+    	//drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     }
 
     private static Set<Item> excludedFuels() {
@@ -169,8 +169,6 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "Chopping";
     }
-
 }

@@ -29,7 +29,7 @@ import com.cfyifei.api.IItemKitchenKnife;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.ContainerCaiban;
 import com.cfyifei.gui.recipes.Caibanrecipe;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.item.FoodcraftItems;
 
 public class TileEntityCaiban extends TileEntity implements IUpdatePlayerListBox,IInventory {
 	
@@ -49,7 +49,7 @@ public class TileEntityCaiban extends TileEntity implements IUpdatePlayerListBox
 	        	cai = this.canchao();
 	            if (stack[0] != null)
 	            {
-	            	if (stack[0].getItem() == ModItem.ItemCaidao){
+	            	if (stack[0].getItem() == FoodcraftItems.ItemCaidao){
 	            		if(cai != null){	    
 	            			if(isst()){
 	            				q = 0;

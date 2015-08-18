@@ -40,8 +40,8 @@ import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.ContainerPDG;
 import com.cfyifei.itemstack.CookingOutput;
 
-
-public class TileEntityPDG extends TileEntity implements IUpdatePlayerListBox,IInventory{
+public class TileEntityPDG extends TileEntity implements IUpdatePlayerListBox,IInventory {
+	
 	private ItemStack stack[] = new ItemStack[4];
 	public int Nowheat = 0;
 	public int tableBurnTime = 1;//max
@@ -56,24 +56,23 @@ public class TileEntityPDG extends TileEntity implements IUpdatePlayerListBox,II
 	@Override
     public void update() {
 		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != Blocks.fire ||worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != ModGui.lit_Zl){
-	isfire = false;
-}		
-		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == Blocks.fire){
-	isfire = true;
-}
-else{
-	if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == ModGui.lit_Zl){
-		isfire = true;
-	}
-}
+			isfire = false;
+		}		
+		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == Blocks.fire) {
+			isfire = true;
+		}
+		else {
+			if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == ModGui.lit_Zl) {
+				isfire = true;
+			}
+		}
 	  
-	        if (!this.worldObj.isRemote)
-	        {
+	        if (!this.worldObj.isRemote) {
 	        	AxisAlignedBB aabb = AxisAlignedBB.fromBounds(this.getPos().getX() - 20, this.getPos().getY() - 20, this.getPos().getZ() -20, this.getPos().getX() + 20, this.getPos().getY() + 20, this.getPos().getZ() + 20);
 	        	List<EntityLivingBase> l1 = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
 	        	for(EntityLivingBase elb : l1){
-	        		if(isfire){
-		    			if(!(elb==null)){
+	        		if(isfire) {
+		    			if(!(elb == null)) {
 			    			if((int)(elb.posX)-1 == this.getPos().getX()  && (int)(elb.posZ) == this.getPos().getZ()  && (int)(elb.posY) == this.getPos().getY() ){
 			    				if(elb instanceof EntityPlayer){
 			    					if(((EntityPlayer)elb).capabilities.isCreativeMode){
@@ -82,27 +81,25 @@ else{
 			    				}
 			    				if(!elb.isBurning()){
 		    					elb.setFire(3);
-		    				}
-		    				
+			    				}
+			    			}
 		    			}
-	        	}
 	    			}
-	        		else{
-	        			if(currentItemBurnTime < 0){
+	        		else {
+	        			if(currentItemBurnTime < 0) {
 	        				currentItemBurnTime = 0;
 	        			}
 	        		}
 	    			
 	    		}
-	        	if (isfire && this.canSmelt())
-	            {
+	        	if (isfire && this.canSmelt()) {
 	                this.furnaceCookTime = this.furnaceCookTime + 1;
-	               if(w == 16){
+	               if(w == 16) {
 	            	   Nowheat += (float)((float)currentItemBurnTime/2F);
 	            	   w = 0;
 	               }
 	                	w++;
-	                if(Nowheat > max){
+	                if(Nowheat > max) {
 	                	 --this.stack[0].stackSize;
 	                	 this.stack[2] = new ItemStack(Items.coal);
 	                	this.furnaceCookTime = 0;
@@ -112,76 +109,61 @@ else{
 	                	}
 	                }
 	                
-	                if (this.furnaceCookTime == 400)
-	                {
+	                if (this.furnaceCookTime == 400) {
 	                    this.furnaceCookTime = 0;
 	                    this.smeltItem();
 	                }
 	            }
-	            else
-	            {
+	            else {
 	                this.furnaceCookTime = 0;
 	                Nowheat = 0;
 	            }
-	          }
+	      }
 	}
 		 
 
 	@Override
 	public int getSizeInventory() {
-		
 		return stack.length;
-
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int var1) {
-		
 		return stack[var1];
 	}
 
 	@Override
     public ItemStack decrStackSize(int par1, int par2) {
-            // TODO Auto-generated method stub
-            if (this.stack[par1] != null)
-    {
+        if (this.stack[par1] != null) {
         ItemStack var3;
 
-        if (this.stack[par1].stackSize <= par2)
-        {
+        if (this.stack[par1].stackSize <= par2) {
             var3 = this.stack[par1];
             this.stack[par1] = null;
             return var3;
         }
-        else
-        {
+        else {
             var3 = this.stack[par1].splitStack(par2);
 
-            if (this.stack[par1].stackSize == 0)
-            {
+            if (this.stack[par1].stackSize == 0) {
                 this.stack[par1] = null;
             }
-
             return var3;
         }
     }
-    else
-    {
+    else {
         return null;
     }
     }
 
 	@Override
-	 public ItemStack getStackInSlotOnClosing(int par1)
-    {
-        if (this.stack[par1] != null)
-        {
+	 public ItemStack getStackInSlotOnClosing(int par1) {
+        if (this.stack[par1] != null) {
             ItemStack itemstack = this.stack[par1];
             this.stack[par1] = null;
             return itemstack;
         }
-        else
-        {
+        else {
             return null;
         }
     }
@@ -189,50 +171,39 @@ else{
 	@Override
 	public void setInventorySlotContents(int var1, ItemStack var2) {
         this.stack[var1] = var2;
-        if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
-        {
+        if (var2 != null && var2.stackSize > this.getInventoryStackLimit()) {
                 var2.stackSize = this.getInventoryStackLimit();
         }
 	}
 
 	@Override
 	public String getName() {
-		
 		return "PDG";
 	}
 
-
 	@Override
 	public int getInventoryStackLimit() {
-		
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer var1) {
-		
 		return true;
 	}
 
-
-
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-		
 		return false;
 	}
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("ItemsPDG", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3)
-        {
+        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
             NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
             byte var5 = var4.getByte("Slot");
-            if (var5 >= 0 && var5 < this.stack.length)
-            {
+            if (var5 >= 0 && var5 < this.stack.length) {
                 this.stack[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
@@ -244,8 +215,7 @@ else{
     }
 	
 
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
-    {
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
@@ -253,10 +223,8 @@ else{
         par1NBTTagCompound.setShort("frequencyOfUse", (short)this.frequencyOfUse);
         par1NBTTagCompound.setShort("Nowheat", (short)this.Nowheat);     
         NBTTagList var2 = new NBTTagList();
-        for (int var3 = 0; var3 < this.stack.length; ++var3)
-        {
-            if (this.stack[var3] != null)
-            {
+        for (int var3 = 0; var3 < this.stack.length; ++var3) {
+            if (this.stack[var3] != null) {
                 NBTTagCompound var4 = new NBTTagCompound();
                 var4.setByte("Slot", (byte)var3);
                 this.stack[var3].writeToNBT(var4);
@@ -267,18 +235,13 @@ else{
        
     }
     
-
-    
-    private boolean canSmelt()
-    {
-        if (this.stack[0] == null)
-        {
+    private boolean canSmelt() {
+        if (this.stack[0] == null) {
             return false;
         }
-        else
-        {
+        else {
             CookingOutput pdgc = PDGrecipe.smelting().getSmeltingResult(this.stack[0]);
-            if(pdgc == null){
+            if(pdgc == null) {
             	return false;
             }
         	ItemStack itemstack = pdgc.is;
@@ -291,96 +254,72 @@ else{
             return result <= getInventoryStackLimit() && result <= this.stack[1].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
-    public boolean isBurning()
-    {
+    public boolean isBurning() {
         return this.tableBurnTime > 0;
     }
    
-    public void smeltItem()
-    {
-        if (this.canSmelt())
-        {
+    public void smeltItem() {
+        if (this.canSmelt()) {
         	 CookingOutput pdgc = PDGrecipe.smelting().getSmeltingResult(this.stack[0]);
              ItemStack itemstack = pdgc.is;
-             if(Nowheat < min){
+             if(Nowheat < min) {
             	 this.stack[2] = new ItemStack(stack[0].getItem());
             	 --this.stack[0].stackSize;
-            	 if (this.stack[0].stackSize <= 0)
-                 {
+            	 if (this.stack[0].stackSize <= 0) {
                      this.stack[0] = null;
                  }
             	 Nowheat = 0;
             	 return;
              }
-            if (this.stack[1] == null)
-            {
+            if (this.stack[1] == null) {
                 this.stack[1] = itemstack.copy();
             }
-            else if (this.stack[1].getItem() == itemstack.getItem())
-            {
+            else if (this.stack[1].getItem() == itemstack.getItem()) {
                 this.stack[1].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
 
             --this.stack[0].stackSize;
 
-            if (this.stack[0].stackSize <= 0)
-            {
+            if (this.stack[0].stackSize <= 0) {
                 this.stack[0] = null;
             }
             Nowheat = 0;
-        	if(frequencyOfUse < 3000){
+        	if(frequencyOfUse < 3000) {
         		frequencyOfUse += 1;
         	}
         }
     }
     @SideOnly(Side.CLIENT)
-    public float getCookProgressScaled(int int1)
-    {
+    public float getCookProgressScaled(int int1) {
         return this.furnaceCookTime * int1 / 400;
     }
-
 
 	@Override
 	public boolean hasCustomName() {
 		return false;
 	}
 
-
 	@Override
 	public IChatComponent getDisplayName() {
 		return new ChatComponentText(this.getName());
 	}
 
+	@Override
+	public void openInventory(EntityPlayer player) {}
 
 	@Override
-	public void openInventory(EntityPlayer player) {
-
-	}
-
-
-	@Override
-	public void closeInventory(EntityPlayer player) {
-
-	}
-
+	public void closeInventory(EntityPlayer player) {}
 
 	@Override
 	public int getField(int id) {
-
 		return 0;
 	}
 
-
 	@Override
-	public void setField(int id, int value) {
-
-		
-	}
-
+	public void setField(int id, int value) {}
 
 	@Override
 	public int getFieldCount() {
-
 		return 0;
 	}
 
@@ -390,14 +329,10 @@ else{
 		for (int i = 0; i < this.stack.length; ++i) {
             this.stack[i] = null;
         }
-		
 	}
 
-
-	    @SideOnly(Side.CLIENT)
-	    public float getBurnTimeRemainingScaled(int int1)
-	    {
+	@SideOnly(Side.CLIENT)
+	public float getBurnTimeRemainingScaled(int int1) {
 	        return (((float)this.currentItemBurnTime)* int1) / 100F;
-	    }
-	    
+	}    
 }

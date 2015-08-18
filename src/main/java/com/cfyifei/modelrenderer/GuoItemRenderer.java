@@ -8,9 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.client.IItemRenderer;
 
-
-
-
 public class GuoItemRenderer implements IItemRenderer {
 
 	private ModelGuo model;
@@ -39,5 +36,4 @@ public class GuoItemRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, x, y, z, 0.0F);
 	}
-
 }

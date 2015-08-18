@@ -17,7 +17,7 @@ public class GuoCooking {
 			Item StapleInput4,Item ingredients1,Item ingredients2,Item ingredients3
 			,Item ingredients4,Item ingredients5,Item ingredients6,Item ingredients7
 			,Item ingredients8
-			){
+			) {
 		this.StapleInput1 = StapleInput1;
      	this.StapleInput2 = StapleInput2;
 		this.StapleInput3 = StapleInput3;

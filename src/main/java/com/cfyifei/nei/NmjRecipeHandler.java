@@ -31,18 +31,15 @@ public class NmjRecipeHandler extends TemplateRecipeHandler {
     {
         public SmeltingPair(ItemStack ingred, ItemStack result) {
             ingred.stackSize = 1;
-            //加槽
             this.ingred = new PositionedStack(ingred, 49 - 5, 19 - 11);
             this.result = new PositionedStack(result, 112 - 5, 19 - 11);
         }
 
         public List<PositionedStack> getIngredients() {
-        	//获得材料
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
 
         public PositionedStack getResult() {
-        	//获得产物
             return result;
         }
 
@@ -71,19 +68,16 @@ public class NmjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadTransferRects() {
-    	//Gui点击
     	transferRects.add(new RecipeTransferRect(new Rectangle(76 - 5, 21 - 11, 22, 12), "milling"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI类
         return com.cfyifei.gui.guis.GuiNmj.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//名字
         return NEIClientUtils.translate("tile.Nmj.name");
     }
 
@@ -133,14 +127,11 @@ public class NmjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//材质
         return "foodcraft:textures/gui/nei/nmj.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//进度条
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     	drawProgressBar(76 - 5, 21 - 11, 176, 14, 22, 12, 48, 0);
         drawProgressBar(81 - 5, 37 - 11, 176, 0, 14, 14, 48, 7);
     }
@@ -168,7 +159,6 @@ public class NmjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getOverlayIdentifier() {
-    	//覆盖标识符
         return "milling";
     }
 

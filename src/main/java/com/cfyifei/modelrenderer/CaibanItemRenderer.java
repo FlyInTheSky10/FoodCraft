@@ -40,5 +40,4 @@ public class CaibanItemRenderer implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(te, x, y, z, 0.0F);
 	}
-
 }

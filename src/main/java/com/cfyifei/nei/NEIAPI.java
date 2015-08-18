@@ -2,7 +2,7 @@ package com.cfyifei.nei;
 
 import net.minecraft.item.ItemStack;
 
-import com.cfyifei.block.ModBlocks;
+import com.cfyifei.block.FoodcraftBlocks;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.guis.GuiCaiban;
 import com.cfyifei.gui.guis.GuiGuo;
@@ -51,38 +51,36 @@ public class NEIAPI implements codechicken.nei.api.IConfigureNEI {
         API.registerUsageHandler(new TpjRecipeHandler());
         API.registerGuiOverlay(GuiTpj.class, "Tpjmaking");
         
-        API.hideItem(new ItemStack(ModBlocks.BlockBailuobo));
-        API.hideItem(new ItemStack(ModBlocks.BlockCaomei));
-        API.hideItem(new ItemStack(ModBlocks.BlockCaomeiDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockCong));
-        API.hideItem(new ItemStack(ModBlocks.BlockDouzi));
-        API.hideItem(new ItemStack(ModBlocks.BlockFanqie));
-        API.hideItem(new ItemStack(ModBlocks.BlockHongdou));
-        API.hideItem(new ItemStack(ModBlocks.BlockHongshu));
-        API.hideItem(new ItemStack(ModBlocks.BlockHuanggua));
-        API.hideItem(new ItemStack(ModBlocks.BlockHuashen));
-        API.hideItem(new ItemStack(ModBlocks.BlockJinputaoDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockJuziDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockLajiao));
-        API.hideItem(new ItemStack(ModBlocks.BlockLiDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockLvdou));
-        API.hideItem(new ItemStack(ModBlocks.BlockNingmengDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockNuodao));
-        API.hideItem(new ItemStack(ModBlocks.BlockPutaoDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockQiezi));
-        API.hideItem(new ItemStack(ModBlocks.BlockQingjiao));
-        API.hideItem(new ItemStack(ModBlocks.BlockShucai));
-        API.hideItem(new ItemStack(ModBlocks.BlockShuidao));
-        API.hideItem(new ItemStack(ModBlocks.BlockTaoziDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockYeziDG));
-        API.hideItem(new ItemStack(ModBlocks.BlockYumi));
-        API.hideItem(new ItemStack(ModBlocks.BlockPutao)); 
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockBailuobo));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockCaomei));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockCaomeiDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockCong));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockDouzi));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockFanqie));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockHongdou));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockHongshu));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockHuanggua));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockHuashen));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockJinputaoDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockJuziDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockLajiao));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockLiDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockLvdou));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockNingmengDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockNuodao));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockPutaoDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockQiezi));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockQingjiao));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockShucai));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockShuidao));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockTaoziDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockYeziDG));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockYumi));
+        API.hideItem(new ItemStack(FoodcraftBlocks.BlockPutao)); 
         API.hideItem(new ItemStack(ModGui.lit_Nmj));
         API.hideItem(new ItemStack(ModGui.lit_Tpj));
         API.hideItem(new ItemStack(ModGui.lit_YZJ));
         API.hideItem(new ItemStack(ModGui.lit_Zl));
-        
-        
 	}
 
 	@Override

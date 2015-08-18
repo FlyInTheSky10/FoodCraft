@@ -15,12 +15,14 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
 public class GygRenderer extends TileEntitySpecialRenderer {
+	
     private final ModelGYG model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/gyg.png");
  
     public GygRenderer() {
             this.model = new ModelGYG();
     }
+    
     public void render(double x, double y, double z) {
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5f, (float) y + 1.5f, (float) z + 0.5f);
@@ -28,7 +30,6 @@ public class GygRenderer extends TileEntitySpecialRenderer {
         this.bindTexture(RL);
         model.renderHatch();
         GL11.glPopMatrix();
-
     }
 
     @Override

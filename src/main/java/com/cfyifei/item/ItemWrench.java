@@ -26,39 +26,30 @@ import net.minecraft.world.World;
 
 public class ItemWrench extends Item{
 
-
 		public ItemWrench(String name) {
 			this.setUnlocalizedName(name);
 		}
-		public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
-		{
+		
+		public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
 			if(NERConfigHandler.booleanwrench){
 			MovingObjectPosition movingobjectposition = this.getMovingObjectPositionFromPlayer(par2World, par3EntityPlayer, true);
 
-		    if (movingobjectposition == null)
-		    {
+		    if (movingobjectposition == null) {
 		        return par1ItemStack;
 		    }
-		    else
-		    {
-		        if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
-		        {
+		    else { if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK) {
 		            int i = movingobjectposition.getBlockPos().getX();
 		            int j = movingobjectposition.getBlockPos().getY();
 		            int k = movingobjectposition.getBlockPos().getZ();
-		            if (!par2World.canMineBlockBody(par3EntityPlayer, movingobjectposition.getBlockPos()))
-		            {
+		            if (!par2World.canMineBlockBody(par3EntityPlayer, movingobjectposition.getBlockPos())) {
 		                return par1ItemStack;
 		            }
 
-		            if (!par3EntityPlayer.canPlayerEdit(movingobjectposition.getBlockPos(), movingobjectposition.sideHit, par1ItemStack))
-		            {
+		            if (!par3EntityPlayer.canPlayerEdit(movingobjectposition.getBlockPos(), movingobjectposition.sideHit, par1ItemStack)) {
 		                return par1ItemStack;
 		            }
-		            //*****************************************************
 		            TileEntity te = par2World.getTileEntity(movingobjectposition.getBlockPos());
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Caiban)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Caiban) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -66,11 +57,9 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Guo)
-		            {
-		            	if(!par2World.isRemote){
-		            		 if ((te != null) && ((te instanceof TileEntityGuo)))
-		            		  {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Guo) {
+		            	if(!par2World.isRemote) {
+		            		 if ((te != null) && ((te instanceof TileEntityGuo))) {
 		            			  TileEntityGuo t = (TileEntityGuo)te;
 		            		    ItemStack stack = new ItemStack(ModGui.Guo);
 		            		    FoodcraftSubscribeEvent.setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
@@ -82,8 +71,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Gyg)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Gyg) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -91,8 +79,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockNmj)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockNmj) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -100,8 +87,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Nt)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Nt) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -109,11 +95,9 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.PDG)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.PDG) {
 		            	if(!par2World.isRemote){
-		            		 if ((te != null) && ((te instanceof TileEntityPDG)))
-		            		  {
+		            		 if ((te != null) && ((te instanceof TileEntityPDG))) {
 		            			  TileEntityPDG t = (TileEntityPDG)te;
 		            		    ItemStack stack = new ItemStack(ModGui.PDG);
 		            		    FoodcraftSubscribeEvent.setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
@@ -124,8 +108,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockTpj)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockTpj) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -133,8 +116,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockYZJ)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockYZJ) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -142,8 +124,7 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockZl)
-		            {
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockZl) {
 		            	
 		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
@@ -151,8 +132,6 @@ public class ItemWrench extends Item{
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-
-		          //*****************************************************
 		        }
 		        return par1ItemStack;
 		    }

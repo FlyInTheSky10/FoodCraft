@@ -1,7 +1,7 @@
 package com.cfyifei.plant.items;
 
 import com.cfyifei.FoodCraft;
-import com.cfyifei.block.ModBlocks;
+import com.cfyifei.block.FoodcraftBlocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -54,7 +54,7 @@ public class ItemPlant extends Item implements IPlantable{
 	}
 	@Override
 	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
-		return ModBlocks.BlockDami.getDefaultState();
+		return FoodcraftBlocks.BlockDami.getDefaultState();
 	}
 	   
 
