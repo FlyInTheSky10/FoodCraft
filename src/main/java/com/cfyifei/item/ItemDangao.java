@@ -5,23 +5,25 @@ import java.util.List;
 import com.cfyifei.block.ModBlocks;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.block.BlockSnow;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemDangao extends Item{
 	String[] s = new String[]{"ItemPutaoDG","ItemJinputaoDG","ItemLiDG","ItemTaoziDG","ItemJuziDG","ItemNingmengDG","ItemCaomeiDG","ItemYeziDG"};
 	Block[] b = new Block[]{ModBlocks.BlockPutaoDG,ModBlocks.BlockJinputaoDG,ModBlocks.BlockLiDG,ModBlocks.BlockTaoziDG,ModBlocks.BlockJuziDG,ModBlocks.BlockNingmengDG,ModBlocks.BlockCaomeiDG,ModBlocks.BlockYeziDG};
-	IIcon[] ii = new IIcon[8];
 	public ItemDangao() {
 		this.setHasSubtypes(true);
 	}
@@ -43,93 +45,57 @@ public class ItemDangao extends Item{
         p_150895_3_.add(new ItemStack(p_150895_1_, 1, 6));
         p_150895_3_.add(new ItemStack(p_150895_1_, 1, 7));
     }
- @SideOnly(Side.CLIENT)
-    public void registerIcons(IIconRegister p_94581_1_)
-    {
-	 for(int i1 = 0;i1 < 8;i1++){
-		 ii[i1] = p_94581_1_.registerIcon("foodcraft:" + s[i1]);
-	 }
-    }
-   @SideOnly(Side.CLIENT)
-    public IIcon getIconFromDamage(int int1)
-    {
-	   return ii[int1];
-    }
-
+ 
     public String getUnlocalizedName(ItemStack is1)
     {
     	 return s[is1.getItemDamage()];
     }
     
-    public boolean onItemUse(ItemStack p_77648_1_, EntityPlayer p_77648_2_, World p_77648_3_, int p_77648_4_, int p_77648_5_, int p_77648_6_, int p_77648_7_, float p_77648_8_, float p_77648_9_, float p_77648_10_)
+    public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)
     {
-        Block block = p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_);
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        Block block = iblockstate.getBlock();
 
-        if (block == Blocks.snow_layer && (p_77648_3_.getBlockMetadata(p_77648_4_, p_77648_5_, p_77648_6_) & 7) < 1)
+        if (block == Blocks.snow_layer && ((Integer)iblockstate.getValue(BlockSnow.LAYERS)).intValue() < 1)
         {
-            p_77648_7_ = 1;
+            side = EnumFacing.UP;
         }
-        else if (block != Blocks.vine && block != Blocks.tallgrass && block != Blocks.deadbush)
+        else if (!block.isReplaceable(worldIn, pos))
         {
-            if (p_77648_7_ == 0)
-            {
-                --p_77648_5_;
-            }
-
-            if (p_77648_7_ == 1)
-            {
-                ++p_77648_5_;
-            }
-
-            if (p_77648_7_ == 2)
-            {
-                --p_77648_6_;
-            }
-
-            if (p_77648_7_ == 3)
-            {
-                ++p_77648_6_;
-            }
-
-            if (p_77648_7_ == 4)
-            {
-                --p_77648_4_;
-            }
-
-            if (p_77648_7_ == 5)
-            {
-                ++p_77648_4_;
-            }
+            pos = pos.offset(side);
         }
 
-        if (!p_77648_2_.canPlayerEdit(p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_1_))
+        if (!playerIn.canPlayerEdit(pos, side, stack))
         {
             return false;
         }
-        else if (p_77648_1_.stackSize == 0)
+        else if (stack.stackSize == 0)
         {
             return false;
         }
         else
         {
-            if (p_77648_3_.canPlaceEntityOnSide(b[p_77648_1_.getItemDamage()], p_77648_4_, p_77648_5_, p_77648_6_, false, p_77648_7_, (Entity)null, p_77648_1_))
+            if (worldIn.canBlockBePlaced(b[stack.getItemDamage()], pos, false, side, (Entity)null, stack))
             {
-                int i1 = b[p_77648_1_.getItemDamage()].onBlockPlaced(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_7_, p_77648_8_, p_77648_9_, p_77648_10_, 0);
+                IBlockState iblockstate1 = this.b[stack.getItemDamage()].onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, 0, playerIn);
 
-                if (p_77648_3_.setBlock(p_77648_4_, p_77648_5_, p_77648_6_, b[p_77648_1_.getItemDamage()], i1, 3))
+                if (worldIn.setBlockState(pos, iblockstate1, 3))
                 {
-                    if (p_77648_3_.getBlock(p_77648_4_, p_77648_5_, p_77648_6_) == b[p_77648_1_.getItemDamage()])
+                    iblockstate1 = worldIn.getBlockState(pos);
+
+                    if (iblockstate1.getBlock() == this.b[stack.getItemDamage()])
                     {
-                    	b[p_77648_1_.getItemDamage()].onBlockPlacedBy(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, p_77648_2_, p_77648_1_);
-                    	b[p_77648_1_.getItemDamage()].onPostBlockPlaced(p_77648_3_, p_77648_4_, p_77648_5_, p_77648_6_, i1);
+                        ItemBlock.setTileEntityNBT(worldIn, pos, stack);
+                        iblockstate1.getBlock().onBlockPlacedBy(worldIn, pos, iblockstate1, playerIn, stack);
                     }
 
-                    p_77648_3_.playSoundEffect((double)((float)p_77648_4_ + 0.5F), (double)((float)p_77648_5_ + 0.5F), (double)((float)p_77648_6_ + 0.5F), b[p_77648_1_.getItemDamage()].stepSound.func_150496_b(), (b[p_77648_1_.getItemDamage()].stepSound.getVolume() + 1.0F) / 2.0F, b[p_77648_1_.getItemDamage()].stepSound.getPitch() * 0.8F);
-                    --p_77648_1_.stackSize;
+                    worldIn.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), this.b[stack.getItemDamage()].stepSound.getPlaceSound(), (this.b[stack.getItemDamage()].stepSound.getVolume() + 1.0F) / 2.0F, this.b[stack.getItemDamage()].stepSound.getFrequency() * 0.8F);
+                    --stack.stackSize;
+                    return true;
                 }
             }
 
-            return true;
+            return false;
         }
     }
 }

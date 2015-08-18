@@ -25,12 +25,10 @@ public class GuiNt extends GuiContainer{
 		super(new ContainerNt(playerInv, tileEntityNt));
 		this.tile = tileEntityNt;
 		this.doesGuiPauseGame();
-
 	}
 
 	@Override
-	public void drawGuiContainerBackgroundLayer(float partialTicks,
-		int mouseX, int mouseY) {
+	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.renderEngine.bindTexture(new ResourceLocation("foodcraft", "textures/gui/container/nt.png"));
         int k = (this.width - this.xSize) / 2;//x
@@ -41,18 +39,17 @@ public class GuiNt extends GuiContainer{
 
        int i2 = this.tile.getWater();
         this.drawTexturedModalRect(k + 18, l + 14 + 58 - i2, 176, 31 + 58 - i2, 11,(int) (58 * ((float)i2 / 58)));
-        if (this.tile.isBurning())
-        {
+        if (this.tile.isBurning()) {
         String time = StatCollector.translateToLocal("Nt.Time");
         String second = StatCollector.translateToLocal("Nt.Second");
 		this.fontRendererObj.drawString(time + ": " + ((3600 - this.tile.furnaceCookTime)/20 + " " + second), k + 53, l + 53, 4210752);
-    }
+        }
 	}
 
 	
-@Override
+	@Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-	String s = StatCollector.translateToLocal("TitleNt");
-	this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
+		String s = StatCollector.translateToLocal("TitleNt");
+		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
 	}
 }

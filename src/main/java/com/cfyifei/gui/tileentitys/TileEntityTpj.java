@@ -1,8 +1,6 @@
 package com.cfyifei.gui.tileentitys;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -20,7 +18,10 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 
@@ -28,13 +29,18 @@ import net.minecraft.world.World;
 
 
 
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.cfyifei.gui.blocks.BlockNmj;
 import com.cfyifei.gui.blocks.BlockTpj;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.recipes.Tpjrecipe;
 import com.cfyifei.item.ModItem;
 
 
-public class TileEntityTpj extends TileEntity implements IInventory{
+public class TileEntityTpj extends TileEntity implements IUpdatePlayerListBox,IInventory{
 	private ItemStack stack[] = new ItemStack[5];
 	public int tableBurnTime = 0;
 	public int maxBurnTime = 0;
@@ -53,7 +59,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 
 
 	@Override
-    public void updateEntity() {
+    public void update() {
 		
 		boolean flag = this.tableBurnTime > 0;
 	        boolean flag1 = false;
@@ -107,8 +113,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	            }
 
 
-	                BlockTpj.updateFurnaceBlockState(this.tableBurnTime > 0 || this.coldBurnTime > 0 , this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
-	            
+	                BlockTpj.setState(this.isBurning() || iscold(), this.worldObj, this.pos);
 	        
 	        
 	        ///////////////////cold
@@ -168,16 +173,18 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	        			stack[0] = new ItemStack(Items.glass_bottle);
 	        			++water;	        			        		
 	        		}	
-	        	if(stack[0].getItem().equals(ModItem.Itemwater)){
+	        	}
+	    		if(stack[0].getItem().equals(ModItem.Itemwater)){
+
         			--stack[0].stackSize;
         			++water;	      
+        			
         		}	
-	        	}
+	        	
 	        	}
 	        	
-	        	 
+	        	if (stack[0] != null){
 				if(milk != 8){
-		        	
 					if(water == 0){
 		        	if(stack[0].getItem() == Items.milk_bucket){
 		        			        		
@@ -187,11 +194,12 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 		        	}
 	        }
 	        }
-	       	 if (stack[0] != null){
-	        	 if(stack[0].stackSize == 0){
-		    			stack[0] = null;	  
-		    		}
-	        	 }
+	        	if (stack[0] != null){
+	        		if(stack[0].stackSize <= 0){
+	        			stack[0] = null;
+	        		}
+	        	}
+	        }
 	        }
 	}
 		 
@@ -208,7 +216,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	 * 返回true为水，返回false则为牛奶
 	 */
 	
-	public boolean gettp2() {
+public boolean gettp2() {
 		
 		if(stack[1] !=null){
 			
@@ -231,6 +239,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 		}
 		return false;
 	}
+
 
 
 
@@ -303,16 +312,11 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 		
-		return "Mill";
+		return "Tpj";
 	}
 
-	@Override
-	public boolean hasCustomInventoryName() {
-		
-		return false;
-	}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -326,17 +330,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 		return true;
 	}
 
-	@Override
-	public void openInventory() {
-		
-		
-	}
 
-	@Override
-	public void closeInventory() {
-		
-		
-	}
 
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
@@ -420,7 +414,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
             }
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Items.coal) return 1600;
             if (item == Items.lava_bucket) return 20000;
@@ -587,6 +581,7 @@ public class TileEntityTpj extends TileEntity implements IInventory{
 		return false;
 	}
 	
+	
 	public void coldsmeltItem()
     {
         if (this.coldcanSmelt())
@@ -622,5 +617,55 @@ public class TileEntityTpj extends TileEntity implements IInventory{
             }
         }
     }
+
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return new ChatComponentText(this.getName());
+	}
+
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+
+	}
+
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+
+	}
+
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+
+	@Override
+	public void setField(int id, int value) {
+		
+	}
+
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+
+	@Override
+	public void clear() {
+		for (int i = 0; i < this.stack.length; ++i) {
+            this.stack[i] = null;
+        }
+	}
 
 }

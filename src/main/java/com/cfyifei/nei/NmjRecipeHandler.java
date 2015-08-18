@@ -151,7 +151,6 @@ public class NmjRecipeHandler extends TemplateRecipeHandler {
         efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
         efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
         efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
         efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
         return efuels;
     }

@@ -7,21 +7,24 @@ import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.containers.*;
 import com.cfyifei.gui.tileentitys.*;
 import com.cfyifei.item.ModItem;
-import com.cfyifei.minetweaker.MinetweakerCompat;
 import com.cfyifei.plant.blocks.Plant;
 import com.cfyifei.recipe.Recipe;
 import com.cfyifei.util.GUIHandler;
 
-import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.network.IGuiHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
+import net.minecraftforge.fml.relauncher.Side;
 
-public class CommonProxy{
+
+public class CommonProxy {
+	public static Side side;
 	public void preInit(FMLPreInitializationEvent event) {
 		
 	}
@@ -36,8 +39,7 @@ public class CommonProxy{
 	}
 	
 	public void postInit(FMLPostInitializationEvent event) {
-		if (com.cfyifei.FoodCraft.MTIsLoad)
-			MineTweakerAPI.registerClassRegistry(MinetweakerCompat.class);
+		
 	}
 	
 	public void registerBlockModels() {

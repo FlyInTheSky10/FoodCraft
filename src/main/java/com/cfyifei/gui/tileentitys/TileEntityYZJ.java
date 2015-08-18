@@ -2,9 +2,12 @@ package com.cfyifei.gui.tileentitys;
 
 import com.cfyifei.gui.recipes.YZJrecipe;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+
+
+
+
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -22,17 +25,26 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 
 
 
+
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
+
+import com.cfyifei.gui.blocks.BlockTpj;
 import com.cfyifei.gui.blocks.BlockYZJ;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.item.ModItem;
 
 
-public class TileEntityYZJ extends TileEntity implements IInventory{
+public class TileEntityYZJ extends TileEntity implements IUpdatePlayerListBox,IInventory{
 	private ItemStack stack[] = new ItemStack[4];
 	public int tableBurnTime = 0;
 	public int maxBurnTime = 0;
@@ -43,7 +55,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 
 
 	@Override
-    public void updateEntity() {
+    public void update() {
 		
 		boolean flag = this.tableBurnTime > 0;
 	        boolean flag1 = false;
@@ -93,7 +105,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 	            if (flag != this.tableBurnTime > 0)//没有燃烧时间
 	            {
 	                flag1 = true;
-	                BlockYZJ.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
+	                BlockYZJ.setState(this.isBurning(), this.worldObj, this.pos);
 	            }
 	        }
 
@@ -187,16 +199,12 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 		
-		return "Mill";
+		return "YZJ";
 	}
 
-	@Override
-	public boolean hasCustomInventoryName() {
-		
-		return false;
-	}
+
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -210,17 +218,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 		return true;
 	}
 
-	@Override
-	public void openInventory() {
-		
-		
-	}
 
-	@Override
-	public void closeInventory() {
-		
-		
-	}
 
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
@@ -298,7 +296,7 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
             }
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 200;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
             if (item == Items.stick) return 100;
             if (item == Items.coal) return 1600;
             if (item == Items.lava_bucket) return 20000;
@@ -379,4 +377,70 @@ public class TileEntityYZJ extends TileEntity implements IInventory{
 		return this.water * 7;
 	}
 
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+
+
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return new ChatComponentText(this.getName());
+	}
+
+
+
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+	
+		
+	}
+
+
+
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+	
+		
+	}
+
+
+
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+
+
+
+	@Override
+	public void setField(int id, int value) {
+		
+	}
+
+
+
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+
+
+
+	@Override
+	public void clear() {
+		for (int i = 0; i < this.stack.length; ++i) {
+            this.stack[i] = null;
+        }
+	}
+    
 }

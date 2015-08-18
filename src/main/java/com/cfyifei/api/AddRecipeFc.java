@@ -13,46 +13,46 @@ public class AddRecipeFc {
 /**
  * Add Recipe in the Mill.
  */
-	public static void AddMillRecipe(Item Input, ItemStack Output, float xp){	
+	public static void AddMillRecipe(Item Input, ItemStack Output, float xp) {	
 	  Nmjrecipe.smelting().itemregister(Input, Output, xp);
 }
 	/**
 	 * Add Recipe in the Pan.
 	 */	
-	public static void AddPanRecipe(Item Input, ItemStack Output, float xp, int min, int max){	
+	public static void AddPanRecipe(Item Input, ItemStack Output, float xp, int min, int max) {	
 		PDGrecipe.smelting().itemregister(Input, Output, xp, min, max);
 	}
 	/**
 	 * Add Recipe in the frying machine.
 	 */		
-	public static void AddFryingMachineRecipe(Item Input, ItemStack Output, float xp){	
+	public static void AddFryingMachineRecipe(Item Input, ItemStack Output, float xp) {	
 		YZJrecipe.smelting().itemregister(Input, Output, xp);
 	}
 	/**
 	 * Add Recipe in the pressure cooker.
 	 */		
-	public static void AddPressureCookerRecipe(Item Input1,Item Input2,Item Input3,ItemStack Output){	
+	public static void AddPressureCookerRecipe(Item Input1,Item Input2,Item Input3,ItemStack Output) {	
 		Gygrecipe.smelting().addrecipe(Input1, Input2, Input3,Output);
 	}
 	/**
 	 * Add Recipe in the chopping board.
 	 * If you don't need three slots, you can fill in the null.
 	 */		
-	public static void AddChoppingBoardRecipe(Item Input1,Item Input2,Item Input3,ItemStack Output){	
+	public static void AddChoppingBoardRecipe(Item Input1,Item Input2,Item Input3,ItemStack Output) {	
 		Caibanrecipe.smelting().addrecipe(Input1, Input2, Input3,Output);
 	}
 	/**
 	 * Add Recipe in the brew barrel.
 	 * 
 	 */		
-	public static void AddBrewBarrelRecipe(Item Input1,Item Input2,Item Input3,ItemStack Output){	
+	public static void AddBrewBarrelRecipe(Item Input1,Item Input2,Item Input3,ItemStack Output) {	
 		Ntrecipe.smelting().addrecipe(Input1, Input2, Input3,Output);
 	}
 	/**
 	 * Add Recipe in the beverage making machine.
 	 * 
 	 */		
-	public static void AddBeverageMakingMachineRecipe(Item Input ,boolean isMilk ,boolean iscold,ItemStack Output){	
+	public static void AddBeverageMakingMachineRecipe(Item Input ,boolean isMilk ,boolean iscold,ItemStack Output) {	
 		Tpjrecipe.smelting().addrecipeItem(Input, isMilk, iscold, Output);
 	}
 	/**
@@ -62,7 +62,7 @@ public class AddRecipeFc {
 	public static void AddPotRecipe(Item StapleInput1,Item StapleInput2,Item StapleInput3,
 			Item StapleInput4,Item ingredients1,Item ingredients2,Item ingredients3
 			,Item ingredients4,Item ingredients5,Item ingredients6,Item ingredients7
-			,Item ingredients8,ItemStack Output,int min,int max){	
-		Guorecipe.smelting().addrecipeItem(StapleInput1, StapleInput2, StapleInput3, StapleInput4, ingredients1, ingredients2, ingredients3, ingredients4, ingredients5, ingredients6, ingredients7, ingredients8, Output,min,max);
+			,Item ingredients8,ItemStack Output, int min, int max) {	
+		Guorecipe.smelting().addrecipeItem(StapleInput1, StapleInput2, StapleInput3, StapleInput4, ingredients1, ingredients2, ingredients3, ingredients4, ingredients5, ingredients6, ingredients7, ingredients8, Output, min, max);
 	}
 }

@@ -11,7 +11,6 @@ import net.minecraftforge.client.IItemRenderer;
 
 
 
-
 public class GygItemRenderer implements IItemRenderer {
 
 	private ModelGYG model;

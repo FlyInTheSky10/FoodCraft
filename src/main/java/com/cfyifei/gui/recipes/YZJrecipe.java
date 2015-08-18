@@ -16,16 +16,16 @@ import net.minecraft.item.ItemStack;
 
 
 public class YZJrecipe {
+	
 	private static final YZJrecipe smeltingBase = new YZJrecipe();
     private Map smeltingList = new HashMap();
     private Map experienceList = new HashMap();
-    public static YZJrecipe smelting()
-    {
+    
+    public static YZJrecipe smelting() {
         return smeltingBase;
     }
     
-    private YZJrecipe()
-    {
+    private YZJrecipe() {
         this.itemregister(ModItem.ItemJitui,  new ItemStack(ModItem.ItemZhajitui), 0.5F);//chicken leg
         this.itemregister(ModItem.ItemMahua,  new ItemStack(ModItem.ItemZhamahua), 0.5F);//ma hua
         this.itemregister(ModItem.ItemChunjuan,  new ItemStack(ModItem.ItemZhachunjuan), 0.5F);//spring roll
@@ -44,47 +44,38 @@ public class YZJrecipe {
    
 	     
 	
-	public void blockregister(Block Block, ItemStack ItemStack, float xp)
-    {
+	public void blockregister(Block Block, ItemStack ItemStack, float xp) {
         this.itemregister(Item.getItemFromBlock(Block), ItemStack, xp);
     }
 	  
-	public void itemregister(Item Item, ItemStack ItemStack, float xp)
-	    {
-	        this.register(new ItemStack(Item, 1, 32767), ItemStack, xp);
-	    }
-
- public void register(ItemStack ItemStack, ItemStack ItemStack2, float xp)
-	    {
-	        this.smeltingList.put(ItemStack, ItemStack2);
-	        this.experienceList.put(ItemStack2, Float.valueOf(xp));
-	    }
+	public void itemregister(Item Item, ItemStack ItemStack, float xp) {
+		this.register(new ItemStack(Item, 1, 32767), ItemStack, xp);
+	}
+	
+	 public void register(ItemStack ItemStack, ItemStack ItemStack2, float xp) {
+		 this.smeltingList.put(ItemStack, ItemStack2);
+		 this.experienceList.put(ItemStack2, Float.valueOf(xp));
+	 }
 
  
- private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_)
- {
-     return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
- }
+	 private boolean func_151397_a(ItemStack p_151397_1_, ItemStack p_151397_2_) {
+	     return p_151397_2_.getItem() == p_151397_1_.getItem() && (p_151397_2_.getItemDamage() == 32767 || p_151397_2_.getItemDamage() == p_151397_1_.getItemDamage());
+	 }
 
-public ItemStack getSmeltingResult(ItemStack itemStack) {
-    Iterator iterator = this.smeltingList.entrySet().iterator();
-    Entry entry;
-
-    do
-    {
-        if (!iterator.hasNext())
-        {
-            return null;
-        }
-
-        entry = (Entry)iterator.next();
-    }
-    while (!this.func_151397_a(itemStack, (ItemStack)entry.getKey()));
-
-    return (ItemStack)entry.getValue();
-}
-
-public Map<ItemStack, ItemStack> getSmeltingList() {
-	return this.smeltingList;
-}
+	public ItemStack getSmeltingResult(ItemStack itemStack) {
+	    Iterator iterator = this.smeltingList.entrySet().iterator();
+	    Entry entry;
+	    do {
+	        if (!iterator.hasNext()) {
+	            return null;
+	        }
+	        entry = (Entry)iterator.next();
+	    }
+	    while (!this.func_151397_a(itemStack, (ItemStack)entry.getKey()));
+	    return (ItemStack)entry.getValue();
+	}
+	
+	public Map<ItemStack, ItemStack> getSmeltingList() {
+		return this.smeltingList;
+	}
 }

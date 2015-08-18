@@ -4,6 +4,7 @@ import com.cfyifei.api.IItemKitchenKnife;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class ItemCaidaoHJ extends Item implements IItemKitchenKnife{
@@ -18,7 +19,9 @@ public class ItemCaidaoHJ extends Item implements IItemKitchenKnife{
 		return 32;
 	}
 	@Override
-	public int event(World world, int x, int y, int z, ItemStack Result, int q){
+	public int event(World world, BlockPos bp, ItemStack Result, int q){
 		return 1;
 	}
+
+	
 }

@@ -14,11 +14,11 @@ import com.cfyifei.item.ModItem;
 import com.cfyifei.itemstack.FoodcraftItemStack;
 
 public class Ntrecipe {
+	
 	private static final Ntrecipe smeltingBase = new Ntrecipe();
-	public  Map stack1 = new HashMap();
+	public Map stack1 = new HashMap();
     
-	public static Ntrecipe smelting()
-    {
+	public static Ntrecipe smelting() {
         return smeltingBase;
     }
 	 
@@ -31,7 +31,6 @@ public class Ntrecipe {
 		addrecipe(Items.apple, Items.apple, Items.apple, new ItemStack(ModItem.ItemPingguojiu,3));
 		addrecipe(Items.golden_apple, Items.golden_apple, Items.golden_apple, new ItemStack(ModItem.ItemJinpingguojiu,3));
 		addrecipe(ModItem.ItemJinputao, ModItem.ItemJinputao, ModItem.ItemJinputao, new ItemStack(ModItem.ItemJinputaojiu,3));
-
 		addrecipe(ModItem.ItemLi, ModItem.ItemLi, ModItem.ItemLi, new ItemStack(ModItem.ItemLizijiu,3));
 		addrecipe(ModItem.ItemLizhi, ModItem.ItemLizhi, ModItem.ItemLizhi, new ItemStack(ModItem.ItemLizhijiu,3));
 		addrecipe(ModItem.ItemTaozi, ModItem.ItemTaozi, ModItem.ItemTaozi, new ItemStack(ModItem.ItemTaozijiu,3));
@@ -44,43 +43,29 @@ public class Ntrecipe {
 		Item[] Items = {Input1,Input2,Input3};
 		stack1.put(new FoodcraftItemStack(Items), Output);
 	}
-	 private boolean GG(FoodcraftItemStack ItemStack1, FoodcraftItemStack ItemStack2)
-	 {
+	 private boolean GG(FoodcraftItemStack ItemStack1, FoodcraftItemStack ItemStack2) {
 	     return ItemStack2.Stack[0] == ItemStack1.Stack[0] &&
 	            ItemStack2.Stack[1] == ItemStack1.Stack[1] &&
-	            ItemStack2.Stack[2] == ItemStack1.Stack[2]
-	    		 ;
+	            ItemStack2.Stack[2] == ItemStack1.Stack[2];
 	 }
 	 
 	public ItemStack getOutput(Item Input1,Item Input2,Item Input3){
 		Item[] Items = {Input1,Input2,Input3};
-		FoodcraftItemStack fis = new FoodcraftItemStack(Items);
-		
+		FoodcraftItemStack fis = new FoodcraftItemStack(Items);	
 		Iterator iterator1 = stack1.entrySet().iterator();
 	    Entry entry1;
-		
-	    do
-	    {
-	        if (!iterator1.hasNext())
-	        {
+	    do {
+	        if (!iterator1.hasNext()) {
 	            return null;
 	        }
-
 	        entry1 = (Entry)iterator1.next();
 	    }
 	    while (!GG(fis, (FoodcraftItemStack)entry1.getKey()));
-
 	    ItemStack is1 = (ItemStack)entry1.getValue();
-	    
-	    
 	    return is1;	    	    
-	    
-
 	}
 
 	public Map<FoodcraftItemStack, ItemStack> getSmeltingList() {
 		return this.stack1;
 	}
-	
-	
 }

@@ -2,18 +2,22 @@ package com.cfyifei.item;
 
 import java.util.List;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.renderer.texture.IIconRegister;
+
+
+
+
+
+import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemGuojiang extends Item{
 	String[] s = new String[]{"ItemPutaoGJ","ItemJinputaoGJ","ItemLiGJ","ItemTaoziGJ","ItemJuziGJ","ItemNingmengGJ","ItemCaomeiGJ","ItemYeziGJ"};
-	IIcon[] ii = new IIcon[8];
 	 public ItemGuojiang()
 	    {
 	        this.setHasSubtypes(true);
@@ -35,19 +39,6 @@ public class ItemGuojiang extends Item{
 	        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 6));
 	        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 7));
 	    }
-	 @SideOnly(Side.CLIENT)
-	    public void registerIcons(IIconRegister p_94581_1_)
-	    {
-		 for(int i1 = 0;i1 < 8;i1++){
-			 ii[i1] = p_94581_1_.registerIcon("foodcraft:" + s[i1]);
-		 }
-	    }
-	   @SideOnly(Side.CLIENT)
-	    public IIcon getIconFromDamage(int int1)
-	    {
-		   return ii[int1];
-	    }
-
 	    public String getUnlocalizedName(ItemStack is1)
 	    {
 	    	 return s[is1.getItemDamage()];

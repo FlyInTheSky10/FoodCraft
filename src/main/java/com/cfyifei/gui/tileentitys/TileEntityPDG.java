@@ -4,8 +4,15 @@ import java.util.List;
 
 import com.cfyifei.gui.recipes.PDGrecipe;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+
+
+
+
+
+
+
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -18,9 +25,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.cfyifei.gui.blocks.BlockPDG;
 import com.cfyifei.gui.blocks.ModGui;
@@ -28,7 +41,7 @@ import com.cfyifei.gui.containers.ContainerPDG;
 import com.cfyifei.itemstack.CookingOutput;
 
 
-public class TileEntityPDG extends TileEntity implements IInventory{
+public class TileEntityPDG extends TileEntity implements IUpdatePlayerListBox,IInventory{
 	private ItemStack stack[] = new ItemStack[4];
 	public int Nowheat = 0;
 	public int tableBurnTime = 1;//max
@@ -40,32 +53,28 @@ public class TileEntityPDG extends TileEntity implements IInventory{
 	public int min;
 	private int w;
 
-
 	@Override
-    public void updateEntity() {
-		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) != Blocks.fire ||worldObj.getBlock(xCoord, yCoord - 1, zCoord) != ModGui.lit_Zl){
+    public void update() {
+		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != Blocks.fire ||worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != ModGui.lit_Zl){
 	isfire = false;
 }		
-		if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire){
+		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == Blocks.fire){
 	isfire = true;
 }
 else{
-	if(worldObj.getBlock(xCoord, yCoord - 1, zCoord) == ModGui.lit_Zl){
+	if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == ModGui.lit_Zl){
 		isfire = true;
 	}
 }
-		//	isfire = worldObj.getBlock(xCoord, yCoord - 1, zCoord) == Blocks.fire;
-
-	        
-
+	  
 	        if (!this.worldObj.isRemote)
 	        {
-	        	AxisAlignedBB aabb = AxisAlignedBB.getBoundingBox(this.xCoord - 20, this.yCoord - 20, this.zCoord -20, this.xCoord + 20, this.yCoord + 20, this.zCoord + 20);
+	        	AxisAlignedBB aabb = AxisAlignedBB.fromBounds(this.getPos().getX() - 20, this.getPos().getY() - 20, this.getPos().getZ() -20, this.getPos().getX() + 20, this.getPos().getY() + 20, this.getPos().getZ() + 20);
 	        	List<EntityLivingBase> l1 = worldObj.getEntitiesWithinAABB(EntityLivingBase.class, aabb);
 	        	for(EntityLivingBase elb : l1){
 	        		if(isfire){
 		    			if(!(elb==null)){
-			    			if((int)(elb.posX)-1 == this.xCoord && (int)(elb.posZ) == this.zCoord && (int)(elb.posY) == this.yCoord){
+			    			if((int)(elb.posX)-1 == this.getPos().getX()  && (int)(elb.posZ) == this.getPos().getZ()  && (int)(elb.posY) == this.getPos().getY() ){
 			    				if(elb instanceof EntityPlayer){
 			    					if(((EntityPlayer)elb).capabilities.isCreativeMode){
 			    						continue;
@@ -85,7 +94,7 @@ else{
 	        		}
 	    			
 	    		}
-	            if (isfire && this.canSmelt())
+	        	if (isfire && this.canSmelt())
 	            {
 	                this.furnaceCookTime = this.furnaceCookTime + 1;
 	               if(w == 16){
@@ -133,6 +142,7 @@ else{
 
 	@Override
     public ItemStack decrStackSize(int par1, int par2) {
+            // TODO Auto-generated method stub
             if (this.stack[par1] != null)
     {
         ItemStack var3;
@@ -186,16 +196,11 @@ else{
 	}
 
 	@Override
-	public String getInventoryName() {
+	public String getName() {
 		
 		return "PDG";
 	}
 
-	@Override
-	public boolean hasCustomInventoryName() {
-		
-		return false;
-	}
 
 	@Override
 	public int getInventoryStackLimit() {
@@ -209,17 +214,7 @@ else{
 		return true;
 	}
 
-	@Override
-	public void openInventory() {
-		
-		
-	}
 
-	@Override
-	public void closeInventory() {
-		
-		
-	}
 
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
@@ -247,6 +242,7 @@ else{
         this.frequencyOfUse = par1NBTTagCompound.getShort("frequencyOfUse");
         this.Nowheat = par1NBTTagCompound.getShort("Nowheat");
     }
+	
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
@@ -295,7 +291,11 @@ else{
             return result <= getInventoryStackLimit() && result <= this.stack[1].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
-
+    public boolean isBurning()
+    {
+        return this.tableBurnTime > 0;
+    }
+   
     public void smeltItem()
     {
         if (this.canSmelt())
@@ -333,7 +333,6 @@ else{
         	}
         }
     }
-
     @SideOnly(Side.CLIENT)
     public float getCookProgressScaled(int int1)
     {
@@ -341,13 +340,64 @@ else{
     }
 
 
-    @SideOnly(Side.CLIENT)
-    public float getBurnTimeRemainingScaled(int int1)
-    {
-        return (((float)this.currentItemBurnTime)* int1) / 100F;
-    }
-    
-    public void setcurrentItemBurnTime(int a){
-    	currentItemBurnTime = a;
-    }
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return new ChatComponentText(this.getName());
+	}
+
+
+	@Override
+	public void openInventory(EntityPlayer player) {
+
+	}
+
+
+	@Override
+	public void closeInventory(EntityPlayer player) {
+
+	}
+
+
+	@Override
+	public int getField(int id) {
+
+		return 0;
+	}
+
+
+	@Override
+	public void setField(int id, int value) {
+
+		
+	}
+
+
+	@Override
+	public int getFieldCount() {
+
+		return 0;
+	}
+
+
+	@Override
+	public void clear() {
+		for (int i = 0; i < this.stack.length; ++i) {
+            this.stack[i] = null;
+        }
+		
+	}
+
+
+	    @SideOnly(Side.CLIENT)
+	    public float getBurnTimeRemainingScaled(int int1)
+	    {
+	        return (((float)this.currentItemBurnTime)* int1) / 100F;
+	    }
+	    
 }

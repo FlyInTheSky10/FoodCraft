@@ -1,7 +1,6 @@
 package com.cfyifei.item;
 
 import com.cfyifei.block.ModBlocks;
-import com.cfyifei.util.FoodcraftUtil;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +10,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -32,22 +32,21 @@ public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, Enti
     {
         if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
         {
-            int i = movingobjectposition.blockX;
-            int j = movingobjectposition.blockY;
-            int k = movingobjectposition.blockZ;
-            if (!par2World.canMineBlock(par3EntityPlayer, i, j, k))
+            BlockPos blockpos = movingobjectposition.getBlockPos();
+            
+            if (!par2World.isBlockModifiable(par3EntityPlayer, blockpos))
             {
                 return par1ItemStack;
             }
 
-            if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
+            if (!par3EntityPlayer.canPlayerEdit(blockpos.offset(movingobjectposition.sideHit), movingobjectposition.sideHit, par1ItemStack))
             {
                 return par1ItemStack;
             }
 
-            if (par2World.getBlock(i, j, k).getMaterial() == Material.water)
+            if (par2World.getBlockState(blockpos).getBlock().getMaterial() == Material.water)
             {
-            	par2World.setBlock(i, j, k, Blocks.air);
+            	par2World.setBlockState(blockpos, Blocks.air.getDefaultState());
             	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "game.player.swim", 1F, 1F, false);
             	
                 if (!par3EntityPlayer.inventory.addItemStackToInventory(new ItemStack(ModItem.Itemwater)))
@@ -63,8 +62,10 @@ if(par1ItemStack.getItemDamage() >= 16){
 	
 }
 
+
             }
         }
+
         return par1ItemStack;
     }
 }

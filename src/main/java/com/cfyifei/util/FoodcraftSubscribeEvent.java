@@ -1,76 +1,24 @@
 package com.cfyifei.util;
 
-import java.util.List;
-
 import com.cfyifei.gui.tileentitys.TileEntityGuo;
 import com.cfyifei.gui.tileentitys.TileEntityPDG;
 import com.cfyifei.item.ModItem;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.gui.GuiIngame;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.ai.EntityAITempt;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.World;
-import net.minecraftforge.client.GuiIngameForge;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
-import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
-import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class FoodcraftSubscribeEvent {
-/*	@SubscribeEvent
-	public void playerHealth(RenderGameOverlayEvent.Pre event) {
 
-	    if(event.type == ElementType.FOOD)
-	    {
-	        int width = event.resolution.getScaledWidth();
-	        int height = event.resolution.getScaledHeight();
-	        Minecraft mc = Minecraft.getMinecraft();
-	        
-	        String hp = String.format("%d",
-	                        MathHelper.ceiling_float_int(mc.thePlayer.getFoodStats().getFoodLevel())
-	                       );
-	        FontRenderer fontRenderer = mc.fontRenderer;
-	        fontRenderer.drawStringWithShadow(hp, width / 2 + 45, height - GuiIngameForge.left_height + 20, 0xFFFFFF);
-	        mc.renderEngine.bindTexture(Gui.icons);
-	    }
-	}*/
 @SubscribeEvent
-
-public void test1(LivingDeathEvent event)
-{
-    if(event.entityLiving instanceof EntitySheep)
+    public void test1(LivingDeathEvent event)
     {
-    	EntitySheep Sheep = (EntitySheep)event.entityLiving;
-    	if (!Sheep.worldObj.isRemote){
-    		if(!Sheep.isChild()){//–ﬁ∏¥–°—ÚµÙ»‚
-    		if(Sheep.isBurning()){
-    			FoodcraftUtil.dropItemAsEntity(Sheep.worldObj,Sheep.posX,Sheep.posY,Sheep.posZ,new ItemStack(ModItem.ItemShuyangrou,3));
-    		}
-    		else{
-    			FoodcraftUtil.dropItemAsEntity(Sheep.worldObj,Sheep.posX,Sheep.posY,Sheep.posZ,new ItemStack(ModItem.ItemYangrou,3));
-    		}
-    	
-    	}
-    	}
-    }
     if(event.entityLiving instanceof EntitySquid)
     {
     	EntitySquid Squid = (EntitySquid)event.entityLiving;
@@ -78,33 +26,32 @@ public void test1(LivingDeathEvent event)
     		FoodcraftUtil.dropItemAsEntity(Squid.worldObj,Squid.posX,Squid.posY,Squid.posZ,new ItemStack(ModItem.ItemYouyurou,3));
     	}
     }
-}
-
+    }
 @SubscribeEvent
 public void onBreakEvent(BlockEvent.BreakEvent event)
 {
-  TileEntity te = event.world.getTileEntity(event.x,event.y,event.z);
+  TileEntity te = event.world.getTileEntity(event.pos);
   if(!event.world.isRemote){
   if ((te != null) && ((te instanceof TileEntityPDG)))
   {
 	  TileEntityPDG t = (TileEntityPDG)te;
-    ItemStack stack = new ItemStack(event.block);
+    ItemStack stack = new ItemStack(event.state.getBlock());
     setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
 	
     if(!event.getPlayer().capabilities.isCreativeMode){
-    	event.world.setBlockToAir(event.x, event.y, event.z);
-    	FoodcraftUtil.dropItemAsEntity(event.world, event.x,event.y,event.z, stack);
+    	event.world.setBlockToAir(event.pos);
+    	FoodcraftUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(),event.pos.getZ(), stack);
 	}
   }
   if ((te != null) && ((te instanceof TileEntityGuo)))
   {
 	  TileEntityGuo t = (TileEntityGuo)te;
-    ItemStack stack = new ItemStack(event.block);
+    ItemStack stack = new ItemStack(event.state.getBlock());
     setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
 	
     if(!event.getPlayer().capabilities.isCreativeMode){
-    	event.world.setBlockToAir(event.x, event.y, event.z);
-    	FoodcraftUtil.dropItemAsEntity(event.world, event.x,event.y,event.z, stack);
+    	event.world.setBlockToAir(event.pos);
+    	FoodcraftUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(),event.pos.getZ(), stack);
 	}
   }
   }

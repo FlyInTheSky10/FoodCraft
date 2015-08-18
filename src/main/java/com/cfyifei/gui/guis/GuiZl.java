@@ -25,36 +25,28 @@ public class GuiZl extends GuiContainer{
 		super(new ContainerZl(playerInv, tileEntityZl));
 		this.tile = tileEntityZl;
 		this.doesGuiPauseGame();
-
 	}
 
 	@Override
-	public void drawGuiContainerBackgroundLayer(float partialTicks,
-		int mouseX, int mouseY) {
+	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.renderEngine.bindTexture(new ResourceLocation("foodcraft", "textures/gui/container/zl.png"));
         int k = (this.width - this.xSize) / 2;//x
         int l = (this.height - this.ySize) / 2;//y
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
         float i1;
-        if (this.tile.isBurning())
-        {
+        if (this.tile.isBurning()) {
             i1 = this.tile.getBurnTimeRemainingScaled(12);
             this.drawTexturedModalRect(k + 81, (int)(l + 48 - i1), 176, (int)(12 - i1), 14, (int)(i1 + 2));
         }
-        if(this.tile.canSmelt()){
+        if(this.tile.canSmelt()) {
         	this.drawTexturedModalRect(k + 83, l + 22, 176, 14, 9, 9);
         }
-
     }
-	
-    
 	
 @Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-	 //String s = this.tile.hasCustomInventoryName() ? this.tile.getInventoryName() : I18n.format(this.tile.getInventoryName(), new Object[0]);
-	String s = StatCollector.translateToLocal("TitleZl");
-	this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-    // this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, this.ySize - 96 + 2, 4210752);
+		String s = StatCollector.translateToLocal("TitleZl");
+		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
 	}
 }

@@ -2,6 +2,7 @@ package com.cfyifei.api;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public interface IItemKitchenKnife {
@@ -21,5 +22,5 @@ public interface IItemKitchenKnife {
 	 * @param Quantity Result Quantity
      * @return Add quantity
      */
-	public int event(World world, int x, int y, int z, ItemStack Result, int Quantity);
+	public int event(World world, BlockPos pos, ItemStack Result, int Quantity);
 }

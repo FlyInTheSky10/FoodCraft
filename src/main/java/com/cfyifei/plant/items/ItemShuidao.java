@@ -2,6 +2,7 @@ package com.cfyifei.plant.items;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.block.ModBlocks;
+import com.cfyifei.item.ModItem;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,17 +13,13 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.util.ForgeDirection;
 
-public class ItemShuidao extends ItemCropPlant{
+public class ItemShuidao extends ItemPlant{
 
-	public ItemShuidao(Block b)
+	public ItemShuidao()
     {
-        super(b);
+        super(ModItem.ItemDami, ModBlocks.BlockShuidao);
+        this.setCreativeTab(FoodCraft.FcTabZhiwu);
     }
-	@Override
-    public EnumPlantType getPlantType(IBlockAccess world, int x, int y, int z)
-    {
-        return EnumPlantType.Crop;
-    }
+	
 }

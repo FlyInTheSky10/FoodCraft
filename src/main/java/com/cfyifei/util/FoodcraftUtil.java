@@ -1,7 +1,11 @@
 package com.cfyifei.util;
 
+import java.util.List;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
 public class FoodcraftUtil {
@@ -21,8 +25,17 @@ double dy = world.rand.nextFloat() * f + (1.0D - f) * 0.5D;
 double dz = world.rand.nextFloat() * f + (1.0D - f) * 0.5D;
 
 EntityItem entityItem = new EntityItem(world, posX + dx, posY + dy, posZ + dz, itemStack.copy());
-entityItem.delayBeforeCanPickup = 10;
+entityItem.setDefaultPickupDelay();
 world.spawnEntityInWorld(entityItem);
 }
-	
+	public static void removeAnyRecipe (ItemStack ItemStack)
+	{
+		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+		for (int i = 0; i < recipes.size(); i++)
+		{
+			IRecipe tmpRecipe = recipes.get(i);
+			ItemStack recipeResult = tmpRecipe.getRecipeOutput();
+			if (ItemStack.areItemStacksEqual(ItemStack, recipeResult)) recipes.remove(i--);
+		}
+	}
 }

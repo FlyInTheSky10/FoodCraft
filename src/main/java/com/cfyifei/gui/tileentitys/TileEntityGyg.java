@@ -9,12 +9,13 @@ import com.cfyifei.gui.recipes.Nmjrecipe;
 
 
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+
+
+
+
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -30,14 +31,21 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.item.ModItem;
 
 
-public class TileEntityGyg extends TileEntity implements IInventory{
+public class TileEntityGyg extends TileEntity implements IUpdatePlayerListBox,IInventory {
+	
 	private ItemStack stack[] = new ItemStack[6];
 	public int tableBurnTime = 0;
     public int currentItemBurnTime;
@@ -46,80 +54,66 @@ public class TileEntityGyg extends TileEntity implements IInventory{
 	public ItemStack cai;
 
 	@Override
-    public void updateEntity() {
+    public void update() {
 		
 		boolean flag = this.tableBurnTime > 0;
 	        boolean flag1 = false;
-	        if (this.tableBurnTime > 0)
-	        {
+	        if (this.tableBurnTime > 0) {
 	            --this.tableBurnTime;
-	            
 	        }
 	        
-	        if (!this.worldObj.isRemote)
-	        {
-	            if (this.tableBurnTime == 0 && this.canSmelt()  && water >= 2)
-	            {
+	        if (!this.worldObj.isRemote) {
+	            if (this.tableBurnTime == 0 && this.canSmelt()  && water >= 2) {
 	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[4]);
 
-	                if (this.tableBurnTime > 0)
-	                {
+	                if (this.tableBurnTime > 0) {
 	                    flag1 = true;
 
-	                    if (this.stack[4] != null)
-	                    {
+	                    if (this.stack[4] != null) {
 	                        --this.stack[4].stackSize;
 
-	                        if (this.stack[4].stackSize == 0)
-	                        {
+	                        if (this.stack[4].stackSize == 0) {
 	                            this.stack[4] = stack[4].getItem().getContainerItem(stack[4]);
 	                        }
 	                    }
 	                }
 	            }
 
-	            if (this.isBurning() && this.canSmelt() && water >= 2 && isst())
-	            {
-	            	
-	            	
+	            if (this.isBurning() && this.canSmelt() && water >= 2 && isst()) {
 	                ++this.furnaceCookTime;
-	                if (this.furnaceCookTime == 480)
-	                {
+	                if (this.furnaceCookTime == 480) {
 	                    this.furnaceCookTime = 0;
 	                    this.smeltItem();
 	                    flag1 = true;
 	                }
 	            }
-	            else
-	            {
+	            else {
 	                this.furnaceCookTime = 0;
 	            }
-	            if (flag != this.tableBurnTime > 0)
-	            {
+	            if (flag != this.tableBurnTime > 0) {
 	                flag1 = true;
-	                
 	            }
 	        }
 
-	        if (flag1)
-	        {
+	        if (flag1) {
 	            this.markDirty();
 	        }
-	        if (stack[3] != null){
-	        	if(water != 8){
-	        	if(stack[3].getItem() == Items.water_bucket){
+	        
+	        if (stack[3] != null) {
+	        	if(water != 8) {
+	        	if(stack[3].getItem() == Items.water_bucket) {
 	        		ItemStack bucketitemstack = new ItemStack(Items.bucket);
 	        		stack[3] = bucketitemstack.copy();	  
 	        		++water;
 	        		}
 	        	
-	        	if(stack[3].getItem() == ModItem.Itemwater){
+	        	if(stack[3].getItem() == ModItem.Itemwater) {
 	        			        		
 	        			--stack[3].stackSize;
 	        			++water;	        			        		
 	        		}	
 	        	}
-	        	if(stack[3].stackSize == 0){
+	        	if(stack[3].stackSize == 0) {
 	    			stack[3] = null;	  
 	    		}
 	        }
@@ -127,68 +121,54 @@ public class TileEntityGyg extends TileEntity implements IInventory{
 	}
 		 
 	private boolean isst() {
-		if(stack[5] != null){
-		int result = stack[5].stackSize + cai.stackSize;
-        boolean e =  result <= getInventoryStackLimit() && result <= this.stack[5].getMaxStackSize();
-		return e; 
+		if(stack[5] != null) {
+			int result = stack[5].stackSize + cai.stackSize;
+			boolean e =  result <= getInventoryStackLimit() && result <= this.stack[5].getMaxStackSize();
+			return e; 
 		}
 		return true;
 	}
 	@Override
 	public int getSizeInventory() {
-		
 		return stack.length;
-
 	}
 
 	@Override
 	public ItemStack getStackInSlot(int var1) {
-		
 		return stack[var1];
 	}
 
 	@Override
     public ItemStack decrStackSize(int par1, int par2) {
-            // TODO Auto-generated method stub
-            if (this.stack[par1] != null)
-    {
+		if (this.stack[par1] != null) {
         ItemStack var3;
-
-        if (this.stack[par1].stackSize <= par2)
-        {
+        if (this.stack[par1].stackSize <= par2) {
             var3 = this.stack[par1];
             this.stack[par1] = null;
             return var3;
         }
-        else
-        {
+        else {
             var3 = this.stack[par1].splitStack(par2);
 
-            if (this.stack[par1].stackSize == 0)
-            {
+            if (this.stack[par1].stackSize == 0) {
                 this.stack[par1] = null;
             }
-
             return var3;
         }
     }
-    else
-    {
-        return null;
-    }
+		else {
+			return null;
+    	}
     }
 
 	@Override
-	 public ItemStack getStackInSlotOnClosing(int par1)
-    {
-        if (this.stack[par1] != null)
-        {
+	 public ItemStack getStackInSlotOnClosing(int par1) {
+        if (this.stack[par1] != null) {
             ItemStack itemstack = this.stack[par1];
             this.stack[par1] = null;
             return itemstack;
         }
-        else
-        {
+        else {
             return null;
         }
     }
@@ -196,65 +176,40 @@ public class TileEntityGyg extends TileEntity implements IInventory{
 	@Override
 	public void setInventorySlotContents(int var1, ItemStack var2) {
         this.stack[var1] = var2;
-        if (var2 != null && var2.stackSize > this.getInventoryStackLimit())
-        {
+        if (var2 != null && var2.stackSize > this.getInventoryStackLimit()) {
                 var2.stackSize = this.getInventoryStackLimit();
         }
 	}
 
 	@Override
-	public String getInventoryName() {
-		
+	public String getName() {
 		return "Gyg";
 	}
 
 	@Override
-	public boolean hasCustomInventoryName() {
-		
-		return false;
-	}
-
-	@Override
 	public int getInventoryStackLimit() {
-		
 		return 64;
 	}
 
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer var1) {
-		
 		return true;
 	}
 
-	@Override
-	public void openInventory() {
-		
-		
-	}
-
-	@Override
-	public void closeInventory() {
-		
-		
-	}
-
+	
 	@Override
 	public boolean isItemValidForSlot(int var1, ItemStack var2) {
-		
 		return false;
 	}
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound)
-    {
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Gyg", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
-        for (int var3 = 0; var3 < var2.tagCount(); ++var3)
-        {
+        for (int var3 = 0; var3 < var2.tagCount(); ++var3) {
             NBTTagCompound var4 = (NBTTagCompound)var2.getCompoundTagAt(var3);
             byte var5 = var4.getByte("Slot");
-            if (var5 >= 0 && var5 < this.stack.length)
-            {
+            if (var5 >= 0 && var5 < this.stack.length) {
                 this.stack[var5] = ItemStack.loadItemStackFromNBT(var4);
             }
         }
@@ -263,17 +218,14 @@ public class TileEntityGyg extends TileEntity implements IInventory{
         this.water = par1NBTTagCompound.getShort("water");
     }
 
-    public void writeToNBT(NBTTagCompound par1NBTTagCompound)
-    {
+    public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
         par1NBTTagCompound.setShort("water", (short)this.water);
         NBTTagList var2 = new NBTTagList();
-        for (int var3 = 0; var3 < this.stack.length; ++var3)
-        {
-            if (this.stack[var3] != null)
-            {
+        for (int var3 = 0; var3 < this.stack.length; ++var3) {
+            if (this.stack[var3] != null) {
                 NBTTagCompound var4 = new NBTTagCompound();
                 var4.setByte("Slot", (byte)var3);
                 this.stack[var3].writeToNBT(var4);
@@ -281,40 +233,32 @@ public class TileEntityGyg extends TileEntity implements IInventory{
             }
         }
         par1NBTTagCompound.setTag("Gyg", var2);
-       
     }
     
-    public static int getItemBurnTime(ItemStack par0ItemStack)
-    {
-        if (par0ItemStack == null)
-        {
+    public static int getItemBurnTime(ItemStack par0ItemStack) {
+        if (par0ItemStack == null) {
             return 0;
         }
-        else
-        {
+        else {
             net.minecraft.item.Item item = par0ItemStack.getItem();
 
-            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air)
-            {
+            if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
             	Block block = Block.getBlockFromItem(item);
 
-                if (block == Blocks.wooden_slab)
-                {
+                if (block == Blocks.wooden_slab) {
                     return 100;
                 }
 
-                if (block.getMaterial() == Material.wood)
-                {
+                if (block.getMaterial() == Material.wood) {
                     return 200;
                 }
-                if (block == Blocks.coal_block)
-                {
+                if (block == Blocks.coal_block) {
                     return 10000;
                 }
             }
             if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 100;
             if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 100;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getToolMaterialName().equals("WOOD")) return 100;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 100;
             if (item == Items.stick) return 20;
             if (item == Items.coal) return 1000;
             if (item == Items.lava_bucket) return 10000;
@@ -324,14 +268,11 @@ public class TileEntityGyg extends TileEntity implements IInventory{
         }
     }
     
-    private boolean canSmelt()
-    {
-        if (this.stack[0] == null || this.stack[1] == null || this.stack[2] == null)
-        {
+    private boolean canSmelt() {
+        if (this.stack[0] == null || this.stack[1] == null || this.stack[2] == null) {
             return false;
         }
-        else
-        {
+        else {
         	cai = Gygrecipe.smelting().getOutput(stack[0].getItem(),stack[1].getItem(),stack[2].getItem());
         	
         	if(cai != null){
@@ -350,23 +291,18 @@ public class TileEntityGyg extends TileEntity implements IInventory{
         return false;
     }
     
-    public boolean isBurning()
-    {
+    public boolean isBurning() {
         return this.tableBurnTime > 0;
     }
    
-    public void smeltItem()
-    {
-        if (this.canSmelt())
-        {
+    public void smeltItem() {
+        if (this.canSmelt()) {
             ItemStack itemstack = cai;
 
-            if (this.stack[5] == null)
-            {
+            if (this.stack[5] == null) {
                 this.stack[5] = itemstack.copy();
             }
-            else if (this.stack[5].getItem() == itemstack.getItem())
-            {
+            else if (this.stack[5].getItem() == itemstack.getItem()) {
                 this.stack[5].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
 
@@ -375,38 +311,66 @@ public class TileEntityGyg extends TileEntity implements IInventory{
             --this.stack[2].stackSize;
             water = water - 2;
             
-            if (this.stack[0].stackSize <= 0)
-            {
+            if (this.stack[0].stackSize <= 0) {
                 this.stack[0] = null;
             }
-            if (this.stack[1].stackSize <= 0)
-            {
+            if (this.stack[1].stackSize <= 0) {
                 this.stack[1] = null;
             }
-            if (this.stack[2].stackSize <= 0)
-            {
+            if (this.stack[2].stackSize <= 0) {
                 this.stack[2] = null;
             }
         }
     }
     @SideOnly(Side.CLIENT)
-    public float getBurnTimeRemainingScaled(int int1)
-    {
-        if (this.currentItemBurnTime == 0)
-        {
+    public float getBurnTimeRemainingScaled(int int1) {
+        if (this.currentItemBurnTime == 0) {
             this.currentItemBurnTime = 200;
         }
-
         return this.tableBurnTime * int1 / this.currentItemBurnTime;
     }
     
-    public float getCookProgressScaled(int int1)
-    {
+    public float getCookProgressScaled(int int1) {
         return this.furnaceCookTime * int1 / 480;
     }
 
-    public int getWater()
-    {
+    public int getWater() {
         return this.water * 7;
     }
+
+	@Override
+	public boolean hasCustomName() {
+		return false;
+	}
+
+	@Override
+	public IChatComponent getDisplayName() {
+		return new ChatComponentText(this.getName());
+	}
+
+	@Override
+	public void openInventory(EntityPlayer player) {}
+
+	@Override
+	public void closeInventory(EntityPlayer player) {}
+
+	@Override
+	public int getField(int id) {
+		return 0;
+	}
+
+	@Override
+	public void setField(int id, int value) {}
+
+	@Override
+	public int getFieldCount() {
+		return 0;
+	}
+
+	@Override
+	public void clear() {
+		for (int i = 0; i < this.stack.length; ++i) {
+            this.stack[i] = null;
+        }
+	}
 }

@@ -43,30 +43,30 @@ public class ItemWrench extends Item{
 		    {
 		        if (movingobjectposition.typeOfHit == MovingObjectPosition.MovingObjectType.BLOCK)
 		        {
-		            int i = movingobjectposition.blockX;
-		            int j = movingobjectposition.blockY;
-		            int k = movingobjectposition.blockZ;
-		            if (!par2World.canMineBlock(par3EntityPlayer, i, j, k))
+		            int i = movingobjectposition.getBlockPos().getX();
+		            int j = movingobjectposition.getBlockPos().getY();
+		            int k = movingobjectposition.getBlockPos().getZ();
+		            if (!par2World.canMineBlockBody(par3EntityPlayer, movingobjectposition.getBlockPos()))
 		            {
 		                return par1ItemStack;
 		            }
 
-		            if (!par3EntityPlayer.canPlayerEdit(i, j, k, movingobjectposition.sideHit, par1ItemStack))
+		            if (!par3EntityPlayer.canPlayerEdit(movingobjectposition.getBlockPos(), movingobjectposition.sideHit, par1ItemStack))
 		            {
 		                return par1ItemStack;
 		            }
 		            //*****************************************************
-		            TileEntity te = par2World.getTileEntity(i, j, k);
-		            if (par2World.getBlock(i, j, k) == ModGui.Caiban)
+		            TileEntity te = par2World.getTileEntity(movingobjectposition.getBlockPos());
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Caiban)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Caiban));
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) == ModGui.Guo)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Guo)
 		            {
 		            	if(!par2World.isRemote){
 		            		 if ((te != null) && ((te instanceof TileEntityGuo)))
@@ -75,41 +75,41 @@ public class ItemWrench extends Item{
 		            		    ItemStack stack = new ItemStack(ModGui.Guo);
 		            		    FoodcraftSubscribeEvent.setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
 	
-		            		    	par2World.setBlockToAir(i, j, k);
+		            		    	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            		    	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, stack);
 		            			
 		            		  }
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) == ModGui.Gyg)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Gyg)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Gyg));
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) instanceof BlockNmj)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockNmj)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Nmj));
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) == ModGui.Nt)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.Nt)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Nt));
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) == ModGui.PDG)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() == ModGui.PDG)
 		            {
 		            	if(!par2World.isRemote){
 		            		 if ((te != null) && ((te instanceof TileEntityPDG)))
@@ -117,35 +117,35 @@ public class ItemWrench extends Item{
 		            			  TileEntityPDG t = (TileEntityPDG)te;
 		            		    ItemStack stack = new ItemStack(ModGui.PDG);
 		            		    FoodcraftSubscribeEvent.setItemStackNBT(stack, "frequencyOfUse", t.frequencyOfUse);
-		            		    	par2World.setBlockToAir(i, j, k);
+		            		    	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            		    	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, stack);
 		            			
 		            		  }
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) instanceof BlockTpj)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockTpj)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Tpj));
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) instanceof BlockYZJ)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockYZJ)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.YZJ));
 		            	}
 		            	par2World.playSound(par3EntityPlayer.posX, par3EntityPlayer.posY, par3EntityPlayer.posZ, "random.break", 1F, 1F, false);
 		            }
-		            if (par2World.getBlock(i, j, k) instanceof BlockZl)
+		            if (par2World.getBlockState(movingobjectposition.getBlockPos()).getBlock() instanceof BlockZl)
 		            {
 		            	
-		            	par2World.setBlockToAir(i, j, k);
+		            	par2World.setBlockToAir(movingobjectposition.getBlockPos());
 		            	if(!par2World.isRemote){
 		            	FoodcraftUtil.dropItemAsEntity(par2World, i, j, k, new ItemStack(ModGui.Zl));
 		            	}

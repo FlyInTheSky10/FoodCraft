@@ -30,33 +30,35 @@ import com.cfyifei.gui.tileentitys.TileEntityYZJ;
 import com.cfyifei.gui.tileentitys.TileEntityZl;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
-import cpw.mods.fml.common.network.IGuiHandler;
+import net.minecraftforge.fml.common.network.IGuiHandler;
 
 public class GUIHandler implements IGuiHandler{
 
 	@Override
 	public Object getServerGuiElement(int id, EntityPlayer player, World world,
 		int x, int y, int z) {
+		BlockPos bp = new BlockPos(x,y,z);
 	switch(id) {
 		    case GuiIDs.GUI_NMJ:
-			    return new ContainerNmj(player.inventory, (TileEntityNmj) world.getTileEntity(x, y, z));
+			    return new ContainerNmj(player.inventory, (TileEntityNmj) world.getTileEntity(bp));
 		    case GuiIDs.GUI_PDG:
-		  	    return new ContainerPDG(player.inventory, (TileEntityPDG) world.getTileEntity(x, y, z));
+		  	    return new ContainerPDG(player.inventory, (TileEntityPDG) world.getTileEntity(bp));
 		    case GuiIDs.GUI_Guo:
-		  	    return new ContainerGuo(player.inventory, (TileEntityGuo) world.getTileEntity(x, y, z));
+		  	    return new ContainerGuo(player.inventory, (TileEntityGuo) world.getTileEntity(bp));
 		    case GuiIDs.GUI_Gyg:
-		  	    return new ContainerGyg(player.inventory, (TileEntityGyg) world.getTileEntity(x, y, z));
+		  	    return new ContainerGyg(player.inventory, (TileEntityGyg) world.getTileEntity(bp));
 		    case GuiIDs.GUI_Caiban:
-		  	    return new ContainerCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(x, y, z));
+		  	    return new ContainerCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(bp));
 		    case GuiIDs.GUI_YZJ:
-		    	return new ContainerYZJ(player.inventory, (TileEntityYZJ) world.getTileEntity(x, y, z));	
+		    	return new ContainerYZJ(player.inventory, (TileEntityYZJ) world.getTileEntity(bp));	
 		    case GuiIDs.GUI_Nt:
-		    	return new ContainerNt(player.inventory, (TileEntityNt) world.getTileEntity(x, y, z));	
+		    	return new ContainerNt(player.inventory, (TileEntityNt) world.getTileEntity(bp));	
 		    case GuiIDs.GUI_Zl:
-		    	return new ContainerZl(player.inventory, (TileEntityZl) world.getTileEntity(x, y, z));	
+		    	return new ContainerZl(player.inventory, (TileEntityZl) world.getTileEntity(bp));	
 		    case GuiIDs.GUI_Tpj:
-		    	return new ContainerTpj(player.inventory, (TileEntityTpj) world.getTileEntity(x, y, z));	
+		    	return new ContainerTpj(player.inventory, (TileEntityTpj) world.getTileEntity(bp));	
 	        default:
 			    return null;
 		}
@@ -65,27 +67,29 @@ public class GUIHandler implements IGuiHandler{
 	@Override
 	public Object getClientGuiElement(int id, EntityPlayer player, World world,
 		int x, int y, int z) {
+		BlockPos bp = new BlockPos(x,y,z);
 		switch(id) {
 		    case GuiIDs.GUI_NMJ:
-		    	return new GuiNmj(player.inventory, (TileEntityNmj) world.getTileEntity(x, y, z));
+		    	return new GuiNmj(player.inventory, (TileEntityNmj) world.getTileEntity(bp));
 		    case GuiIDs.GUI_PDG:
-			    return new GuiPDG(player.inventory, (TileEntityPDG) world.getTileEntity(x, y, z));
+			    return new GuiPDG(player.inventory, (TileEntityPDG) world.getTileEntity(bp));
 		    case GuiIDs.GUI_Guo:
-			    return new GuiGuo(player.inventory, (TileEntityGuo) world.getTileEntity(x, y, z));
+			    return new GuiGuo(player.inventory, (TileEntityGuo) world.getTileEntity(bp));
 		    case GuiIDs.GUI_Gyg:
-			    return new GuiGyg(player.inventory, (TileEntityGyg) world.getTileEntity(x, y, z));
+			    return new GuiGyg(player.inventory, (TileEntityGyg) world.getTileEntity(bp));
 		    case GuiIDs.GUI_Caiban:
-			    return new GuiCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(x, y, z)); 
+			    return new GuiCaiban(player.inventory, (TileEntityCaiban) world.getTileEntity(bp)); 
 		    case GuiIDs.GUI_YZJ:
-			    return new GuiYZJ(player.inventory, (TileEntityYZJ) world.getTileEntity(x, y, z));   
+			    return new GuiYZJ(player.inventory, (TileEntityYZJ) world.getTileEntity(bp));   
 		    case GuiIDs.GUI_Nt:
-			    return new GuiNt(player.inventory, (TileEntityNt) world.getTileEntity(x, y, z));   
+			    return new GuiNt(player.inventory, (TileEntityNt) world.getTileEntity(bp));   
 		    case GuiIDs.GUI_Zl:
-			    return new GuiZl(player.inventory, (TileEntityZl) world.getTileEntity(x, y, z));   
+			    return new GuiZl(player.inventory, (TileEntityZl) world.getTileEntity(bp));   
 		    case GuiIDs.GUI_Tpj:
-			    return new GuiTpj(player.inventory, (TileEntityTpj) world.getTileEntity(x, y, z));   
+			    return new GuiTpj(player.inventory, (TileEntityTpj) world.getTileEntity(bp));   
 	    	default:
 			    return null;
 		}
 	}
+
 }

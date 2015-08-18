@@ -3,20 +3,24 @@ package com.cfyifei.proxy;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.network.NetworkRegistry;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiIDs;
+import com.cfyifei.RegisterItemmodel;
 import com.cfyifei.gui.blocks.ModGui;
 import com.cfyifei.gui.guis.*;
 import com.cfyifei.modelrenderer.*;
 import com.cfyifei.nei.NEIAPI;
+import com.cfyifei.util.GUIHandler;
 import com.cfyifei.gui.tileentitys.*;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.network.NetworkRegistry;
+
 
 public class ClientProxy extends CommonProxy {
 	@Override
@@ -28,9 +32,11 @@ public class ClientProxy extends CommonProxy {
 		this.registerRenders();
         this.registerRenderThings();
         this.rendererItem();
+
+		RegisterItemmodel.init();
 		if(FoodCraft.NEIIsLoad){
-        new NEIAPI().loadConfig();
-		}
+	        new NEIAPI().loadConfig();
+			}
 	}
 	 public static void registerRenderThings() {
     ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPDG.class, new PDGRenderer());
@@ -46,5 +52,6 @@ public class ClientProxy extends CommonProxy {
 	        
 	    }
 
+	
 
 }
