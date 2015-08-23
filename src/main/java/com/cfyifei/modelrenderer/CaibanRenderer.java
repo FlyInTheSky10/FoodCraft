@@ -2,7 +2,7 @@ package com.cfyifei.modelrenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.cfyifei.gui.blocks.ModelCaiban;
+import com.cfyifei.gui.blocks.ModelChoppingBoard;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -17,11 +17,11 @@ import net.minecraft.world.World;
 
 public class CaibanRenderer extends TileEntitySpecialRenderer {
 	
-    private final ModelCaiban model;
+    private final ModelChoppingBoard model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/caiban0.png");
 
     public CaibanRenderer(){
-    	model = new ModelCaiban();
+    	model = new ModelChoppingBoard();
     }
     
     public void render(double x, double y, double z) {

@@ -1,9 +1,7 @@
 package com.cfyifei.modelrenderer;
 
-import com.cfyifei.gui.blocks.ModelGYG;
-import com.cfyifei.gui.blocks.ModelGuo;
-import com.cfyifei.gui.blocks.ModelPDG;
-
+import com.cfyifei.gui.blocks.ModelPressureCooker;
+import com.cfyifei.gui.blocks.ModelPot;
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -11,12 +9,12 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class GygItemRenderer implements IItemRenderer {
 
-	private ModelGYG model;
+	private ModelPressureCooker model;
 	private TileEntity te;
 	private double x, y, z;
 
 	public GygItemRenderer(TileEntity tileentity, double xloc, double yloc, double zloc) {
-		model = new ModelGYG();
+		model = new ModelPressureCooker();
 		if (tileentity == null) {
 			return;
 		}

@@ -27,115 +27,63 @@ public class FoodcraftPlants {
 	public static Block BlockYezishu,BlockYezi;	
 	public static Block BlockYingtaoshu,BlockYingtao;
 	public static Block BlockXiangjiaoshu,BlockXiangjiao;
+	public static Block BlockShuidao,BlockDouzi,BlockHuashen,BlockShucai,BlockFanqie,BlockLajiao,BlockPutao,BlockQiezi,BlockCong,BlockQingjiao,BlockHongdou,BlockLvdou,
+	BlockHongshu,BlockBailuobo,BlockYumi,BlockHuanggua,BlockCaomei,BlockNuodao;
 	
-	public static void init() {
-		
-	FCleaves = new BlockFruit("FCleaves",Item.getItemFromBlock(Blocks.sapling));
-	
-	BlockLi = new BlockFruit("BlockLi",FoodcraftItems.ItemLi);
-	
-	BlockLishu = new BlockTree(BlockLi,"BlockLishu");
-	BlockLishu.setHarvestLevel("pickaxe", -1);
-	BlockLishu.setStepSound(Block.soundTypeGrass);
-	
-	BlockLizhi = new BlockFruit("BlockLizhi",FoodcraftItems.ItemLizhi);
-	
+	public static void init() {	
+	FCleaves = new BlockFruit("FCleaves","sapling");
+	BlockLi = new BlockFruit("BlockLi","foodcraft:ItemLi");
+	BlockLizhi = new BlockFruit("BlockLizhi","foodcraft:ItemLizhi");
+	BlockTaozi = new BlockFruit("BlockTaozi","foodcraft:ItemTaozi");
+	BlockJuzi = new BlockFruit("BlockJuzi","foodcraft:ItemJuzi");
+	BlockPipa = new BlockFruit("BlockPipa","foodcraft:ItemPipa");
+	BlockMangguo = new BlockFruit("BlockMangguo","foodcraft:ItemMangguo");
+	BlockNingmeng = new BlockFruit("BlockNingmeng","foodcraft:ItemNingmeng");
+	BlockYouzi = new BlockFruit("BlockYouzi","foodcraft:ItemYouzi");
+	BlockShizi = new BlockFruit("BlockShizi","foodcraft:ItemShizi");
+	BlockMugua = new BlockFruit("BlockMugua","foodcraft:ItemMugua");
+	BlockShanzha = new BlockFruit("BlockShanzha","foodcraft:ItemShanzha");
+	BlockLongyan = new BlockFruit("BlockLongyan","foodcraft:ItemLongyan");
+	BlockShiliu = new BlockFruit("BlockShiliu","foodcraft:ItemShiliu");
+	BlockHongzao = new BlockFruit("BlockHongzao","foodcraft:ItemHongzao");
+	BlockYingtao = new BlockFruit("BlockYingtao","foodcraft:ItemYingtao");
+	BlockXiangjiao = new BlockBannana("BlockXiangjiao","foodcraft:ItemXiangjiao");
+	BlockYezi = new BlockCoconut("BlockYezi","foodcraft:ItemYezi");
+	BlockCong = new BlockOnion();		
+	BlockLishu = new BlockTree(BlockLi,"BlockLishu");	
 	BlockLizhishu = new BlockTree(BlockLizhi,"BlockLizhishu");
-	BlockLizhishu.setHarvestLevel("pickaxe", -1);
-	BlockLizhishu.setStepSound(Block.soundTypeGrass);
-	
-	BlockTaozi = new BlockFruit("BlockTaozi",FoodcraftItems.ItemTaozi);
-	
 	BlockTaozishu = new BlockTree(BlockTaozi,"BlockTaozishu");
-	BlockTaozishu.setHarvestLevel("pickaxe", -1);
-	BlockTaozishu.setStepSound(Block.soundTypeGrass);
-	
-	BlockJuzi = new BlockFruit("BlockJuzi",FoodcraftItems.ItemJuzi);
-	
 	BlockJuzishu = new BlockTree(BlockJuzi,"BlockJuzishu");
-	BlockJuzishu.setHarvestLevel("pickaxe", -1);
-	BlockJuzishu.setStepSound(Block.soundTypeGrass);
-	
-	BlockPipa = new BlockFruit("BlockPipa",FoodcraftItems.ItemPipa);
-	
 	BlockPipashu = new BlockTree(BlockPipa, "BlockPipashu");
-	BlockPipashu.setHarvestLevel("pickaxe", -1);
-	BlockPipashu.setStepSound(Block.soundTypeGrass);
-
-	BlockMangguo = new BlockFruit("BlockMangguo",FoodcraftItems.ItemMangguo);
-	
 	BlockMangguoshu = new BlockTree(BlockMangguo,"BlockMangguoshu");
-	BlockMangguoshu.setHarvestLevel("pickaxe", -1);
-	BlockMangguoshu.setStepSound(Block.soundTypeGrass);
-
-	BlockNingmeng = new BlockFruit("BlockNingmeng",FoodcraftItems.ItemNingmeng);
-	
 	BlockNingmengshu = new BlockTree(BlockNingmeng,"BlockNingmengshu");
-	BlockNingmengshu.setHarvestLevel("pickaxe", -1);
-	BlockNingmengshu.setStepSound(Block.soundTypeGrass);
-	
-	BlockYouzi = new BlockFruit("BlockYouzi",FoodcraftItems.ItemYouzi);
-	
 	BlockYouzishu = new BlockTree(BlockYouzi, "BlockYouzishu");
-	BlockYouzishu.setHarvestLevel("pickaxe", -1);
-	BlockYouzishu.setStepSound(Block.soundTypeGrass);
-	
-	BlockShizi = new BlockFruit("BlockShizi",FoodcraftItems.ItemShizi);
-	
 	BlockShizishu = new BlockTree(BlockShizi, "BlockShizishu");
-	BlockShizishu.setHarvestLevel("pickaxe", -1);
-	BlockShizishu.setStepSound(Block.soundTypeGrass);
-	
-	BlockMugua = new BlockFruit("BlockMugua",FoodcraftItems.ItemMugua);
-	
 	BlockMuguashu = new BlockTree(BlockMugua, "BlockMuguashu");
-	BlockMuguashu.setHarvestLevel("pickaxe", -1);
-	BlockMuguashu.setStepSound(Block.soundTypeGrass);
-	
-	BlockShanzha = new BlockFruit("BlockShanzha",FoodcraftItems.ItemShanzha);
-	
 	BlockShanzhashu = new BlockTree(BlockShanzha, "BlockShanzhashu");
-	BlockShanzhashu.setHarvestLevel("pickaxe", -1);
-	BlockShanzhashu.setStepSound(Block.soundTypeGrass);
-	
-	BlockLongyan = new BlockFruit("BlockLongyan",FoodcraftItems.ItemLongyan);
-	
 	BlockLongyanshu = new BlockTree(BlockLongyan, "BlockLongyanshu");
-	BlockLongyanshu.setHarvestLevel("pickaxe", -1);
-	BlockLongyanshu.setStepSound(Block.soundTypeGrass);
-	
-	BlockShiliu = new BlockFruit("BlockShiliu",FoodcraftItems.ItemShiliu);
-	
 	BlockShiliushu = new BlockTree(BlockShiliu, "BlockShiliushu");
-	BlockShiliushu.setHarvestLevel("pickaxe", -1);
-	BlockShiliushu.setStepSound(Block.soundTypeGrass);
-	
-	BlockHongzao = new BlockFruit("BlockHongzao",FoodcraftItems.ItemHongzao);
-	
 	BlockHongzaoshu = new BlockTree(BlockHongzao, "BlockHongzaoshu");
-	BlockHongzaoshu.setHarvestLevel("pickaxe", -1);
-	BlockHongzaoshu.setStepSound(Block.soundTypeGrass);
-	
-	BlockYezi = new BlockCoconut("BlockYezi",FoodcraftItems.ItemYezi);
-	
 	BlockYezishu = new TreeCoconut(BlockYezi);
-	BlockYezishu.setHarvestLevel("pickaxe", -1);
-	BlockYezishu.setStepSound(Block.soundTypeGrass);
-	BlockYezishu.setUnlocalizedName("BlockYezishu");
-	
-	BlockYingtao = new BlockFruit("BlockYingtao",FoodcraftItems.ItemYingtao);
-	
 	BlockYingtaoshu = new BlockTree(BlockYingtao, "BlockYingtaoshu");
-	BlockYingtaoshu.setHarvestLevel("pickaxe", -1);
-	BlockYingtaoshu.setStepSound(Block.soundTypeGrass);
-	
-	BlockXiangjiao = new BlockBannana("BlockXiangjiao",FoodcraftItems.ItemXiangjiao);
-	
 	BlockXiangjiaoshu = new TreeBannana(BlockXiangjiao);
-	BlockXiangjiaoshu.setHarvestLevel("pickaxe", -1);
-	BlockXiangjiaoshu.setStepSound(Block.soundTypeGrass);
-	BlockXiangjiaoshu.setUnlocalizedName("BlockXiangjiaoshu");
-	
+	BlockQingjiao = new BlockFoodcraftCrops("foodcraft:ItemQingjiaozhong","foodcraft:ItemQingjiao","BlockQingjiao");
+	BlockHongdou = new BlockFoodcraftCrops("foodcraft:ItemHongdou","foodcraft:ItemHongdou","BlockHongdou");
+	BlockHongshu = new BlockFoodcraftCrops("foodcraft:ItemHongshu","foodcraft:ItemHongshu","BlockHongshu");
+	BlockLvdou = new BlockFoodcraftCrops("foodcraft:ItemLvdou","foodcraft:ItemLvdou","BlockLvdou");
+	BlockBailuobo = new BlockFoodcraftCrops("foodcraft:ItemBailuobo","foodcraft:ItemBailuobo","BlockBailuobo");
+	BlockYumi = new BlockFoodcraftCrops("foodcraft:ItemYumizhong","foodcraft:ItemYumi","BlockYumi");
+	BlockHuanggua = new BlockFoodcraftCrops("foodcraft:ItemHuangguazhong","foodcraft:ItemHuanggua","BlockHuanggua");
+	BlockCaomei = new BlockFoodcraftCrops("foodcraft:ItemCaomei","foodcraft:ItemCaomei","BlockCaomei");
+	BlockNuodao = new BlockFoodcraftCrops("foodcraft:ItemNuomi","foodcraft:ItemNuomi","BlockNuodao");
+	BlockShuidao = new BlockFoodcraftCrops("foodcraft:ItemDami","foodcraft:ItemDami","BlockShuidao");
+	BlockDouzi = new BlockFoodcraftCrops("foodcraft:ItemDouzi","foodcraft:ItemDouzi","BlockDouzi");
+	BlockHuashen = new BlockFoodcraftCrops("foodcraft:ItemHuashen","foodcraft:ItemHuashen","BlockHuashen");
+	BlockShucai = new BlockFoodcraftCrops("foodcraft:ItemShucaizhong","foodcraft:ItemShucai","BlockShucai");
+	BlockLajiao = new BlockFoodcraftCrops("foodcraft:ItemLajiaozhong","foodcraft:ItemLajiao","BlockLajiao");
+	BlockFanqie = new BlockFoodcraftCrops("foodcraft:ItemFanqiezhong","foodcraft:ItemFanqie","BlockFanqie");
+	BlockQiezi = new BlockFoodcraftCrops("foodcraft:ItemQiezizhong","foodcraft:ItemQiezi","BlockQiezi");
+	BlockPutao = new BlockFoodcraftCrops("foodcraft:ItemPutaozhong","foodcraft:ItemPutao","BlockPutao");
 	
 	GameRegistry.registerBlock(FCleaves,"FCleaves");
 	GameRegistry.registerBlock(BlockLishu,"BlockLishu");
@@ -172,5 +120,23 @@ public class FoodcraftPlants {
 	GameRegistry.registerBlock(BlockYingtao,"BlockYingtao");
 	GameRegistry.registerBlock(BlockXiangjiaoshu,"BlockXiangjiaoshu");
 	GameRegistry.registerBlock(BlockXiangjiao,"BlockXiangjiao");
+	GameRegistry.registerBlock(BlockDouzi,"BlockDouzi");
+	GameRegistry.registerBlock(BlockShuidao,"BlockShuidao");
+	GameRegistry.registerBlock(BlockHuashen,"BlockHuashen");
+	GameRegistry.registerBlock(BlockFanqie,"BlockFanqie");
+	GameRegistry.registerBlock(BlockLajiao,"BlockLajiao");
+	GameRegistry.registerBlock(BlockShucai,"BlockShucai");
+	GameRegistry.registerBlock(BlockPutao,"BlockPutao");
+	GameRegistry.registerBlock(BlockQiezi,"BlockQiezi");
+	GameRegistry.registerBlock(BlockQingjiao,"BlockQingjiao");
+	GameRegistry.registerBlock(BlockHongdou,"BlockHongdou");
+	GameRegistry.registerBlock(BlockLvdou,"BlockLvdou");
+	GameRegistry.registerBlock(BlockHongshu,"BlockHongshu");
+	GameRegistry.registerBlock(BlockBailuobo,"BlockBailuobo");
+	GameRegistry.registerBlock(BlockYumi,"BlockYumi");
+	GameRegistry.registerBlock(BlockHuanggua,"BlockHuanggua");
+	GameRegistry.registerBlock(BlockCaomei,"BlockCaomei");
+	GameRegistry.registerBlock(BlockNuodao,"BlockNuodao");
+	GameRegistry.registerBlock(BlockCong,"BlockCong");	
 	}
 }

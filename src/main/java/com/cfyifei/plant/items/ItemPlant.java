@@ -15,16 +15,18 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ItemPlant extends Item implements IPlantable{
 
 	public Item seed;
 	public Block seedblock;
-	public ItemPlant(Item item,Block block)
+	public ItemPlant(Block block, String name)
     {
         super();
+        this.setUnlocalizedName(name);
         this.setCreativeTab(FoodCraft.FcTabZhiwu);
-        seed = item;
+        MinecraftForge.addGrassSeed(new ItemStack(this), 2);
         seedblock = block;
     }
 	public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ)

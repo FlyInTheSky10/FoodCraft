@@ -2,6 +2,8 @@ package com.cfyifei.item;
 
 
 
+import com.cfyifei.FoodCraft;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
@@ -11,21 +13,23 @@ import net.minecraft.world.World;
 
 public class ItemStapleFood extends ItemFood {
 	
-	public boolean e;
+	public boolean hasEffect;
 
-	public ItemStapleFood(int amount, float saturation, boolean isWolfFood, String name) {
-		super((int)saturation, saturation/3F, isWolfFood);
+	public ItemStapleFood(int amount, float saturation, String name) {
+		super((int)saturation, saturation/3F, false);
 		this.setUnlocalizedName(name);
+		this.setCreativeTab(FoodCraft.FcTabZhushi);
 	}
 	
-	public ItemStapleFood(int amount, float saturation, boolean isWolfFood, String name, boolean is) {
-		super((int)saturation, saturation/3F, isWolfFood);
+	public ItemStapleFood(int amount, float saturation, String name, boolean Effect) {
+		super((int)saturation, saturation/3F, false);
 		this.setUnlocalizedName(name);
-		e = is;
+		this.setCreativeTab(FoodCraft.FcTabZhushi);
+		this.hasEffect = Effect;
 	}
 	
 	public boolean hasEffect(ItemStack par1ItemStack) {
-		return e;
+		return hasEffect;
 	}
 	
 	protected void onFoodEaten(ItemStack is, World w, EntityPlayer ep) {

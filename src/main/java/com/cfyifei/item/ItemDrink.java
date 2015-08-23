@@ -1,5 +1,7 @@
 package com.cfyifei.item;
 
+import com.cfyifei.FoodCraft;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
@@ -12,33 +14,36 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemDrink extends ItemFood {
 	
-	public boolean e;
-	public int e1 = 10;
+	public boolean hasEffect;
+	public int type = 10;
 	public int color;
 
-	public ItemDrink(int amount, float saturation, boolean isWolfFood, String name,int color) {
-		super((int)saturation, saturation, isWolfFood);
+	public ItemDrink(int amount, float saturation, String name,int color) {
+		super((int)saturation, saturation, false);
 		this.setUnlocalizedName(name);
+		this.setCreativeTab(FoodCraft.FcTabYingliao);
 		this.color = color;
 	}
 	
-	public ItemDrink(int amount, float saturation, boolean isWolfFood, String name, boolean is,int color) {
-		super((int)saturation, saturation, isWolfFood);
+	public ItemDrink(int amount, float saturation, String name, boolean Effect,int color) {
+		super((int)saturation, saturation, false);
 		this.setUnlocalizedName(name);
-		e = is;
+		this.setCreativeTab(FoodCraft.FcTabYingliao);
+		this.hasEffect = Effect;
 		this.color = color;
 	}
 		
-	public ItemDrink(int amount, float saturation, boolean isWolfFood, String name, boolean is, int r,int color) {
-		super((int)saturation, saturation, isWolfFood);
+	public ItemDrink(int amount, float saturation, String name, boolean Effect, int type,int color) {
+		super((int)saturation, saturation, false);
 		this.setUnlocalizedName(name);
-		e = is;
-		e1 = r;
+		setCreativeTab(FoodCraft.FcTabYingliao);
+		this.hasEffect = Effect;
+		this.type = type;
 		this.color = color;
 	}
 	
 	public boolean hasEffect(ItemStack par1ItemStack) {
-		return e;
+		return hasEffect;
 	}
 	    
 	public EnumAction getItemUseAction(ItemStack par1ItemStack) {
@@ -46,13 +51,13 @@ public class ItemDrink extends ItemFood {
 	}
 	
 	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
-		if(e1 == 0) {
+		if(type == 0) {
 			par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.heal.id, 9600, 4));
 			par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.fireResistance.id, 9600, 4));
 			par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.damageBoost.id, 9600, 4));
 		}
 		else {
-			if(e1 == 1) {
+			if(type == 1) {
 				par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.resistance.id, 9600, 4));
 				par3EntityPlayer.addPotionEffect(new PotionEffect(Potion.regeneration.id, 9600, 4));
 			}

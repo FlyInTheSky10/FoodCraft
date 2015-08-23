@@ -1,7 +1,6 @@
 package com.cfyifei.modelrenderer;
 
-import com.cfyifei.gui.blocks.ModelGuo;
-import com.cfyifei.gui.blocks.ModelPDG;
+import com.cfyifei.gui.blocks.ModelPot;
 
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
@@ -10,12 +9,12 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class GuoItemRenderer implements IItemRenderer {
 
-	private ModelGuo model;
+	private ModelPot model;
 	private TileEntity te;
 	private double x, y, z;
 
 	public GuoItemRenderer(TileEntity tileentity, double xloc, double yloc, double zloc) {
-		model = new ModelGuo();
+		model = new ModelPot();
 		if (tileentity == null) {
 			return;
 		}

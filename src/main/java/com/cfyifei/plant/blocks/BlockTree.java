@@ -34,6 +34,8 @@ public class BlockTree extends BlockBush {
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
         this.setUnlocalizedName(name);
         this.setCreativeTab(FoodCraft.FcTabZhiwu);
+        this.setHarvestLevel("pickaxe", -1);
+        this.setStepSound(Block.soundTypeGrass);
     }
     
 	@Override

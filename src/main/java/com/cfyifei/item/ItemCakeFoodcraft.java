@@ -2,6 +2,7 @@ package com.cfyifei.item;
 
 import java.util.List;
 
+import com.cfyifei.FoodCraft;
 import com.cfyifei.block.FoodcraftBlocks;
 
 import net.minecraft.block.Block;
@@ -22,31 +23,35 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCakeFoodcraft extends Item {
-	String[] s = new String[]{"ItemPutaoDG","ItemJinputaoDG","ItemLiDG","ItemTaoziDG","ItemJuziDG","ItemNingmengDG","ItemCaomeiDG","ItemYeziDG"};
-	Block[] b = new Block[]{FoodcraftBlocks.BlockPutaoDG,FoodcraftBlocks.BlockJinputaoDG,FoodcraftBlocks.BlockLiDG,FoodcraftBlocks.BlockTaoziDG,FoodcraftBlocks.BlockJuziDG,FoodcraftBlocks.BlockNingmengDG,FoodcraftBlocks.BlockCaomeiDG,FoodcraftBlocks.BlockYeziDG};
+	
+	String[] names = new String[]{"ItemPutaoDG","ItemJinputaoDG","ItemLiDG","ItemTaoziDG","ItemJuziDG","ItemNingmengDG","ItemCaomeiDG","ItemYeziDG"};
+	Block[] blocks = new Block[]{FoodcraftBlocks.BlockPutaoDG,FoodcraftBlocks.BlockJinputaoDG,FoodcraftBlocks.BlockLiDG,FoodcraftBlocks.BlockTaoziDG,FoodcraftBlocks.BlockJuziDG,FoodcraftBlocks.BlockNingmengDG,FoodcraftBlocks.BlockCaomeiDG,FoodcraftBlocks.BlockYeziDG};
+	
 	public ItemCakeFoodcraft() {
 		this.setHasSubtypes(true);
+		this.setUnlocalizedName("ItemDangao");
+		this.setCreativeTab(FoodCraft.FcTabXiaodian);
 	}
 
     @SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack p_77636_1_) {
-        return p_77636_1_.getItemDamage() == 1;
+    public boolean hasEffect(ItemStack stack) {
+        return stack.getItemDamage() == 1;
     }
     
  @SideOnly(Side.CLIENT)
-    public void getSubItems(Item p_150895_1_, CreativeTabs p_150895_2_, List p_150895_3_) {
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 0));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 1));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 2));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 3));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 4));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 5));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 6));
-        p_150895_3_.add(new ItemStack(p_150895_1_, 1, 7));
+    public void getSubItems(Item Item, CreativeTabs Tabs, List list) {
+	 	list.add(new ItemStack(Item, 1, 0));
+	 	list.add(new ItemStack(Item, 1, 1));
+	 	list.add(new ItemStack(Item, 1, 2));
+	 	list.add(new ItemStack(Item, 1, 3));
+	 	list.add(new ItemStack(Item, 1, 4));
+	 	list.add(new ItemStack(Item, 1, 5));
+        list.add(new ItemStack(Item, 1, 6));
+        list.add(new ItemStack(Item, 1, 7));
     }
  
     public String getUnlocalizedName(ItemStack is1) {
-    	 return s[is1.getItemDamage()];
+    	 return names[is1.getItemDamage()];
     }
     
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
@@ -67,18 +72,18 @@ public class ItemCakeFoodcraft extends Item {
             return false;
         }
         else {
-            if (worldIn.canBlockBePlaced(b[stack.getItemDamage()], pos, false, side, (Entity)null, stack)) {
-                IBlockState iblockstate1 = this.b[stack.getItemDamage()].onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, 0, playerIn);
+            if (worldIn.canBlockBePlaced(blocks[stack.getItemDamage()], pos, false, side, (Entity)null, stack)) {
+                IBlockState iblockstate1 = this.blocks[stack.getItemDamage()].onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, 0, playerIn);
 
                 if (worldIn.setBlockState(pos, iblockstate1, 3)) {
                     iblockstate1 = worldIn.getBlockState(pos);
 
-                    if (iblockstate1.getBlock() == this.b[stack.getItemDamage()]) {
+                    if (iblockstate1.getBlock() == this.blocks[stack.getItemDamage()]) {
                         ItemBlock.setTileEntityNBT(worldIn, pos, stack);
                         iblockstate1.getBlock().onBlockPlacedBy(worldIn, pos, iblockstate1, playerIn, stack);
                     }
 
-                    worldIn.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), this.b[stack.getItemDamage()].stepSound.getPlaceSound(), (this.b[stack.getItemDamage()].stepSound.getVolume() + 1.0F) / 2.0F, this.b[stack.getItemDamage()].stepSound.getFrequency() * 0.8F);
+                    worldIn.playSoundEffect((double)((float)pos.getX() + 0.5F), (double)((float)pos.getY() + 0.5F), (double)((float)pos.getZ() + 0.5F), this.blocks[stack.getItemDamage()].stepSound.getPlaceSound(), (this.blocks[stack.getItemDamage()].stepSound.getVolume() + 1.0F) / 2.0F, this.blocks[stack.getItemDamage()].stepSound.getFrequency() * 0.8F);
                     --stack.stackSize;
                     return true;
                 }

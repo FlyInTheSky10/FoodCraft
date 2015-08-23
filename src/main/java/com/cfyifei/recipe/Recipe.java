@@ -2,8 +2,9 @@ package com.cfyifei.recipe;
 
 
 import com.cfyifei.block.FoodcraftBlocks;
-import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.blocks.FoodcraftGuiBlocks;
 import com.cfyifei.item.FoodcraftItems;
+import com.cfyifei.plant.blocks.FoodcraftPlants;
 import com.cfyifei.util.FoodcraftUtil;
 
 import net.minecraft.enchantment.Enchantment;
@@ -28,9 +29,9 @@ public class Recipe{
 	GameRegistry.addRecipe(new ItemStack(FoodcraftItems.ItemCaidaoZS, 1), new Object[] {"## ", "## ","X  ", '#',Items.diamond,'X',Items.stick});
 	GameRegistry.addRecipe(new ItemStack(FoodcraftItems.ItemCaidaoLBS, 1), new Object[] {"## ", "## ","X  ", '#',Items.emerald,'X',Items.stick});
 	
-	FoodcraftUtil.removeAnyRecipe(new ItemStack(Items.cake));
-	FoodcraftUtil.removeAnyRecipe(new ItemStack(Items.bread));
-	FoodcraftUtil.removeAnyRecipe(new ItemStack(Items.pumpkin_pie));
+	FoodcraftUtil.removeRecipe(new ItemStack(Items.cake));
+	FoodcraftUtil.removeRecipe(new ItemStack(Items.bread));
+	FoodcraftUtil.removeRecipe(new ItemStack(Items.pumpkin_pie));
 	GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemPisa), new Object[] {FoodcraftItems.ItemLaobing,Items.cooked_porkchop,Items.carrot,FoodcraftItems.ItemNainao,Blocks.brown_mushroom});
 	GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemJinghuashuitong), new Object[] {Items.bucket,Blocks.wool});
 	GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemHanbaobao), new Object[] {Items.bread,FoodcraftItems.ItemShucai,Items.cooked_porkchop,Items.bread});
@@ -87,15 +88,15 @@ public class Recipe{
 	GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemNuomituan), new Object[] {FoodcraftItems.ItemNuomifen,FoodcraftItems.ItemNuomifen,FoodcraftItems.ItemNuomifen,FoodcraftItems.Itemwater});
 	GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemHuashentangyuanxian,1), new Object[] {FoodcraftItems.ItemHuashen,Items.sugar});
 	
-	GameRegistry.addRecipe(new ItemStack(ModGui.Nmj, 1), new Object[] {"AAA", "DBD", "ECE", 'A', Items.wheat,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',Items.milk_bucket,'D',Blocks.glass});
-	GameRegistry.addRecipe(new ItemStack(ModGui.PDG, 1), new Object[] {"AAA", "EBE", " C ", 'A', FoodcraftItems.ItemTiepian,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',new ItemStack(Items.dye)});
-	GameRegistry.addRecipe(new ItemStack(ModGui.Guo, 1), new Object[] {"AAA", "EBE", " C ", 'A', Items.iron_ingot,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',new ItemStack(Items.dye)});
-	GameRegistry.addRecipe(new ItemStack(ModGui.Gyg, 1), new Object[] {"AAA", "EBE", "XCX", 'A', Items.iron_ingot,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',new ItemStack(Items.dye),'X',new ItemStack(Items.dye,1,15)});
-	GameRegistry.addRecipe(new ItemStack(ModGui.Caiban, 1), new Object[] {"AAA", "ABA", "ACA", 'A', Blocks.planks,'B',FoodcraftItems.ItemCaidao,'C',FoodcraftBlocks.BlockWaike});
-	GameRegistry.addRecipe(new ItemStack(ModGui.YZJ, 1), new Object[] {"AAA", "DBD", "CCC", 'A', FoodcraftItems.ItemHuashenyou,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'D',Blocks.glass});
-	GameRegistry.addRecipe(new ItemStack(ModGui.Tpj, 1), new Object[] {"ABA", "CDC", " F ", 'A', Items.redstone,'B',Blocks.ice,'C',new ItemStack(Items.dye,1,3),'D',FoodcraftBlocks.BlockWaike,'F',FoodcraftItems.ItemDianluban});
-	GameRegistry.addRecipe(new ItemStack(ModGui.Nt, 1), new Object[] {"ABA", "CDC", "ABA", 'A', Blocks.planks,'B',FoodcraftItems.ItemDianluban,'C',new ItemStack(Items.dye,1,3),'D',FoodcraftBlocks.BlockWaike});
-	GameRegistry.addRecipe(new ItemStack(ModGui.Zl, 1), new Object[] {"ABA", "CDC", "FBF", 'A', Items.flint_and_steel,'B',FoodcraftItems.ItemDianluban,'C',new ItemStack(Items.dye,1,3),'D',FoodcraftBlocks.BlockWaike,'F',Items.redstone});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Nmj, 1), new Object[] {"AAA", "DBD", "ECE", 'A', Items.wheat,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',Items.milk_bucket,'D',Blocks.glass});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.PDG, 1), new Object[] {"AAA", "EBE", " C ", 'A', FoodcraftItems.ItemTiepian,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',new ItemStack(Items.dye)});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Guo, 1), new Object[] {"AAA", "EBE", " C ", 'A', Items.iron_ingot,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',new ItemStack(Items.dye)});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Gyg, 1), new Object[] {"AAA", "EBE", "XCX", 'A', Items.iron_ingot,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'E',new ItemStack(Items.dye),'X',new ItemStack(Items.dye,1,15)});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Caiban, 1), new Object[] {"AAA", "ABA", "ACA", 'A', Blocks.planks,'B',FoodcraftItems.ItemCaidao,'C',FoodcraftBlocks.BlockWaike});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.YZJ, 1), new Object[] {"AAA", "DBD", "CCC", 'A', FoodcraftItems.ItemHuashenyou,'B',FoodcraftBlocks.BlockWaike,'C',FoodcraftItems.ItemDianluban,'D',Blocks.glass});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Tpj, 1), new Object[] {"ABA", "CDC", " F ", 'A', Items.redstone,'B',Blocks.ice,'C',new ItemStack(Items.dye,1,3),'D',FoodcraftBlocks.BlockWaike,'F',FoodcraftItems.ItemDianluban});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Nt, 1), new Object[] {"ABA", "CDC", "ABA", 'A', Blocks.planks,'B',FoodcraftItems.ItemDianluban,'C',new ItemStack(Items.dye,1,3),'D',FoodcraftBlocks.BlockWaike});
+	GameRegistry.addRecipe(new ItemStack(FoodcraftGuiBlocks.Zl, 1), new Object[] {"ABA", "CDC", "FBF", 'A', Items.flint_and_steel,'B',FoodcraftItems.ItemDianluban,'C',new ItemStack(Items.dye,1,3),'D',FoodcraftBlocks.BlockWaike,'F',Items.redstone});
 	
 	GameRegistry.addSmelting(new ItemStack(FoodcraftItems.ItemYouyurou), new ItemStack(FoodcraftItems.ItemShuyouyurou), 0.5f);	
 	GameRegistry.addSmelting(new ItemStack(FoodcraftItems.ItemYumi), new ItemStack(FoodcraftItems.ItemKaoyumi), 0.5f);
@@ -185,6 +186,24 @@ public class Recipe{
 	 GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemGuojiang,1,5), new Object[] {FoodcraftItems.Itemwater,FoodcraftItems.ItemNingmeng,Items.sugar});
 	 GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemGuojiang,1,6), new Object[] {FoodcraftItems.Itemwater,FoodcraftItems.ItemCaomei,Items.sugar});
 	 GameRegistry.addShapelessRecipe(new ItemStack(FoodcraftItems.ItemGuojiang,1,7), new Object[] {FoodcraftItems.Itemwater,FoodcraftItems.ItemYezi,Items.sugar});
+	 
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockLishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemLi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockLizhishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemLizhi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockTaozishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemTaozi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockJuzishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemJuzi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockPipashu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemPipa});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockMangguoshu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemMangguo});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockNingmengshu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemNingmeng});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockYouzishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemYouzi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockShizishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemShizi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockMuguashu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemMugua});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockShanzhashu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemShanzha});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockLongyanshu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemLongyan});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockShiliushu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemShiliu});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockHongzaoshu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemHongzao});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockYezishu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemYezi});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockYingtaoshu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemYingtao});
+	 GameRegistry.addRecipe(new ItemStack(FoodcraftPlants.BlockXiangjiaoshu,2), new Object[] {" B ","BAB"," B ", 'A', Blocks.sapling, 'B', FoodcraftItems.ItemXiangjiao});
 	}
     public static void registerChestLoot(ItemStack loot, int min, int max, int rarity) {
         ChestGenHooks.addItem(ChestGenHooks.DUNGEON_CHEST,

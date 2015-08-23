@@ -1,10 +1,8 @@
 package com.cfyifei.item;
 
-
-
-
 import com.cfyifei.FoodCraft;
 import com.cfyifei.block.FoodcraftBlocks;
+import com.cfyifei.plant.blocks.FoodcraftPlants;
 import com.cfyifei.plant.items.*;
 
 import net.minecraft.block.Block;
@@ -23,8 +21,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
-
-
 
 public class FoodcraftItems{
 
@@ -56,1092 +52,249 @@ public class FoodcraftItems{
 	ItemYezizhi,ItemYingtaozhi,ItemXiangjiaozhi,ItemYenai,ItemLizhizhiice,ItemTaozizhiice,ItemJuzizhiice,ItemMangguozhiice,
 	ItemNingmengzhiice,ItemMuguazhiice,ItemCaomeizhiice,ItemYezizhiice,ItemXiangjiaozhiice,ItemLizijiu,ItemLizhijiu,
 	ItemTaozijiu,ItemMangguojiu,ItemNingmengjiu,ItemShiliujiu,ItemGuojiang,ItemBinggan,ItemDangao,
-	ItemCaidaoHJ,ItemCaidaoZS,ItemCaidaoLBS,ItemBingganF,ItemBingganXN,ItemTest;
-	
-	public static void registermodel(Item myitem, String name){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(myitem, 0,
-			    new ModelResourceLocation("foodcraft:" + name, "inventory"));
-			ModelBakery.addVariantName(myitem, "foodcraft:" + name);
-	}
-	
-	public static void registermodelBlock(Block myitem, String name){
-		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(Item.getItemFromBlock(myitem), 0,
-			    new ModelResourceLocation("foodcraft:" + name, "inventory"));
-			ModelBakery.addVariantName(Item.getItemFromBlock(myitem), "foodcraft:" + name);
-	}
+	ItemCaidaoHJ,ItemCaidaoZS,ItemCaidaoLBS,ItemBingganF,ItemBingganXN,ItemTest,ItemShaojiaodeshiwu;
 	
 	public static void init() {
-		//做菜工具	
-				ItemTiepian = new ItemFc();
-				ItemTiepian.setUnlocalizedName("ItemTiepian");
-				ItemTiepian.setCreativeTab(FoodCraft.FcTabJiqi);
-				
-
-				Itemwater = new ItemFc();
-				Itemwater.setUnlocalizedName("Itemwater");
-				Itemwater.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemCaidao = new Item();
-				ItemCaidao.setUnlocalizedName("ItemCaidao");
-				ItemCaidao.setCreativeTab(FoodCraft.FcTabJiqi);
-				ItemCaidao.setMaxDamage(59);
-				ItemCaidao.setMaxStackSize(1);
-				
-				ItemCaidaoHJ = new ItemKitchenKnifeGold();
-				ItemCaidaoHJ.setUnlocalizedName("ItemCaidaoHJ");
-				ItemCaidaoHJ.setCreativeTab(FoodCraft.FcTabJiqi);
-				
-				ItemCaidaoZS = new ItemKitchenKnifeDiamond();
-				ItemCaidaoZS.setUnlocalizedName("ItemCaidaoZS");
-				ItemCaidaoZS.setCreativeTab(FoodCraft.FcTabJiqi);
-				
-				ItemCaidaoLBS = new ItemKitchenKnifeEmerald();
-				ItemCaidaoLBS.setUnlocalizedName("ItemCaidaoLBS");
-				ItemCaidaoLBS.setCreativeTab(FoodCraft.FcTabJiqi);
-				
-				ItemJinghuashuitong = new ItemJinghuashuitong(EnumHelper.addToolMaterial("JHST", 0, 16, 2.0F, 0.0F, 15));
-				ItemJinghuashuitong.setMaxStackSize(1);
-				ItemJinghuashuitong.setUnlocalizedName("ItemJinghuashuitong");
-				ItemJinghuashuitong.setCreativeTab(FoodCraft.FcTabJiqi);
-			//饭	
-				ItemDami = new ItemRice();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemDami), 2);
-				ItemDami.setUnlocalizedName("ItemDami");
-				ItemDami.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemHuashen = new ItemPeanut();
-				ItemHuashen.setUnlocalizedName("ItemHuashen");
-				MinecraftForge.addGrassSeed(new ItemStack(ItemHuashen), 2);
-				ItemHuashen.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemShucaizhong = new ItemVegetable();
-				ItemShucaizhong.setUnlocalizedName("ItemShucaizhong");
-				MinecraftForge.addGrassSeed(new ItemStack(ItemShucaizhong), 1);
-				ItemShucaizhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemDouzi = new ItemBeans();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemDouzi), 2);
-				ItemDouzi.setUnlocalizedName("ItemDouzi");
-				ItemDouzi.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemNull = new ItemFc();
-				ItemNull.setUnlocalizedName("ItemNull");
-				
-				Itemfan = new ItemFc();
-				Itemfan.setUnlocalizedName("Itemfan");
-				Itemfan.setCreativeTab(FoodCraft.FcTabShicai);
-
-				//面粉
-				ItemMianfen = new ItemFc();
-				ItemMianfen.setUnlocalizedName("ItemMianfen");
-				ItemMianfen.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemHuashenyou = new ItemFc();
-				ItemHuashenyou.setUnlocalizedName("ItemHuashenyou");
-				ItemHuashenyou.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemDoujiang = new FcFood(2, 4F, false, "ItemDoujiang");
-				ItemDoujiang.setUnlocalizedName("ItemDoujiang");
-				ItemDoujiang.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemDianluban = new ItemFc();
-				ItemDianluban.setUnlocalizedName("ItemDianluban");
-				ItemDianluban.setCreativeTab(FoodCraft.FcTabJiqi);
-				
-				ItemJianjidan = new FcFood(3, 5F, false, "ItemJianjidan");
-				ItemJianjidan.setUnlocalizedName("ItemJianjidan");
-				ItemJianjidan.setCreativeTab(FoodCraft.FcTabXiaodian);
-				
-				ItemLaobing = new FcFood(3, 5F, false, "ItemLaobing");
-				ItemLaobing.setUnlocalizedName("ItemLaobing");
-				ItemLaobing.setCreativeTab(FoodCraft.FcTabXiaodian);
-				
-				ItemMianpi = new ItemFc();
-				ItemMianpi.setUnlocalizedName("ItemMianpi");
-				ItemMianpi.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemJiaozixian = new ItemFc();
-				ItemJiaozixian.setUnlocalizedName("ItemJiaozixian");
-				ItemJiaozixian.setCreativeTab(FoodCraft.FcTabShicai);		
-				
-				ItemJiaozi = new FcFood(3, 8F, false, "ItemJiaozi");
-				ItemJiaozi.setUnlocalizedName("ItemJiaozi");
-				ItemJiaozi.setCreativeTab(FoodCraft.FcTabXiaodian);
-				
-				ItemJianjiao = new FcFood(3, 10F, false, "ItemJianJiao");
-				ItemJianjiao.setUnlocalizedName("ItemJianJiao");
-				ItemJianjiao.setCreativeTab(FoodCraft.FcTabXiaodian);
-				
-				ItemQiaokelifen = new ItemFc();
-				ItemQiaokelifen.setUnlocalizedName("ItemQiaokelifen");
-				ItemQiaokelifen.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemQiaokeli = new FcFood(3, 4F, false, "ItemQiaokeli");
-				ItemQiaokeli.setUnlocalizedName("ItemQiaokeli");
-				ItemQiaokeli.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemLajiaozhong = new ItemChili();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemLajiaozhong), 2);
-				ItemLajiaozhong.setUnlocalizedName("ItemLajiaozhong");
-				ItemLajiaozhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemFanqiezhong = new ItemTomato();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemFanqiezhong), 2);
-				ItemFanqiezhong.setUnlocalizedName("ItemFanqiezhong");
-				ItemFanqiezhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemPutaozhong = new ItemGrape();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemPutaozhong), 2);
-				ItemPutaozhong.setUnlocalizedName("ItemPutaozhong");
-				ItemPutaozhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemQiezizhong = new ItemEggplant();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemQiezizhong), 2);
-				ItemQiezizhong.setUnlocalizedName("ItemQiezizhong");
-				ItemQiezizhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-
-				ItemYan = new ItemFc();
-				ItemYan.setUnlocalizedName("ItemYan");
-				ItemYan.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemDoufu = new FcFood(3, 4F, false, "ItemDoufu");
-				ItemDoufu.setUnlocalizedName("ItemDoufu");
-				ItemDoufu.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemJiangyou = new ItemFc();
-				ItemJiangyou.setUnlocalizedName("ItemJiangyou");
-				ItemJiangyou.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemNuomi = new ItemStickyRice();
-				MinecraftForge.addGrassSeed(new ItemStack(ItemNuomi), 2);
-				ItemNuomi.setUnlocalizedName("ItemNuomi");
-				ItemNuomi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemDoufugan = new FcFood(3, 6F, false, "ItemDoufugan");
-				ItemDoufugan.setUnlocalizedName("ItemDoufugan");
-				ItemDoufugan.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemBaifan = new FcFood(3, 3F, false, "ItemBaifan");
-				ItemBaifan.setUnlocalizedName("ItemBaifan");
-				ItemBaifan.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemFanqiechaojidanfan = new ItemStapleFood(3, 18F, false, "ItemFanqiechaojidanfan");
-				ItemFanqiechaojidanfan.setUnlocalizedName("ItemFanqiechaojidanfan");
-				ItemFanqiechaojidanfan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemDisanxian = new ItemStapleFood(3, 18F, false, "ItemDisanxian");
-				ItemDisanxian.setUnlocalizedName("ItemDisanxian");
-				ItemDisanxian.setCreativeTab(FoodCraft.FcTabZhushi);	
-			
-				ItemYuxiangrousi = new ItemStapleFood(3, 18F, false, "ItemYuxiangrousi");
-				ItemYuxiangrousi.setUnlocalizedName("ItemYuxiangrousi");
-				ItemYuxiangrousi.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemCu = new ItemFc();
-				ItemCu.setUnlocalizedName("ItemCu");
-				ItemCu.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemGongbaojiding = new ItemStapleFood(3, 18F, false, "ItemGongbaojiding");
-				ItemGongbaojiding.setUnlocalizedName("ItemGongbaojiding");
-				ItemGongbaojiding.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemJitui = new FcFood(3, 3F, false, "ItemJitui");
-				ItemJitui.setUnlocalizedName("ItemJitui");
-				ItemJitui.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemTudoupian = new ItemFc();
-				ItemTudoupian.setUnlocalizedName("ItemTudoupian");
-				ItemTudoupian.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemTudousi = new ItemFc();
-				ItemTudousi.setUnlocalizedName("ItemTudousi");
-				ItemTudousi.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemChaotudousifan = new ItemStapleFood(3, 18F, false, "ItemChaotudousifan");
-				ItemChaotudousifan.setUnlocalizedName("ItemChaotudousifan");
-				ItemChaotudousifan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemChaotudoupian = new FcFood(3, 7F, false, "ItemChaotudoupian");
-				ItemChaotudoupian.setUnlocalizedName("ItemChaotudoupian");
-				ItemChaotudoupian.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemDuojiaoyutou = new ItemStapleFood(3, 18F, false, "ItemDuojiaoyutou");
-				ItemDuojiaoyutou.setUnlocalizedName("ItemDuojiaoyutou");
-				ItemDuojiaoyutou.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemDouban = new ItemFc();
-				ItemDouban.setUnlocalizedName("ItemDouban");
-				ItemDouban.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemMapodoufufan = new ItemStapleFood(3, 18F, false, "ItemMapodoufufan");
-				ItemMapodoufufan.setUnlocalizedName("ItemMapodoufufan");
-				ItemMapodoufufan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemDianfen = new ItemFc();
-				ItemDianfen.setUnlocalizedName("ItemDianfen");
-				ItemDianfen.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemHongshaoroufan = new ItemStapleFood(3, 18F, false, "ItemHongshaoroufan");
-				ItemHongshaoroufan.setUnlocalizedName("ItemHongshaoroufan");
-				ItemHongshaoroufan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemHuiguoroufan = new ItemStapleFood(3, 18F, false, "ItemHuiguoroufan");
-				ItemHuiguoroufan.setUnlocalizedName("ItemHuiguoroufan");
-				ItemHuiguoroufan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemXifan = new FcFood(3, 7F, false, "ItemXifan");
-				ItemXifan.setUnlocalizedName("ItemXifan");
-				ItemXifan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemDangeng = new FcFood(3, 8F, false, "ItemDangeng");
-				ItemDangeng.setUnlocalizedName("ItemDangeng");
-				ItemDangeng.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemMogudunjitang = new FcFood(3, 8F, false, "ItemMogudunjitang");
-				ItemMogudunjitang.setUnlocalizedName("ItemMogudunjitang");
-				ItemMogudunjitang.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemZongzi = new FcFood(3, 8F, false, "ItemZongzi");
-				ItemZongzi.setUnlocalizedName("ItemZongzi");
-				ItemZongzi.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemZongye = new ItemFc();
-				ItemZongye.setUnlocalizedName("ItemZongye");
-				ItemZongye.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemCong = new ItemReed(FoodcraftBlocks.BlockCong);
-				ItemCong.setUnlocalizedName("ItemCong");
-				MinecraftForge.addGrassSeed(new ItemStack(ItemCong), 2);
-				ItemCong.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemNuomifen = new ItemFc();
-				ItemNuomifen.setUnlocalizedName("ItemNuomifen");
-				ItemNuomifen.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemNuomituan = new ItemFc();
-				ItemNuomituan.setUnlocalizedName("ItemNuomituan");
-				ItemNuomituan.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemHuashentangyuanxian = new ItemFc();
-				ItemHuashentangyuanxian.setUnlocalizedName("ItemHuashentangyuanxian");
-				ItemHuashentangyuanxian.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemTangyuan = new FcFood(3, 8F, false, "ItemTangyuan");
-				ItemTangyuan.setUnlocalizedName("ItemTangyuan");
-				ItemTangyuan.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemJikuai = new FcFood(3, 6F, false, "ItemJikuai");
-				ItemJikuai.setUnlocalizedName("ItemJikuai");
-				ItemJikuai.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemShutiao = new FcFood(3, 7F, false, "ItemShutiao");
-				ItemShutiao.setUnlocalizedName("ItemShutiao");
-				ItemShutiao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				 
-				ItemAeljichi = new FcFood(3, 8F, false, "ItemAeljichi");
-				ItemAeljichi.setUnlocalizedName("ItemAeljichi");
-				ItemAeljichi.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemJimihua = new FcFood(3, 4F, false, "ItemJimihua");
-				ItemJimihua.setUnlocalizedName("ItemJimihua");
-				ItemJimihua.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemYuanweijikuai = new FcFood(3, 8F, false, "ItemYuanweijikuai");
-				ItemYuanweijikuai.setUnlocalizedName("ItemYuanweijikuai");
-				ItemYuanweijikuai.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemAeljichifan = new ItemStapleFood(3, 20F, false, "ItemAeljichifan");
-				ItemAeljichifan.setUnlocalizedName("ItemAeljichifan");
-				ItemAeljichifan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemMahua = new FcFood(3, 7F, false, "ItemMahua");
-				ItemMahua.setUnlocalizedName("ItemMahua");
-				ItemMahua.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemNiangao = new FcFood(3, 8F, false, "ItemNiangao");
-				ItemNiangao.setUnlocalizedName("ItemNiangao");
-				ItemNiangao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemChunjuan = new FcFood(3, 8F, false, "ItemChunjuan");
-				ItemChunjuan.setUnlocalizedName("ItemChunjuan");
-				 
-				ItemChunjuan.setCreativeTab(FoodCraft.FcTabXiaodian);	
-
-				ItemZhadoufu = new FcFood(3, 6F, false, "ItemZhadoufu");
-				ItemZhadoufu.setUnlocalizedName("ItemZhadoufu");
-				 
-				ItemZhadoufu.setCreativeTab(FoodCraft.FcTabXiaodian);	
-
-				ItemZhaniangao = new FcFood(3, 10F, false, "ItemZhaniangao");
-				ItemZhaniangao.setUnlocalizedName("ItemZhaniangao");
-				 
-				ItemZhaniangao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-
-				ItemShupian = new FcFood(3, 7F, false, "ItemShupian");
-				ItemShupian.setUnlocalizedName("ItemShupian");
-				 
-				ItemShupian.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemZhamianbao = new FcFood(3, 7F, false, "ItemZhamianbao");
-				ItemZhamianbao.setUnlocalizedName("ItemZhamianbao");
-				 
-				ItemZhamianbao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemZhachunjuan = new FcFood(3, 10F, false, "ItemZhachunjuan");
-				ItemZhachunjuan.setUnlocalizedName("ItemZhachunjuan");
-				 
-				ItemZhachunjuan.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemZhamahua = new FcFood(3, 10F, false, "ItemZhamahua");
-				ItemZhamahua.setUnlocalizedName("ItemZhamahua");
-				 
-				ItemZhamahua.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemZhajitui = new FcFood(3, 5F, false, "ItemZhajitui");
-				ItemZhajitui.setUnlocalizedName("ItemZhajitui");
-				 
-				ItemZhajitui.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemDajirou = new ItemFc();
-				ItemDajirou.setUnlocalizedName("ItemDajirou");
-				 
-				ItemDajirou.setCreativeTab(FoodCraft.FcTabShicai);	
-
-				ItemZhongjirou = new ItemFc();
-				ItemZhongjirou.setUnlocalizedName("ItemZhongjirou");
-				 
-				ItemZhongjirou.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemXiaojirou = new ItemFc();
-				ItemXiaojirou.setUnlocalizedName("ItemXiaojirou");
-				 
-				ItemXiaojirou.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemJichi = new FcFood(3, 4F, false, "ItemJichi");
-				ItemJichi.setUnlocalizedName("ItemJichi");
-				 
-				ItemJichi.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemDoufusi = new ItemFc();
-				ItemDoufusi.setUnlocalizedName("ItemDoufusi");
-				 
-				ItemDoufusi.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemLuobosi = new ItemFc();
-				ItemLuobosi.setUnlocalizedName("ItemLuobosi");
-				 
-				ItemLuobosi.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemHongjiu = new ItemWine(3, 8F, false, "ItemHongjiu").setAlwaysEdible();
-				ItemHongjiu.setUnlocalizedName("ItemHongjiu");
-				 
-				ItemHongjiu.setCreativeTab(FoodCraft.FcTabYingliao);	
-
-				ItemBaijiu = new ItemWine(3, 8F, false, "ItemBaijiu").setAlwaysEdible();
-				ItemBaijiu.setUnlocalizedName("ItemBaijiu");
-				 
-				ItemBaijiu.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemPingguojiu = new ItemWine(3, 8F, false, "ItemPingguojiu").setAlwaysEdible();
-				ItemPingguojiu.setUnlocalizedName("ItemPingguojiu");
-				 
-				ItemPingguojiu.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemPutaojiu = new ItemWine(3, 8F, false, "ItemPutaojiu").setAlwaysEdible();
-				ItemPutaojiu.setUnlocalizedName("ItemPutaojiu");
-				 
-				ItemPutaojiu.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemJinputao = new FcFood(3, 20F, false, "ItemJinputao" ,true);
-				ItemJinputao.setUnlocalizedName("ItemJinputao");
-				 
-				ItemJinputao.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemJinputaojiu = new ItemGoldenGrapeWine(3, 20F, false, "ItemJinputaojiu").setAlwaysEdible();
-				ItemJinputaojiu.setUnlocalizedName("ItemJinputaojiu");
-				 
-				ItemJinputaojiu.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemJinpingguojiu = new ItemGoldenAppleWine(3, 20F, false, "ItemJinpingguojiu").setAlwaysEdible();
-				ItemJinpingguojiu.setUnlocalizedName("ItemJinpingguojiu");
-				 
-				ItemJinpingguojiu.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemQiaokelishui = new ItemDrink(3, 7F, false, "ItemQiaokelishui",0x956844);
-				ItemQiaokelishui.setUnlocalizedName("ItemQiaokelishui");
-				 
-				ItemQiaokelishui.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemQiaokelinai = new ItemDrink(3, 7F, false, "ItemQiaokelinai",0xae927c);
-				ItemQiaokelinai.setUnlocalizedName("ItemQiaokelinai");
-				 
-				ItemQiaokelinai.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemHuluobozhi = new ItemDrink(3, 7F, false, "ItemHuluobozhi",0xf4872f);
-				ItemHuluobozhi.setUnlocalizedName("ItemHuluobozhi");
-				 
-				ItemHuluobozhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemPutaozhi = new ItemDrink(3, 7F, false, "ItemPutaozhi",0xbc18b6);
-				ItemPutaozhi.setUnlocalizedName("ItemPutaozhi");
-				 
-				ItemPutaozhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemPingguozhi = new ItemDrink(3, 7F, false, "ItemPingguozhi",0xfa2059);
-				ItemPingguozhi.setUnlocalizedName("ItemPingguozhi");
-				 
-				ItemPingguozhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemShucaizhi = new ItemDrink(3, 7F, false, "ItemShucaizhi",0x6abc19);
-				ItemShucaizhi.setUnlocalizedName("ItemShucaizhi");
-				 
-				ItemShucaizhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemJinputaozhi = new ItemDrink(3, 20F, false, "ItemJinputaozhi",true , 0, 0xe0da42);
-				ItemJinputaozhi.setUnlocalizedName("ItemJinputaozhi");
-				 
-				ItemJinputaozhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemJinpingguozhi = new ItemDrink(3, 20F, false, "ItemJinpingguozhi",true , 1, 0xe7e480);
-				ItemJinpingguozhi.setUnlocalizedName("ItemJinpingguozhi");
-				 
-				ItemJinpingguozhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-			
-				ItemDounai = new ItemDrink(3, 7F, false, "ItemDounai",0xfafaf2);
-				ItemDounai.setUnlocalizedName("ItemDounai");
-				 
-				ItemDounai.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemKele = new ItemDrink(3, 7F, false, "ItemKele",0x512008);
-				ItemKele.setUnlocalizedName("ItemKele");
-				 
-				ItemKele.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemXuebi = new ItemDrink(3, 7F, false, "ItemXuebi",0xededed);
-				ItemXuebi.setUnlocalizedName("ItemXuebi");
-				 
-				ItemXuebi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemQiaokelinaiice = new ItemMilk(3, 9F, false, "ItemQiaokelinaiice").setAlwaysEdible();
-				ItemQiaokelinaiice.setUnlocalizedName("ItemQiaokelinaiice");
-				 
-				ItemQiaokelinaiice.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemPutaozhiice = new ItemDrink(3, 9F, false, "ItemPutaozhiice",0);
-				ItemPutaozhiice.setUnlocalizedName("ItemPutaozhiice");
-				 
-				ItemPutaozhiice.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemPingguozhiice = new ItemDrink(3, 9F, false, "ItemPingguozhiice",0);
-				ItemPingguozhiice.setUnlocalizedName("ItemPingguozhiice");
-				 
-				ItemPingguozhiice.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemJinputaozhiice = new ItemDrink(3, 9F, false, "ItemJinputaozhiice" , true , 0,0);
-				ItemJinputaozhiice.setUnlocalizedName("ItemJinputaozhiice");
-				 
-				ItemJinputaozhiice.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemJinpingguozhiice = new ItemDrink(3, 9F, false, "ItemJinpingguozhiice" , true , 1,0);
-				ItemJinpingguozhiice.setUnlocalizedName("ItemJinpingguozhiice");
-				 
-				ItemJinpingguozhiice.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemXiguazhi = new ItemDrink(3, 7F, false, "ItemXiguazhi",0xe848b9);
-				ItemXiguazhi.setUnlocalizedName("ItemXiguazhi");
-				 
-				ItemXiguazhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemXiguazhiice = new ItemDrink(3, 9F, false, "ItemXiguazhiice",0);
-				ItemXiguazhiice.setUnlocalizedName("ItemXiguazhiice");
-				 
-				ItemXiguazhiice.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemMianfensi = new ItemFc();
-				ItemMianfensi.setUnlocalizedName("ItemMianfensi");
-				 
-				ItemMianfensi.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemCha = new ItemDrink(3, 6F, false, "ItemCha",0x98a285);
-				ItemCha.setUnlocalizedName("ItemCha");
-				 
-				ItemCha.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemNaicha = new ItemDrink(3, 7F, false, "ItemXiguazhi",0xc29833);
-				ItemNaicha.setUnlocalizedName("ItemNaicha");
-				 
-				ItemNaicha.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemKafei = new ItemDrink(3, 7F, false, "ItemKafei",0x50462d);
-				ItemKafei.setUnlocalizedName("ItemKafei");
-				 
-				ItemKafei.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemBaiqiuji = new ItemStapleFood(3, 18F, false, "ItemBaiqiuji");
-				ItemBaiqiuji.setUnlocalizedName("ItemBaiqiuji");
-				 
-				ItemBaiqiuji.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemCongyouji = new ItemStapleFood(3, 18F, false, "ItemCongyouji");
-				ItemCongyouji.setUnlocalizedName("ItemCongyouji");
-				 
-				ItemCongyouji.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemKoushuiji = new ItemStapleFood(3, 18F, false, "ItemKoushuiji");
-				ItemKoushuiji.setUnlocalizedName("ItemKoushuiji");
-				 
-				ItemKoushuiji.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemLaziji = new ItemStapleFood(3, 18F, false, "ItemLaziji");
-				ItemLaziji.setUnlocalizedName("ItemLaziji");
-				 
-				ItemLaziji.setCreativeTab(FoodCraft.FcTabZhushi);	
-
-				ItemQingzhenyu = new ItemStapleFood(3, 18F, false, "ItemQingzhenyu");
-				ItemQingzhenyu.setUnlocalizedName("ItemQingzhenyu");
-				 
-				ItemQingzhenyu.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemMalayu = new ItemStapleFood(3, 18F, false, "ItemMalayu");
-				ItemMalayu.setUnlocalizedName("ItemMalayu");
-				 
-				ItemMalayu.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemSuancaiyu = new ItemStapleFood(3, 18F, false, "ItemSuancaiyu");
-				ItemSuancaiyu.setUnlocalizedName("ItemSuancaiyu");
-				 
-				ItemSuancaiyu.setCreativeTab(FoodCraft.FcTabZhushi);	
-
-				ItemKelejichifan = new ItemStapleFood(3, 20F, false, "ItemKelejichifan");
-				ItemKelejichifan.setUnlocalizedName("ItemKelejichifan");
-				 
-				ItemKelejichifan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemGalijiroufan = new ItemStapleFood(3, 18F, false, "ItemGalijiroufan");
-				ItemGalijiroufan.setUnlocalizedName("ItemGalijiroufan");
-				 
-				ItemGalijiroufan.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemGalikuai = new FcFood(3, 3F, false, "ItemGalikuai");
-				ItemGalikuai.setUnlocalizedName("ItemGalikuai");
-				 
-				ItemGalikuai.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemShuizhuniurou = new ItemStapleFood(3, 18F, false, "ItemShuizhuniurou");
-				ItemShuizhuniurou.setUnlocalizedName("ItemShuizhuniurou");
-				 
-				ItemShuizhuniurou.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemMian = new FcFood(3, 7F, false, "ItemMian");
-				ItemMian.setUnlocalizedName("ItemMian");
-				 
-				ItemMian.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemGuoqiaomixian = new FcFood(3, 7F, false, "ItemGuoqiaomixian");
-				ItemGuoqiaomixian.setUnlocalizedName("ItemGuoqiaomixian");
-				 
-				ItemGuoqiaomixian.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemYifen = new FcFood(3, 7F, false, "ItemYifen");
-				ItemYifen.setUnlocalizedName("ItemYifen");
-				 
-				ItemYifen.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemYifenpork = new ItemStapleFood(3, 18F, false, "ItemYifenpork");
-				ItemYifenpork.setUnlocalizedName("ItemYifenpork");
-				 
-				ItemYifenpork.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemYifenbeef = new ItemStapleFood(3, 18F, false, "ItemYifenbeef");
-				ItemYifenbeef.setUnlocalizedName("ItemYifenbeef");
-				 
-				ItemYifenbeef.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemYifenchicken = new ItemStapleFood(3, 18F, false, "ItemYifenchicken");
-				ItemYifenchicken.setUnlocalizedName("ItemYifenchicken");
-				 
-				ItemYifenchicken.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemPidanshourouzhou = new FcFood(3, 7F, false, "ItemPidanshourouzhou");
-				ItemPidanshourouzhou.setUnlocalizedName("ItemPidanshourouzhou");
-				 
-				ItemPidanshourouzhou.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemYuebing = new FcFood(3, 8F, false, "ItemYuebing");
-				ItemYuebing.setUnlocalizedName("ItemYuebing");
-				 
-				ItemYuebing.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemMantou = new FcFood(3, 4F, false, "ItemMantou");
-				ItemMantou.setUnlocalizedName("ItemMantou");
-				 
-				ItemMantou.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemSuancaibing = new FcFood(3, 7F, false, "ItemSuancaibing");
-				ItemSuancaibing.setUnlocalizedName("ItemSuancaibing");
-				 
-				ItemSuancaibing.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemYoutiao = new FcFood(3, 8F, false, "ItemYoutiao");
-				ItemYoutiao.setUnlocalizedName("ItemYoutiao");
-				 
-				ItemYoutiao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemLatiao = new FcFood(3, 4F, false, "ItemLatiao");
-				ItemLatiao.setUnlocalizedName("ItemLatiao");
-				 
-				ItemLatiao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-
-				ItemHetaosu = new FcFood(3, 8F, false, "ItemHetaosu");
-				ItemHetaosu.setUnlocalizedName("ItemHetaosu");
-				 
-				ItemHetaosu.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemAici = new FcFood(3, 8F, false, "ItemAici");
-				ItemAici.setUnlocalizedName("ItemAici");
-				 
-				ItemAici.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemCiba = new FcFood(3, 7F, false, "ItemCiba");
-				ItemCiba.setUnlocalizedName("ItemCiba");
-				 
-				ItemCiba.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemChangfen = new FcFood(3, 7F, false, "ItemChangfen");
-				ItemChangfen.setUnlocalizedName("ItemChangfen");
-				 
-				ItemChangfen.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemXiangchang = new FcFood(3, 6F, false, "ItemXiangchang");
-				ItemXiangchang.setUnlocalizedName("ItemXiangchang");
-				 
-				ItemXiangchang.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemRegou = new FcFood(3, 8F, false, "ItemRegou");
-				ItemRegou.setUnlocalizedName("ItemRegou");
-				 
-				ItemRegou.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemLachang = new FcFood(3, 8F, false, "ItemLachang");
-				ItemLachang.setUnlocalizedName("ItemLachang");
-				 
-				ItemLachang.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemLarou = new FcFood(3, 9F, false, "ItemLarou");
-				ItemLarou.setUnlocalizedName("ItemLarou");
-				 
-				ItemLarou.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemZhaxiangchang = new FcFood(3, 8F, false, "ItemZhaxiangchang");
-				ItemZhaxiangchang.setUnlocalizedName("ItemZhaxiangchang");
-				 
-				ItemZhaxiangchang.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemRibendoufu = new ItemStapleFood(3, 18F, false, "ItemRibendoufu");
-				ItemRibendoufu.setUnlocalizedName("ItemRibendoufu");
-				 
-				ItemRibendoufu.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemLabazhou = new FcFood(3, 9F, false, "ItemLabazhou");
-				ItemLabazhou.setUnlocalizedName("ItemLabazhou");
-				 
-				ItemLabazhou.setCreativeTab(FoodCraft.FcTabZhushi);	
-				
-				ItemLaweixunliao = new ItemFc();
-				ItemLaweixunliao.setUnlocalizedName("ItemLaweixunliao");
-				 
-				ItemLaweixunliao.setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemNainao = new FcFood(3, 5F, false, "ItemNainao");
-				ItemNainao.setUnlocalizedName("ItemNainao");
-				 
-				ItemNainao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemPisa = new FcFood(3, 12F, false, "ItemPisa");
-				ItemPisa.setUnlocalizedName("ItemPisa");
-				 
-				ItemPisa.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemHanbaobao = new FcFood(3, 12F, false, "ItemHanbaobao");
-				ItemHanbaobao.setUnlocalizedName("ItemHanbaobao");
-				 
-				ItemHanbaobao.setCreativeTab(FoodCraft.FcTabXiaodian);	
-
-
-				ItemYouyurou = new FcFood(3, 8F, false, "ItemYouyurou");
-				ItemYouyurou.setUnlocalizedName("ItemYouyurou");
-				 
-				ItemYouyurou.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemShuyouyurou = new FcFood(3, 10F, false, "ItemShuyouyurou");
-				ItemShuyouyurou.setUnlocalizedName("ItemShuyouyurou");
-				 
-				ItemShuyouyurou.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemYouyusi = new FcFood(3, 3F, false, "ItemYouyusi");
-				ItemYouyusi.setUnlocalizedName("ItemYouyusi");
-				 
-				ItemYouyusi.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemShucai = new FcFood(3, 3F, false, "ItemShucai");
-				ItemShucai.setUnlocalizedName("ItemShucai");
-				 
-				ItemShucai.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemLajiao = new ItemFoodChili();
-				ItemLajiao.setUnlocalizedName("ItemLajiao");
-				 
-				ItemLajiao.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemFanqie = new FcFood(3, 3F, false, "ItemFanqie");
-				ItemFanqie.setUnlocalizedName("ItemFanqie");
-				 
-				ItemFanqie.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemPutao = new FcFood(3, 3F, false, "ItemPutao");
-				ItemPutao.setUnlocalizedName("ItemPutao");
-				 
-				ItemPutao.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemQiezi = new FcFood(3, 3F, false, "ItemQiezi");
-				ItemQiezi.setUnlocalizedName("ItemQiezi");
-				 
-				ItemQiezi.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemQingjiao = new FcFood(3, 3F, false, "ItemQingjiao");
-				ItemQingjiao.setUnlocalizedName("ItemQingjiao");
-				 
-				ItemQingjiao.setCreativeTab(FoodCraft.FcTabZhiwu);
-				/*ItemHongdou,ItemLvdou,ItemHongshu;*/
-				
-				ItemBailuobo = new ItemSweetPotato(FoodcraftBlocks.BlockBailuobo,3);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemBailuobo), 2);
-				ItemBailuobo.setUnlocalizedName("ItemBailuobo");
-				 
-				ItemBailuobo.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemQingjiaozhong = new ItemPlant(null,FoodcraftBlocks.BlockQingjiao);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemQingjiaozhong), 2);
-				ItemQingjiaozhong.setUnlocalizedName("ItemQingjiaozhong");
-				 
-				ItemQingjiaozhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemHongdou = new ItemPlant(null,FoodcraftBlocks.BlockHongdou);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemHongdou), 2);
-				ItemHongdou.setUnlocalizedName("ItemHongdou");
-				 
-				ItemHongdou.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemLvdou = new ItemPlant(null,FoodcraftBlocks.BlockLvdou);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemHongdou), 2);
-				ItemLvdou.setUnlocalizedName("ItemLvdou");
-				 
-				ItemLvdou.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemHongshu = new ItemSweetPotato(FoodcraftBlocks.BlockHongshu,3);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemHongdou), 2);
-				ItemHongshu.setUnlocalizedName("ItemHongshu");
-				 
-				ItemHongshu.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemKaohongshu = new FcFood(3, 8F, false, "ItemKaohongshu");
-				ItemKaohongshu.setUnlocalizedName("ItemKaohongshu");
-				 
-				ItemKaohongshu.setCreativeTab(FoodCraft.FcTabXiaodian);
-				
-				ItemDoujiao = new FcFood(3, 3F, false, "ItemDoujiao");
-				ItemDoujiao.setUnlocalizedName("ItemDoujiao");
-				 
-				ItemDoujiao.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemWrench = new ItemWrench("ItemWrench");
-				ItemWrench.setUnlocalizedName("ItemWrench");
-				 
-				ItemWrench.setCreativeTab(FoodCraft.FcTabJiqi);
-				ItemWrench.setMaxStackSize(1);
-				
-				ItemYumi = new FcFood(3, 3F, false, "ItemYumi");
-				ItemYumi.setUnlocalizedName("ItemYumi");
-				 
-				ItemYumi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemHuanggua = new FcFood(3, 3F, false, "ItemHuanggua");
-				ItemHuanggua.setUnlocalizedName("ItemHuanggua");
-				 
-				ItemHuanggua.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemYumizhong = new ItemPlant(null,FoodcraftBlocks.BlockYumi);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemYumizhong), 2);
-				ItemYumizhong.setUnlocalizedName("ItemYumizhong");
-				 
-				ItemYumizhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemHuangguazhong = new ItemPlant(null,FoodcraftBlocks.BlockHuanggua);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemHongdou), 2);
-				ItemHuangguazhong.setUnlocalizedName("ItemHuangguazhong");
-				 
-				ItemHuangguazhong.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemBailuobosi = new ItemFc();
-				ItemBailuobosi.setUnlocalizedName("ItemBailuobosi");
-				 
-				ItemBailuobosi.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemBailuobozhi = new ItemDrink(3, 8F, false, "ItemBailuobozhi",0xfffbf3);
-				ItemBailuobozhi.setUnlocalizedName("ItemBailuobozhi");
-				 
-				ItemBailuobozhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemFanqiezhi = new ItemDrink(3, 8F, false, "ItemFanqiezhi",0xe1304d);
-				ItemFanqiezhi.setUnlocalizedName("ItemFanqiezhi");
-				 
-				ItemFanqiezhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemHuangguazhi = new ItemDrink(3, 8F, false, "ItemHuangguazhi",0xb1c28b);
-				ItemHuangguazhi.setUnlocalizedName("ItemHuangguazhi");
-				 
-				ItemHuangguazhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemYumizhi = new ItemDrink(3, 8F, false, "ItemYumizhi",0xebe47a);
-				ItemYumizhi.setUnlocalizedName("ItemYumizhi");
-				 
-				ItemYumizhi.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemDousha = new ItemFc();
-				ItemDousha.setUnlocalizedName("ItemDousha");
-				 
-				ItemDousha.setCreativeTab(FoodCraft.FcTabShicai);
-				
-				ItemKaoyumi = new FcFood(3, 6F, false, "ItemKaoyumi");
-				ItemKaoyumi.setUnlocalizedName("ItemKaoyumi");
-				 
-				ItemKaoyumi.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemBaoyumihua = new FcFood(3, 6F, false, "ItemBaoyumihua");
-				ItemBaoyumihua.setUnlocalizedName("ItemBaoyumihua");
-				 
-				ItemBaoyumihua.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemLi = new FcFood(3, 2F, false, "ItemLi");
-				ItemLi.setUnlocalizedName("ItemLi");
-				 
-				ItemLi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemLizhi = new FcFood(3, 2F, false, "ItemLizhi");
-				ItemLizhi.setUnlocalizedName("ItemLizhi");
-				 
-				ItemLizhi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemTaozi = new FcFood(3, 2F, false, "ItemTaozi");
-				ItemTaozi.setUnlocalizedName("ItemTaozi");
-				 
-				ItemTaozi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemJuzi = new FcFood(3, 2F, false, "ItemJuzi");
-				ItemJuzi.setUnlocalizedName("ItemJuzi");
-				 
-				ItemJuzi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemPipa = new FcFood(3, 2F, false, "ItemPipa");
-				ItemPipa.setUnlocalizedName("ItemPipa");
-				 
-				ItemPipa.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemMangguo = new FcFood(3, 2F, false, "ItemMangguo");
-				ItemMangguo.setUnlocalizedName("ItemMangguo");
-				 
-				ItemMangguo.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemNingmeng = new FcFood(3, 2F, false, "ItemNingmeng");
-				ItemNingmeng.setUnlocalizedName("ItemNingmeng");
-				 
-				ItemNingmeng.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemYouzi = new FcFood(3, 2F, false, "ItemYouzi");
-				ItemYouzi.setUnlocalizedName("ItemYouzi");
-				 
-				ItemYouzi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemShizi = new FcFood(3, 2F, false, "ItemShizi");
-				ItemShizi.setUnlocalizedName("ItemShizi");
-				 
-				ItemShizi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemMugua = new FcFood(3, 2F, false, "ItemMugua");
-				ItemMugua.setUnlocalizedName("ItemMugua");
-				 
-				ItemMugua.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemShanzha = new FcFood(3, 2F, false, "ItemShanzha");
-				ItemShanzha.setUnlocalizedName("ItemShanzha");
-				 
-				ItemShanzha.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemLongyan = new FcFood(3, 2F, false, "ItemLongyan");
-				ItemLongyan.setUnlocalizedName("ItemLongyan");
-				 
-				ItemLongyan.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemShiliu = new FcFood(3, 2F, false, "ItemShiliu");
-				ItemShiliu.setUnlocalizedName("ItemShiliu");
-				 
-				ItemShiliu.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemCaomei = new ItemSweetPotato(FoodcraftBlocks.BlockCaomei,3);
-				MinecraftForge.addGrassSeed(new ItemStack(ItemCaomei), 2);
-				ItemCaomei.setUnlocalizedName("ItemCaomei");
-				 
-				ItemCaomei.setCreativeTab(FoodCraft.FcTabZhiwu);
-				
-				ItemHongzao = new FcFood(3, 2F, false, "ItemHongzao");
-				ItemHongzao.setUnlocalizedName("ItemHongzao");
-				 
-				ItemHongzao.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemYezi = new FcFood(3, 2F, false, "ItemYezi");
-				ItemYezi.setUnlocalizedName("ItemYezi");
-				 
-				ItemYezi.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemYingtao = new FcFood(3, 2F, false, "ItemYingtao");
-				ItemYingtao.setUnlocalizedName("ItemYingtao");
-				 
-				ItemYingtao.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemXiangjiao = new FcFood(3, 2F, false, "ItemXiangjiao");
-				ItemXiangjiao.setUnlocalizedName("ItemXiangjiao");
-				 
-				ItemXiangjiao.setCreativeTab(FoodCraft.FcTabZhiwu);	
-				
-				ItemJinkela = new ItemFc();
-				ItemJinkela.setUnlocalizedName("ItemJinkela");
-				 
-				ItemJinkela.setCreativeTab(FoodCraft.FcTabJiqi);
-
-
-
-				
-				ItemLizizhi = new ItemDrink(3, 8F, false, "ItemLizizhi",0xe5db3b).setUnlocalizedName("ItemLizizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemLizhizhi = new ItemDrink(3, 8F, false, "ItemLizhizhi",0xf6edd0).setUnlocalizedName("ItemLizhizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemTaozizhi = new ItemDrink(3, 8F, false, "ItemTaozizhi",0xf6cc24).setUnlocalizedName("ItemTaozizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemJuzizhi = new ItemDrink(3, 8F, false, "ItemJuzizhi",0xf6ae24).setUnlocalizedName("ItemJuzizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemPipazhi = new ItemDrink(3, 8F, false, "ItemPipazhi",0xfdcb6b).setUnlocalizedName("ItemPipazhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemMangguozhi = new ItemDrink(3, 8F, false, "ItemMangguozhi",0xffd986).setUnlocalizedName("ItemMangguozhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemNingmengzhi = new ItemDrink(3, 8F, false, "ItemNingmengzhi",0xfcf393).setUnlocalizedName("ItemNingmengzhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemYouzizhi = new ItemDrink(3, 8F, false, "ItemYouzizhi",0xece382).setUnlocalizedName("ItemYouzizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemShizizhi = new ItemDrink(3, 8F, false, "ItemShizizhi",0xeb8c30).setUnlocalizedName("ItemShizizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemMuguazhi = new ItemDrink(3, 8F, false, "ItemMuguazhi",0xf18a25).setUnlocalizedName("ItemMuguazhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemShanzhazhi = new ItemDrink(3, 8F, false, "ItemShanzhazhi",0xea7b0e).setUnlocalizedName("ItemShanzhazhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemShiliuzhi = new ItemDrink(3, 8F, false, "ItemShiliuzhi",0xf46c30).setUnlocalizedName("ItemShiliuzhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemHongzaozhi = new ItemDrink(3, 8F, false, "ItemHongzaozhi",0xb57c63).setUnlocalizedName("ItemHongzaozhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemCaomeizhi = new ItemDrink(3, 8F, false, "ItemCaomeizhi",0xef1f6d).setUnlocalizedName("ItemCaomeizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemYezizhi = new ItemDrink(3, 8F, false, "ItemYezizhi",0xfcf4d6).setUnlocalizedName("ItemYezizhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemYingtaozhi = new ItemDrink(3, 8F, false, "ItemYingtaozhi",0xfd6d0d).setUnlocalizedName("ItemYingtaozhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemXiangjiaozhi = new ItemDrink(3, 8F, false, "ItemXiangjiaozhi",0xf7eb6a).setUnlocalizedName("ItemXiangjiaozhi")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemYenai = new ItemDrink(3, 8F, false, "ItemYenai",0xfefdf4).setUnlocalizedName("ItemYenai")
-						.setCreativeTab(FoodCraft.FcTabYingliao);
-				ItemLizhizhiice = new ItemDrink(3, 9F, false, "ItemLizhizhiice",0).setUnlocalizedName("ItemLizhizhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemTaozizhiice = new ItemDrink(3, 9F, false, "ItemTaozizhiice",0).setUnlocalizedName("ItemTaozizhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemJuzizhiice = new ItemDrink(3, 9F, false, "ItemJuzizhiice",0).setUnlocalizedName("ItemJuzizhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemMangguozhiice = new ItemDrink(3, 9F, false, "ItemMangguozhiice",0).setUnlocalizedName("ItemMangguozhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemNingmengzhiice = new ItemDrink(3, 9F, false, "ItemNingmengzhiice",0).setUnlocalizedName("ItemNingmengzhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemMuguazhiice = new ItemDrink(3, 9F, false, "ItemMuguazhiice",0).setUnlocalizedName("ItemMuguazhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemCaomeizhiice = new ItemDrink(3, 9F, false, "ItemCaomeizhiice",0).setUnlocalizedName("ItemCaomeizhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemYezizhiice = new ItemDrink(3, 9F, false, "ItemYezizhiice",0).setUnlocalizedName("ItemYezizhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				ItemXiangjiaozhiice = new ItemDrink(3, 9F, false, "ItemXiangjiaozhiice",0).setUnlocalizedName("ItemXiangjiaozhiice")
-						 .setCreativeTab(FoodCraft.FcTabYingliao);
-				
-				
-				ItemLizijiu = new ItemWine(3, 8F, false, "ItemLizijiu").setAlwaysEdible().setUnlocalizedName("ItemLizijiu")
-				.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemLizhijiu = new ItemWine(3, 8F, false, "ItemLizhijiu").setAlwaysEdible().setUnlocalizedName("ItemLizhijiu")
-				 .setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemTaozijiu = new ItemWine(3, 8F, false, "ItemTaozijiu").setAlwaysEdible().setUnlocalizedName("ItemTaozijiu")
-				.setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemMangguojiu = new ItemWine(3, 8F, false, "ItemMangguojiu").setAlwaysEdible().setUnlocalizedName("ItemMangguojiu")
-				 .setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemNingmengjiu = new ItemWine(3, 8F, false, "ItemNingmengjiu").setAlwaysEdible().setUnlocalizedName("ItemNingmengjiu")
-				 .setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemShiliujiu = new ItemWine(3, 8F, false, "ItemShiliujiu").setAlwaysEdible().setUnlocalizedName("ItemShiliujiu")
-				 .setCreativeTab(FoodCraft.FcTabYingliao);	
-				
-				ItemGuojiang = new ItemJam().setUnlocalizedName("ItemGuojiang")
-						 .setCreativeTab(FoodCraft.FcTabShicai);	
-				
-				ItemBinggan = new ItemCookie(3, 10F, false, "ItemBinggan").setUnlocalizedName("ItemBinggan")
-						 .setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemDangao = new ItemCakeFoodcraft().setUnlocalizedName("ItemDangao")
-						 .setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemBingganF = new FcFood(3, 6F, false, "ItemBingganF").setUnlocalizedName("ItemBingganF")
-						.setCreativeTab(FoodCraft.FcTabXiaodian);	
-				ItemBingganXN = new FcFood(3, 7F, false, "ItemBingganXN").setUnlocalizedName("ItemBingganXN")
-						 .setCreativeTab(FoodCraft.FcTabXiaodian);	
-				
-				ItemTest = new ItemTest().setUnlocalizedName("ItemTest")
-						 .setCreativeTab(CreativeTabs.tabTools);	
-				GameRegistry.registerItem(ItemTest, "ItemTest");	
+		ItemTiepian = new ItemFc("ItemTiepian").setCreativeTab(FoodCraft.FcTabJiqi);
+		Itemwater = new ItemFc("Itemwater").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemNull = new ItemFc("ItemNull");			
+		Itemfan = new ItemFc("Itemfan").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemMianfen = new ItemFc("ItemMianfen").setCreativeTab(FoodCraft.FcTabShicai);		
+		ItemHuashenyou = new ItemFc("ItemHuashenyou").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemDianluban = new ItemFc("ItemDianluban").setCreativeTab(FoodCraft.FcTabJiqi);
+		ItemMianpi = new ItemFc("ItemMianpi").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemJiaozixian = new ItemFc("ItemJiaozixian").setCreativeTab(FoodCraft.FcTabShicai);		
+		ItemQiaokelifen = new ItemFc("ItemQiaokelifen").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemYan = new ItemFc("ItemYan").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemJiangyou = new ItemFc("ItemJiangyou").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemCu = new ItemFc("ItemCu").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemTudoupian = new ItemFc("ItemTudoupian").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemTudousi = new ItemFc("ItemTudousi").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemDouban = new ItemFc("ItemDouban").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemDianfen = new ItemFc("ItemDianfen").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemZongye = new ItemFc("ItemZongye").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemNuomifen = new ItemFc("ItemNuomifen").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemNuomituan = new ItemFc("ItemNuomituan").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemHuashentangyuanxian = new ItemFc("ItemHuashentangyuanxian").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemDajirou = new ItemFc("ItemDajirou").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemZhongjirou = new ItemFc("ItemZhongjirou").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemXiaojirou = new ItemFc("ItemXiaojirou").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemDoufusi = new ItemFc("ItemDoufusi").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemLuobosi = new ItemFc("ItemLuobosi").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemMianfensi = new ItemFc("ItemMianfensi").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemLaweixunliao = new ItemFc("ItemLaweixunliao").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemBailuobosi = new ItemFc("ItemBailuobosi").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemDousha = new ItemFc("ItemDousha").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemJinkela = new ItemFc("ItemJinkela").setCreativeTab(FoodCraft.FcTabJiqi);
+		ItemShaojiaodeshiwu = new ItemFc("ItemShaojiaodeshiwu").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemDami = new ItemPlant(FoodcraftPlants.BlockNuodao, "ItemDami");			
+		ItemHuashen = new ItemPlant(FoodcraftPlants.BlockHuashen, "ItemHuashen");				
+		ItemShucaizhong = new ItemPlant(FoodcraftPlants.BlockShucai, "ItemShucaizhong");				
+		ItemDouzi = new ItemPlant(FoodcraftPlants.BlockDouzi, "ItemDouzi");
+		ItemLajiaozhong = new ItemPlant(FoodcraftPlants.BlockLajiao, "ItemLajiaozhong");
+		ItemFanqiezhong = new ItemPlant(FoodcraftPlants.BlockFanqie, "ItemFanqiezhong");
+		ItemPutaozhong = new ItemPlant(FoodcraftPlants.BlockPutao, "ItemPutaozhong");
+		ItemQiezizhong = new ItemPlant(FoodcraftPlants.BlockQiezi, "ItemQiezizhong");
+		ItemQingjiaozhong = new ItemPlant(FoodcraftPlants.BlockQingjiao, "ItemQingjiaozhong");
+		ItemHongdou = new ItemPlant(FoodcraftPlants.BlockHongdou, "ItemHongdou");
+		ItemLvdou = new ItemPlant(FoodcraftPlants.BlockLvdou,"ItemLvdou");
+		ItemYumizhong = new ItemPlant(FoodcraftPlants.BlockYumi,"ItemYumizhong");
+		ItemHuangguazhong = new ItemPlant(FoodcraftPlants.BlockHuanggua, "ItemHuangguazhong");
+		ItemNuomi = new ItemPlant(FoodcraftPlants.BlockNuodao, "ItemNuomi");
+		ItemCaomei = new ItemSweetPotato(FoodcraftPlants.BlockCaomei,3,"ItemCaomei");
+		ItemBailuobo = new ItemSweetPotato(FoodcraftPlants.BlockBailuobo,3,"ItemBailuobo");
+		ItemHongshu = new ItemSweetPotato(FoodcraftPlants.BlockHongshu,3,"ItemHongshu");
+		ItemJianjidan = new FcFood(3, 5F, "ItemJianjidan").setCreativeTab(FoodCraft.FcTabXiaodian);
+		ItemLaobing = new FcFood(3, 5F, "ItemLaobing").setCreativeTab(FoodCraft.FcTabXiaodian);
+		ItemJiaozi = new FcFood(3, 8F, "ItemJiaozi").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemJianjiao = new FcFood(3, 10F, "ItemJianJiao").setCreativeTab(FoodCraft.FcTabXiaodian);
+		ItemQiaokeli = new FcFood(3, 4F, "ItemQiaokeli").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemDoufu = new FcFood(3, 4F, "ItemDoufu").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemDoufugan = new FcFood(3, 6F, "ItemDoufugan").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemBaifan = new FcFood(3, 3F, "ItemBaifan").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemChaotudoupian = new FcFood(3, 7F, "ItemChaotudoupian").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemXifan = new FcFood(3, 7F, "ItemXifan").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemDangeng = new FcFood(3, 8F, "ItemDangeng").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemMogudunjitang = new FcFood(3, 8F, "ItemMogudunjitang").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemZongzi = new FcFood(3, 8F, "ItemZongzi").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemJitui = new FcFood(3, 3F, "ItemJitui").setCreativeTab(FoodCraft.FcTabShicai);
+		ItemTangyuan = new FcFood(3, 8F, "ItemTangyuan").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemJikuai = new FcFood(3, 6F, "ItemJikuai").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemShutiao = new FcFood(3, 7F, "ItemShutiao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemAeljichi = new FcFood(3, 8F, "ItemAeljichi").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemJimihua = new FcFood(3, 4F, "ItemJimihua").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemYuanweijikuai = new FcFood(3, 8F, "ItemYuanweijikuai").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemMahua = new FcFood(3, 7F, "ItemMahua").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemNiangao = new FcFood(3, 8F, "ItemNiangao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemChunjuan = new FcFood(3, 8F, "ItemChunjuan").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhadoufu = new FcFood(3, 6F, "ItemZhadoufu").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhaniangao = new FcFood(3, 10F, "ItemZhaniangao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemShupian = new FcFood(3, 7F, "ItemShupian").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhamianbao = new FcFood(3, 7F, "ItemZhamianbao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhachunjuan = new FcFood(3, 10F, "ItemZhachunjuan").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhamahua = new FcFood(3, 10F, "ItemZhamahua").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhajitui = new FcFood(3, 5F, "ItemZhajitui").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemJichi = new FcFood(3, 4F, "ItemJichi").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemJinputao = new FcFood(3, 20F, "ItemJinputao" ,true).setCreativeTab(FoodCraft.FcTabZhiwu);
+		ItemGalikuai = new FcFood(3, 3F, "ItemGalikuai").setCreativeTab(FoodCraft.FcTabShicai);	
+		ItemMian = new FcFood(3, 7F, "ItemMian").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemGuoqiaomixian = new FcFood(3, 7F, "ItemGuoqiaomixian").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemYifen = new FcFood(3, 7F, "ItemYifen").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemPidanshourouzhou = new FcFood(3, 7F, "ItemPidanshourouzhou").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemYuebing = new FcFood(3, 8F, "ItemYuebing").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemMantou = new FcFood(3, 4F, "ItemMantou").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemSuancaibing = new FcFood(3, 7F, "ItemSuancaibing").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemYoutiao = new FcFood(3, 8F, "ItemYoutiao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemLatiao = new FcFood(3, 4F, "ItemLatiao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemHetaosu = new FcFood(3, 8F, "ItemHetaosu").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemAici = new FcFood(3, 8F, "ItemAici").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemCiba = new FcFood(3, 7F, "ItemCiba").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemChangfen = new FcFood(3, 7F, "ItemChangfen").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemXiangchang = new FcFood(3, 6F, "ItemXiangchang").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemRegou = new FcFood(3, 8F, "ItemRegou").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemLachang = new FcFood(3, 8F, "ItemLachang").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemLarou = new FcFood(3, 9F, "ItemLarou").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemZhaxiangchang = new FcFood(3, 8F, "ItemZhaxiangchang").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemLabazhou = new FcFood(3, 9F, "ItemLabazhou").setCreativeTab(FoodCraft.FcTabZhushi);	
+		ItemNainao = new FcFood(3, 5F, "ItemNainao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemPisa = new FcFood(3, 12F, "ItemPisa").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemHanbaobao = new FcFood(3, 12F, "ItemHanbaobao").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemYouyurou = new FcFood(3, 8F, "ItemYouyurou").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemShuyouyurou = new FcFood(3, 10F, "ItemShuyouyurou").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemYouyusi = new FcFood(3, 3F, "ItemYouyusi").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemShucai = new FcFood(3, 3F, "ItemShucai").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemFanqie = new FcFood(3, 3F, "ItemFanqie").setCreativeTab(FoodCraft.FcTabZhiwu);
+		ItemPutao = new FcFood(3, 3F, "ItemPutao").setCreativeTab(FoodCraft.FcTabZhiwu);
+		ItemQiezi = new FcFood(3, 3F, "ItemQiezi").setCreativeTab(FoodCraft.FcTabZhiwu);
+		ItemQingjiao = new FcFood(3, 3F, "ItemQingjiao").setCreativeTab(FoodCraft.FcTabZhiwu);
+		ItemYumi = new FcFood(3, 3F, "ItemYumi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemHuanggua = new FcFood(3, 3F, "ItemHuanggua").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemKaohongshu = new FcFood(3, 8F, "ItemKaohongshu").setCreativeTab(FoodCraft.FcTabXiaodian);
+		ItemDoujiao = new FcFood(3, 3F, "ItemDoujiao").setCreativeTab(FoodCraft.FcTabZhiwu);
+		ItemHongzao = new FcFood(3, 2F, "ItemHongzao").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemYezi = new FcFood(3, 2F, "ItemYezi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemYingtao = new FcFood(3, 2F, "ItemYingtao").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemXiangjiao = new FcFood(3, 2F, "ItemXiangjiao").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemKaoyumi = new FcFood(3, 6F, "ItemKaoyumi").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemBaoyumihua = new FcFood(3, 6F, "ItemBaoyumihua").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemLi = new FcFood(3, 2F, "ItemLi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemLizhi = new FcFood(3, 2F, "ItemLizhi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemTaozi = new FcFood(3, 2F, "ItemTaozi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemJuzi = new FcFood(3, 2F, "ItemJuzi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemPipa = new FcFood(3, 2F, "ItemPipa").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemMangguo = new FcFood(3, 2F, "ItemMangguo").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemNingmeng = new FcFood(3, 2F, "ItemNingmeng").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemYouzi = new FcFood(3, 2F, "ItemYouzi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemShizi = new FcFood(3, 2F, "ItemShizi").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemMugua = new FcFood(3, 2F, "ItemMugua").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemShanzha = new FcFood(3, 2F, "ItemShanzha").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemLongyan = new FcFood(3, 2F, "ItemLongyan").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemShiliu = new FcFood(3, 2F, "ItemShiliu").setCreativeTab(FoodCraft.FcTabZhiwu);	
+		ItemBingganF = new FcFood(3, 6F, "ItemBingganF").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemBingganXN = new FcFood(3, 7F, "ItemBingganXN").setCreativeTab(FoodCraft.FcTabXiaodian);	
+		ItemFanqiechaojidanfan = new ItemStapleFood(3, 18F, "ItemFanqiechaojidanfan");	
+		ItemDisanxian = new ItemStapleFood(3, 18F, "ItemDisanxian");	
+		ItemYuxiangrousi = new ItemStapleFood(3, 18F, "ItemYuxiangrousi");	
+		ItemGongbaojiding = new ItemStapleFood(3, 18F, "ItemGongbaojiding");
+		ItemChaotudousifan = new ItemStapleFood(3, 18F, "ItemChaotudousifan");
+		ItemDuojiaoyutou = new ItemStapleFood(3, 18F, "ItemDuojiaoyutou");
+		ItemMapodoufufan = new ItemStapleFood(3, 18F, "ItemMapodoufufan");
+		ItemHongshaoroufan = new ItemStapleFood(3, 18F, "ItemHongshaoroufan");
+		ItemHuiguoroufan = new ItemStapleFood(3, 18F, "ItemHuiguoroufan");
+		ItemAeljichifan = new ItemStapleFood(3, 20F, "ItemAeljichifan");
+		ItemBaiqiuji = new ItemStapleFood(3, 18F, "ItemBaiqiuji");
+		ItemCongyouji = new ItemStapleFood(3, 18F, "ItemCongyouji");
+		ItemKoushuiji = new ItemStapleFood(3, 18F, "ItemKoushuiji");
+		ItemLaziji = new ItemStapleFood(3, 18F, "ItemLaziji");
+		ItemQingzhenyu = new ItemStapleFood(3, 18F, "ItemQingzhenyu");
+		ItemMalayu = new ItemStapleFood(3, 18F, "ItemMalayu");
+		ItemSuancaiyu = new ItemStapleFood(3, 18F, "ItemSuancaiyu");
+		ItemKelejichifan = new ItemStapleFood(3, 20F, "ItemKelejichifan");
+		ItemGalijiroufan = new ItemStapleFood(3, 18F, "ItemGalijiroufan");
+		ItemShuizhuniurou = new ItemStapleFood(3, 18F, "ItemShuizhuniurou");
+		ItemYifenpork = new ItemStapleFood(3, 18F, "ItemYifenpork");
+		ItemYifenbeef = new ItemStapleFood(3, 18F, "ItemYifenbeef");
+		ItemYifenchicken = new ItemStapleFood(3, 18F, "ItemYifenchicken");
+		ItemRibendoufu = new ItemStapleFood(3, 18F, "ItemRibendoufu");	
+		ItemDoujiang = new ItemDrink(2, 4F, "ItemDoujiang", 16777215);
+		ItemQiaokelishui = new ItemDrink(3, 7F, "ItemQiaokelishui",0x956844);
+		ItemQiaokelinai = new ItemDrink(3, 7F, "ItemQiaokelinai",0xae927c);
+		ItemHuluobozhi = new ItemDrink(3, 7F, "ItemHuluobozhi",0xf4872f);
+		ItemPutaozhi = new ItemDrink(3, 7F, "ItemPutaozhi",0xbc18b6);
+		ItemPingguozhi = new ItemDrink(3, 7F, "ItemPingguozhi",0xfa2059);
+		ItemShucaizhi = new ItemDrink(3, 7F, "ItemShucaizhi",0x6abc19);
+		ItemJinputaozhi = new ItemDrink(3, 20F, "ItemJinputaozhi",true , 0, 0xe0da42);
+		ItemJinpingguozhi = new ItemDrink(3, 20F, "ItemJinpingguozhi",true , 1, 0xe7e480);
+		ItemDounai = new ItemDrink(3, 7F, "ItemDounai",0xfafaf2);
+		ItemKele = new ItemDrink(3, 7F, "ItemKele",0x512008);
+		ItemXuebi = new ItemDrink(3, 7F, "ItemXuebi",0xededed);
+		ItemQiaokelinaiice = new ItemDrink(3, 9F, "ItemQiaokelinaiice", 16777215).setAlwaysEdible();
+		ItemPutaozhiice = new ItemDrink(3, 9F, "ItemPutaozhiice",0);
+		ItemPingguozhiice = new ItemDrink(3, 9F, "ItemPingguozhiice",0);
+		ItemJinputaozhiice = new ItemDrink(3, 9F, "ItemJinputaozhiice" , true , 0,0);
+		ItemJinpingguozhiice = new ItemDrink(3, 9F, "ItemJinpingguozhiice" , true , 1,0);
+		ItemXiguazhi = new ItemDrink(3, 7F, "ItemXiguazhi",0xe848b9);
+		ItemXiguazhiice = new ItemDrink(3, 9F, "ItemXiguazhiice",0);
+		ItemCha = new ItemDrink(3, 6F, "ItemCha",0x98a285);
+		ItemNaicha = new ItemDrink(3, 7F, "ItemXiguazhi",0xc29833);
+		ItemKafei = new ItemDrink(3, 7F, "ItemKafei",0x50462d);
+		ItemBailuobozhi = new ItemDrink(3, 8F, "ItemBailuobozhi",0xfffbf3);
+		ItemFanqiezhi = new ItemDrink(3, 8F, "ItemFanqiezhi",0xe1304d);
+		ItemHuangguazhi = new ItemDrink(3, 8F, "ItemHuangguazhi",0xb1c28b);
+		ItemYumizhi = new ItemDrink(3, 8F, "ItemYumizhi",0xebe47a);
+		ItemLizizhi = new ItemDrink(3, 8F, "ItemLizizhi",0xe5db3b);
+		ItemLizhizhi = new ItemDrink(3, 8F, "ItemLizhizhi",0xf6edd0);
+		ItemTaozizhi = new ItemDrink(3, 8F, "ItemTaozizhi",0xf6cc24);
+		ItemJuzizhi = new ItemDrink(3, 8F, "ItemJuzizhi",0xf6ae24);
+		ItemPipazhi = new ItemDrink(3, 8F, "ItemPipazhi",0xfdcb6b);
+		ItemMangguozhi = new ItemDrink(3, 8F, "ItemMangguozhi",0xffd986);
+		ItemNingmengzhi = new ItemDrink(3, 8F, "ItemNingmengzhi",0xfcf393);
+		ItemYouzizhi = new ItemDrink(3, 8F, "ItemYouzizhi",0xece382);
+		ItemShizizhi = new ItemDrink(3, 8F, "ItemShizizhi",0xeb8c30);
+		ItemMuguazhi = new ItemDrink(3, 8F, "ItemMuguazhi",0xf18a25);
+		ItemShanzhazhi = new ItemDrink(3, 8F, "ItemShanzhazhi",0xea7b0e);
+		ItemShiliuzhi = new ItemDrink(3, 8F, "ItemShiliuzhi",0xf46c30);
+		ItemHongzaozhi = new ItemDrink(3, 8F, "ItemHongzaozhi",0xb57c63);
+		ItemCaomeizhi = new ItemDrink(3, 8F, "ItemCaomeizhi",0xef1f6d);
+		ItemYezizhi = new ItemDrink(3, 8F, "ItemYezizhi",0xfcf4d6);
+		ItemYingtaozhi = new ItemDrink(3, 8F, "ItemYingtaozhi",0xfd6d0d);
+		ItemXiangjiaozhi = new ItemDrink(3, 8F, "ItemXiangjiaozhi",0xf7eb6a);
+		ItemYenai = new ItemDrink(3, 8F, "ItemYenai",0xfefdf4);
+		ItemLizhizhiice = new ItemDrink(3, 9F, "ItemLizhizhiice",0);
+		ItemTaozizhiice = new ItemDrink(3, 9F, "ItemTaozizhiice",0);
+		ItemJuzizhiice = new ItemDrink(3, 9F, "ItemJuzizhiice",0);
+		ItemMangguozhiice = new ItemDrink(3, 9F, "ItemMangguozhiice",0);
+		ItemNingmengzhiice = new ItemDrink(3, 9F, "ItemNingmengzhiice",0);
+		ItemMuguazhiice = new ItemDrink(3, 9F, "ItemMuguazhiice",0);
+		ItemCaomeizhiice = new ItemDrink(3, 9F, "ItemCaomeizhiice",0);
+		ItemYezizhiice = new ItemDrink(3, 9F, "ItemYezizhiice",0);
+		ItemXiangjiaozhiice = new ItemDrink(3, 9F, "ItemXiangjiaozhiice",0);
+		ItemHongjiu = new ItemWine(3, 8F, "ItemHongjiu").setAlwaysEdible();	
+		ItemBaijiu = new ItemWine(3, 8F, "ItemBaijiu").setAlwaysEdible();
+		ItemPingguojiu = new ItemWine(3, 8F, "ItemPingguojiu").setAlwaysEdible();
+		ItemPutaojiu = new ItemWine(3, 8F, "ItemPutaojiu").setAlwaysEdible();
+		ItemLizijiu = new ItemWine(3, 8F, "ItemLizijiu").setAlwaysEdible();	
+		ItemLizhijiu = new ItemWine(3, 8F, "ItemLizhijiu").setAlwaysEdible();	
+		ItemTaozijiu = new ItemWine(3, 8F, "ItemTaozijiu").setAlwaysEdible();	
+		ItemMangguojiu = new ItemWine(3, 8F, "ItemMangguojiu").setAlwaysEdible();	
+		ItemNingmengjiu = new ItemWine(3, 8F, "ItemNingmengjiu").setAlwaysEdible();	
+		ItemShiliujiu = new ItemWine(3, 8F, "ItemShiliujiu").setAlwaysEdible();
+		ItemJinputaojiu = new ItemGoldenGrapeWine(3, 20F, "ItemJinputaojiu").setAlwaysEdible();
+		ItemJinpingguojiu = new ItemGoldenAppleWine(3, 20F, "ItemJinpingguojiu").setAlwaysEdible();
+		ItemGuojiang = new ItemJam();
+		ItemBinggan = new ItemCookie(3, 10F, "ItemBinggan");	
+		ItemDangao = new ItemCakeFoodcraft();	
+		ItemCong = new ItemReed(FoodcraftPlants.BlockCong).setUnlocalizedName("ItemCong").setCreativeTab(FoodCraft.FcTabZhiwu);MinecraftForge.addGrassSeed(new ItemStack(ItemCong), 2);
+		ItemLajiao = new ItemFoodChili();
+		ItemCaidao = new Item().setUnlocalizedName("ItemCaidao").setCreativeTab(FoodCraft.FcTabJiqi).setMaxDamage(59).setMaxStackSize(1);	
+		ItemCaidaoHJ = new ItemKitchenKnifeGold();
+		ItemCaidaoZS = new ItemKitchenKnifeDiamond();			
+		ItemCaidaoLBS = new ItemKitchenKnifeEmerald();		
+		ItemJinghuashuitong = new ItemCleaningBucket(EnumHelper.addToolMaterial("JHST", 0, 16, 2.0F, 0.0F, 15));
+		ItemWrench = new ItemWrench("ItemWrench");
+		ItemTest = new ItemTest();	
 		
-		/**
-		 *------------------------------ 机器工具  ------------------------------ 
-		 */
+		/**------------------------------ Machines and Tools  ------------------------------*/
 		GameRegistry.registerItem(ItemTiepian, "ItemTiepian");
 		GameRegistry.registerItem(ItemJinghuashuitong, "ItemJinghuashuitong");
 		GameRegistry.registerItem(ItemDianluban, "ItemDianluban");
@@ -1152,16 +305,13 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemWrench, "ItemWrench");
 		GameRegistry.registerItem(ItemJinkela, "ItemJinkela");
 		GameRegistry.registerItem(ItemNull, "ItemNull");
-		/**
-		 *------------------------------ 植物  ------------------------------
-		 */ 	
+		/**------------------------------ Plants  ------------------------------*/ 	
 		GameRegistry.registerItem(ItemDami, "ItemDami");
 		GameRegistry.registerItem(ItemHuashen, "ItemHuashen");	
 		GameRegistry.registerItem(ItemDouzi, "ItemDouzi");	
 		GameRegistry.registerItem(ItemNuomi, "ItemNuomi");
 		GameRegistry.registerItem(ItemHongdou, "ItemHongdou");
 		GameRegistry.registerItem(ItemLvdou, "ItemLvdou");
-		
 		GameRegistry.registerItem(ItemBailuobo, "ItemBailuobo");
 		GameRegistry.registerItem(ItemShucai, "ItemShucai");	
 		GameRegistry.registerItem(ItemLajiao, "ItemLajiao");	
@@ -1171,8 +321,7 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemCong, "ItemCong");	
 		GameRegistry.registerItem(ItemDoujiao, "ItemDoujiao");
 		GameRegistry.registerItem(ItemHuanggua, "ItemHuanggua");
-		GameRegistry.registerItem(ItemYumi, "ItemYumi");
-		
+		GameRegistry.registerItem(ItemYumi, "ItemYumi");	
 		GameRegistry.registerItem(ItemHongshu, "ItemHongshu");
 		GameRegistry.registerItem(ItemZongye, "ItemZongye");
 		GameRegistry.registerItem(ItemPutao, "ItemPutao");	
@@ -1195,7 +344,6 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemYezi, "ItemYezi");
 		GameRegistry.registerItem(ItemYingtao, "ItemYingtao");
 		GameRegistry.registerItem(ItemXiangjiao, "ItemXiangjiao");
-		
 		GameRegistry.registerItem(ItemShucaizhong, "ItemShucaizhong");
 		GameRegistry.registerItem(ItemLajiaozhong, "ItemLajiaozhong");
 		GameRegistry.registerItem(ItemFanqiezhong, "ItemFanqiezhong");
@@ -1204,9 +352,7 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemQingjiaozhong, "ItemQingjiaozhong");
 		GameRegistry.registerItem(ItemYumizhong, "ItemYumizhong");
 		GameRegistry.registerItem(ItemHuangguazhong, "ItemHuangguazhong");
-		/**
-		 *------------------------------  饮料    ------------------------------
-		 */ 
+		/**------------------------------  Drinks  ------------------------------*/ 
 		GameRegistry.registerItem(ItemDoujiang, "ItemDoujiang");
 		GameRegistry.registerItem(ItemHongjiu, "ItemHongjiu");
 		GameRegistry.registerItem(ItemBaijiu, "ItemBaijiu");
@@ -1220,7 +366,6 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemMangguojiu, "ItemMangguojiu");
 		GameRegistry.registerItem(ItemNingmengjiu, "ItemNingmengjiu");
 		GameRegistry.registerItem(ItemShiliujiu, "ItemShiliujiu");
-		
 		GameRegistry.registerItem(ItemQiaokelishui, "ItemQiaokelishui");
 		GameRegistry.registerItem(ItemHuluobozhi, "ItemHuluobozhi");
 		GameRegistry.registerItem(ItemCha, "ItemCha");
@@ -1240,7 +385,6 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemFanqiezhi, "ItemFanqiezhi");	
 		GameRegistry.registerItem(ItemYumizhi, "ItemYumizhi");	
 		GameRegistry.registerItem(ItemHuangguazhi, "ItemHuangguazhi");	
-		
 		GameRegistry.registerItem(ItemLizizhi, "ItemLizizhi");	
 		GameRegistry.registerItem(ItemLizhizhi, "ItemLizhizhi");	
 		GameRegistry.registerItem(ItemTaozizhi, "ItemTaozizhi");	
@@ -1259,15 +403,12 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemYingtaozhi, "ItemYingtaozhi");	
 		GameRegistry.registerItem(ItemXiangjiaozhi, "ItemXiangjiaozhi");	
 		GameRegistry.registerItem(ItemYenai, "ItemYenai");	
-
-		
 		GameRegistry.registerItem(ItemQiaokelinaiice, "ItemQiaokelinaiice");
 		GameRegistry.registerItem(ItemPutaozhiice, "ItemPutaozhiice");
 		GameRegistry.registerItem(ItemPingguozhiice, "ItemPingguozhiice");
 		GameRegistry.registerItem(ItemJinputaozhiice, "ItemJinputaozhiice");
 		GameRegistry.registerItem(ItemXiguazhiice, "ItemXiguazhiice");
 		GameRegistry.registerItem(ItemJinpingguozhiice, "ItemJinpingguozhiice");
-
 		GameRegistry.registerItem(ItemLizhizhiice, "ItemLizhizhiice");
 		GameRegistry.registerItem(ItemTaozizhiice, "ItemTaozizhiice");
 		GameRegistry.registerItem(ItemJuzizhiice, "ItemJuzizhiice");
@@ -1277,9 +418,7 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemCaomeizhiice, "ItemCaomeizhiice");
 		GameRegistry.registerItem(ItemYezizhiice, "ItemYezizhiice");
 		GameRegistry.registerItem(ItemXiangjiaozhiice, "ItemXiangjiaozhiice");
-		/**
-		 *------------------------------  主食    ------------------------------
-		 */ 
+		/**------------------------------  Staple Food  ------------------------------*/ 
 		GameRegistry.registerItem(ItemMogudunjitang, "ItemMogudunjitang");
 		GameRegistry.registerItem(ItemDangeng, "ItemDangeng");
 		GameRegistry.registerItem(ItemMian, "ItemMian");
@@ -1312,9 +451,7 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemYifenchicken, "ItemYifenchicken");
 		GameRegistry.registerItem(ItemRibendoufu, "ItemRibendoufu");
 		GameRegistry.registerItem(ItemChangfen, "ItemChangfen");
-		/**
-		 *------------------------------  食材    ------------------------------
-		 */ 
+		/**------------------------------  Ingredients    ------------------------------*/ 
 		GameRegistry.registerItem(Itemwater, "Itemwater");
 		GameRegistry.registerItem(Itemfan, "Itemfan");
 		GameRegistry.registerItem(ItemMianfen, "ItemMianfen");
@@ -1346,10 +483,8 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemGalikuai, "ItemGalikuai");	
 		GameRegistry.registerItem(ItemLaweixunliao, "ItemLaweixunliao");			
 		GameRegistry.registerItem(ItemGuojiang, "ItemGuojiang");
-		
-		/**
-		 *------------------------------  小点    ------------------------------
-		 */ 
+		GameRegistry.registerItem(ItemShaojiaodeshiwu, "ItemShaojiaodeshiwu");
+		/**------------------------------  Snacks   ------------------------------*/ 
 		GameRegistry.registerItem(ItemYouyurou, "ItemYouyurou");
 		GameRegistry.registerItem(ItemShuyouyurou, "ItemShuyouyurou");
 		GameRegistry.registerItem(ItemYouyusi, "ItemYouyusi");		
@@ -1387,9 +522,7 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemKaohongshu, "ItemKaohongshu");
 		GameRegistry.registerItem(ItemKaoyumi, "ItemKaoyumi");
 		GameRegistry.registerItem(ItemBaoyumihua, "ItemBaoyumihua");
-		/**
-		 *------------------------------  甜点    ------------------------------
-		 */ 
+		/**------------------------------  Snacks    ------------------------------*/ 
 		GameRegistry.registerItem(ItemQiaokeli, "ItemQiaokeli");
 		GameRegistry.registerItem(ItemNiangao, "ItemNiangao");
 		GameRegistry.registerItem(ItemHetaosu, "ItemHetaosu");
@@ -1405,8 +538,6 @@ public class FoodcraftItems{
 		GameRegistry.registerItem(ItemBingganF, "ItemBingganF");
 		GameRegistry.registerItem(ItemBinggan, "ItemBinggan");
 		GameRegistry.registerItem(ItemDangao, "ItemDangao");
-		/**
-		 *----------------------------------------------------------------
-		 */ 
+		/**------------------------------------------------------------------------*/ 
 	}
 }

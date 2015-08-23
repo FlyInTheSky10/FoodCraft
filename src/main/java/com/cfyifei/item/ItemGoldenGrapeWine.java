@@ -2,6 +2,8 @@ package com.cfyifei.item;
 
 import java.util.Random;
 
+import com.cfyifei.FoodCraft;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
 import net.minecraft.item.ItemFood;
@@ -12,9 +14,10 @@ import net.minecraft.world.World;
 
 public class ItemGoldenGrapeWine extends ItemFood{
 
-	public ItemGoldenGrapeWine(int amount, float saturation, boolean isWolfFood, String name) {
-		super((int)saturation, saturation, isWolfFood);
+	public ItemGoldenGrapeWine(int amount, float saturation, String name) {
+		super((int)saturation, saturation, false);
 		this.setUnlocalizedName(name);
+		this.setCreativeTab(FoodCraft.FcTabYingliao);
 	}
 	    
 	public boolean hasEffect(ItemStack par1ItemStack) {

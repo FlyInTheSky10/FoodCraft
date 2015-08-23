@@ -2,7 +2,7 @@ package com.cfyifei.modelrenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.cfyifei.gui.blocks.ModelGuo;
+import com.cfyifei.gui.blocks.ModelPot;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -16,11 +16,11 @@ import net.minecraft.world.World;
 
 public class GuoRenderer extends TileEntitySpecialRenderer {
 	
-    private final ModelGuo model;
+    private final ModelPot model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/guo.png");
     
     public GuoRenderer() {
-    	this.model = new ModelGuo();
+    	this.model = new ModelPot();
     }
     public void render(double x, double y, double z) {
         GL11.glPushMatrix();

@@ -1,5 +1,6 @@
 package com.cfyifei.item;
 
+import com.cfyifei.FoodCraft;
 import com.cfyifei.api.IItemKitchenKnife;
 
 import net.minecraft.item.Item;
@@ -12,6 +13,8 @@ public class ItemKitchenKnifeDiamond extends Item implements IItemKitchenKnife {
 	public ItemKitchenKnifeDiamond() {
 		this.setMaxDamage(480);
 		this.setMaxStackSize(1);
+		this.setUnlocalizedName("ItemCaidaoZS");
+		this.setCreativeTab(FoodCraft.FcTabJiqi);
 	}
 
 	@Override

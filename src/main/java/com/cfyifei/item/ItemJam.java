@@ -7,6 +7,9 @@ import java.util.List;
 
 
 
+
+import com.cfyifei.FoodCraft;
+
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -22,23 +25,25 @@ public class ItemJam extends Item{
 	
 	public ItemJam() {
 		this.setHasSubtypes(true);
+		this.setCreativeTab(FoodCraft.FcTabShicai);
+		this.setUnlocalizedName("ItemGuojiang");
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public boolean hasEffect(ItemStack p_77636_1_) {
-		return p_77636_1_.getItemDamage() == 1;
+	public boolean hasEffect(ItemStack stack) {
+		return stack.getItemDamage() == 1;
 	}
 	
 	@SideOnly(Side.CLIENT)
-	public void getSubItems(Item p_150895_1_, CreativeTabs p_150895_2_, List p_150895_3_) {
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 0));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 1));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 2));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 3));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 4));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 5));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 6));
-		p_150895_3_.add(new ItemStack(p_150895_1_, 1, 7));
+	public void getSubItems(Item item, CreativeTabs tabs, List list) {
+		list.add(new ItemStack(item, 1, 0));
+		list.add(new ItemStack(item, 1, 1));
+		list.add(new ItemStack(item, 1, 2));
+		list.add(new ItemStack(item, 1, 3));
+		list.add(new ItemStack(item, 1, 4));
+		list.add(new ItemStack(item, 1, 5));
+		list.add(new ItemStack(item, 1, 6));
+		list.add(new ItemStack(item, 1, 7));
 	}
 	public String getUnlocalizedName(ItemStack is1) {
 		return s[is1.getItemDamage()];

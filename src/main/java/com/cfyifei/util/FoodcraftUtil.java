@@ -25,7 +25,7 @@ public class FoodcraftUtil {
 		world.spawnEntityInWorld(entityItem);
 	}
 	
-	public static void removeAnyRecipe (ItemStack ItemStack) {
+	public static void removeRecipe(ItemStack ItemStack) {
 		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 		for (int i = 0; i < recipes.size(); i++) {
 			IRecipe tmpRecipe = recipes.get(i);

@@ -2,7 +2,7 @@ package com.cfyifei.modelrenderer;
 
 import org.lwjgl.opengl.GL11;
 
-import com.cfyifei.gui.blocks.ModelGYG;
+import com.cfyifei.gui.blocks.ModelPressureCooker;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -16,11 +16,11 @@ import net.minecraft.world.World;
 
 public class GygRenderer extends TileEntitySpecialRenderer {
 	
-    private final ModelGYG model;
+    private final ModelPressureCooker model;
     private static ResourceLocation RL = new ResourceLocation("foodcraft:textures/blocks/gyg.png");
  
     public GygRenderer() {
-            this.model = new ModelGYG();
+            this.model = new ModelPressureCooker();
     }
     
     public void render(double x, double y, double z) {

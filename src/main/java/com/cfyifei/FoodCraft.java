@@ -11,20 +11,24 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
 import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.config.NERLogManager;
-import com.cfyifei.gui.blocks.ModGui;
+import com.cfyifei.gui.blocks.FoodcraftGuiBlocks;
 import com.cfyifei.item.FoodcraftItems;
+import com.cfyifei.network.NetworkMod;
+import com.cfyifei.network.PacketDispatcher;
+import com.cfyifei.network.Proxy;
 import com.cfyifei.proxy.CommonProxy;
 import com.cfyifei.util.FoodcraftSubscribeEvent;
 
 @Mod(modid="FoodCraft", name="FoodCraft", version="1.2.0")
 
-public class FoodCraft {
+public class FoodCraft implements NetworkMod {
 	public static boolean NEIIsLoad = false;
 	public static final CreativeTabs FcTabJiqi = new CreativeTabs("Jiqi") {//机器&工具
 		public Item getTabIconItem() {
-			return Item.getItemFromBlock(ModGui.Nmj);
+			return Item.getItemFromBlock(FoodcraftGuiBlocks.Nmj);
 		}
 	};
 	public static final CreativeTabs FcTabZhiwu = new CreativeTabs("Zhiwu") {//植物
@@ -61,6 +65,7 @@ public class FoodCraft {
 
 		@EventHandler
 		public void preInit(FMLPreInitializationEvent event) {
+			PacketDispatcher.initInstance("foodcraft", this);
 			NERLogManager.log("Loading foodcraft, Version: 1.2.0");
 			NEIIsLoad = Loader.isModLoaded("NotEnoughItems");
         NERConfigHandler.initConfig(event);
@@ -77,6 +82,11 @@ public class FoodCraft {
 		@EventHandler
 		public void postInit(FMLPostInitializationEvent event) {
 			proxy.postInit(event);
+		}
+
+		@Override
+		public Proxy getProxy() {
+			return proxy;
 		}
 
 }

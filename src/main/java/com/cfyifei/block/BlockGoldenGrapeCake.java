@@ -3,6 +3,7 @@ package com.cfyifei.block;
 import java.util.List;
 import java.util.Random;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockCake;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,7 +19,9 @@ public class BlockGoldenGrapeCake extends BlockCake{
 
 	public BlockGoldenGrapeCake() {
 		this.disableStats();
+		this.setHardness(0.5F).setStepSound(Block.soundTypeCloth);
 	}
+	
 	@Override
     @SideOnly(Side.CLIENT)
     public Item getItem(World worldIn, BlockPos pos) {

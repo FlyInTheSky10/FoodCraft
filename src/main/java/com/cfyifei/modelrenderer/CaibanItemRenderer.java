@@ -1,8 +1,7 @@
 package com.cfyifei.modelrenderer;
 
-import com.cfyifei.gui.blocks.ModelCaiban;
-import com.cfyifei.gui.blocks.ModelGuo;
-import com.cfyifei.gui.blocks.ModelPDG;
+import com.cfyifei.gui.blocks.ModelChoppingBoard;
+import com.cfyifei.gui.blocks.ModelPot;
 
 import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.item.ItemStack;
@@ -14,12 +13,12 @@ import net.minecraftforge.client.IItemRenderer;
 
 public class CaibanItemRenderer implements IItemRenderer {
 
-	private ModelCaiban model;
+	private ModelChoppingBoard model;
 	private TileEntity te;
 	private double x, y, z;
 
 	public CaibanItemRenderer(TileEntity tileentity, double xloc, double yloc, double zloc) {
-		model = new ModelCaiban();
+		model = new ModelChoppingBoard();
 		if (tileentity == null) {
 			return;
 		}

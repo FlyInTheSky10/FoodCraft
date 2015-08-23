@@ -3,6 +3,7 @@ package com.cfyifei.plant.items;
 import com.cfyifei.FoodCraft;
 import com.cfyifei.block.FoodcraftBlocks;
 import com.cfyifei.item.FcFood;
+import com.cfyifei.plant.blocks.FoodcraftPlants;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
@@ -16,14 +17,17 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.MinecraftForge;
 
 public class ItemSweetPotato extends FcFood implements IPlantable{
 
 	public Item seed;
 	public Block seedblock;
-	public ItemSweetPotato(Block b,int e)
+	public ItemSweetPotato(Block b, int e, String name)
     {
-        super(e, e, false, "ItemHongshu");
+        super(e, e, "ItemHongshu");
+        this.setUnlocalizedName(name);
+        MinecraftForge.addGrassSeed(new ItemStack(this), 2);
         this.setCreativeTab(FoodCraft.FcTabZhiwu);
         this.seedblock = b;
     }
@@ -54,7 +58,7 @@ public class ItemSweetPotato extends FcFood implements IPlantable{
 	}
 	@Override
 	public IBlockState getPlant(IBlockAccess world, BlockPos pos) {
-		return FoodcraftBlocks.BlockDouzi.getDefaultState();
+		return FoodcraftPlants.BlockDouzi.getDefaultState();
 	}
 	   
 

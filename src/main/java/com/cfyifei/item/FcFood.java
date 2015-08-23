@@ -11,31 +11,31 @@ import net.minecraft.world.World;
 
 public class FcFood extends ItemFood{
 	
-	public boolean e;
+	public boolean hasEffect;
 
-		public FcFood(int amount, float saturation, boolean isWolfFood, String name) {
-			super((int)saturation, saturation, isWolfFood);
-			this.setUnlocalizedName(name);
-		}
+	public FcFood(int amount, float saturation, String name) {
+		super((int)saturation, saturation, false);
+		setUnlocalizedName(name);
+	}
 		
-		public FcFood(int amount, float saturation, boolean isWolfFood, String name, boolean is) {
-			super((int)saturation, saturation, isWolfFood);
-			this.setUnlocalizedName(name);
-           e = is;
-		}
+	public FcFood(int amount, float saturation, String name, boolean Effect) {
+		super((int)saturation, saturation, false);
+		setUnlocalizedName(name);
+		hasEffect = Effect;
+	}
 		
-	    public boolean hasEffect(ItemStack par1ItemStack) {
-	        return e;
-	    }
+	public boolean hasEffect(ItemStack par1ItemStack) {
+	    return hasEffect;
+	}
 	    
-	    protected void onFoodEaten(ItemStack is, World w, EntityPlayer ep) {
-	    	if(this == FoodcraftItems.ItemZongzi || this == FoodcraftItems.ItemYuebing || this == FoodcraftItems.ItemTangyuan) {
-	    		int o;
-		    	if(!w.isRemote){
-		    	o = w.rand.nextInt(7);
+	protected void onFoodEaten(ItemStack is, World w, EntityPlayer ep) {
+	   if(this == FoodcraftItems.ItemZongzi || this == FoodcraftItems.ItemYuebing || this == FoodcraftItems.ItemTangyuan) {
+	    	int o;
+		    if(!w.isRemote) {
+		    o = w.rand.nextInt(7);
 		    	
-		    	switch(o){
-		    	case 0:
+		    switch(o) {
+		        case 0:
 		    		ep.addPotionEffect(new PotionEffect(Potion.digSpeed.id, 600, 1));
 		    		break;
 		    	case 1:
@@ -62,4 +62,3 @@ public class FcFood extends ItemFood{
 	    super.onFoodEaten(is, w, ep);
 	}
 }
-
