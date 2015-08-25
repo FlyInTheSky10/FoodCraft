@@ -26,16 +26,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockChoppingBoard extends BlockContainer {
+public class BlockChoppingBoard extends GUIBlockFoodcraft {
 	private final Random Random = new Random();
 	public BlockChoppingBoard() {
-		super(Material.wood);
 		this.setHardness(3.0f);
 		this.setBlockBounds(0F, 0F, 0F, 1F, 0.15F, 1F);
 		this.setUnlocalizedName("Caiban");
 		this.setHarvestLevel("pickaxe", 2);
 		this.setStepSound(Block.soundTypeWood);
 		this.setCreativeTab(FoodCraft.FcTabJiqi);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		GameRegistry.registerBlock(this,"Caiban");
 	}
 		@Override
@@ -43,18 +43,16 @@ public class BlockChoppingBoard extends BlockContainer {
 		return new TileEntityChoppingBoard();
 	}
 		
-		@Override
 	public int getRenderType() {
-		return -1;
+	    return 3;
 	}
-	        
-	    @Override
+	    
 	public boolean isOpaqueCube() {
-	    return false;
-	}
-	        
-	public boolean renderAsNormalBlock() {
 		return false;
+	}
+		
+	public boolean isFullCube() {
+	    return false;
 	}
 	        
 

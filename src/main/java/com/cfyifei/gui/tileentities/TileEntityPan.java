@@ -60,17 +60,13 @@ public class TileEntityPan extends TileEntityFoodcraft implements IUpdatePlayerL
 	
 	@Override
     public void update() {
-		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != Blocks.fire ||worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != FoodcraftGuiBlocks.lit_Zl){
+		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() != FoodcraftGuiBlocks.lit_Zl){
 			isfire = false;
 		}		
-		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == Blocks.fire) {
+		if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == FoodcraftGuiBlocks.lit_Zl) {
 			isfire = true;
 		}
-		else {
-			if(worldObj.getBlockState(new BlockPos(getPos().getX(), getPos().getY() - 1, getPos().getZ())).getBlock() == FoodcraftGuiBlocks.lit_Zl) {
-				isfire = true;
-			}
-		}
+		
 	  
 	        if (!this.worldObj.isRemote) {
 	        	AxisAlignedBB aabb = AxisAlignedBB.fromBounds(this.getPos().getX() - 20, this.getPos().getY() - 20, this.getPos().getZ() -20, this.getPos().getX() + 20, this.getPos().getY() + 20, this.getPos().getZ() + 20);

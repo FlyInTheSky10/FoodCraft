@@ -168,7 +168,7 @@ public class BlockStove extends BlockContainer {
     }
     
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        return Item.getItemFromBlock(this);
+        return Item.getItemFromBlock(FoodcraftGuiBlocks.Zl);
     }
 
     @SideOnly(Side.CLIENT)

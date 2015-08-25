@@ -38,10 +38,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPan extends BlockContainer {
+public class BlockPan extends GUIBlockFoodcraft {
 	
 	public BlockPan() {
-	super(Material.rock);
 	this.setHardness(3.0f);
 	this.setBlockBounds(0F, 0F, 0F, 1F, 0.3F, 1F);
 	this.setUnlocalizedName("PDG");
@@ -49,6 +48,7 @@ public class BlockPan extends BlockContainer {
 	this.setStepSound(Block.soundTypeStone);
 	this.setCreativeTab(FoodCraft.FcTabJiqi);
     this.setLightOpacity(0);
+	this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 	GameRegistry.registerBlock(this,ItemBlockPan.class, "PDG");
 	}
 	

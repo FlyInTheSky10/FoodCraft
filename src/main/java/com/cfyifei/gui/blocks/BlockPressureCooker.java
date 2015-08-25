@@ -26,15 +26,15 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPressureCooker extends BlockContainer {
+public class BlockPressureCooker extends GUIBlockFoodcraft {
 	private final Random Random = new Random();
 	public BlockPressureCooker() {
-		super(Material.rock);
 		this.setHardness(3.0f);
 		this.setUnlocalizedName("Gyg");
 		this.setHarvestLevel("pickaxe", 2);
 		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(FoodCraft.FcTabJiqi);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		GameRegistry.registerBlock(this,"Gyg");
 	}
 
@@ -43,18 +43,17 @@ public class BlockPressureCooker extends BlockContainer {
 		return new TileEntityPressureCooker();
 	}
 		
-	@Override
+	
 	public int getRenderType() {
-		return -1;
+	    return 3;
 	}
-	        
-	@Override
+	
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
-	public boolean renderAsNormalBlock() {
-		return false;
+	public boolean isFullCube() {
+	    return false;
 	}
 	      
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {

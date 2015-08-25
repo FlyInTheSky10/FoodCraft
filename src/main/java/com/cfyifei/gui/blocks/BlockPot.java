@@ -37,16 +37,16 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockPot extends BlockContainer{
+public class BlockPot extends GUIBlockFoodcraft {
 	private final Random Random = new Random();
 	public BlockPot() {
-		super(Material.rock);
 		this.setHardness(3.0f);
 		this.setBlockBounds(0F, 0F, 0F, 1F, 0.4F, 1F);
 		this.setUnlocalizedName("Guo");
 		this.setHarvestLevel("pickaxe", 2);
 		this.setStepSound(Block.soundTypeStone);
 		this.setCreativeTab(FoodCraft.FcTabJiqi);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
 		GameRegistry.registerBlock(this,ItemBlockPot.class,"Guo");
 	}
 
@@ -55,19 +55,17 @@ public class BlockPot extends BlockContainer{
 		return new TileEntityPot();
 	}
 		
-	@Override
 	public int getRenderType() {
-		return -1;
-	}
-	        
-	@Override
+        return 3;
+    }
+    
 	public boolean isOpaqueCube() {
 		return false;
 	}
 	
-	public boolean renderAsNormalBlock() {
-		return false;
-	}
+    public boolean isFullCube() {
+        return false;
+    }
 	
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
 		return Item.getItemFromBlock(FoodcraftGuiBlocks.Guo);

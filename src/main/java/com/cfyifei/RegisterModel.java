@@ -313,7 +313,6 @@ public class RegisterModel {
 		registerModelBlock(FoodcraftPlants.BlockYingtaoshu,"BlockYingtaoshu");
 		registerModelBlock(FoodcraftPlants.BlockXiangjiaoshu,"BlockXiangjiaoshu");
 		registerModelBlock(FoodcraftPlants.BlockCong,"BlockCong");
-		registerModelBlock(FoodcraftGuiBlocks.PDG,"PDG");
 	}
 public static void registerModelGJ(Item myitem, String name) {
 	Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(myitem, 0,
