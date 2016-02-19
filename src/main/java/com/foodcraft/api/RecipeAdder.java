@@ -9,7 +9,7 @@ import com.foodcraft.gui.recipes.*;
  * You can use this class to interact on Foodcraft.
  *
  */
-public class AddRecipe {
+public class RecipeAdder {
 /**
  * Add Recipe in the Mill.
  */

@@ -11,19 +11,21 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath 'net.minecraftforge.gradle:ForgeGradle:2.0.2'
     }
 }
 
-apply plugin: 'forge'
+apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+version = "1.2.0"
+group= "com.foodcraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "FoodCraft"
 
 minecraft {
-    version = "1.7.2-10.12.2.1126"
-    assetDir = "eclipse/assets"
+    version = "1.8-11.14.4.1450"
+    runDir = "run"
+    mappings = "stable_18"
+    
 }
 
 dependencies {
