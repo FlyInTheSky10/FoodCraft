@@ -10,11 +10,12 @@ public class BrewingRecipeAdder extends AbstractRecipeAdder {
     private Item input1, input2, input3;
     private ItemStack output;
 
-    public BrewingRecipeAdder(IItemStack input1, IItemStack input2, IItemStack input3, IItemStack output) {
+    public BrewingRecipeAdder(IItemStack output, IItemStack input1, IItemStack input2, IItemStack input3) {
+        this.output = MineTweakerCompact.toStack(output);
         this.input1 = MineTweakerCompact.toStack(input1).getItem();
         this.input2 = MineTweakerCompact.toStack(input2).getItem();
         this.input3 = MineTweakerCompact.toStack(input3).getItem();
-        this.output = MineTweakerCompact.toStack(output);
+
     }
 
     @Override

@@ -17,7 +17,7 @@ public class MineTweakerCompact {
      * @param xpAmount The amount of xp point you get after crafting
      */
     @ZenMethod
-    public static void addMillRecipe(IItemStack input, IItemStack output, float xpAmount) {
+    public static void addMillRecipe(IItemStack output, IItemStack input, float xpAmount) {
         MineTweakerAPI.apply(new MillRecipeAdder(input, output, xpAmount));
     }
 
@@ -30,7 +30,7 @@ public class MineTweakerCompact {
      * @param maxHeat The upper bound of required heat value
      */
     @ZenMethod
-    public static void addPanRecipe(IItemStack input, IItemStack output, float xpAmount, int minHeat, int maxHeat) {
+    public static void addPanRecipe(IItemStack output, IItemStack input, float xpAmount, int minHeat, int maxHeat) {
         MineTweakerAPI.apply(new PanRecipeAdder(input, output, xpAmount, minHeat, maxHeat));
     }
 
@@ -41,7 +41,7 @@ public class MineTweakerCompact {
      * @param xpAmount The amount of xp point you get after crafting
      */
     @ZenMethod
-    public static void addFryingRecipe(IItemStack input, IItemStack output, float xpAmount) {
+    public static void addFryingRecipe(IItemStack output, IItemStack input, float xpAmount) {
         MineTweakerAPI.apply(new FryingRecipeAdder(input, output, xpAmount));
     }
 
@@ -53,7 +53,7 @@ public class MineTweakerCompact {
      * @param output The crafting result
      */
     @ZenMethod
-    public static void addPressureCookerRecipe(IItemStack input1, IItemStack input2, IItemStack input3, IItemStack output) {
+    public static void addPressureCookerRecipe(IItemStack output, IItemStack input1, IItemStack input2, IItemStack input3) {
         MineTweakerAPI.apply(new PressureCookerRecipeAdder(input1, input2, input3, output));
     }
 
@@ -65,7 +65,7 @@ public class MineTweakerCompact {
      * @param output The crafting result
      */
     @ZenMethod
-    public static void addChoppingBoardRecipe(IItemStack input1, IItemStack input2, IItemStack input3, IItemStack output) {
+    public static void addChoppingBoardRecipe(IItemStack output, IItemStack input1, IItemStack input2, IItemStack input3) {
         MineTweakerAPI.apply(new ChoppingRecipeAdder(input1, input2, input3, output));
     }
 
@@ -77,8 +77,8 @@ public class MineTweakerCompact {
      * @param output The crafting result
      */
     @ZenMethod
-    public static void addBarrelBrewRecipe(IItemStack input1, IItemStack input2, IItemStack input3, IItemStack output) {
-        MineTweakerAPI.apply(new BrewingRecipeAdder(input1, input2, input3, output));
+    public static void addBarrelBrewRecipe(IItemStack output, IItemStack input1, IItemStack input2, IItemStack input3) {
+        MineTweakerAPI.apply(new BrewingRecipeAdder(output, input1, input2, input3));
     }
 
     /**
@@ -89,7 +89,7 @@ public class MineTweakerCompact {
      * @param isCold The flag to determine whether it's cold or not
      */
     @ZenMethod
-    public static void addBeverageMakerRecipe(IItemStack input, IItemStack output, boolean isMilk, boolean isCold) {
+    public static void addBeverageMakerRecipe(IItemStack output, IItemStack input, boolean isMilk, boolean isCold) {
         MineTweakerAPI.apply(new BeverageMakerRecipeAdder(input, output, isMilk, isCold));
     }
 
@@ -102,7 +102,7 @@ public class MineTweakerCompact {
      * @param maxHeat The upper bound of required heat value
      */
     @ZenMethod
-    public static void addPotRecipe(IItemStack[] inputStaple, IItemStack[] inputVice, IItemStack output, int minHeat, int maxHeat) {
+    public static void addPotRecipe(IItemStack output, IItemStack[] inputStaple, IItemStack[] inputVice, int minHeat, int maxHeat) {
         MineTweakerAPI.apply(new PotRecipeAdder(inputStaple, inputVice, output, minHeat, maxHeat));
     }
 
