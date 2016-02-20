@@ -19,20 +19,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public abstract class GUIBlockFoodcraft extends BlockContainer {
 
-	protected static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
-    
-	protected GUIBlockFoodcraft() {
-		super(Material.rock);
-	}
+    protected static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-	@Override
-	public abstract TileEntity createNewTileEntity(World worldIn, int meta);
-	
-	@Override
+    protected GUIBlockFoodcraft() {
+        super(Material.rock);
+    }
+
+    @Override
+    public abstract TileEntity createNewTileEntity(World worldIn, int meta);
+
+    @Override
     public void onBlockAdded(World worldIn, BlockPos pos, IBlockState state) {
         this.setDefaultFacing(worldIn, pos, state);
     }
-   
+
     public void setDefaultFacing(World worldIn, BlockPos pos, IBlockState state) {
         if (!worldIn.isRemote) {
             Block block = worldIn.getBlockState(pos.north()).getBlock();
@@ -43,20 +43,17 @@ public abstract class GUIBlockFoodcraft extends BlockContainer {
 
             if (enumfacing == EnumFacing.NORTH && block.isFullBlock() && !block1.isFullBlock()) {
                 enumfacing = EnumFacing.SOUTH;
-            }
-            else if (enumfacing == EnumFacing.SOUTH && block1.isFullBlock() && !block.isFullBlock()) {
+            } else if (enumfacing == EnumFacing.SOUTH && block1.isFullBlock() && !block.isFullBlock()) {
                 enumfacing = EnumFacing.NORTH;
-            }
-            else if (enumfacing == EnumFacing.WEST && block2.isFullBlock() && !block3.isFullBlock()) {
+            } else if (enumfacing == EnumFacing.WEST && block2.isFullBlock() && !block3.isFullBlock()) {
                 enumfacing = EnumFacing.EAST;
-            }
-            else if (enumfacing == EnumFacing.EAST && block3.isFullBlock() && !block2.isFullBlock()) {
+            } else if (enumfacing == EnumFacing.EAST && block3.isFullBlock() && !block2.isFullBlock()) {
                 enumfacing = EnumFacing.WEST;
             }
             worldIn.setBlockState(pos, state.withProperty(FACING, enumfacing), 2);
         }
     }
-    
+
     public IBlockState onBlockPlaced(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
         return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
     }
@@ -68,35 +65,35 @@ public abstract class GUIBlockFoodcraft extends BlockContainer {
     public boolean hasComparatorInputOverride() {
         return true;
     }
-    
+
     public int getComparatorInputOverride(World worldIn, BlockPos pos) {
         return Container.calcRedstone(worldIn.getTileEntity(pos));
     }
-    
+
     public int getRenderType() {
         return 3;
     }
-    
+
     @SideOnly(Side.CLIENT)
     public IBlockState getStateForEntityRender(IBlockState state) {
-    	return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
+        return this.getDefaultState().withProperty(FACING, EnumFacing.SOUTH);
     }
 
 
     public IBlockState getStateFromMeta(int meta) {
-    	EnumFacing enumfacing = EnumFacing.getFront(meta);
-    	if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
-    		enumfacing = EnumFacing.NORTH;
-    	}
-    return this.getDefaultState().withProperty(FACING, enumfacing);
+        EnumFacing enumfacing = EnumFacing.getFront(meta);
+        if (enumfacing.getAxis() == EnumFacing.Axis.Y) {
+            enumfacing = EnumFacing.NORTH;
+        }
+        return this.getDefaultState().withProperty(FACING, enumfacing);
     }
 
 
     public int getMetaFromState(IBlockState state) {
-    	return ((EnumFacing)state.getValue(FACING)).getIndex();
+        return ((EnumFacing)state.getValue(FACING)).getIndex();
     }
 
     protected BlockState createBlockState() {
-    	return new BlockState(this, new IProperty[] {FACING});
+        return new BlockState(this, new IProperty[] {FACING});
     }
 }

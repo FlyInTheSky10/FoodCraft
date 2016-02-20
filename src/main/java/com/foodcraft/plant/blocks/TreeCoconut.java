@@ -28,166 +28,164 @@ import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TreeCoconut extends BlockBush {
-	private Block fruit;
+    private Block fruit;
     public TreeCoconut(Block fruit) {
-    	this.fruit = fruit;
+        this.fruit = fruit;
         float f = 0.4F;
         this.setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, f * 2.0F, 0.5F + f);
         this.setCreativeTab(FoodCraft.FcTabPlant);
     }
-    
-	@Override
-	 public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ){ 
-		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
-		if(stack != null) {
-			if(stack.getItem() == FoodcraftItems.ItemJinkela){
-				if(canGlow(worldIn, pos.getX(),pos.getY(),pos.getZ())){
-       			glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
-       		}
-	         --stack.stackSize;
-	         if(stack.stackSize <= 0) {
-	            stack = null;
-	         }
-			}
-		}
-       return true;
-	}
 
-	
-	 public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
-	        if (!worldIn.isRemote) {
-	            super.updateTick(worldIn, pos, state, rand);
-	            if (rand.nextInt(7) == 0) {
-	            		if(canGlow(worldIn,pos.getX(),pos.getY(),pos.getZ())){
-	            			glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
-	            		}
-	            }
-	        }
-	    }
-	 private boolean canGlow(World w, int x, int y, int z){
-		if(
-		
-		isBlockAir(w, x, y + 1, z) &&
-		isBlockAir(w, x, y + 2, z) &&
-		isBlockAir(w, x, y + 3, z) &&
-		isBlockAir(w, x, y + 4, z) &&
-		isBlockAir(w, x, y + 5, z) &&
-		isBlockAir(w, x, y + 6, z) &&
-		isBlockAir(w, x, y + 7, z) &&
-		isBlockAir(w, x - 1, y + 6, z) &&
-		isBlockAir(w, x - 1, y + 7, z) &&
-		isBlockAir(w, x + 1, y + 6, z) &&
-		isBlockAir(w, x + 1, y + 7, z) &&
-		isBlockAir(w, x, y + 6, z - 1) &&
-		isBlockAir(w, x, y + 7, z - 1) &&
-		isBlockAir(w, x, y + 6, z + 1) &&
-		isBlockAir(w, x, y + 7, z + 1) &&
-		isBlockAir(w, x - 2, y + 6, z) &&
-		isBlockAir(w, x - 3, y + 6, z) &&
-		isBlockAir(w, x - 3, y + 5, z) &&
-		isBlockAir(w, x - 4, y + 5, z) &&
-		isBlockAir(w, x + 2, y + 6, z) &&
-		isBlockAir(w, x + 3, y + 6, z) &&
-		isBlockAir(w, x + 3, y + 5, z) &&
-		isBlockAir(w, x + 4, y + 5, z) &&
-		isBlockAir(w, x, y + 6, z - 2) &&
-		isBlockAir(w, x, y + 6, z - 3) &&
-		isBlockAir(w, x, y + 5, z - 3) &&
-		isBlockAir(w, x, y + 5, z - 4) &&
-		isBlockAir(w, x, y + 6, z + 2) &&
-		isBlockAir(w, x, y + 6, z + 3) &&
-		isBlockAir(w, x, y + 5, z + 3) &&
-		isBlockAir(w, x, y + 5, z + 4) &&
-		isBlockAir(w, x, y + 5, z + 1) &&
-		isBlockAir(w, x, y + 5, z - 1) &&
-		isBlockAir(w, x + 1, y + 5, z) &&
-		isBlockAir(w, x - 1, y + 5, z)){
-			return true;
-		}
-		else{
-		return false;
-		}
-	}
-	
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+        ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
+        if(stack != null) {
+            if(stack.getItem() == FoodcraftItems.ItemJinkela) {
+                if(canGlow(worldIn, pos.getX(),pos.getY(),pos.getZ())) {
+                    glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
+                }
+                --stack.stackSize;
+                if(stack.stackSize <= 0) {
+                    stack = null;
+                }
+            }
+        }
+        return true;
+    }
+
+
+    public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand) {
+        if (!worldIn.isRemote) {
+            super.updateTick(worldIn, pos, state, rand);
+            if (rand.nextInt(7) == 0) {
+                if(canGlow(worldIn,pos.getX(),pos.getY(),pos.getZ())) {
+                    glowTree(worldIn, pos.getX(),pos.getY(),pos.getZ());
+                }
+            }
+        }
+    }
+    private boolean canGlow(World w, int x, int y, int z) {
+        if(
+
+            isBlockAir(w, x, y + 1, z) &&
+            isBlockAir(w, x, y + 2, z) &&
+            isBlockAir(w, x, y + 3, z) &&
+            isBlockAir(w, x, y + 4, z) &&
+            isBlockAir(w, x, y + 5, z) &&
+            isBlockAir(w, x, y + 6, z) &&
+            isBlockAir(w, x, y + 7, z) &&
+            isBlockAir(w, x - 1, y + 6, z) &&
+            isBlockAir(w, x - 1, y + 7, z) &&
+            isBlockAir(w, x + 1, y + 6, z) &&
+            isBlockAir(w, x + 1, y + 7, z) &&
+            isBlockAir(w, x, y + 6, z - 1) &&
+            isBlockAir(w, x, y + 7, z - 1) &&
+            isBlockAir(w, x, y + 6, z + 1) &&
+            isBlockAir(w, x, y + 7, z + 1) &&
+            isBlockAir(w, x - 2, y + 6, z) &&
+            isBlockAir(w, x - 3, y + 6, z) &&
+            isBlockAir(w, x - 3, y + 5, z) &&
+            isBlockAir(w, x - 4, y + 5, z) &&
+            isBlockAir(w, x + 2, y + 6, z) &&
+            isBlockAir(w, x + 3, y + 6, z) &&
+            isBlockAir(w, x + 3, y + 5, z) &&
+            isBlockAir(w, x + 4, y + 5, z) &&
+            isBlockAir(w, x, y + 6, z - 2) &&
+            isBlockAir(w, x, y + 6, z - 3) &&
+            isBlockAir(w, x, y + 5, z - 3) &&
+            isBlockAir(w, x, y + 5, z - 4) &&
+            isBlockAir(w, x, y + 6, z + 2) &&
+            isBlockAir(w, x, y + 6, z + 3) &&
+            isBlockAir(w, x, y + 5, z + 3) &&
+            isBlockAir(w, x, y + 5, z + 4) &&
+            isBlockAir(w, x, y + 5, z + 1) &&
+            isBlockAir(w, x, y + 5, z - 1) &&
+            isBlockAir(w, x + 1, y + 5, z) &&
+            isBlockAir(w, x - 1, y + 5, z)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private void glowTree(World w, int x, int y, int z) {
-		w.setBlockToAir(new BlockPos(x, y, z));
-		//A
-		setBlockToTree(w, x, y, z,Blocks.log);
-		setBlockToTree(w, x, y + 1, z,Blocks.log);
-		setBlockToTree(w, x, y + 2, z,Blocks.log);
-		setBlockToTree(w, x, y + 3, z,Blocks.log);
-		setBlockToTree(w, x, y + 4, z,Blocks.log);
-		setBlockToTree(w, x, y + 5, z,Blocks.log);
-		setBlockToTree(w, x, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x, y + 7, z,Blocks.leaves);
-		
-		//-x
-		setBlockToTree(w, x - 1, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x - 1, y + 7, z,Blocks.leaves);
-		//+x
-		setBlockToTree(w, x + 1, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x + 1, y + 7, z,Blocks.leaves);
-		//-z
-		setBlockToTree(w, x, y + 6, z - 1,Blocks.leaves);
-		setBlockToTree(w, x, y + 7, z - 1,Blocks.leaves);
-		//+z
-		setBlockToTree(w, x, y + 6, z + 1,Blocks.leaves);
-		setBlockToTree(w, x, y + 7, z + 1,Blocks.leaves);
-		
-		//-x leaves
-		setBlockToTree(w, x - 2, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x - 3, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x - 3, y + 5, z,Blocks.leaves);
-		setBlockToTree(w, x - 4, y + 5, z,Blocks.leaves);
-		//+x leaves
-		setBlockToTree(w, x + 2, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x + 3, y + 6, z,Blocks.leaves);
-		setBlockToTree(w, x + 3, y + 5, z,Blocks.leaves);
-		setBlockToTree(w, x + 4, y + 5, z,Blocks.leaves);
-		
-		//-z leaves
-		setBlockToTree(w, x, y + 6, z - 2,Blocks.leaves);
-		setBlockToTree(w, x, y + 6, z - 3,Blocks.leaves);
-		setBlockToTree(w, x, y + 5, z - 3,Blocks.leaves);
-		setBlockToTree(w, x, y + 5, z - 4,Blocks.leaves);
-		//+z leaves
-		setBlockToTree(w, x, y + 6, z + 2,Blocks.leaves);
-		setBlockToTree(w, x, y + 6, z + 3,Blocks.leaves);
-		setBlockToTree(w, x, y + 5, z + 3,Blocks.leaves);
-		setBlockToTree(w, x, y + 5, z + 4,Blocks.leaves);
-		
-		//fruit
-		setBlockToFruit(w, x, y + 5, z + 1,fruit);
-		setBlockToFruit(w, x, y + 5, z - 1,fruit);
-		setBlockToFruit(w, x + 1, y + 5, z,fruit);
-		setBlockToFruit(w, x - 1, y + 5, z,fruit);
-	}
+        w.setBlockToAir(new BlockPos(x, y, z));
+        //A
+        setBlockToTree(w, x, y, z,Blocks.log);
+        setBlockToTree(w, x, y + 1, z,Blocks.log);
+        setBlockToTree(w, x, y + 2, z,Blocks.log);
+        setBlockToTree(w, x, y + 3, z,Blocks.log);
+        setBlockToTree(w, x, y + 4, z,Blocks.log);
+        setBlockToTree(w, x, y + 5, z,Blocks.log);
+        setBlockToTree(w, x, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x, y + 7, z,Blocks.leaves);
 
-	private void setBlockToTree(World w, int x, int y, int z, Block leaves) {
-		if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
-				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
-				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-				|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
-			w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
-		}
-	}
-		private void setBlockToFruit(World w, int x, int y, int z, Block leaves) {
-			if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
-				w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
-			}
-	}
-		private boolean isBlockAir(World w, int x, int y, int z){
-			if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air 
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves 
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
-					|| w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves){
-				return true;
-			}
-			else{
-			return false;
-			}
-		}
+        //-x
+        setBlockToTree(w, x - 1, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x - 1, y + 7, z,Blocks.leaves);
+        //+x
+        setBlockToTree(w, x + 1, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x + 1, y + 7, z,Blocks.leaves);
+        //-z
+        setBlockToTree(w, x, y + 6, z - 1,Blocks.leaves);
+        setBlockToTree(w, x, y + 7, z - 1,Blocks.leaves);
+        //+z
+        setBlockToTree(w, x, y + 6, z + 1,Blocks.leaves);
+        setBlockToTree(w, x, y + 7, z + 1,Blocks.leaves);
+
+        //-x leaves
+        setBlockToTree(w, x - 2, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x - 3, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x - 3, y + 5, z,Blocks.leaves);
+        setBlockToTree(w, x - 4, y + 5, z,Blocks.leaves);
+        //+x leaves
+        setBlockToTree(w, x + 2, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x + 3, y + 6, z,Blocks.leaves);
+        setBlockToTree(w, x + 3, y + 5, z,Blocks.leaves);
+        setBlockToTree(w, x + 4, y + 5, z,Blocks.leaves);
+
+        //-z leaves
+        setBlockToTree(w, x, y + 6, z - 2,Blocks.leaves);
+        setBlockToTree(w, x, y + 6, z - 3,Blocks.leaves);
+        setBlockToTree(w, x, y + 5, z - 3,Blocks.leaves);
+        setBlockToTree(w, x, y + 5, z - 4,Blocks.leaves);
+        //+z leaves
+        setBlockToTree(w, x, y + 6, z + 2,Blocks.leaves);
+        setBlockToTree(w, x, y + 6, z + 3,Blocks.leaves);
+        setBlockToTree(w, x, y + 5, z + 3,Blocks.leaves);
+        setBlockToTree(w, x, y + 5, z + 4,Blocks.leaves);
+
+        //fruit
+        setBlockToFruit(w, x, y + 5, z + 1,fruit);
+        setBlockToFruit(w, x, y + 5, z - 1,fruit);
+        setBlockToFruit(w, x + 1, y + 5, z,fruit);
+        setBlockToFruit(w, x - 1, y + 5, z,fruit);
+    }
+
+    private void setBlockToTree(World w, int x, int y, int z, Block leaves) {
+        if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves) {
+            w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
+        }
+    }
+    private void setBlockToFruit(World w, int x, int y, int z, Block leaves) {
+        if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves) {
+            w.setBlockState(new BlockPos(x, y, z),leaves.getDefaultState());
+        }
+    }
+    private boolean isBlockAir(World w, int x, int y, int z) {
+        if(w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.air
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == Blocks.leaves2
+                || w.getBlockState(new BlockPos(x, y, z)).getBlock() == FoodcraftPlants.FCleaves) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

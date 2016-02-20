@@ -57,41 +57,40 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBeverageMaking extends GUIBlockFoodcraft {
 
-	private boolean ifburn;
-	private static boolean EE;
-	
-	public BlockBeverageMaking(boolean ifb) {
-		this.setHardness(3f);
-		this.setHarvestLevel("pickaxe", 2);
-		this.setStepSound(Block.soundTypeStone);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		if(!ifb) {
-			this.setUnlocalizedName("Tpj");
-			this.setCreativeTab(FoodCraft.FcTabMachine);
-			GameRegistry.registerBlock(this,"Tpj");
-		}
-		else {
-			this.setUnlocalizedName("litTpj");
-			this.setLightLevel(0.875F);
-			GameRegistry.registerBlock(this,"lit_Tpj");
-		}
-		ifburn = ifb;
-	}
+    private boolean ifburn;
+    private static boolean EE;
+
+    public BlockBeverageMaking(boolean ifb) {
+        this.setHardness(3f);
+        this.setHarvestLevel("pickaxe", 2);
+        this.setStepSound(Block.soundTypeStone);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        if(!ifb) {
+            this.setUnlocalizedName("Tpj");
+            this.setCreativeTab(FoodCraft.FcTabMachine);
+            GameRegistry.registerBlock(this,"Tpj");
+        } else {
+            this.setUnlocalizedName("litTpj");
+            this.setLightLevel(0.875F);
+            GameRegistry.registerBlock(this,"lit_Tpj");
+        }
+        ifburn = ifb;
+    }
 
 
-	@Override
-	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityBeverageMaking();
-	}
-	
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ){
-		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
-		playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_Tpj, worldIn, pos.getX(), pos.getY(), pos.getZ());
+    @Override
+    public TileEntity createNewTileEntity(World var1, int var2) {
+        return new TileEntityBeverageMaking();
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+        ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
+        playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_Tpj, worldIn, pos.getX(), pos.getY(), pos.getZ());
         return true;
-	}
-	
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+    }
+
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
         if (!EE) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
             if (tileentity instanceof TileEntityBeverageMaking) {
@@ -99,34 +98,33 @@ public class BlockBeverageMaking extends GUIBlockFoodcraft {
                 worldIn.updateComparatorOutputLevel(pos, this);
             }
         }
-	super.breakBlock(worldIn, pos, state);
+        super.breakBlock(worldIn, pos, state);
     }
-	 
-	public static void setState(boolean active, World worldIn, BlockPos pos) {
-		IBlockState iblockstate = worldIn.getBlockState(pos);
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-		EE = true;
-	        if (active) {
-	        	worldIn.setBlockState(pos, FoodcraftGuiBlocks.lit_Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-	            worldIn.setBlockState(pos, FoodcraftGuiBlocks.lit_Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-	        }
-	        else {
-	            worldIn.setBlockState(pos, FoodcraftGuiBlocks.Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-	            worldIn.setBlockState(pos, FoodcraftGuiBlocks.Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-	        }
-	        EE = false;
-	        if (tileentity != null) {
-	            tileentity.validate();
-	            worldIn.setTileEntity(pos, tileentity);
-	        }
-	}
-	    
+
+    public static void setState(boolean active, World worldIn, BlockPos pos) {
+        IBlockState iblockstate = worldIn.getBlockState(pos);
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        EE = true;
+        if (active) {
+            worldIn.setBlockState(pos, FoodcraftGuiBlocks.lit_Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, FoodcraftGuiBlocks.lit_Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+        } else {
+            worldIn.setBlockState(pos, FoodcraftGuiBlocks.Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+            worldIn.setBlockState(pos, FoodcraftGuiBlocks.Tpj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
+        }
+        EE = false;
+        if (tileentity != null) {
+            tileentity.validate();
+            worldIn.setTileEntity(pos, tileentity);
+        }
+    }
+
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(FoodcraftGuiBlocks.Tpj);
     }
 
     @SideOnly(Side.CLIENT)
     public Item getItem(World worldIn, BlockPos pos) {
-    	return Item.getItemFromBlock(FoodcraftGuiBlocks.Tpj);
+        return Item.getItemFromBlock(FoodcraftGuiBlocks.Tpj);
     }
 }

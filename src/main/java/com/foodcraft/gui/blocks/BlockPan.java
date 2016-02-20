@@ -41,74 +41,74 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPan extends GUIBlockFoodcraft {
-	
-	public BlockPan() {
-	this.setHardness(3.0f);
-	this.setBlockBounds(0F, 0F, 0F, 1F, 0.3F, 1F);
-	this.setUnlocalizedName("PDG");
-	this.setHarvestLevel("pickaxe", 2);
-	this.setStepSound(Block.soundTypeStone);
-	this.setCreativeTab(FoodCraft.FcTabMachine);
-    this.setLightOpacity(0);
-	this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-	GameRegistry.registerBlock(this,ItemBlockPan.class, "PDG");
-	}
-	
-	@Override
-	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityPan();
-	}
-	        
-	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-		return Item.getItemFromBlock(FoodcraftGuiBlocks.PDG);
-	}
-	
-	@SideOnly(Side.CLIENT)
-	public Item getItem(World w, int x, int y, int z) {
-		return Item.getItemFromBlock(FoodcraftGuiBlocks.PDG);
-	}
-	
+
+    public BlockPan() {
+        this.setHardness(3.0f);
+        this.setBlockBounds(0F, 0F, 0F, 1F, 0.3F, 1F);
+        this.setUnlocalizedName("PDG");
+        this.setHarvestLevel("pickaxe", 2);
+        this.setStepSound(Block.soundTypeStone);
+        this.setCreativeTab(FoodCraft.FcTabMachine);
+        this.setLightOpacity(0);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        GameRegistry.registerBlock(this,ItemBlockPan.class, "PDG");
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World var1, int var2) {
+        return new TileEntityPan();
+    }
+
+    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+        return Item.getItemFromBlock(FoodcraftGuiBlocks.PDG);
+    }
+
+    @SideOnly(Side.CLIENT)
+    public Item getItem(World w, int x, int y, int z) {
+        return Item.getItemFromBlock(FoodcraftGuiBlocks.PDG);
+    }
+
     public int getRenderType() {
         return 3;
     }
-    
-	public boolean isOpaqueCube() {
-		return false;
-	}
-	
+
+    public boolean isOpaqueCube() {
+        return false;
+    }
+
     public boolean isFullCube() {
         return false;
     }
-	
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-	ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
-	playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_PDG, worldIn,pos.getX(), pos.getY(), pos.getZ());
-	return true;
-	    	}
-	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-		TileEntity tileentity = worldIn.getTileEntity(pos);
-	if (tileentity instanceof TileEntityPan) {
-		InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityPan)tileentity);
-		worldIn.updateComparatorOutputLevel(pos, this);
-	}
-	super.breakBlock(worldIn, pos, state);
-	}
-	
-	   
-	   
-	public static int getFrequencyOfUse(ItemStack item) {
-		if (item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
-		return item.getTagCompound().getInteger("frequencyOfUse");
-	}
-	    	 
-	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)  {
-	if (stack.getTagCompound() != null) {
-		int xh = getFrequencyOfUse(stack);
-		TileEntityPan tep = (TileEntityPan)worldIn.getTileEntity(pos);
-		tep.frequencyOfUse = xh;
-		}
-	}
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+        ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
+        playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_PDG, worldIn,pos.getX(), pos.getY(), pos.getZ());
+        return true;
+    }
+    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
+        TileEntity tileentity = worldIn.getTileEntity(pos);
+        if (tileentity instanceof TileEntityPan) {
+            InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityPan)tileentity);
+            worldIn.updateComparatorOutputLevel(pos, this);
+        }
+        super.breakBlock(worldIn, pos, state);
+    }
+
+
+
+    public static int getFrequencyOfUse(ItemStack item) {
+        if (item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
+        return item.getTagCompound().getInteger("frequencyOfUse");
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack)  {
+        if (stack.getTagCompound() != null) {
+            int xh = getFrequencyOfUse(stack);
+            TileEntityPan tep = (TileEntityPan)worldIn.getTileEntity(pos);
+            tep.frequencyOfUse = xh;
+        }
+    }
 }
 

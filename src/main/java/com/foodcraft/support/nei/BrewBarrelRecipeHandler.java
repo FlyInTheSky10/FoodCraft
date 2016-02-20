@@ -27,23 +27,22 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class BrewBarrelRecipeHandler extends TemplateRecipeHandler {
-	//*********************************************************************************************************************************************************************
-	public class SmeltingPair extends CachedRecipe
-    {
+    //*********************************************************************************************************************************************************************
+    public class SmeltingPair extends CachedRecipe {
         public SmeltingPair(FoodcraftItemStack foodcraftItemStack, ItemStack result) {
-           ItemStack[] is = new ItemStack[foodcraftItemStack.getItems().length];
-        int w = 0;
-           for(Item item : foodcraftItemStack.getItems()){
-        		is[w] = new ItemStack(item);
+            ItemStack[] is = new ItemStack[foodcraftItemStack.getItems().length];
+            int w = 0;
+            for(Item item : foodcraftItemStack.getItems()) {
+                is[w] = new ItemStack(item);
                 w += 1;
-           }
-           ingred = new PositionedStack[foodcraftItemStack.getItems().length];
-        	this.ingred[0] = new PositionedStack(is[0], 51 - 5, 28 - 11);
-        	this.ingred[1] = new PositionedStack(is[1], 75 - 5, 28 - 11);
-        	this.ingred[2] = new PositionedStack(is[2], 98 - 5, 28 - 11);
-        	
+            }
+            ingred = new PositionedStack[foodcraftItemStack.getItems().length];
+            this.ingred[0] = new PositionedStack(is[0], 51 - 5, 28 - 11);
+            this.ingred[1] = new PositionedStack(is[1], 75 - 5, 28 - 11);
+            this.ingred[2] = new PositionedStack(is[2], 98 - 5, 28 - 11);
+
             this.result = new PositionedStack(result, 135 - 5, 55 - 11);
-            
+
             water =  new PositionedStack(new ItemStack(FoodcraftItems.Itemwater), 34 - 5, 55 - 11);
         }
 
@@ -63,18 +62,18 @@ public class BrewBarrelRecipeHandler extends TemplateRecipeHandler {
             stacks.add(water);
             return stacks;
         }
-        
+
         PositionedStack ingred[];
         PositionedStack result;
         PositionedStack water;
     }
-	//*********************************************************************************************************************************************************************
-  //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-    	transferRects.add(new RecipeTransferRect(new Rectangle(118 - 5, 30 - 11, 22, 17), "NtBrewing"));
+        transferRects.add(new RecipeTransferRect(new Rectangle(118 - 5, 30 - 11, 22, 17), "NtBrewing"));
     }
 
     @Override
@@ -123,8 +122,8 @@ public class BrewBarrelRecipeHandler extends TemplateRecipeHandler {
         Map<FoodcraftItemStack, ItemStack> recipes = (Map<FoodcraftItemStack, ItemStack>) RecipeBrewBarrel.brewing().getSmeltingList();
         for (Entry<FoodcraftItemStack, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[0]), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[1]), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[2]), ingredient)) {
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[1]), ingredient) &&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[2]), ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
                 arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);

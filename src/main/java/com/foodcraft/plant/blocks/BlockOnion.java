@@ -54,8 +54,7 @@ public class BlockOnion extends Block implements IPlantable {
                     if (j == 15) {
                         worldIn.setBlockState(pos.up(), this.getDefaultState());
                         worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(0)), 4);
-                    }
-                    else {
+                    } else {
                         worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(j + 1)), 4);
                     }
                 }
@@ -69,11 +68,9 @@ public class BlockOnion extends Block implements IPlantable {
 
         if (block == this) {
             return true;
-        }
-        else if (block != Blocks.grass && block != Blocks.dirt && block != Blocks.sand) {
+        } else if (block != Blocks.grass && block != Blocks.dirt && block != Blocks.sand) {
             return false;
-        }
-        else {
+        } else {
             Iterator iterator = EnumFacing.Plane.HORIZONTAL.iterator();
             EnumFacing enumfacing;
 
@@ -83,8 +80,7 @@ public class BlockOnion extends Block implements IPlantable {
                 }
 
                 enumfacing = (EnumFacing)iterator.next();
-            }
-            while (worldIn.getBlockState(pos.offset(enumfacing).down()).getBlock().getMaterial() != Material.water);
+            } while (worldIn.getBlockState(pos.offset(enumfacing).down()).getBlock().getMaterial() != Material.water);
 
             return true;
         }
@@ -100,8 +96,7 @@ public class BlockOnion extends Block implements IPlantable {
     protected final boolean checkForDrop(World worldIn, BlockPos p_176353_2_, IBlockState state) {
         if (this.canBlockStay(worldIn, p_176353_2_)) {
             return true;
-        }
-        else {
+        } else {
             this.dropBlockAsItem(worldIn, p_176353_2_, state, 0);
             worldIn.setBlockToAir(p_176353_2_);
             return false;
@@ -118,7 +113,7 @@ public class BlockOnion extends Block implements IPlantable {
 
     /**
      * Get the Item that this Block should drop when harvested.
-     *  
+     *
      * @param fortune the level of the Fortune enchantment on the player's tool
      */
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
