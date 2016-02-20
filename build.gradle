@@ -22,7 +22,7 @@ group= "com.foodcraft" // http://maven.apache.org/guides/mini/guide-naming-conve
 archivesBaseName = "FoodCraft"
 
 minecraft {
-    version = "1.8-11.14.4.1450"
+    version = "1.8-11.14.4.1563"
     runDir = "run"
     mappings = "stable_18"
     

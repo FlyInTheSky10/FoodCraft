@@ -14,19 +14,19 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-public class GuiPerssureCooker extends GuiContainer{
+public class GuiPerssureCooker extends GuiContainer {
 
-	private TileEntityPressureCooker tile;
+    private TileEntityPressureCooker tile;
 
-	public GuiPerssureCooker(InventoryPlayer playerInv, TileEntityPressureCooker tileEntityGyg) {
-		super(new ContainerPressureCooker(playerInv, tileEntityGyg));
-		this.tile = tileEntityGyg;
-		this.doesGuiPauseGame();
-	}
+    public GuiPerssureCooker(InventoryPlayer playerInv, TileEntityPressureCooker tileEntityGyg) {
+        super(new ContainerPressureCooker(playerInv, tileEntityGyg));
+        this.tile = tileEntityGyg;
+        this.doesGuiPauseGame();
+    }
 
-	@Override
-	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+    @Override
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.renderEngine.bindTexture(new ResourceLocation("foodcraft", "textures/gui/container/gyg.png"));
         int k = (this.width - this.xSize) / 2;//x
         int l = (this.height - this.ySize) / 2;//y
@@ -41,10 +41,10 @@ public class GuiPerssureCooker extends GuiContainer{
         int i2 = this.tile.getWater();
         this.drawTexturedModalRect(k + 18, l + 14 + 58 - i2, 176, 31 + 58 - i2, 11,(int) (58 * ((float)i2 / 58)));
     }
-	
-	@Override
-	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-		String s = StatCollector.translateToLocal("TitleGyg");
-		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-	}
+
+    @Override
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        String s = StatCollector.translateToLocal("TitleGyg");
+        this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
+    }
 }

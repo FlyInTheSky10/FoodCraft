@@ -10,20 +10,20 @@ import net.minecraft.world.World;
 
 public class ItemKitchenKnifeGold extends Item implements IItemKitchenKnife {
 
-	public ItemKitchenKnifeGold() {
-		this.setMaxDamage(32);
-		this.setMaxStackSize(1);
-		this.setUnlocalizedName("ItemCaidaoHJ");
-		this.setCreativeTab(FoodCraft.FcTabMachine);
-	}
+    public ItemKitchenKnifeGold() {
+        this.setMaxDamage(32);
+        this.setMaxStackSize(1);
+        this.setUnlocalizedName("ItemCaidaoHJ");
+        this.setCreativeTab(FoodCraft.FcTabMachine);
+    }
 
-	@Override
-	public int getMaxUses() {
-		return 32;
-	}
-	
-	@Override
-	public int event(World world, BlockPos bp, ItemStack Result, int q){
-		return 1;
-	}
+    @Override
+    public int getMaxUses() {
+        return 32;
+    }
+
+    @Override
+    public int event(World world, BlockPos bp, ItemStack Result, int q) {
+        return 1;
+    }
 }

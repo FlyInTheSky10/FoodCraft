@@ -39,70 +39,70 @@ import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.init.FoodcraftItems;
 
 public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUpdatePlayerListBox {
-	
-	
-	public int tableBurnTime = 0;
-	public int maxBurnTime = 0;
-	public int currentItemBurnTime = 0;
-	public int furnaceCookTime;
-	public int water;
-	public int coldBurnTime;
-	public int currentItemcoldBurnTime;
-	public int milk;
-	private ItemStack cai;
-	private ItemStack coldcai;
-	private boolean iswater;
-	private boolean iswater2;
 
-	public TileEntityBeverageMaking() {
-		this.stack = new ItemStack[5];
-	}
-	@Override
+
+    public int tableBurnTime = 0;
+    public int maxBurnTime = 0;
+    public int currentItemBurnTime = 0;
+    public int furnaceCookTime;
+    public int water;
+    public int coldBurnTime;
+    public int currentItemcoldBurnTime;
+    public int milk;
+    private ItemStack cai;
+    private ItemStack coldcai;
+    private boolean iswater;
+    private boolean iswater2;
+
+    public TileEntityBeverageMaking() {
+        this.stack = new ItemStack[5];
+    }
+    @Override
     public void update() {
-		
-		boolean flag = this.tableBurnTime > 0;
-	    boolean flag1 = false;
-	    boolean flag1_ = false;
-	        
-	        if (this.tableBurnTime > 0) {
-	            --this.tableBurnTime; 
-	        }
-	        if (this.coldBurnTime > 0) {
-	            --this.coldBurnTime;   
-	        }
-	        
-	        if (!this.worldObj.isRemote) {
-	        	iswater = gettp();
 
-	            if (this.tableBurnTime == 0 && this.hotcanSmelt()) {
-	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[3]);
+        boolean flag = this.tableBurnTime > 0;
+        boolean flag1 = false;
+        boolean flag1_ = false;
 
-	                if (this.tableBurnTime > 0) {
-	                    flag1 = true;
+        if (this.tableBurnTime > 0) {
+            --this.tableBurnTime;
+        }
+        if (this.coldBurnTime > 0) {
+            --this.coldBurnTime;
+        }
 
-	                    if (this.stack[3] != null) {
-	                        --this.stack[3].stackSize;
+        if (!this.worldObj.isRemote) {
+            iswater = gettp();
 
-	                        if (this.stack[3].stackSize == 0) {
-	                            this.stack[3] = stack[3].getItem().getContainerItem(stack[3]);
-	                        }
-	                    }
-	                }
-	            }
+            if (this.tableBurnTime == 0 && this.hotcanSmelt()) {
+                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[3]);
 
-	            if (this.isBurning() && this.hotcanSmelt()) {
-	                ++this.furnaceCookTime;
+                if (this.tableBurnTime > 0) {
+                    flag1 = true;
 
-	                if (this.furnaceCookTime == 350) {
-	                    this.furnaceCookTime = 0;
-	                    this.hotsmeltItem();
-	                    flag1 = true;
-	                }
-	            }
-	                BlockBeverageMaking.setState(this.isBurning() || iscold(), this.worldObj, this.pos);
+                    if (this.stack[3] != null) {
+                        --this.stack[3].stackSize;
 
-	          iswater2 = gettp2();
-	        if (this.coldBurnTime == 0 && this.coldcanSmelt()) {
+                        if (this.stack[3].stackSize == 0) {
+                            this.stack[3] = stack[3].getItem().getContainerItem(stack[3]);
+                        }
+                    }
+                }
+            }
+
+            if (this.isBurning() && this.hotcanSmelt()) {
+                ++this.furnaceCookTime;
+
+                if (this.furnaceCookTime == 350) {
+                    this.furnaceCookTime = 0;
+                    this.hotsmeltItem();
+                    flag1 = true;
+                }
+            }
+            BlockBeverageMaking.setState(this.isBurning() || iscold(), this.worldObj, this.pos);
+
+            iswater2 = gettp2();
+            if (this.coldBurnTime == 0 && this.coldcanSmelt()) {
                 this.currentItemcoldBurnTime = this.coldBurnTime = getcold();
 
                 if (this.coldBurnTime > 0) {
@@ -128,77 +128,77 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
                 }
             }
 
-	        if (flag1_) {
-	            this.markDirty();
-	        }
-	        if (stack[0] != null) {
-	        	if(water != 8) {
-	        	if(milk == 0) {
-	        	if(stack[0].getItem() == Items.potionitem) {     		
-	        			stack[0] = new ItemStack(Items.glass_bottle);
-	        			++water;	        			        		
-	        		}	
-	        	}
-	    		if(stack[0].getItem().equals(FoodcraftItems.Itemwater)) {
-        			--stack[0].stackSize;
-        			++water;	      	
-        		}	
-	        }
-	        	
-	        	if (stack[0] != null) {
-				if(milk != 8) {
-					if(water == 0) {
-		        	if(stack[0].getItem() == Items.milk_bucket) {
-		        			stack[0] = new ItemStack(Items.bucket);
-		        			++milk;	        			        		
-		        		}	
-		        	}
-	        }
-	  }
-	        	if (stack[0] != null) {
-	        		if(stack[0].stackSize <= 0) {
-	        			stack[0] = null;
-	        		}
-	        	}
-	        }
-	  }
-	}
-		 
-	private int getcold() {
-         if(stack[4] != null){
-        	 if(stack[4].getItem() == Item.getItemFromBlock(Blocks.ice))return 2500;
-         }
-		return 0;
-	}
+            if (flag1_) {
+                this.markDirty();
+            }
+            if (stack[0] != null) {
+                if(water != 8) {
+                    if(milk == 0) {
+                        if(stack[0].getItem() == Items.potionitem) {
+                            stack[0] = new ItemStack(Items.glass_bottle);
+                            ++water;
+                        }
+                    }
+                    if(stack[0].getItem().equals(FoodcraftItems.Itemwater)) {
+                        --stack[0].stackSize;
+                        ++water;
+                    }
+                }
 
-	private boolean gettp2() {	
-		if(stack[1] !=null) {
-			if(water >= 1) {
-				ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], false, true);
-				if(is1 != null) {
-					coldcai = is1;
-					return true;
-				}								
-			}
-						
-			if(milk >= 1) {
-				ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], true, true);
-				if(is1 != null) {
-					coldcai = is1;
-					return false;
-				}								
-			}
-			coldcai = null;
-		}
-		return false;
-	}
+                if (stack[0] != null) {
+                    if(milk != 8) {
+                        if(water == 0) {
+                            if(stack[0].getItem() == Items.milk_bucket) {
+                                stack[0] = new ItemStack(Items.bucket);
+                                ++milk;
+                            }
+                        }
+                    }
+                }
+                if (stack[0] != null) {
+                    if(stack[0].stackSize <= 0) {
+                        stack[0] = null;
+                    }
+                }
+            }
+        }
+    }
 
-	@Override
-	public String getName() {	
-		return "BeverageMaking";
-	}
+    private int getcold() {
+        if(stack[4] != null) {
+            if(stack[4].getItem() == Item.getItemFromBlock(Blocks.ice))return 2500;
+        }
+        return 0;
+    }
 
-	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
+    private boolean gettp2() {
+        if(stack[1] !=null) {
+            if(water >= 1) {
+                ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], false, true);
+                if(is1 != null) {
+                    coldcai = is1;
+                    return true;
+                }
+            }
+
+            if(milk >= 1) {
+                ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], true, true);
+                if(is1 != null) {
+                    coldcai = is1;
+                    return false;
+                }
+            }
+            coldcai = null;
+        }
+        return false;
+    }
+
+    @Override
+    public String getCommandSenderName() {
+        return "BeverageMaking";
+    }
+
+    public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
@@ -222,7 +222,7 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
         par1NBTTagCompound.setShort("tableBurnTime", (short)this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short)this.furnaceCookTime);
         par1NBTTagCompound.setShort("currentItemcoldBurnTime", (short)this.currentItemcoldBurnTime);
-        par1NBTTagCompound.setShort("coldBurnTime", (short)this.coldBurnTime);    
+        par1NBTTagCompound.setShort("coldBurnTime", (short)this.coldBurnTime);
         par1NBTTagCompound.setShort("water", (short)this.water);
         par1NBTTagCompound.setShort("milk", (short)this.milk);
         NBTTagList var2 = new NBTTagList();
@@ -235,18 +235,17 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
             }
         }
         par1NBTTagCompound.setTag("Items", var2);
-       
+
     }
-    
+
     private static int getItemBurnTime(ItemStack par0ItemStack) {
         if (par0ItemStack == null) {
             return 0;
-        }
-        else {
+        } else {
             net.minecraft.item.Item item = par0ItemStack.getItem();
 
             if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
-            	Block block = Block.getBlockFromItem(item);
+                Block block = Block.getBlockFromItem(item);
 
                 if (block == Blocks.wooden_slab) {
                     return 150;
@@ -270,18 +269,16 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
-    
+
     private boolean hotcanSmelt() {
         if (this.stack[1] == null) {
             return false;
-        }
-        else {
-            if (cai == null) return false;            
-            if (iswater){
-            	if(!(water >= 1))return false;
-            }
-            else {
-            	if(!(milk >= 1))return false;
+        } else {
+            if (cai == null) return false;
+            if (iswater) {
+                if(!(water >= 1))return false;
+            } else {
+                if(!(milk >= 1))return false;
             }
             if (this.stack[2] == null) return true;
             if (!this.stack[2].isItemEqual(cai)) return false;
@@ -289,18 +286,16 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
             return result <= getInventoryStackLimit() && result <= this.stack[2].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
-    
+
     private boolean coldcanSmelt() {
         if (this.stack[1] == null) {
             return false;
-        }
-        else {
-            if (coldcai == null) return false;            
+        } else {
+            if (coldcai == null) return false;
             if (iswater2) {
-            	if(!(water >= 1))return false;
-            }
-            else {
-            	if(!(milk >= 1))return false;
+                if(!(water >= 1))return false;
+            } else {
+                if(!(milk >= 1))return false;
             }
             if (this.stack[2] == null) return true;
             if (!this.stack[2].isItemEqual(coldcai)) return false;
@@ -311,36 +306,33 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
     public boolean isBurning() {
         return this.tableBurnTime > 0;
     }
-   
+
     private void hotsmeltItem() {
         if (this.hotcanSmelt()) {
 
-        	 if(water >= 1) {
-             	--water;
-             }
-             else {
-             	if(milk >= 1) {
-             		--milk;
-             	}
-             	else {
-             		return;
-             	}
-             }
-        	 
+            if(water >= 1) {
+                --water;
+            } else {
+                if(milk >= 1) {
+                    --milk;
+                } else {
+                    return;
+                }
+            }
+
             if (this.stack[2] == null) {
                 this.stack[2] = cai.copy();
+            } else if (this.stack[2].getItem() == cai.getItem()) {
+                this.stack[2].stackSize += cai.stackSize;
             }
-            else if (this.stack[2].getItem() == cai.getItem()) {
-                this.stack[2].stackSize += cai.stackSize; 
-            }
-            --this.stack[1].stackSize;    
-            
+            --this.stack[1].stackSize;
+
             if (this.stack[1].stackSize <= 0) {
                 this.stack[1] = null;
             }
         }
     }
-    
+
     @SideOnly(Side.CLIENT)
     public float getBurnTimeRemainingScaled(int int1) {
         if (this.currentItemBurnTime == 0) {
@@ -348,7 +340,7 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
         }
         return this.tableBurnTime * int1 / this.currentItemBurnTime;
     }
-    
+
     @SideOnly(Side.CLIENT)
     public float getcoldRemainingScaled(int int1) {
         if (this.currentItemcoldBurnTime == 0) {
@@ -356,69 +348,66 @@ public class TileEntityBeverageMaking extends TileEntityFoodcraft implements IUp
         }
         return this.coldBurnTime * int1 / this.currentItemcoldBurnTime;
     }
-    
+
     public float getCookProgressScaled(int int1) {
         return this.furnaceCookTime * int1 / 350;
     }
 
-	public int getWater() {
-		return this.water * 7;
-	}
-	
-	public int getMilk() {
-		return this.milk * 7;
-	}
+    public int getWater() {
+        return this.water * 7;
+    }
+
+    public int getMilk() {
+        return this.milk * 7;
+    }
 
 
-	public boolean iscold() {
-		return this.coldBurnTime > 0;
-	}
+    public boolean iscold() {
+        return this.coldBurnTime > 0;
+    }
 
-	private boolean gettp() {
-		if(stack[1] !=null) {
-			
-			if(water >= 1) {
-				ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], false, false);
-				if(is1 != null) {
-					cai = is1;
-					return true;
-				}								
-			}
-						
-			if(milk >= 1) {
-				ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], true, false);
-				if(is1 != null) {
-					cai = is1;
-					return false;
-				}								
-			}
-			cai = null;
-		}
-		return false;
-	}
-	
-	private void coldsmeltItem() {
+    private boolean gettp() {
+        if(stack[1] !=null) {
+
+            if(water >= 1) {
+                ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], false, false);
+                if(is1 != null) {
+                    cai = is1;
+                    return true;
+                }
+            }
+
+            if(milk >= 1) {
+                ItemStack is1 = RecipeBeverageMaking.making().getOutput(stack[1], true, false);
+                if(is1 != null) {
+                    cai = is1;
+                    return false;
+                }
+            }
+            cai = null;
+        }
+        return false;
+    }
+
+    private void coldsmeltItem() {
         if (this.coldcanSmelt()) {
-        	 if(water >= 1) {
-             	--water;
-             }
-             else{
-             	if(milk >= 1) {
-             		--milk;
-             	}
-             	else {
-             		return;
-             	}
-             }
-        	 
+            if(water >= 1) {
+                --water;
+            } else {
+                if(milk >= 1) {
+                    --milk;
+                } else {
+                    return;
+                }
+            }
+
             if (this.stack[2] == null) {
                 this.stack[2] = coldcai.copy();
-            }
-            else if (this.stack[2].getItem() == coldcai.getItem()) {
+            } else if (this.stack[2].getItem() == coldcai.getItem()) {
                 this.stack[2].stackSize += coldcai.stackSize;
             }
-            --this.stack[1].stackSize;  
-            
+            --this.stack[1].stackSize;
+
             if (this.stack[1].stackSize <= 0) {
                 this.stack[1] = null;
             }

@@ -27,40 +27,39 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class ChoppingBoardRecipeHandler extends TemplateRecipeHandler {
-	//*********************************************************************************************************************************************************************
-	public class SmeltingPair extends CachedRecipe
-    {
+    //*********************************************************************************************************************************************************************
+    public class SmeltingPair extends CachedRecipe {
         public SmeltingPair(FoodcraftItemStack foodcraftItemStack, ItemStack result) {
-           ItemStack[] is = new ItemStack[foodcraftItemStack.getItems().length];
-        int w = 0;
-           for(Item item : foodcraftItemStack.getItems()){
-        	   if(item == null){
-        		   is[w] = new ItemStack(FoodcraftItems.ItemNull);
-        		   w += 1;
-        		   continue;
-        	   }
-        		is[w] = new ItemStack(item);
+            ItemStack[] is = new ItemStack[foodcraftItemStack.getItems().length];
+            int w = 0;
+            for(Item item : foodcraftItemStack.getItems()) {
+                if(item == null) {
+                    is[w] = new ItemStack(FoodcraftItems.ItemNull);
+                    w += 1;
+                    continue;
+                }
+                is[w] = new ItemStack(item);
                 w += 1;
-           }
-           ingred = new PositionedStack[foodcraftItemStack.getItems().length];
+            }
+            ingred = new PositionedStack[foodcraftItemStack.getItems().length];
             //Add slot
 
-        	this.ingred[0] = new PositionedStack(is[0], 70 - 5, 21 - 11);
-        	this.ingred[1] = new PositionedStack(is[1], 97 - 5, 21 - 11);
-        	this.ingred[2] = new PositionedStack(is[2], 124 - 5, 21 - 11);
-        	
+            this.ingred[0] = new PositionedStack(is[0], 70 - 5, 21 - 11);
+            this.ingred[1] = new PositionedStack(is[1], 97 - 5, 21 - 11);
+            this.ingred[2] = new PositionedStack(is[2], 124 - 5, 21 - 11);
+
             this.result = new PositionedStack(result, 97 - 5, 53 - 11);
-            
+
             water =  new PositionedStack(new ItemStack(FoodcraftItems.ItemCaidao), 31 - 5, 21 - 11);
         }
 
         public List<PositionedStack> getIngredients() {
-        	//Get ingredient
+            //Get ingredient
             return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
         }
-        
+
         public PositionedStack getResult() {
-        	//Get result
+            //Get result
             return result;
         }
 
@@ -72,30 +71,30 @@ public class ChoppingBoardRecipeHandler extends TemplateRecipeHandler {
             stacks.add(water);
             return stacks;
         }
-        
+
         PositionedStack ingred[];
         PositionedStack result;
         PositionedStack water;
     }
-	//*********************************************************************************************************************************************************************
-  //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-    	//Gui click
-    	transferRects.add(new RecipeTransferRect(new Rectangle(97 - 5, 43 - 11, 15, 13), "Chopping"));
+        //Gui click
+        transferRects.add(new RecipeTransferRect(new Rectangle(97 - 5, 43 - 11, 15, 13), "Chopping"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUI class
+        //GUI class
         return com.foodcraft.gui.guis.GuiChoppingBoard.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//Name
+        //Name
         return NEIClientUtils.translate("tile.Caiban.name");
     }
 
@@ -135,8 +134,8 @@ public class ChoppingBoardRecipeHandler extends TemplateRecipeHandler {
         Map<FoodcraftItemStack, ItemStack> recipes = (Map<FoodcraftItemStack, ItemStack>) RecipeChoppingBoard.chopping().getSmeltingList();
         for (Entry<FoodcraftItemStack, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[0]), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[1]), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[2]), ingredient)) {
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[1]), ingredient) &&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[2]), ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
                 arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);
@@ -145,14 +144,14 @@ public class ChoppingBoardRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//Texture
+        //Texture
         return "foodcraft:textures/gui/nei/caiban.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//Bar
-    	//drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
+        //Bar
+        //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     }
 
     private static Set<Item> excludedFuels() {

@@ -47,32 +47,32 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBrewBarrel extends GUIBlockFoodcraft {
-	
-	private boolean ifburn;
-	private static boolean EE;
 
-	public BlockBrewBarrel(boolean E) {
-		ifburn = E;
-		this.setUnlocalizedName("Nt");
-		this.setHarvestLevel("pickaxe", 2);
-		this.setHardness(3f);
-		this.setStepSound(Block.soundTypeWood);
-		this.setCreativeTab(FoodCraft.FcTabMachine);
-		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-		GameRegistry.registerBlock(this,"Nt");
-	}
+    private boolean ifburn;
+    private static boolean EE;
 
-	@Override
-	public TileEntity createNewTileEntity(World var1, int var2) {
-		return new TileEntityBrewBarrel();
-	}
-	
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ){
-		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
-		playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_Nt, worldIn, pos.getX(), pos.getY(), pos.getZ());
+    public BlockBrewBarrel(boolean E) {
+        ifburn = E;
+        this.setUnlocalizedName("Nt");
+        this.setHarvestLevel("pickaxe", 2);
+        this.setHardness(3f);
+        this.setStepSound(Block.soundTypeWood);
+        this.setCreativeTab(FoodCraft.FcTabMachine);
+        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+        GameRegistry.registerBlock(this,"Nt");
+    }
+
+    @Override
+    public TileEntity createNewTileEntity(World var1, int var2) {
+        return new TileEntityBrewBarrel();
+    }
+
+    @Override
+    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+        ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
+        playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_Nt, worldIn, pos.getX(), pos.getY(), pos.getZ());
         return true;
-	}
+    }
 
 
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
@@ -85,13 +85,13 @@ public class BlockBrewBarrel extends GUIBlockFoodcraft {
         }
         super.breakBlock(worldIn, pos, state);
     }
-    
+
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(FoodcraftGuiBlocks.Nt);
     }
 
     @SideOnly(Side.CLIENT)
     public Item getItem(World worldIn, BlockPos pos) {
-    	return Item.getItemFromBlock(FoodcraftGuiBlocks.Nt);
+        return Item.getItemFromBlock(FoodcraftGuiBlocks.Nt);
     }
 }

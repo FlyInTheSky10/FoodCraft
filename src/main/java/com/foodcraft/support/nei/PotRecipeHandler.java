@@ -29,9 +29,8 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class PotRecipeHandler extends TemplateRecipeHandler {
-	//*********************************************************************************************************************************************************************
-	public class SmeltingPair extends CachedRecipe
-    {
+    //*********************************************************************************************************************************************************************
+    public class SmeltingPair extends CachedRecipe {
         public SmeltingPair(PotCooking guoCooking, ItemStack result) {
             this.ingred[0] = new PositionedStack(new ItemStack(guoCooking.StapleInput1), 18 - 5, 17 - 11);
             this.ingred[1] = new PositionedStack(new ItemStack(guoCooking.StapleInput2), 36 - 5, 17 - 11);
@@ -61,14 +60,14 @@ public class PotRecipeHandler extends TemplateRecipeHandler {
         PositionedStack[] ingred = new PositionedStack[12];
         PositionedStack result;
     }
-	//*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
 
-  //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-    	transferRects.add(new RecipeTransferRect(new Rectangle(94 - 5, 17 - 11, 24, 17), "Guocooking"));
+        transferRects.add(new RecipeTransferRect(new Rectangle(94 - 5, 17 - 11, 24, 17), "Guocooking"));
     }
 
     @Override
@@ -117,17 +116,17 @@ public class PotRecipeHandler extends TemplateRecipeHandler {
         Map<PotCooking,CookingOutput> recipes = (Map<PotCooking,CookingOutput>) RecipePot.smelting().getSmeltingList();
         for (Entry<PotCooking,CookingOutput> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput1), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput2), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput3), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput4), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients1), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients2), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients3), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients4), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients5), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients6), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients7), ingredient)&&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients8), ingredient)) {
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput2), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput3), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput4), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients1), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients2), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients3), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients4), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients5), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients6), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients7), ingredient)&&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().ingredients8), ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue().getItemStack());
                 arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);
@@ -141,7 +140,7 @@ public class PotRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void drawExtras(int recipe) {
-    	drawProgressBar(94 - 5, 17 - 11, 176, 14, 24, 17, 48, 0);
+        drawProgressBar(94 - 5, 17 - 11, 176, 14, 24, 17, 48, 0);
         drawProgressBar(82 - 5, 58 - 11, 176, 0, 14, 14, 48, 7);
     }
 

@@ -25,18 +25,18 @@ import com.foodcraft.util.GUIHandler;
 
 
 public class ClientProxy extends CommonProxy implements Proxy {
-	@Override
-	public void init(FMLInitializationEvent event) {
-		super.init(event);
+    @Override
+    public void init(FMLInitializationEvent event) {
+        super.init(event);
 
-		RegisterModel.init();
-		if(FoodCraft.NEIIsLoad){
-	        new NEIAPI().loadConfig();
-			}
-	}
+        RegisterModel.init();
+        if(FoodCraft.NEIIsLoad) {
+            new NEIAPI().loadConfig();
+        }
+    }
 
-	@Override
-	public EntityPlayer getPlayer(MessageContext ctx) {
-		return Minecraft.getMinecraft().thePlayer;
-	}
+    @Override
+    public EntityPlayer getPlayer(MessageContext ctx) {
+        return Minecraft.getMinecraft().thePlayer;
+    }
 }

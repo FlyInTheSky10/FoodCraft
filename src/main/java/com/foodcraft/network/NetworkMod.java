@@ -1,6 +1,5 @@
 package com.foodcraft.network;
 
-public interface NetworkMod
-{
-	Proxy getProxy();
+public interface NetworkMod {
+    Proxy getProxy();
 }

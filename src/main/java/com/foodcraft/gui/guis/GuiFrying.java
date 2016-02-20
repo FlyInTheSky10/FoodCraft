@@ -17,19 +17,19 @@ import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 
-public class GuiFrying extends GuiContainer{
+public class GuiFrying extends GuiContainer {
 
-	private TileEntityFrying tile;
+    private TileEntityFrying tile;
 
-	public GuiFrying(InventoryPlayer playerInv, TileEntityFrying tileEntityYZJ) {
-		super(new ContainerFrying(playerInv, tileEntityYZJ));
-		this.tile = tileEntityYZJ;
-		this.doesGuiPauseGame();
-	}
+    public GuiFrying(InventoryPlayer playerInv, TileEntityFrying tileEntityYZJ) {
+        super(new ContainerFrying(playerInv, tileEntityYZJ));
+        this.tile = tileEntityYZJ;
+        this.doesGuiPauseGame();
+    }
 
-	@Override
-	public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+    @Override
+    public void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY) {
+        GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         this.mc.renderEngine.bindTexture(new ResourceLocation("foodcraft", "textures/gui/container/yzj.png"));
         int k = (this.width - this.xSize) / 2;//x
         int l = (this.height - this.ySize) / 2;//y
@@ -41,13 +41,13 @@ public class GuiFrying extends GuiContainer{
         }
         i1 = this.tile.getCookProgressScaled(24);
         this.drawTexturedModalRect(k + 92, l + 30, 176, 14, (int)(i1 + 1), 16);
-       int i2 = this.tile.getWater();
+        int i2 = this.tile.getWater();
         this.drawTexturedModalRect(k + 18, l + 14 + 58 - i2, 176, 31 + 58 - i2, 11,(int) (58 * ((float)i2 / 58)));
-    } 
-	
-	@Override
-	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
-	String s = StatCollector.translateToLocal("TitleYZJ");
-	this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-	}
+    }
+
+    @Override
+    public void drawGuiContainerForegroundLayer(int mouseX, int mouseY) {
+        String s = StatCollector.translateToLocal("TitleYZJ");
+        this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
+    }
 }
