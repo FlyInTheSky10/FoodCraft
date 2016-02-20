@@ -16,6 +16,7 @@ import java.util.List;
 
 
 
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -28,12 +29,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -45,7 +46,7 @@ import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.init.FoodcraftItems;
 import com.foodcraft.itemstack.CookingOutput;
 
-public class TileEntityPan extends TileEntityFoodcraft implements IUpdatePlayerListBox {
+public class TileEntityPan extends TileEntityFoodcraft implements ITickable {
 
     public int Nowheat = 0;
     public int tableBurnTime = 1;//max
@@ -124,7 +125,7 @@ public class TileEntityPan extends TileEntityFoodcraft implements IUpdatePlayerL
     }
 
     @Override
-    public String getCommandSenderName() {
+    public String getName() {
         return "ChoppingBoard";
     }
 

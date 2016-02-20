@@ -26,7 +26,6 @@ import com.foodcraft.util.FoodcraftSubscribeEvent;
 
 public class FoodCraft implements NetworkMod {
     public static boolean NEIIsLoad = false;
-    public static boolean MTIsLoad = false;
     public static final CreativeTabs FcTabMachine = new CreativeTabs("Jiqi") {//机器&工具
         public Item getTabIconItem() {
             return Item.getItemFromBlock(FoodcraftGuiBlocks.Nmj);
@@ -69,7 +68,6 @@ public class FoodCraft implements NetworkMod {
         PacketDispatcher.initInstance("foodcraft", this);
         NERLogManager.log("Loading foodcraft, Version: 1.2.0");
         NEIIsLoad = Loader.isModLoaded("NotEnoughItems");
-        MTIsLoad = Loader.isModLoaded("MineTweaker3");
         NERConfigHandler.initConfig(event);
         NERConfigHandler.getConfig();
         proxy.preInit(event);
@@ -90,5 +88,4 @@ public class FoodCraft implements NetworkMod {
     public Proxy getProxy() {
         return proxy;
     }
-
 }

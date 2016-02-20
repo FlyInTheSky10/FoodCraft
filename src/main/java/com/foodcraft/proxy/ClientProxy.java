@@ -19,7 +19,6 @@ import com.foodcraft.gui.guis.*;
 import com.foodcraft.gui.tileentities.*;
 import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.network.Proxy;
-import com.foodcraft.support.nei.NEIAPI;
 import com.foodcraft.util.GUIHandler;
 
 
@@ -30,9 +29,6 @@ public class ClientProxy extends CommonProxy implements Proxy {
         super.init(event);
 
         RegisterModel.init();
-        if(FoodCraft.NEIIsLoad) {
-            new NEIAPI().loadConfig();
-        }
     }
 
     @Override

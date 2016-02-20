@@ -17,11 +17,11 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityLockable;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
 
 import com.foodcraft.GuiIDs;
@@ -31,7 +31,7 @@ import com.foodcraft.gui.recipes.RecipeChoppingBoard;
 import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.init.FoodcraftItems;
 
-public class TileEntityChoppingBoard extends TileEntityFoodcraft implements IUpdatePlayerListBox {
+public class TileEntityChoppingBoard extends TileEntityFoodcraft implements ITickable {
 
     public int tableBurnTime = 0;
     public int currentItemBurnTime;
@@ -208,7 +208,7 @@ public class TileEntityChoppingBoard extends TileEntityFoodcraft implements IUpd
     }
 
     @Override
-    public String getCommandSenderName() {
+    public String getName() {
         return "ChoppingBoard";
     }
 }
