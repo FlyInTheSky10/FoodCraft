@@ -3,7 +3,7 @@ package com.foodcraft.proxy;
 import com.foodcraft.FoodCraft;
 import com.foodcraft.gui.tileentities.*;
 import com.foodcraft.init.*;
-import com.foodcraft.minetweaker.MineTweakerCompact;
+import com.foodcraft.item.FcFoodOreDictRegistry;
 import com.foodcraft.network.PacketDispatcher;
 import com.foodcraft.network.Proxy;
 import com.foodcraft.network.handler.HeatHandler;
@@ -11,7 +11,6 @@ import com.foodcraft.network.handler.HeatHandlerPot;
 import com.foodcraft.network.message.HeatMessage;
 import com.foodcraft.network.message.HeatMessagePot;
 import com.foodcraft.util.GUIHandler;
-import minetweaker.MineTweakerAPI;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -23,10 +22,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class CommonProxy implements Proxy {
 
-    public void preInit(FMLPreInitializationEvent event) {
-        if(FoodCraft.MTIsLoad)
-            MineTweakerAPI.registerClass(MineTweakerCompact.class);
-    }
+    public void preInit(FMLPreInitializationEvent event) {}
 
     public void init(FMLInitializationEvent event) {
         FoodcraftBlocks.init();
@@ -37,6 +33,7 @@ public class CommonProxy implements Proxy {
         regesterTileEntity();
         registerPacket();
         NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new GUIHandler());
+        FcFoodOreDictRegistry.register();
     }
     public void postInit(FMLPostInitializationEvent event) {}
 

@@ -11,7 +11,7 @@ public abstract class TileEntityFoodcraft extends TileEntity implements IInvento
     public ItemStack stack[];
 
     @Override
-    public abstract String getCommandSenderName();
+    public abstract String getName();
 
     @Override
     public boolean hasCustomName() {
@@ -20,7 +20,7 @@ public abstract class TileEntityFoodcraft extends TileEntity implements IInvento
 
     @Override
     public IChatComponent getDisplayName() {
-        return new ChatComponentText(this.getCommandSenderName());
+        return new ChatComponentText(this.getName());
     }
 
     @Override
@@ -56,7 +56,7 @@ public abstract class TileEntityFoodcraft extends TileEntity implements IInvento
     }
 
     @Override
-    public ItemStack getStackInSlotOnClosing(int par1) {
+    public ItemStack removeStackFromSlot(int par1) {
         if (this.stack[par1] != null) {
             ItemStack itemstack = this.stack[par1];
             this.stack[par1] = null;

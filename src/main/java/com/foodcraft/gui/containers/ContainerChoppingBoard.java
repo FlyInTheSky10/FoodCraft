@@ -52,8 +52,8 @@ public class ContainerChoppingBoard extends ContainerFoodcraft {
         }
     }
 
-    public void addCraftingToCrafters(ICrafting par1ICrafting) {
-        super.addCraftingToCrafters(par1ICrafting);
+    public void onCraftGuiOpened(ICrafting par1ICrafting) {
+        super.onCraftGuiOpened(par1ICrafting);
     }
 
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {

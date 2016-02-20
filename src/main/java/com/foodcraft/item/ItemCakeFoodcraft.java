@@ -76,7 +76,7 @@ public class ItemCakeFoodcraft extends Item {
                     iblockstate1 = worldIn.getBlockState(pos);
 
                     if (iblockstate1.getBlock() == this.blocks[stack.getItemDamage()]) {
-                        ItemBlock.setTileEntityNBT(worldIn, pos, stack);
+                        ItemBlock.setTileEntityNBT(worldIn,playerIn, pos, stack);
                         iblockstate1.getBlock().onBlockPlacedBy(worldIn, pos, iblockstate1, playerIn, stack);
                     }
 

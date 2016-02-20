@@ -32,10 +32,10 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -47,7 +47,7 @@ import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.init.FoodcraftItems;
 
 
-public class TileEntityPressureCooker extends TileEntityFoodcraft implements IUpdatePlayerListBox {
+public class TileEntityPressureCooker extends TileEntityFoodcraft implements ITickable {
 
     public int tableBurnTime = 0;
     public int currentItemBurnTime;
@@ -135,7 +135,7 @@ public class TileEntityPressureCooker extends TileEntityFoodcraft implements IUp
     }
 
     @Override
-    public String getCommandSenderName() {
+    public String getName() {
         return "PressureCooker";
     }
 

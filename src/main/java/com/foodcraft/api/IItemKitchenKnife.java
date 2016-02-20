@@ -1,5 +1,6 @@
 package com.foodcraft.api;
 
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -14,10 +15,12 @@ public interface IItemKitchenKnife {
      *
      * When the chopping board chopping.
      * @param world world
-     * @param pos position
-     * @param result result
-     * @param quantity Result Quantity
+     * @param x PosX
+     * @param y PosY
+     * @param z PosZ
+     * @param Result result
+     * @param Quantity Result Quantity
      * @return Add quantity
      */
-    public int event(World world, BlockPos pos, ItemStack result, int quantity);
+    public int event(World world, BlockPos pos, ItemStack Result, int Quantity);
 }

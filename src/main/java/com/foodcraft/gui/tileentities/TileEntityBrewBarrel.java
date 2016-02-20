@@ -17,10 +17,10 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.server.gui.IUpdatePlayerListBox;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.ITickable;
 import net.minecraft.world.World;
 
 
@@ -34,7 +34,7 @@ import com.foodcraft.gui.recipes.RecipeBrewBarrel;
 import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.init.FoodcraftItems;
 
-public class TileEntityBrewBarrel extends TileEntityFoodcraft implements IUpdatePlayerListBox {
+public class TileEntityBrewBarrel extends TileEntityFoodcraft implements ITickable {
 
     public int tableBurnTime = 0;
     public int maxBurnTime = 0;
@@ -99,7 +99,7 @@ public class TileEntityBrewBarrel extends TileEntityFoodcraft implements IUpdate
     }
 
     @Override
-    public String getCommandSenderName() {
+    public String getName() {
         return "BrewBarrel";
     }
 
@@ -220,4 +220,5 @@ public class TileEntityBrewBarrel extends TileEntityFoodcraft implements IUpdate
     public boolean isBurning() {
         return this.furnaceCookTime > 0;
     }
+
 }
