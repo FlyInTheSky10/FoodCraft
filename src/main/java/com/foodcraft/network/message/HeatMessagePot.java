@@ -7,9 +7,9 @@ import io.netty.buffer.ByteBuf;
 
 public class HeatMessagePot extends AbstractNBTMessage {
 
-    public HeatMessagePot() {}
-
-    public HeatMessagePot(NBTTagCompound nbt) {
-        super(nbt);
-    }
+	public HeatMessagePot() {}
+	
+	public HeatMessagePot(NBTTagCompound nbt) {
+		super(nbt);
+	}
 }

@@ -20,33 +20,33 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemJam extends Item {
-
-    private String[] s = new String[] {"ItemPutaoGJ","ItemJinputaoGJ","ItemLiGJ","ItemTaoziGJ","ItemJuziGJ","ItemNingmengGJ","ItemCaomeiGJ","ItemYeziGJ"};
-
-    public ItemJam() {
-        this.setHasSubtypes(true);
-        this.setCreativeTab(FoodCraft.FcTabIngredient);
-        this.setUnlocalizedName("ItemGuojiang");
-    }
-
-    @SideOnly(Side.CLIENT)
-    public boolean hasEffect(ItemStack stack) {
-        return stack.getItemDamage() == 1;
-    }
-
-    @SideOnly(Side.CLIENT)
-    public void getSubItems(Item item, CreativeTabs tabs, List list) {
-        list.add(new ItemStack(item, 1, 0));
-        list.add(new ItemStack(item, 1, 1));
-        list.add(new ItemStack(item, 1, 2));
-        list.add(new ItemStack(item, 1, 3));
-        list.add(new ItemStack(item, 1, 4));
-        list.add(new ItemStack(item, 1, 5));
-        list.add(new ItemStack(item, 1, 6));
-        list.add(new ItemStack(item, 1, 7));
-    }
-    public String getUnlocalizedName(ItemStack is1) {
-        return s[is1.getItemDamage()];
-    }
+public class ItemJam extends Item{
+	
+	private String[] s = new String[]{"ItemPutaoGJ","ItemJinputaoGJ","ItemLiGJ","ItemTaoziGJ","ItemJuziGJ","ItemNingmengGJ","ItemCaomeiGJ","ItemYeziGJ"};
+	
+	public ItemJam() {
+		this.setHasSubtypes(true);
+		this.setCreativeTab(FoodCraft.FcTabIngredient);
+		this.setUnlocalizedName("ItemGuojiang");
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public boolean hasEffect(ItemStack stack) {
+		return stack.getItemDamage() == 1;
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public void getSubItems(Item item, CreativeTabs tabs, List list) {
+		list.add(new ItemStack(item, 1, 0));
+		list.add(new ItemStack(item, 1, 1));
+		list.add(new ItemStack(item, 1, 2));
+		list.add(new ItemStack(item, 1, 3));
+		list.add(new ItemStack(item, 1, 4));
+		list.add(new ItemStack(item, 1, 5));
+		list.add(new ItemStack(item, 1, 6));
+		list.add(new ItemStack(item, 1, 7));
+	}
+	public String getUnlocalizedName(ItemStack is1) {
+		return s[is1.getItemDamage()];
+	}
 }

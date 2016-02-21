@@ -16,39 +16,40 @@ import net.minecraft.item.Item;
 
 
 public class BlockFoodcraftCrops extends BlockCrops {
-    private String crop;
-    private String seed;
+	private String crop;
+	private String seed;
 
-    public BlockFoodcraftCrops(String seed, String crop, String name) {
-        this.seed = seed;
-        this.crop = crop;
-        this.setUnlocalizedName(name);
-        this.setHarvestLevel("pickaxe", -1);
-        this.setStepSound(Block.soundTypeGrass);
-    }
-    @Override
-    public Item getSeed() {
-        return Item.getByNameOrId(seed);
-    }
+	public BlockFoodcraftCrops(String seed, String crop, String name) {
+		this.seed = seed;
+		this.crop = crop;
+		this.setUnlocalizedName(name);
+		this.setHarvestLevel("pickaxe", -1);
+		this.setStepSound(Block.soundTypeGrass);
+	}
+	@Override
+	public Item getSeed() {
+		return Item.getByNameOrId(seed);
+	}
 
-    @Override
-    public Item getCrop() {
-        return Item.getByNameOrId(crop);
-    }
+	@Override
+	public Item getCrop() {
+		return Item.getByNameOrId(crop);
+	}
     @Override
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
-        if(this == FoodcraftPlants.BlockDouzi) {
-            if(((Integer)state.getValue(AGE)).intValue() == 7) {
-                return this.getCrop();
-            } else {
-                if(((Integer)state.getValue(AGE)) >= 4 && ((Integer)state.getValue(AGE)) <= 4 ) {
-                    return FoodcraftItems.ItemDoujiao;
-                } else {
-                    return  this.getSeed();
-                }
-            }
-        } else {
-            return super.getItemDropped(state, rand, fortune);
-        }
+    	if(this == FoodcraftPlants.BlockDouzi) {
+    	if(((Integer)state.getValue(AGE)).intValue() == 7) {
+    		return this.getCrop();
+    	}else {
+    		if(((Integer)state.getValue(AGE)) >= 4 && ((Integer)state.getValue(AGE)) <= 4 ) {
+        		return FoodcraftItems.ItemDoujiao;
+        	}else {
+        		return  this.getSeed();
+        	}
+    	}
+    }
+    	else {
+    		return super.getItemDropped(state, rand, fortune);
+    	}
     }
 }

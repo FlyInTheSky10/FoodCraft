@@ -29,23 +29,24 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class PressureCookerRecipeHandler extends TemplateRecipeHandler {
-    //*********************************************************************************************************************************************************************
-    public class SmeltingPair extends CachedRecipe {
+	//*********************************************************************************************************************************************************************
+	public class SmeltingPair extends CachedRecipe
+    {
         public SmeltingPair(FoodcraftItemStack foodcraftItemStack, ItemStack result) {
-            ItemStack[] is = new ItemStack[foodcraftItemStack.getItems().length];
-            int w = 0;
-            for(Item item : foodcraftItemStack.getItems()) {
-                is[w] = new ItemStack(item);
+           ItemStack[] is = new ItemStack[foodcraftItemStack.getItems().length];
+        int w = 0;
+           for(Item item : foodcraftItemStack.getItems()){
+        		is[w] = new ItemStack(item);
                 w += 1;
-            }
-            ingred = new PositionedStack[foodcraftItemStack.getItems().length];
+           }
+           ingred = new PositionedStack[foodcraftItemStack.getItems().length];
 
-            this.ingred[0] = new PositionedStack(is[0], 44 - 5, 27 - 11);
-            this.ingred[1] = new PositionedStack(is[1], 68 - 5, 27 - 11);
-            this.ingred[2] = new PositionedStack(is[2], 92 - 5, 27 - 11);
-
+        	this.ingred[0] = new PositionedStack(is[0], 44 - 5, 27 - 11);
+        	this.ingred[1] = new PositionedStack(is[1], 68 - 5, 27 - 11);
+        	this.ingred[2] = new PositionedStack(is[2], 92 - 5, 27 - 11);
+        	
             this.result = new PositionedStack(result, 142 - 5, 27 - 11);
-
+            
             water =  new PositionedStack(new ItemStack(FoodcraftItems.Itemwater), 34 - 5, 55 - 11);
         }
 
@@ -65,9 +66,9 @@ public class PressureCookerRecipeHandler extends TemplateRecipeHandler {
             stacks.add(water);
             return stacks;
         }
-
+        
         public PositionedStack getOtherStack() {
-
+        	
             return afuels.get((cycleticks / 48) % afuels.size()).stack;
         }
 
@@ -75,8 +76,9 @@ public class PressureCookerRecipeHandler extends TemplateRecipeHandler {
         PositionedStack result;
         PositionedStack water;
     }
-    //*********************************************************************************************************************************************************************
-    public static class FuelPair {
+	//*********************************************************************************************************************************************************************
+    public static class FuelPair
+    {
         public FuelPair(ItemStack ingred, int burnTime) {
             this.stack = new PositionedStack(ingred, 92 - 5, 55 - 11, false);
             this.burnTime = burnTime;
@@ -85,13 +87,13 @@ public class PressureCookerRecipeHandler extends TemplateRecipeHandler {
         public PositionedStack stack;
         public int burnTime;
     }
-    //*********************************************************************************************************************************************************************
+  //*********************************************************************************************************************************************************************
     public static ArrayList<FuelPair> afuels;
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-        transferRects.add(new RecipeTransferRect(new Rectangle(118 - 5, 30 - 11, 22, 17), "Gygcooking"));
+    	transferRects.add(new RecipeTransferRect(new Rectangle(118 - 5, 30 - 11, 22, 17), "Gygcooking"));
     }
 
     @Override
@@ -142,8 +144,8 @@ public class PressureCookerRecipeHandler extends TemplateRecipeHandler {
         Map<FoodcraftItemStack, ItemStack> recipes = (Map<FoodcraftItemStack, ItemStack>) RecipePressureCooker.cooking().getSmeltingList();
         for (Entry<FoodcraftItemStack, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[0]), ingredient) &&
-                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[1]), ingredient) &&
-                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[2]), ingredient)) {
+            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[1]), ingredient) &&
+            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().getItems()[2]), ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
                 arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);
@@ -157,9 +159,9 @@ public class PressureCookerRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void drawExtras(int recipe) {
-        drawProgressBar(115 - 5, 26 - 11, 176, 14, 22, 17, 48, 0);
+    	drawProgressBar(115 - 5, 26 - 11, 176, 14, 22, 17, 48, 0);
         drawProgressBar(119 - 5, 58 - 11, 176, 0, 14, 14, 48, 7);
-
+        
         drawProgressBar(15 - 5, 0, 176, 31, 11, 58, 48, 3);
     }
 

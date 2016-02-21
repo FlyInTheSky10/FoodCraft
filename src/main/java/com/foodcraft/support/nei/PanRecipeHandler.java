@@ -27,8 +27,9 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class PanRecipeHandler extends TemplateRecipeHandler {
-    //*********************************************************************************************************************************************************************
-    public class SmeltingPair extends CachedRecipe {
+	//*********************************************************************************************************************************************************************
+	public class SmeltingPair extends CachedRecipe
+    {
         public SmeltingPair(ItemStack ingred, ItemStack result) {
             ingred.stackSize = 1;
             this.ingred = new PositionedStack(ingred, 42 - 5, 36 - 11);
@@ -56,10 +57,11 @@ public class PanRecipeHandler extends TemplateRecipeHandler {
         PositionedStack result;
         PositionedStack oil;
         PositionedStack bad;
-
+        
     }
-    //*********************************************************************************************************************************************************************
-    public static class FuelPair {
+	//*********************************************************************************************************************************************************************
+    public static class FuelPair
+    {
         public FuelPair(ItemStack ingred, int burnTime) {
             this.burnTime = burnTime;
         }
@@ -67,13 +69,13 @@ public class PanRecipeHandler extends TemplateRecipeHandler {
         public PositionedStack stack;
         public int burnTime;
     }
-    //*********************************************************************************************************************************************************************
+  //*********************************************************************************************************************************************************************
     public static ArrayList<FuelPair> afuels;
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-        transferRects.add(new RecipeTransferRect(new Rectangle(72 - 5, 39 - 11, 22, 12), "PDGcooking"));
+    	transferRects.add(new RecipeTransferRect(new Rectangle(72 - 5, 39 - 11, 22, 12), "PDGcooking"));
     }
 
     @Override
@@ -135,7 +137,7 @@ public class PanRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void drawExtras(int recipe) {
-        drawProgressBar(69 - 5, 36 - 11, 176, 14, 22, 17, 48, 0);
+    	drawProgressBar(69 - 5, 36 - 11, 176, 14, 22, 17, 48, 0);
         drawProgressBar(78 - 5, 16 - 11, 176, 0, 14, 14, 48, 7);
     }
 

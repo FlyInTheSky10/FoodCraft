@@ -50,38 +50,39 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockMill extends GUIBlockFoodcraft {
 
-    private boolean ifburn;
-    private static boolean EE;
+	private boolean ifburn;
+	private static boolean EE;
 
-    public BlockMill(boolean ifb) {
-        this.setHardness(3f);
-        this.setHarvestLevel("pickaxe", 2);
-        this.setStepSound(Block.soundTypeStone);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        if(!ifb) {
-            this.setUnlocalizedName("Nmj");
-            this.setCreativeTab(FoodCraft.FcTabMachine);
-            GameRegistry.registerBlock(this,"Nmj");
-        } else {
-            this.setUnlocalizedName("litNmj");
-            this.setLightLevel(0.875F);
-            GameRegistry.registerBlock(this,"lit_Nmj");
-        }
-        ifburn = ifb;
-    }
+	public BlockMill(boolean ifb) {
+		this.setHardness(3f);
+		this.setHarvestLevel("pickaxe", 2);
+		this.setStepSound(Block.soundTypeStone);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		if(!ifb) {
+			this.setUnlocalizedName("Nmj");
+			this.setCreativeTab(FoodCraft.FcTabMachine);
+			GameRegistry.registerBlock(this,"Nmj");
+		}
+		else {
+			this.setUnlocalizedName("litNmj");
+			this.setLightLevel(0.875F);
+			GameRegistry.registerBlock(this,"lit_Nmj");
+		}
+		ifburn = ifb;
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World var1, int var2) {
-        return new TileEntityMill();
-    }
-
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-        ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
-        playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_NMJ, worldIn, pos.getX(), pos.getY(), pos.getZ());
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new TileEntityMill();
+	}
+	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ){
+		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
+		playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_NMJ, worldIn, pos.getX(), pos.getY(), pos.getZ());
         return true;
-    }
-
+	}
+	
     public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
         if (!EE) {
             TileEntity tileentity = worldIn.getTileEntity(pos);
@@ -93,7 +94,7 @@ public class BlockMill extends GUIBlockFoodcraft {
         }
         super.breakBlock(worldIn, pos, state);
     }
-
+    
     public static void setState(boolean active, World worldIn, BlockPos pos) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         TileEntity tileentity = worldIn.getTileEntity(pos);
@@ -101,7 +102,8 @@ public class BlockMill extends GUIBlockFoodcraft {
         if (active) {
             worldIn.setBlockState(pos, FoodcraftGuiBlocks.lit_Nmj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
             worldIn.setBlockState(pos, FoodcraftGuiBlocks.lit_Nmj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
-        } else {
+        }
+        else {
             worldIn.setBlockState(pos, FoodcraftGuiBlocks.Nmj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
             worldIn.setBlockState(pos, FoodcraftGuiBlocks.Nmj.getDefaultState().withProperty(FACING, iblockstate.getValue(FACING)), 3);
         }
@@ -111,13 +113,13 @@ public class BlockMill extends GUIBlockFoodcraft {
             worldIn.setTileEntity(pos, tileentity);
         }
     }
-
+    
     public Item getItemDropped(IBlockState state, Random rand, int fortune) {
         return Item.getItemFromBlock(FoodcraftGuiBlocks.Nmj);
     }
 
     @SideOnly(Side.CLIENT)
-    public Item getItem(World worldIn, BlockPos pos) {
-        return Item.getItemFromBlock(FoodcraftGuiBlocks.Nmj);
+	public Item getItem(World worldIn, BlockPos pos) {
+    	return Item.getItemFromBlock(FoodcraftGuiBlocks.Nmj);
     }
 }

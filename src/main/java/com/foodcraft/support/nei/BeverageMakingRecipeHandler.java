@@ -29,30 +29,32 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class BeverageMakingRecipeHandler extends TemplateRecipeHandler {
-    boolean isMilk2, iscold2;
-    //*********************************************************************************************************************************************************************
-    public class SmeltingPair extends CachedRecipe {
+	boolean isMilk2, iscold2;
+	//*********************************************************************************************************************************************************************
+	public class SmeltingPair extends CachedRecipe
+    {
         public SmeltingPair(BeverageMaking tpjMaking, ItemStack result) {
-
-            tpjMaking.getItemStack().stackSize = 1;
-            boolean isMilk = tpjMaking.isMilk();
-            boolean iscold = tpjMaking.iscold();
+           
+        	tpjMaking.getItemStack().stackSize = 1;
+        	boolean isMilk = tpjMaking.isMilk();
+        	boolean iscold = tpjMaking.iscold();
             this.ingred = new PositionedStack(tpjMaking.getItemStack(), 34 - 5, 27 - 11);
             this.result = new PositionedStack(result, 82 - 5, 27 - 11);
-
-            if(isMilk) {
-                slot = new PositionedStack(new ItemStack(Items.milk_bucket), 34 - 5, 55 - 11);
+            
+            if(isMilk){
+            	slot = new PositionedStack(new ItemStack(Items.milk_bucket), 34 - 5, 55 - 11);
             }
 
-            if(!isMilk) {
-                slot = new PositionedStack(new ItemStack(FoodcraftItems.Itemwater), 34 - 5, 55 - 11);
+            if(!isMilk){
+            	slot = new PositionedStack(new ItemStack(FoodcraftItems.Itemwater), 34 - 5, 55 - 11);
             }
-
-
-            if(iscold) {
-                cold = new PositionedStack(new ItemStack(Blocks.ice), 115 - 5, 48 - 11);
-            } else {
-                cold = new PositionedStack(new ItemStack(Items.coal), 115 - 5, 16 - 11);
+            
+            
+            if(iscold){
+            	cold = new PositionedStack(new ItemStack(Blocks.ice), 115 - 5, 48 - 11);
+            }
+            else{
+            	cold = new PositionedStack(new ItemStack(Items.coal), 115 - 5, 16 - 11);
             }
         }
 
@@ -68,29 +70,29 @@ public class BeverageMakingRecipeHandler extends TemplateRecipeHandler {
             PositionedStack stack = getOtherStack();
             if (stack != null)
                 stacks.add(stack);
-            if(slot != null) {
-                stacks.add(slot);
+            if(slot != null){
+            	  stacks.add(slot);
             }
-            if(cold != null) {
-                stacks.add(cold);
-            }
+            if(cold != null){
+          	  stacks.add(cold);
+          }
             return stacks;
         }
-        public PositionedStack getOtherStack() {
-            return null;
+        public PositionedStack getOtherStack() {     
+			return null;
         }
         PositionedStack slot;
         PositionedStack cold;
         PositionedStack ingred;
         PositionedStack result;
     }
-    //*********************************************************************************************************************************************************************
-    //*********************************************************************************************************************************************************************
+	//*********************************************************************************************************************************************************************
+  //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-        transferRects.add(new RecipeTransferRect(new Rectangle(58 - 5, 30 - 11, 24, 17), "Tpjmaking"));
+    	transferRects.add(new RecipeTransferRect(new Rectangle(58 - 5, 30 - 11, 24, 17), "Tpjmaking"));
     }
 
     @Override
@@ -152,7 +154,7 @@ public class BeverageMakingRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void drawExtras(int recipe) {
-        drawProgressBar(55 - 5, 26 - 11, 176, 14, 24, 17, 48, 0);
+    	drawProgressBar(55 - 5, 26 - 11, 176, 14, 24, 17, 48, 0);
     }
 
     private static Set<Item> excludedFuels() {

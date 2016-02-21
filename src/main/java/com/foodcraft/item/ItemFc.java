@@ -4,7 +4,7 @@ import net.minecraft.item.Item;
 
 
 public class ItemFc extends Item {
-    public ItemFc(String name) {
-        setUnlocalizedName(name);
-    }
+	public ItemFc(String name) {
+		setUnlocalizedName(name);
+	}
 }
