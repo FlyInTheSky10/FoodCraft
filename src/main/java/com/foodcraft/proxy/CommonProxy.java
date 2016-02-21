@@ -3,7 +3,7 @@ package com.foodcraft.proxy;
 import com.foodcraft.FoodCraft;
 import com.foodcraft.gui.tileentities.*;
 import com.foodcraft.init.*;
-import com.foodcraft.item.FcFoodOreDictRegistry;
+import com.foodcraft.init.FcFoodOreDictRegistry;
 import com.foodcraft.network.PacketDispatcher;
 import com.foodcraft.network.Proxy;
 import com.foodcraft.network.handler.HeatHandler;

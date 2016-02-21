@@ -1,4 +1,4 @@
-package com.foodcraft.item;
+package com.foodcraft.init;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.oredict.OreDictionary;
