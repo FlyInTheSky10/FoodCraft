@@ -26,8 +26,9 @@ import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 
 public class MillRecipeHandler extends TemplateRecipeHandler {
-    //*********************************************************************************************************************************************************************
-    public class SmeltingPair extends CachedRecipe {
+	//*********************************************************************************************************************************************************************
+	public class SmeltingPair extends CachedRecipe
+    {
         public SmeltingPair(ItemStack ingred, ItemStack result) {
             ingred.stackSize = 1;
             this.ingred = new PositionedStack(ingred, 49 - 5, 19 - 11);
@@ -43,15 +44,16 @@ public class MillRecipeHandler extends TemplateRecipeHandler {
         }
 
         public PositionedStack getOtherStack() {
-
+        	
             return afuels.get((cycleticks / 48) % afuels.size()).stack;
         }
 
         PositionedStack ingred;
         PositionedStack result;
     }
-    //*********************************************************************************************************************************************************************
-    public static class FuelPair {
+	//*********************************************************************************************************************************************************************
+    public static class FuelPair
+    {
         public FuelPair(ItemStack ingred, int burnTime) {
             this.stack = new PositionedStack(ingred, 80 - 5, 54 - 11, false);
             this.burnTime = burnTime;
@@ -60,13 +62,13 @@ public class MillRecipeHandler extends TemplateRecipeHandler {
         public PositionedStack stack;
         public int burnTime;
     }
-    //*********************************************************************************************************************************************************************
+  //*********************************************************************************************************************************************************************
     public static ArrayList<FuelPair> afuels;
     public static HashSet<Block> efuels;
 
     @Override
     public void loadTransferRects() {
-        transferRects.add(new RecipeTransferRect(new Rectangle(76 - 5, 21 - 11, 22, 12), "milling"));
+    	transferRects.add(new RecipeTransferRect(new Rectangle(76 - 5, 21 - 11, 22, 12), "milling"));
     }
 
     @Override
@@ -130,7 +132,7 @@ public class MillRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void drawExtras(int recipe) {
-        drawProgressBar(76 - 5, 21 - 11, 176, 14, 22, 12, 48, 0);
+    	drawProgressBar(76 - 5, 21 - 11, 176, 14, 22, 12, 48, 0);
         drawProgressBar(81 - 5, 37 - 11, 176, 0, 14, 14, 48, 7);
     }
 

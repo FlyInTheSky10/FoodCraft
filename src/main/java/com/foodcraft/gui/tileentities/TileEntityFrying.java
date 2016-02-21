@@ -48,85 +48,86 @@ import com.foodcraft.init.FoodcraftItems;
 
 public class TileEntityFrying extends TileEntityFoodcraft implements IUpdatePlayerListBox {
 
-    public int tableBurnTime = 0;
-    public int maxBurnTime = 0;
+	public int tableBurnTime = 0;
+	public int maxBurnTime = 0;
     public int currentItemBurnTime;
     public int furnaceCookTime;
-    public int water;
+	public int water;
 
-    public TileEntityFrying() {
-        this.stack = new ItemStack[4];
-    }
-
-    @Override
+	public TileEntityFrying(){
+		this.stack = new ItemStack[4];
+	}
+	
+	@Override
     public void update() {
+		
+		boolean flag = this.tableBurnTime > 0;
+	        boolean flag1 = false;
+	        if (this.tableBurnTime > 0) {
+	            --this.tableBurnTime;  
+	        }
+	        
+	        if (!this.worldObj.isRemote) {
+	            if (this.tableBurnTime == 0 && this.canSmelt() && this.water >= 2) {
+	                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[1]);
 
-        boolean flag = this.tableBurnTime > 0;
-        boolean flag1 = false;
-        if (this.tableBurnTime > 0) {
-            --this.tableBurnTime;
-        }
+	                if (this.tableBurnTime > 0) {
+	                    flag1 = true;
 
-        if (!this.worldObj.isRemote) {
-            if (this.tableBurnTime == 0 && this.canSmelt() && this.water >= 2) {
-                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[1]);
+	                    if (this.stack[1] != null) {
+	                        --this.stack[1].stackSize;
 
-                if (this.tableBurnTime > 0) {
-                    flag1 = true;
+	                        if (this.stack[1].stackSize == 0) {
+	                            this.stack[1] = stack[1].getItem().getContainerItem(stack[1]);
+	                        }
+	                    }
+	                }
+	            }
 
-                    if (this.stack[1] != null) {
-                        --this.stack[1].stackSize;
+	            if (this.isBurning() && this.canSmelt() && this.water >= 2) {
+	                ++this.furnaceCookTime;
 
-                        if (this.stack[1].stackSize == 0) {
-                            this.stack[1] = stack[1].getItem().getContainerItem(stack[1]);
-                        }
-                    }
-                }
-            }
+	                if (this.furnaceCookTime == 400) {
+	                    this.furnaceCookTime = 0;
+	                    this.smeltItem();
+	                    flag1 = true;
+	                }
+	            }
+	            else {
+	                this.furnaceCookTime = 0;
+	            }
+	            if (flag != this.tableBurnTime > 0) {
+	                flag1 = true;
+	                BlockFrying.setState(this.isBurning(), this.worldObj, this.pos);
+	            }
+	        }
 
-            if (this.isBurning() && this.canSmelt() && this.water >= 2) {
-                ++this.furnaceCookTime;
-
-                if (this.furnaceCookTime == 400) {
-                    this.furnaceCookTime = 0;
-                    this.smeltItem();
-                    flag1 = true;
-                }
-            } else {
-                this.furnaceCookTime = 0;
-            }
-            if (flag != this.tableBurnTime > 0) {
-                flag1 = true;
-                BlockFrying.setState(this.isBurning(), this.worldObj, this.pos);
-            }
-        }
-
-        if (flag1) {
-            this.markDirty();
-        }
-        if (stack[2] != null) {
-            if(water != 8) {
-
-
-                if(stack[2].getItem() == FoodcraftItems.ItemHuashenyou) {
-
-                    --stack[2].stackSize;
-                    ++water;
-                }
-            }
-            if(stack[2].stackSize == 0) {
-                stack[2] = null;
-            }
-        }
-    }
+	        if (flag1) {
+	            this.markDirty();
+	        }
+	        if (stack[2] != null) {
+	        	if(water != 8) {
+	        	
+	        	
+	        	if(stack[2].getItem() == FoodcraftItems.ItemPeanutOil) {
+	        			        		
+	        			--stack[2].stackSize;
+	        			++water;	        			        		
+	        		}	
+	        	}
+	        	if(stack[2].stackSize == 0) {
+	    			stack[2] = null;	  
+	    		}
+	        }
+	}
 
 
-    @Override
-    public String getCommandSenderName() {
-        return "Frying";
-    }
+	@Override
+	public String getName() {	
+		return "Frying";
+	}
 
-    public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
@@ -157,17 +158,18 @@ public class TileEntityFrying extends TileEntityFoodcraft implements IUpdatePlay
             }
         }
         par1NBTTagCompound.setTag("Items", var2);
-
+       
     }
-
+    
     private static int getItemBurnTime(ItemStack par0ItemStack) {
         if (par0ItemStack == null) {
             return 0;
-        } else {
+        }
+        else {
             net.minecraft.item.Item item = par0ItemStack.getItem();
 
             if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
-                Block block = Block.getBlockFromItem(item);
+            	Block block = Block.getBlockFromItem(item);
 
                 if (block == Blocks.wooden_slab) {
                     return 150;
@@ -191,11 +193,12 @@ public class TileEntityFrying extends TileEntityFoodcraft implements IUpdatePlay
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
-
+    
     private boolean canSmelt() {
         if (this.stack[0] == null) {
             return false;
-        } else {
+        }
+        else {
             ItemStack itemstack = RecipeFrying.frying().getSmeltingResult(this.stack[0]);
             if (itemstack == null) return false;
             if (this.stack[3] == null) return true;
@@ -207,14 +210,15 @@ public class TileEntityFrying extends TileEntityFoodcraft implements IUpdatePlay
     public boolean isBurning() {
         return this.tableBurnTime > 0;
     }
-
+   
     private void smeltItem() {
         if (this.canSmelt()) {
             ItemStack itemstack = RecipeFrying.frying().getSmeltingResult(this.stack[0]);
 
             if (this.stack[3] == null) {
                 this.stack[3] = itemstack.copy();
-            } else if (this.stack[3].getItem() == itemstack.getItem()) {
+            }
+            else if (this.stack[3].getItem() == itemstack.getItem()) {
                 this.stack[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
 
@@ -234,12 +238,12 @@ public class TileEntityFrying extends TileEntityFoodcraft implements IUpdatePlay
 
         return this.tableBurnTime * int1 / this.currentItemBurnTime;
     }
-
+    
     public float getCookProgressScaled(int int1) {
         return this.furnaceCookTime * int1 / 400;
     }
-
-    public int getWater() {
-        return this.water * 7;
-    }
+    
+	public int getWater() {
+		return this.water * 7;
+	}
 }

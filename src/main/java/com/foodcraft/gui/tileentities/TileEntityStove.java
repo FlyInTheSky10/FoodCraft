@@ -37,64 +37,64 @@ import com.foodcraft.init.FoodcraftGuiBlocks;
 import com.foodcraft.init.FoodcraftItems;
 
 public class TileEntityStove extends TileEntityFoodcraft implements IUpdatePlayerListBox {
-
-    public int tableBurnTime = 0;
-    public int maxBurnTime = 0;
+	
+	public int tableBurnTime = 0;
+	public int maxBurnTime = 0;
     public int currentItemBurnTime;
     public int furnaceCookTime;
-    public int water;
+	public int water;
 
-    public TileEntityStove() {
-        this.stack = new ItemStack[4];
-    }
-    @Override
+	public TileEntityStove(){
+		this.stack = new ItemStack[4];
+	}
+	@Override
     public void update() {
+		
+		boolean flag = this.tableBurnTime > 0;
+	    boolean flag1 = false;
+	    
+	        if (this.tableBurnTime > 0) {
+	            --this.tableBurnTime;
+	            
+	        }
+	        
+	        if (!this.worldObj.isRemote) {
+	           
+	        	 if (this.tableBurnTime == 0 && this.canSmelt()) {
+		                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[0]);
 
-        boolean flag = this.tableBurnTime > 0;
-        boolean flag1 = false;
+		                if (this.tableBurnTime > 0) {
+		                    flag1 = true;
 
-        if (this.tableBurnTime > 0) {
-            --this.tableBurnTime;
+		                    if (this.stack[0] != null) {
+		                        --this.stack[0].stackSize;
 
-        }
+		                        if (this.stack[0].stackSize == 0) {
+		                            this.stack[0] = stack[0].getItem().getContainerItem(stack[0]);
+		                        }
+		                    }
+		                }
+	        }
+	        	 BlockStove.setState(this.isBurning(), this.worldObj, this.pos);
+	        if (flag1) {
+	            this.markDirty();
+	        }
+	        }
+	    
+	}
+		 
+	public boolean canSmelt() {
+		if(this.worldObj.getBlockState(new BlockPos(getPos().getX(),getPos().getY()+1, getPos().getZ())).getBlock() == FoodcraftGuiBlocks.PDG || 
+				this.worldObj.getBlockState(new BlockPos(getPos().getX(),getPos().getY()+1, getPos().getZ())).getBlock() == FoodcraftGuiBlocks.Guo)return true;
+		return false;	
+	}
 
-        if (!this.worldObj.isRemote) {
+	@Override
+	public String getName() {	
+		return "Stove";
+	}
 
-            if (this.tableBurnTime == 0 && this.canSmelt()) {
-                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[0]);
-
-                if (this.tableBurnTime > 0) {
-                    flag1 = true;
-
-                    if (this.stack[0] != null) {
-                        --this.stack[0].stackSize;
-
-                        if (this.stack[0].stackSize == 0) {
-                            this.stack[0] = stack[0].getItem().getContainerItem(stack[0]);
-                        }
-                    }
-                }
-            }
-            BlockStove.setState(this.isBurning(), this.worldObj, this.pos);
-            if (flag1) {
-                this.markDirty();
-            }
-        }
-
-    }
-
-    public boolean canSmelt() {
-        if(this.worldObj.getBlockState(new BlockPos(getPos().getX(),getPos().getY()+1, getPos().getZ())).getBlock() == FoodcraftGuiBlocks.PDG ||
-                this.worldObj.getBlockState(new BlockPos(getPos().getX(),getPos().getY()+1, getPos().getZ())).getBlock() == FoodcraftGuiBlocks.Guo)return true;
-        return false;
-    }
-
-    @Override
-    public String getCommandSenderName() {
-        return "Stove";
-    }
-
-    public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
+	public void readFromNBT(NBTTagCompound par1NBTTagCompound) {
         super.readFromNBT(par1NBTTagCompound);
         NBTTagList var2 = par1NBTTagCompound.getTagList("Items", 10);
         this.stack = new ItemStack[this.getSizeInventory()];
@@ -124,16 +124,17 @@ public class TileEntityStove extends TileEntityFoodcraft implements IUpdatePlaye
                 var2.appendTag(var4);
             }
         }
-        par1NBTTagCompound.setTag("Items", var2);
+        par1NBTTagCompound.setTag("Items", var2);  
     }
-
+    
     public static int getItemBurnTime(ItemStack par0ItemStack) {
         if (par0ItemStack == null) {
             return 0;
-        } else {
+        }
+        else {
             net.minecraft.item.Item item = par0ItemStack.getItem();
             if (item instanceof ItemBlock && Block.getBlockFromItem(item) != Blocks.air) {
-                Block block = Block.getBlockFromItem(item);
+            	Block block = Block.getBlockFromItem(item);
 
                 if (block == Blocks.wooden_slab) {
                     return 300;
@@ -157,13 +158,13 @@ public class TileEntityStove extends TileEntityFoodcraft implements IUpdatePlaye
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
-
+    
 
     public boolean isBurning() {
         return this.tableBurnTime > 0;
     }
-
-
+   
+   
     @SideOnly(Side.CLIENT)
     public float getBurnTimeRemainingScaled(int int1) {
         if (this.currentItemBurnTime == 0) {

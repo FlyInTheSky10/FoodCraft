@@ -15,14 +15,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockGoldenGrapeCake extends BlockCake {
+public class BlockGoldenGrapeCake extends BlockCake{
 
-    public BlockGoldenGrapeCake() {
-        this.disableStats();
-        this.setHardness(0.5F).setStepSound(Block.soundTypeCloth);
-    }
-
-    @Override
+	public BlockGoldenGrapeCake() {
+		this.disableStats();
+		this.setHardness(0.5F).setStepSound(Block.soundTypeCloth);
+	}
+	
+	@Override
     @SideOnly(Side.CLIENT)
     public Item getItem(World worldIn, BlockPos pos) {
         return Item.getItemFromBlock(this);
@@ -33,10 +33,10 @@ public class BlockGoldenGrapeCake extends BlockCake {
     @SideOnly(Side.CLIENT)
     public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)  {
         if (!worldIn.isRemote) {
-            int j = ((Integer)state.getValue(BITES)).intValue();
-            if(j > 0) {
-                worldIn.setBlockState(pos, state.withProperty(BITES, Integer.valueOf(j - 1)), 3);
-            }
+        	int j = ((Integer)state.getValue(BITES)).intValue();
+        		if(j > 0) {
+        			worldIn.setBlockState(pos, state.withProperty(BITES, Integer.valueOf(j - 1)), 3);
+        		}
         }
     }
 }

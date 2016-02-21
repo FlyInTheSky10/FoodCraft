@@ -40,75 +40,75 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockPot extends GUIBlockFoodcraft {
-    private final Random Random = new Random();
-    public BlockPot() {
-        this.setHardness(3.0f);
-        this.setBlockBounds(0F, 0F, 0F, 1F, 0.4F, 1F);
-        this.setUnlocalizedName("Guo");
-        this.setHarvestLevel("pickaxe", 2);
-        this.setStepSound(Block.soundTypeStone);
-        this.setCreativeTab(FoodCraft.FcTabMachine);
-        this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
-        GameRegistry.registerBlock(this,ItemBlockPot.class,"Guo");
-    }
+	private final Random Random = new Random();
+	public BlockPot() {
+		this.setHardness(3.0f);
+		this.setBlockBounds(0F, 0F, 0F, 1F, 0.4F, 1F);
+		this.setUnlocalizedName("Guo");
+		this.setHarvestLevel("pickaxe", 2);
+		this.setStepSound(Block.soundTypeStone);
+		this.setCreativeTab(FoodCraft.FcTabMachine);
+		this.setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		GameRegistry.registerBlock(this,ItemBlockPot.class,"Guo");
+	}
 
-    @Override
-    public TileEntity createNewTileEntity(World var1, int var2) {
-        return new TileEntityPot();
-    }
-
-    public int getRenderType() {
+	@Override
+	public TileEntity createNewTileEntity(World var1, int var2) {
+		return new TileEntityPot();
+	}
+		
+	public int getRenderType() {
         return 3;
     }
-
-    public boolean isOpaqueCube() {
-        return false;
-    }
-
+    
+	public boolean isOpaqueCube() {
+		return false;
+	}
+	
     public boolean isFullCube() {
         return false;
     }
-
-    public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
-        return Item.getItemFromBlock(FoodcraftGuiBlocks.Guo);
-    }
-
-    @SideOnly(Side.CLIENT)
-    public Item getItem(World w, int x, int y, int z) {
-        return Item.getItemFromBlock(FoodcraftGuiBlocks.Guo);
-    }
-
-    @Override
-    public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
-        ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
-        playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_Guo, worldIn,pos.getX(), pos.getY(), pos.getZ());
-        return true;
-    }
-
-    public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {
-        TileEntity tileentity = worldIn.getTileEntity(pos);
-        if (tileentity instanceof TileEntityPot) {
-            InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityPot)tileentity);
-            worldIn.updateComparatorOutputLevel(pos, this);
-        }
-        super.breakBlock(worldIn, pos, state);
-    }
-
-    public static boolean update(World world,int x,int y,int z) {
-        return world.getBlockState(new BlockPos(x, y - 1, z)).getBlock() == Blocks.fire;
-    }
-
-    public static int getFrequencyOfUse(ItemStack item) {
-        if (item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
-        return item.getTagCompound().getInteger("frequencyOfUse");
-    }
-
-    @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
-        if (stack.getTagCompound() != null) {
-            int xh = getFrequencyOfUse(stack);
-            TileEntityPot tep = (TileEntityPot)worldIn.getTileEntity(pos);
-            tep.frequencyOfUse = xh;
-        }
-    }
+	
+	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
+		return Item.getItemFromBlock(FoodcraftGuiBlocks.Guo);
+	}
+	
+	@SideOnly(Side.CLIENT)
+	public Item getItem(World w, int x, int y, int z) {
+		return Item.getItemFromBlock(FoodcraftGuiBlocks.Guo);
+	}
+	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ) {
+		ItemStack stack = playerIn.inventory.mainInventory[playerIn.inventory.currentItem];
+		playerIn.openGui(FoodCraft.instance, GuiIDs.GUI_Guo, worldIn,pos.getX(), pos.getY(), pos.getZ());
+		return true;
+	}
+	
+	public void breakBlock(World worldIn, BlockPos pos, IBlockState state) {   
+		TileEntity tileentity = worldIn.getTileEntity(pos);
+		if (tileentity instanceof TileEntityPot) {
+			InventoryHelper.dropInventoryItems(worldIn, pos, (TileEntityPot)tileentity);
+			worldIn.updateComparatorOutputLevel(pos, this);
+		}
+		super.breakBlock(worldIn, pos, state);
+	}
+	
+	public static boolean update(World world,int x,int y,int z) {
+		return world.getBlockState(new BlockPos(x, y - 1, z)).getBlock() == Blocks.fire;
+	}
+	
+	public static int getFrequencyOfUse(ItemStack item) {
+		if (item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
+		return item.getTagCompound().getInteger("frequencyOfUse");
+	}
+	 
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		if (stack.getTagCompound() != null) {
+			int xh = getFrequencyOfUse(stack);
+			TileEntityPot tep = (TileEntityPot)worldIn.getTileEntity(pos);
+			tep.frequencyOfUse = xh;
+		}
+	}
 }

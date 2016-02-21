@@ -23,52 +23,55 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemCakeFoodcraft extends Item {
-
-    private String[] names = new String[] {"ItemPutaoDG","ItemJinputaoDG","ItemLiDG","ItemTaoziDG","ItemJuziDG","ItemNingmengDG","ItemCaomeiDG","ItemYeziDG"};
-    private Block[] blocks = new Block[] {FoodcraftBlocks.BlockPutaoDG,FoodcraftBlocks.BlockJinputaoDG,FoodcraftBlocks.BlockLiDG,FoodcraftBlocks.BlockTaoziDG,FoodcraftBlocks.BlockJuziDG,FoodcraftBlocks.BlockNingmengDG,FoodcraftBlocks.BlockCaomeiDG,FoodcraftBlocks.BlockYeziDG};
-
-    public ItemCakeFoodcraft() {
-        this.setHasSubtypes(true);
-        this.setUnlocalizedName("ItemDangao");
-        this.setCreativeTab(FoodCraft.FcTabSnack);
-    }
+	
+	private String[] names = new String[]{"ItemPutaoDG","ItemJinputaoDG","ItemLiDG","ItemTaoziDG","ItemJuziDG","ItemNingmengDG","ItemCaomeiDG","ItemYeziDG"};
+	private Block[] blocks = new Block[]{FoodcraftBlocks.BlockPutaoDG,FoodcraftBlocks.BlockJinputaoDG,FoodcraftBlocks.BlockLiDG,FoodcraftBlocks.BlockTaoziDG,FoodcraftBlocks.BlockJuziDG,FoodcraftBlocks.BlockNingmengDG,FoodcraftBlocks.BlockCaomeiDG,FoodcraftBlocks.BlockYeziDG};
+	
+	public ItemCakeFoodcraft() {
+		this.setHasSubtypes(true);
+		this.setUnlocalizedName("ItemDangao");
+		this.setCreativeTab(FoodCraft.FcTabSnack);
+	}
 
     @SideOnly(Side.CLIENT)
     public boolean hasEffect(ItemStack stack) {
         return stack.getItemDamage() == 1;
     }
-
-    @SideOnly(Side.CLIENT)
+    
+ @SideOnly(Side.CLIENT)
     public void getSubItems(Item Item, CreativeTabs Tabs, List list) {
-        list.add(new ItemStack(Item, 1, 0));
-        list.add(new ItemStack(Item, 1, 1));
-        list.add(new ItemStack(Item, 1, 2));
-        list.add(new ItemStack(Item, 1, 3));
-        list.add(new ItemStack(Item, 1, 4));
-        list.add(new ItemStack(Item, 1, 5));
+	 	list.add(new ItemStack(Item, 1, 0));
+	 	list.add(new ItemStack(Item, 1, 1));
+	 	list.add(new ItemStack(Item, 1, 2));
+	 	list.add(new ItemStack(Item, 1, 3));
+	 	list.add(new ItemStack(Item, 1, 4));
+	 	list.add(new ItemStack(Item, 1, 5));
         list.add(new ItemStack(Item, 1, 6));
         list.add(new ItemStack(Item, 1, 7));
     }
-
+ 
     public String getUnlocalizedName(ItemStack is1) {
-        return names[is1.getItemDamage()];
+    	 return names[is1.getItemDamage()];
     }
-
+    
     public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
         IBlockState iblockstate = worldIn.getBlockState(pos);
         Block block = iblockstate.getBlock();
 
         if (block == Blocks.snow_layer && ((Integer)iblockstate.getValue(BlockSnow.LAYERS)).intValue() < 1) {
             side = EnumFacing.UP;
-        } else if (!block.isReplaceable(worldIn, pos)) {
+        }
+        else if (!block.isReplaceable(worldIn, pos)) {
             pos = pos.offset(side);
         }
 
         if (!playerIn.canPlayerEdit(pos, side, stack)) {
             return false;
-        } else if (stack.stackSize == 0) {
+        }
+        else if (stack.stackSize == 0) {
             return false;
-        } else {
+        }
+        else {
             if (worldIn.canBlockBePlaced(blocks[stack.getItemDamage()], pos, false, side, (Entity)null, stack)) {
                 IBlockState iblockstate1 = this.blocks[stack.getItemDamage()].onBlockPlaced(worldIn, pos, side, hitX, hitY, hitZ, 0, playerIn);
 
