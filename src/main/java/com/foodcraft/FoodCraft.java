@@ -20,12 +20,12 @@ import com.foodcraft.network.NetworkMod;
 import com.foodcraft.network.PacketDispatcher;
 import com.foodcraft.network.Proxy;
 import com.foodcraft.proxy.CommonProxy;
-import com.foodcraft.util.FoodcraftSubscribeEvent;
+import com.foodcraft.util.FcSubscribeEvent;
 
 @Mod(modid="foodcraft", name="FoodCraft", version="1.2.0")
 
 public class FoodCraft implements NetworkMod {
-    public static boolean NEIIsLoad = false;
+    public static boolean JEIIsLoad = false;
     public static final CreativeTabs FcTabMachine = new CreativeTabs("Jiqi") {//机器&工具
         public Item getTabIconItem() {
             return Item.getItemFromBlock(FoodcraftGuiBlocks.Nmj);
@@ -67,7 +67,7 @@ public class FoodCraft implements NetworkMod {
     public void preInit(FMLPreInitializationEvent event) {
         PacketDispatcher.initInstance("foodcraft", this);
         NERLogManager.log("Loading foodcraft, Version: 1.2.0");
-        NEIIsLoad = Loader.isModLoaded("NotEnoughItems");
+        JEIIsLoad = Loader.isModLoaded("JustEnoughItems");
         NERConfigHandler.initConfig(event);
         NERConfigHandler.getConfig();
         proxy.preInit(event);
@@ -76,7 +76,7 @@ public class FoodCraft implements NetworkMod {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         proxy.init(event);
-        MinecraftForge.EVENT_BUS.register(new FoodcraftSubscribeEvent());
+        MinecraftForge.EVENT_BUS.register(new FcSubscribeEvent());
     }
 
     @EventHandler

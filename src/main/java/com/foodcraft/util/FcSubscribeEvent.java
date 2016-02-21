@@ -4,27 +4,23 @@ import com.foodcraft.gui.tileentities.TileEntityPan;
 import com.foodcraft.gui.tileentities.TileEntityPot;
 import com.foodcraft.init.FoodcraftItems;
 import com.foodcraft.init.FoodcraftPlants;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.passive.EntitySquid;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class FoodcraftSubscribeEvent {
-
+public class FcSubscribeEvent {
     @SubscribeEvent
     public void test1(LivingDeathEvent event) {
         if(event.entityLiving instanceof EntitySquid) {
             EntitySquid Squid = (EntitySquid)event.entityLiving;
             if (!Squid.worldObj.isRemote) {
-                FoodcraftUtil.dropItemAsEntity(Squid.worldObj,Squid.posX,Squid.posY,Squid.posZ,new ItemStack(FoodcraftItems.ItemYouyurou,3));
+                FcUtil.dropItemAsEntity(Squid.worldObj,Squid.posX,Squid.posY,Squid.posZ,new ItemStack(FoodcraftItems.ItemYouyurou,3));
             }
         }
     }
@@ -40,7 +36,7 @@ public class FoodcraftSubscribeEvent {
 
                 if(!event.getPlayer().capabilities.isCreativeMode) {
                     event.world.setBlockToAir(event.pos);
-                    FoodcraftUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(),event.pos.getZ(), stack);
+                    FcUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(),event.pos.getZ(), stack);
                 }
             }
             if ((te != null) && ((te instanceof TileEntityPot))) {
@@ -50,7 +46,7 @@ public class FoodcraftSubscribeEvent {
 
                 if(!event.getPlayer().capabilities.isCreativeMode) {
                     event.world.setBlockToAir(event.pos);
-                    FoodcraftUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(),event.pos.getZ(), stack);
+                    FcUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(),event.pos.getZ(), stack);
                 }
             }
             if(event.state.getBlock() == Blocks.leaves || event.state.getBlock() == Blocks.leaves2) {
@@ -117,7 +113,7 @@ public class FoodcraftSubscribeEvent {
                         if(!event.getPlayer().capabilities.isCreativeMode) {
                             int o2 = event.world.rand.nextInt(10);
                             if(o2 == 2) {
-                                FoodcraftUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(), event.pos.getZ(), new ItemStack(b));
+                                FcUtil.dropItemAsEntity(event.world, event.pos.getX(),event.pos.getY(), event.pos.getZ(), new ItemStack(b));
                             }
                         }
                     }

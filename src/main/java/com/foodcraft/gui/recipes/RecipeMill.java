@@ -1,17 +1,17 @@
 package com.foodcraft.gui.recipes;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.foodcraft.init.FoodcraftItems;
-
+import com.google.common.collect.Lists;
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 
 
@@ -20,6 +20,8 @@ public class RecipeMill {
     private static final RecipeMill smeltingBase = new RecipeMill();
     private Map smeltingList = new HashMap();
     private Map experienceList = new HashMap();
+    private List<ItemStack> inputList = Lists.newArrayList();
+    private List<ItemStack> outputList = Lists.newArrayList();
 
     public static RecipeMill smelting() {
         return smeltingBase;
@@ -47,6 +49,8 @@ public class RecipeMill {
     }
 
     public void register(ItemStack ItemStack, ItemStack ItemStack2, float xp) {
+        this.inputList.add(ItemStack);
+        this.outputList.add(ItemStack2);
         this.smeltingList.put(ItemStack, ItemStack2);
         this.experienceList.put(ItemStack2, Float.valueOf(xp));
     }
@@ -71,5 +75,13 @@ public class RecipeMill {
 
     public Map<ItemStack, ItemStack> getSmeltingList() {
         return this.smeltingList;
+    }
+
+    public List<ItemStack> getInputList() {
+        return inputList;
+    }
+
+    public List<ItemStack> getOutputList() {
+        return outputList;
     }
 }

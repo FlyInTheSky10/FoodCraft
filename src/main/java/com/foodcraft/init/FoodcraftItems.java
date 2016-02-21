@@ -1,45 +1,19 @@
 package com.foodcraft.init;
 
 import com.foodcraft.FoodCraft;
-import com.foodcraft.item.FcFood;
-import com.foodcraft.item.ItemCakeFoodcraft;
-import com.foodcraft.item.ItemCleaningBucket;
-import com.foodcraft.item.ItemCookie;
-import com.foodcraft.item.ItemDrink;
-import com.foodcraft.item.ItemFc;
-import com.foodcraft.item.ItemFoodChili;
-import com.foodcraft.item.ItemGoldenAppleWine;
-import com.foodcraft.item.ItemGoldenGrapeWine;
-import com.foodcraft.item.ItemJam;
-import com.foodcraft.item.ItemKitchenKnifeDiamond;
-import com.foodcraft.item.ItemKitchenKnifeEmerald;
-import com.foodcraft.item.ItemKitchenKnifeGold;
-import com.foodcraft.item.ItemStapleFood;
-import com.foodcraft.item.ItemTest;
-import com.foodcraft.item.ItemWine;
-import com.foodcraft.item.ItemWrench;
-import com.foodcraft.plant.items.*;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.resources.model.ModelBakery;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
+import com.foodcraft.item.*;
+import com.foodcraft.plant.items.ItemPlant;
+import com.foodcraft.plant.items.ItemSweetPotato;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemReed;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionHelper;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
 
 public class FoodcraftItems {
 
-    static public Item ItemCong,ItemZongye,ItemXifan,ItemDangeng,ItemTiepian,ItemCaidao,ItemDami,Itemfan,ItemMianfen,ItemHuashen,
+    public static Item ItemCong,ItemZongye,ItemXifan,ItemDangeng,ItemTiepian,ItemCaidao,ItemDami,Itemfan,ItemMianfen,ItemHuashen,
            ItemDouzi,ItemHuashenyou,ItemDoujiang,ItemDianluban,ItemJianjidan,ItemLaobing,ItemMianpi,ItemJiaozixian,ItemJiaozi,ItemJianjiao,
            ItemQiaokeli,ItemQiaokelifen,ItemShucai,ItemFanqie,ItemLajiao,ItemMianfensi,ItemQiezi,ItemPutao,ItemYan,Itemwater,ItemDoufu,
            ItemJiangyou,ItemNuomi, ItemDoufugan,ItemBaifan,ItemFanqiechaojidanfan,ItemDisanxian,ItemCu,ItemYuxiangrousi,ItemGongbaojiding,
@@ -55,9 +29,7 @@ public class FoodcraftItems {
            ItemGalijiroufan,ItemShuizhuniurou,ItemMian,ItemGuoqiaomixian,ItemYifen,ItemYifenpork,ItemYifenbeef,ItemYifenchicken,
            ItemPidanshourouzhou,ItemYuebing,ItemMantou,ItemSuancaibing,ItemYoutiao,ItemLatiao,ItemHetaosu,ItemAici,ItemCiba,ItemChangfen,
            ItemXiangchang,ItemRegou,ItemLachang,ItemLarou,ItemZhaxiangchang,ItemRibendoufu,ItemLabazhou,ItemLaweixunliao,ItemNainao,
-           ItemPisa,ItemHanbaobao,ItemJinghuashuitong,ItemSCBlock,ItemSCPlant,ItemSCMW1,ItemSCMW2,ItemSCKFC,ItemSCCn,ItemSCYz,
-           ItemSCJ,ItemSCShui1,ItemSCShui2,ItemSCFan1,ItemSCFan2,ItemSCFan3,ItemSCTh,ItemAnbizhishi,ItemAnlanzhishi,ItemZongjiqianguzhishi,
-           ItemAnlanTools,ItemAnbiTools,ItemZongjiTools,ItemZongjiTools2,ItemZongjiTools3,ItemZongjiTools4,ItemNull,
+           ItemPisa,ItemHanbaobao,ItemJinghuashuitong,ItemNull,
            ItemYouyurou,ItemShuyouyurou,ItemYouyusi,ItemShucaizhong,ItemLajiaozhong,ItemFanqiezhong,ItemPutaozhong,ItemQiezizhong,ItemBailuobo,
            ItemQingjiao,ItemQingjiaozhong,ItemHongdou,ItemLvdou,ItemHongshu,ItemKaohongshu,ItemDoujiao,ItemWrench,ItemHuanggua,ItemHuangguazhong,
            ItemYumizhong,ItemYumi,ItemBailuobosi,ItemBailuobozhi,ItemFanqiezhi,ItemYumizhi,ItemHuangguazhi,ItemDousha,ItemKaoyumi,ItemBaoyumihua,
@@ -67,7 +39,7 @@ public class FoodcraftItems {
            ItemYezizhi,ItemYingtaozhi,ItemXiangjiaozhi,ItemYenai,ItemLizhizhiice,ItemTaozizhiice,ItemJuzizhiice,ItemMangguozhiice,
            ItemNingmengzhiice,ItemMuguazhiice,ItemCaomeizhiice,ItemYezizhiice,ItemXiangjiaozhiice,ItemLizijiu,ItemLizhijiu,
            ItemTaozijiu,ItemMangguojiu,ItemNingmengjiu,ItemShiliujiu,ItemGuojiang,ItemBinggan,ItemDangao,
-           ItemCaidaoHJ,ItemCaidaoZS,ItemCaidaoLBS,ItemBingganF,ItemBingganXN,ItemTest,ItemShaojiaodeshiwu;
+           ItemCaidaoHJ,ItemCaidaoZS,ItemCaidaoLBS,ItemBingganF,ItemBingganXN,ItemShaojiaodeshiwu,ItemTest;
 
     public static void init() {
         ItemTiepian = new ItemFc("ItemTiepian").setCreativeTab(FoodCraft.FcTabMachine);

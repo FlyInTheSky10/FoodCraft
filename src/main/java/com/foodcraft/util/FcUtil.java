@@ -8,7 +8,7 @@ import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.world.World;
 
-public class FoodcraftUtil {
+public class FcUtil {
 
     public static void dropItemAsEntity(World world, double posX, double posY, double posZ, ItemStack itemStack) {
 

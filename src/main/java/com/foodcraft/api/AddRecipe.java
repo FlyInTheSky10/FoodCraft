@@ -4,11 +4,11 @@ import net.minecraft.item.ItemStack;
 
 import com.foodcraft.gui.recipes.*;
 /**
- *
- * FoodCraft API.
- * You can use this class to interact on Foodcraft.
- *
+ * Deprecated!
+ * Please use RecipeAdder.
+ * @see com.foodcraft.api.RecipeAdder
  */
+@Deprecated
 public class AddRecipe {
     /**
      * Add Recipe in the Mill.

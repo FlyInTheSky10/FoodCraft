@@ -17,11 +17,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public abstract class GUIBlockFoodcraft extends BlockContainer {
+public abstract class BlockGuiFc extends BlockContainer {
 
     protected static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
 
-    protected GUIBlockFoodcraft() {
+    protected BlockGuiFc() {
         super(Material.rock);
     }
 

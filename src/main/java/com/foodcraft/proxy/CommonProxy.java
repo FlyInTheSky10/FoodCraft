@@ -10,7 +10,7 @@ import com.foodcraft.network.handler.HeatHandler;
 import com.foodcraft.network.handler.HeatHandlerPot;
 import com.foodcraft.network.message.HeatMessage;
 import com.foodcraft.network.message.HeatMessagePot;
-import com.foodcraft.util.GUIHandler;
+import com.foodcraft.util.FcGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
@@ -32,7 +32,7 @@ public class CommonProxy implements Proxy {
         FoodcraftRecipe.init();
         regesterTileEntity();
         registerPacket();
-        NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new GUIHandler());
+        NetworkRegistry.INSTANCE.registerGuiHandler(FoodCraft.instance, new FcGuiHandler());
         FcFoodOreDictRegistry.register();
     }
     public void postInit(FMLPostInitializationEvent event) {}
