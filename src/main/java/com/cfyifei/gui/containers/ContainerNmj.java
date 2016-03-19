@@ -1,154 +1,128 @@
 package com.cfyifei.gui.containers;
 
 import com.cfyifei.gui.tileentitys.TileEntityNmj;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 
 
-public class ContainerNmj extends Container{
-	  private int lastCookTime;
-	    private int lastBurnTime;
-	    private int lastItemBurnTime;
-       private TileEntityNmj furnaceIn;
-	public ContainerNmj(InventoryPlayer par1InventoryPlayer, TileEntityNmj furnaceInv)
-       {
-    	   this.furnaceIn = furnaceInv;
-    	   this.addSlotToContainer(new Slot(furnaceInv, 0, 49, 19));
-           this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, furnaceInv, 1, 112, 19));
-           this.addSlotToContainer(new Slot(furnaceInv, 2, 80, 54));
-           int var3;
-           for (var3 = 0; var3 < 3; ++var3)
-           {
-               for (int var4 = 0; var4 < 9; ++var4)
-               {
-                   this.addSlotToContainer(new Slot(par1InventoryPlayer, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18));
-               }
-           }
+public class ContainerNmj extends Container {
+    private int lastCookTime;
+    private int lastBurnTime;
+    private int lastItemBurnTime;
+    private TileEntityNmj furnaceIn;
 
-           for (var3 = 0; var3 < 9; ++var3)
-           {
-               this.addSlotToContainer(new Slot(par1InventoryPlayer, var3, 8 + var3 * 18, 142));
-           }
-       }
-	@Override
-	public boolean canInteractWith(EntityPlayer playerIn) {
-		return true;
-	}
- 
-	   public void addCraftingToCrafters(ICrafting par1ICrafting)
-	    {
-	        super.addCraftingToCrafters(par1ICrafting);
-	        par1ICrafting.sendProgressBarUpdate(this, 0, this.furnaceIn.furnaceCookTime);
-	        par1ICrafting.sendProgressBarUpdate(this, 1, this.furnaceIn.tableBurnTime);
-	        par1ICrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
-	    }
+    public ContainerNmj(InventoryPlayer par1InventoryPlayer, TileEntityNmj furnaceInv) {
+        this.furnaceIn = furnaceInv;
+        this.addSlotToContainer(new Slot(furnaceInv, 0, 49, 19));
+        this.addSlotToContainer(new SlotFurnace(par1InventoryPlayer.player, furnaceInv, 1, 112, 19));
+        this.addSlotToContainer(new Slot(furnaceInv, 2, 80, 54));
+        int var3;
+        for (var3 = 0; var3 < 3; ++var3) {
+            for (int var4 = 0; var4 < 9; ++var4) {
+                this.addSlotToContainer(new Slot(par1InventoryPlayer, var4 + var3 * 9 + 9, 8 + var4 * 18, 84 + var3 * 18));
+            }
+        }
 
-	    @SideOnly(Side.CLIENT)
-	    public void updateProgressBar(int par1, int par2)
-	    {
-	        if (par1 == 0)
-	        {
-	            this.furnaceIn.furnaceCookTime = par2;
-	        }
+        for (var3 = 0; var3 < 9; ++var3) {
+            this.addSlotToContainer(new Slot(par1InventoryPlayer, var3, 8 + var3 * 18, 142));
+        }
+    }
 
-	        if (par1 == 1)
-	        {
-	            this.furnaceIn.tableBurnTime = par2;
-	        }
+    @Override
+    public boolean canInteractWith(EntityPlayer playerIn) {
+        return true;
+    }
 
-	        if (par1 == 2)
-	        {
-	            this.furnaceIn.currentItemBurnTime = par2;
-	        }
-	    }
-	    
-	    public void detectAndSendChanges()
-	    {
-	        super.detectAndSendChanges();
+    public void onCraftGuiOpened(ICrafting par1ICrafting) {
+        super.onCraftGuiOpened(par1ICrafting);
+        par1ICrafting.sendProgressBarUpdate(this, 0, this.furnaceIn.furnaceCookTime);
+        par1ICrafting.sendProgressBarUpdate(this, 1, this.furnaceIn.tableBurnTime);
+        par1ICrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
+    }
 
-	        for (int i = 0; i < this.crafters.size(); ++i)
-	        {
-	            ICrafting icrafting = (ICrafting)this.crafters.get(i);
+    @SideOnly(Side.CLIENT)
+    public void updateProgressBar(int par1, int par2) {
+        if (par1 == 0) {
+            this.furnaceIn.furnaceCookTime = par2;
+        }
 
-	            if (this.lastCookTime != this.furnaceIn.furnaceCookTime)
-	            {
-	                icrafting.sendProgressBarUpdate(this, 0, this.furnaceIn.furnaceCookTime);
-	            }
+        if (par1 == 1) {
+            this.furnaceIn.tableBurnTime = par2;
+        }
 
-	            if (this.lastBurnTime != this.furnaceIn.tableBurnTime)
-	            {
-	                icrafting.sendProgressBarUpdate(this, 1, this.furnaceIn.tableBurnTime);
-	            }
+        if (par1 == 2) {
+            this.furnaceIn.currentItemBurnTime = par2;
+        }
+    }
 
-	            if (this.lastItemBurnTime != this.furnaceIn.currentItemBurnTime)
-	            {
-	                icrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
-	            }
-	        }
+    public void detectAndSendChanges() {
+        super.detectAndSendChanges();
 
-	        this.lastCookTime = this.furnaceIn.furnaceCookTime;
-	        this.lastBurnTime = this.furnaceIn.tableBurnTime;
-	        this.lastItemBurnTime = this.furnaceIn.currentItemBurnTime;
-	    }
-	    
-	   
-	    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2)
-	    {
-	        ItemStack var3 = null;
-	        Slot var4 = (Slot)this.inventorySlots.get(par2);
-	        if (var4 != null && var4.getHasStack())
-	        {
-	            ItemStack var5 = var4.getStack();
-	            var3 = var5.copy();
-	            // µã»÷µ½SlotµÄIDÎª0-2Ö®¼äµÄÊ±ºò£¬½«ÎïÆ·ËÍ»ØÍæ¼ÒµÄ±³°üÖÐ£¬Õâ¸öµØ·½ÊÇ
-	            if (par2 >= 0 && par2 <= 2)
-	            {
-	                if (!this.mergeItemStack(var5, 3, 30, false))
-	                {
-	                    return null;
-	                }
-	                var4.onSlotChange(var5, var3);
-	            }
-	            // µã»÷µ½Íæ¼ÒµÄ±³°üµÄÊ±ºò½«ÎïÆ·ËÍµ½Íæ¼ÒµÄ¿ì½ÝÀ¸ÖÐ
-	            else if (par2 > 3 && par2 < 30)
-	            {
-	                if (!this.mergeItemStack(var5, 30, 39, false))
-	                {
-	                    return null;
-	                }
-	            }
-	            // µã»÷µ½Íæ¼ÒµÄ¿ì½ÝÀ¸µÄÊ±ºò½«ÎïÆ·ËÍµ½±³°üÖÐ
-	            else if (par2 >= 30 && par2 < 39)
-	            {
-	                if (!this.mergeItemStack(var5, 3, 30, false))
-	                {
-	                    return null;
-	                }
-	            }
-	            if (var5.stackSize == 0)
-	            {
-	                var4.putStack((ItemStack)null);
-	            }
-	            else
-	            {
-	                var4.onSlotChanged();
-	            }
-	            if (var5.stackSize == var3.stackSize)
-	            {
-	                return null;
-	            }
-	            var4.onPickupFromSlot(par1EntityPlayer, var5);
-	        }
-	        return var3;
+        for (int i = 0; i < this.crafters.size(); ++i) {
+            ICrafting icrafting = (ICrafting) this.crafters.get(i);
 
-	}
+            if (this.lastCookTime != this.furnaceIn.furnaceCookTime) {
+                icrafting.sendProgressBarUpdate(this, 0, this.furnaceIn.furnaceCookTime);
+            }
+
+            if (this.lastBurnTime != this.furnaceIn.tableBurnTime) {
+                icrafting.sendProgressBarUpdate(this, 1, this.furnaceIn.tableBurnTime);
+            }
+
+            if (this.lastItemBurnTime != this.furnaceIn.currentItemBurnTime) {
+                icrafting.sendProgressBarUpdate(this, 2, this.furnaceIn.currentItemBurnTime);
+            }
+        }
+
+        this.lastCookTime = this.furnaceIn.furnaceCookTime;
+        this.lastBurnTime = this.furnaceIn.tableBurnTime;
+        this.lastItemBurnTime = this.furnaceIn.currentItemBurnTime;
+    }
+
+
+    public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {
+        ItemStack var3 = null;
+        Slot var4 = (Slot) this.inventorySlots.get(par2);
+        if (var4 != null && var4.getHasStack()) {
+            ItemStack var5 = var4.getStack();
+            var3 = var5.copy();
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Slotï¿½ï¿½IDÎª0-2Ö®ï¿½ï¿½ï¿½Ê±ï¿½ò£¬½ï¿½ï¿½ï¿½Æ·ï¿½Í»ï¿½ï¿½ï¿½ÒµÄ±ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½
+            if (par2 >= 0 && par2 <= 2) {
+                if (!this.mergeItemStack(var5, 3, 30, false)) {
+                    return null;
+                }
+                var4.onSlotChange(var5, var3);
+            }
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Íµï¿½ï¿½ï¿½ÒµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            else if (par2 > 3 && par2 < 30) {
+                if (!this.mergeItemStack(var5, 30, 39, false)) {
+                    return null;
+                }
+            }
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÒµÄ¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Æ·ï¿½Íµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+            else if (par2 >= 30 && par2 < 39) {
+                if (!this.mergeItemStack(var5, 3, 30, false)) {
+                    return null;
+                }
+            }
+            if (var5.stackSize == 0) {
+                var4.putStack((ItemStack) null);
+            } else {
+                var4.onSlotChanged();
+            }
+            if (var5.stackSize == var3.stackSize) {
+                return null;
+            }
+            var4.onPickupFromSlot(par1EntityPlayer, var5);
+        }
+        return var3;
+
+    }
 }

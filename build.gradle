@@ -1,14 +1,15 @@
 buildscript {
     repositories {
-        mavenCentral()
+        jcenter()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "http://bmclapi2.bangbang93.com/maven"
         }
         maven {
             name = "sonatype"
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
+        mavenCentral()
     }
     dependencies {
         classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
@@ -17,13 +18,34 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+version = minecraft_version + "-" + mod_version
+group= mod_group // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = mod_id
+
+sourceSets {
+    main {
+        java {
+            srcDirs += 'src/api/java/'
+        }
+    }
+}
+
+repositories {
+    jcenter()
+    
+    maven {
+        name = "codechicken"
+        url = "http://chickenbones.net/maven"
+    }
+}
 
 minecraft {
-    version = "1.7.2-10.12.2.1126"
-    assetDir = "eclipse/assets"
+    version = minecraft_version + "-" + forge_version
+    runDir = "run"
+
+    replace "@version@", mod_version
+
+    mappings = mcp_mapping_version
 }
 
 dependencies {

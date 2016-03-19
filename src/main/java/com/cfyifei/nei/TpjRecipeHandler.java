@@ -1,113 +1,56 @@
 package com.cfyifei.nei;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
+import codechicken.nei.NEIClientUtils;
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.cfyifei.gui.recipes.Tpjrecipe;
-import com.cfyifei.gui.tileentitys.TileEntityTpj;
 import com.cfyifei.item.ModItem;
 import com.cfyifei.itemstack.TpjMaking;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import codechicken.nei.ItemList;
-import codechicken.nei.NEIClientUtils;
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler;
-import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
-import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class TpjRecipeHandler extends TemplateRecipeHandler {
-	boolean isMilk2, iscold2;
-	//*********************************************************************************************************************************************************************
-	public class SmeltingPair extends CachedRecipe
-    {
-        public SmeltingPair(TpjMaking tpjMaking, ItemStack result) {
-           
-        	tpjMaking.Item.stackSize = 1;
-        	boolean isMilk = tpjMaking.isMilk;
-        	boolean iscold = tpjMaking.iscold;
-            //¼Ó²Û
-            this.ingred = new PositionedStack(tpjMaking.Item, 34 - 5, 27 - 11);
-            this.result = new PositionedStack(result, 82 - 5, 27 - 11);
-            
-            if(isMilk){
-            	slot = new PositionedStack(new ItemStack(Items.milk_bucket), 34 - 5, 55 - 11);
-            }
-
-            if(!isMilk){
-            	slot = new PositionedStack(new ItemStack(ModItem.Itemwater), 34 - 5, 55 - 11);
-            }
-            
-            
-            if(iscold){
-            	cold = new PositionedStack(new ItemStack(Blocks.ice), 115 - 5, 48 - 11);
-            }
-            else{
-            	cold = new PositionedStack(new ItemStack(Items.coal), 115 - 5, 16 - 11);
-            }
-        }
-
-        public List<PositionedStack> getIngredients() {
-        	//»ñµÃ²ÄÁÏ
-            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
-        }
-
-        public PositionedStack getResult() {
-        	//»ñµÃ²úÎï
-            return result;
-        }
-        public List<PositionedStack> getOtherStacks() {
-            ArrayList<PositionedStack> stacks = new ArrayList<PositionedStack>();
-            PositionedStack stack = getOtherStack();
-            if (stack != null)
-                stacks.add(stack);
-            if(slot != null){
-            	  stacks.add(slot);
-            }
-            if(cold != null){
-          	  stacks.add(cold);
-          }
-            return stacks;
-        }
-        public PositionedStack getOtherStack() {     
-			return null;
-        }
-        PositionedStack slot;
-        PositionedStack cold;
-        PositionedStack ingred;
-        PositionedStack result;
-    }
-	//*********************************************************************************************************************************************************************
-  //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
+    boolean isMilk2, iscold2;
+
+    private static Set<Item> excludedFuels() {
+        Set<Item> efuels = new HashSet<Item>();
+        efuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
+        efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
+        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
+        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
+        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
+        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
+        return efuels;
+    }
 
     @Override
     public void loadTransferRects() {
-    	//Guiµã»÷
-    	transferRects.add(new RecipeTransferRect(new Rectangle(58 - 5, 30 - 11, 24, 17), "Tpjmaking"));
+        //Guiï¿½ï¿½ï¿½
+        transferRects.add(new RecipeTransferRect(new Rectangle(58 - 5, 30 - 11, 24, 17), "Tpjmaking"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUIÀà
+        //GUIï¿½ï¿½
         return com.cfyifei.gui.guis.GuiTpj.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//Ãû×Ö
+        //ï¿½ï¿½ï¿½ï¿½
         return NEIClientUtils.translate("tile.Tpj.name");
     }
 
@@ -146,7 +89,7 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
     public void loadUsageRecipes(ItemStack ingredient) {
         Map<TpjMaking, ItemStack> recipes = (Map<TpjMaking, ItemStack>) Tpjrecipe.smelting().getSmeltingList();
         for (Entry<TpjMaking, ItemStack> recipe : recipes.entrySet())
-            if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getKey().Item, ingredient)) {
+            if (NEIServerUtils.areStacksSameTypeCrafting(recipe.getKey().itemStack, ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
                 arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);
@@ -155,34 +98,82 @@ public class TpjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//²ÄÖÊ
+        //ï¿½ï¿½ï¿½ï¿½
         return "foodcraft:textures/gui/nei/tpj.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//½ø¶ÈÌõ
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
-    	drawProgressBar(55 - 5, 26 - 11, 176, 14, 24, 17, 48, 0);
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
+        drawProgressBar(55 - 5, 26 - 11, 176, 14, 24, 17, 48, 0);
     }
-
-    private static Set<Item> excludedFuels() {
-        Set<Item> efuels = new HashSet<Item>();
-        efuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
-        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
-        return efuels;
-    }
-
-
 
     @Override
     public String getOverlayIdentifier() {
-    	//¸²¸Ç±êÊ¶·û
+        //ï¿½ï¿½ï¿½Ç±ï¿½Ê¶ï¿½ï¿½
         return "Tpjmaking";
+    }
+
+    //*********************************************************************************************************************************************************************
+    public class SmeltingPair extends CachedRecipe {
+        PositionedStack slot;
+        PositionedStack cold;
+        PositionedStack ingred;
+        PositionedStack result;
+
+        public SmeltingPair(TpjMaking tpjMaking, ItemStack result) {
+
+            tpjMaking.itemStack.stackSize = 1;
+            boolean isMilk = tpjMaking.isMilk;
+            boolean iscold = tpjMaking.isCold;
+            //ï¿½Ó²ï¿½
+            this.ingred = new PositionedStack(tpjMaking.itemStack, 34 - 5, 27 - 11);
+            this.result = new PositionedStack(result, 82 - 5, 27 - 11);
+
+            if (isMilk) {
+                slot = new PositionedStack(new ItemStack(Items.milk_bucket), 34 - 5, 55 - 11);
+            }
+
+            if (!isMilk) {
+                slot = new PositionedStack(new ItemStack(ModItem.Itemwater), 34 - 5, 55 - 11);
+            }
+
+
+            if (iscold) {
+                cold = new PositionedStack(new ItemStack(Blocks.ice), 115 - 5, 48 - 11);
+            } else {
+                cold = new PositionedStack(new ItemStack(Items.coal), 115 - 5, 16 - 11);
+            }
+        }
+
+        public List<PositionedStack> getIngredients() {
+            //ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
+            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
+        }
+
+        public PositionedStack getResult() {
+            //ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
+            return result;
+        }
+
+        public List<PositionedStack> getOtherStacks() {
+            ArrayList<PositionedStack> stacks = new ArrayList<PositionedStack>();
+            PositionedStack stack = getOtherStack();
+            if (stack != null)
+                stacks.add(stack);
+            if (slot != null) {
+                stacks.add(slot);
+            }
+            if (cold != null) {
+                stacks.add(cold);
+            }
+            return stacks;
+        }
+
+        public PositionedStack getOtherStack() {
+            return null;
+        }
     }
 
 }

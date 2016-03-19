@@ -4,50 +4,48 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class NERLogManager
-{
-	public static final Logger NERLogger = LogManager.getLogger("foodcraft");
-	
-	/**
-	 * debugLog·½·¨
-	 * @param message DebugLogÐÅÏ¢
-	 */
-	public static void deBugLog(String message)
-	{
-		NERLogger.debug(message);
-	}
-	
-	/**
-	 * error·½·¨
-	 * @param message ErrorÐÅÏ¢
-	 */
-	public static void error(String message)
-	{
-		NERLogger.error(message);
-	}
-	
-	/**
-	 * log·½·¨(INFO)
-	 * @param message LogÐÅÏ¢
-	 */
-	public static void log(String message)
-	{
-		NERLogger.info(message);
-	}
-	
-	/**
-	 * log·½·¨(×Ô¶¨ÒåÏÔÊ¾Àà±ð)
-	 * @param level LogÏÔÊ¾Àà±ð
-	 * @param message LogÐÅÏ¢
-	 */
-	public static void log(Level level, String message)
-	{
-		NERLogger.log(level, message);
-	}
-	
-	public static void warn(String message)
-	{
-		NERLogger.warn(message);
-	}
-	
+public class NERLogManager {
+    public static final Logger NERLogger = LogManager.getLogger("foodcraft");
+
+    /**
+     * debugLogï¿½ï¿½ï¿½ï¿½
+     *
+     * @param message DebugLogï¿½ï¿½Ï¢
+     */
+    public static void deBugLog(String message) {
+        NERLogger.debug(message);
+    }
+
+    /**
+     * errorï¿½ï¿½ï¿½ï¿½
+     *
+     * @param message Errorï¿½ï¿½Ï¢
+     */
+    public static void error(String message) {
+        NERLogger.error(message);
+    }
+
+    /**
+     * logï¿½ï¿½ï¿½ï¿½(INFO)
+     *
+     * @param message Logï¿½ï¿½Ï¢
+     */
+    public static void log(String message) {
+        NERLogger.info(message);
+    }
+
+    /**
+     * logï¿½ï¿½ï¿½ï¿½(ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½)
+     *
+     * @param level   Logï¿½ï¿½Ê¾ï¿½ï¿½ï¿½
+     * @param message Logï¿½ï¿½Ï¢
+     */
+    public static void log(Level level, String message) {
+        NERLogger.log(level, message);
+    }
+
+    public static void warn(String message) {
+        NERLogger.warn(message);
+    }
+
 }

@@ -1,22 +1,5 @@
 package com.cfyifei.nei;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
-import com.cfyifei.gui.recipes.Nmjrecipe;
-import com.cfyifei.gui.tileentitys.TileEntityNmj;
-
-import net.minecraft.block.Block;
-import net.minecraft.client.gui.inventory.GuiContainer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import codechicken.nei.ItemList;
 import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
@@ -24,66 +7,61 @@ import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
+import com.cfyifei.gui.recipes.Nmjrecipe;
+import com.cfyifei.gui.tileentitys.TileEntityNmj;
+import net.minecraft.block.Block;
+import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class NmjRecipeHandler extends TemplateRecipeHandler {
-	//*********************************************************************************************************************************************************************
-	public class SmeltingPair extends CachedRecipe
-    {
-        public SmeltingPair(ItemStack ingred, ItemStack result) {
-            ingred.stackSize = 1;
-            //¼Ó²Û
-            this.ingred = new PositionedStack(ingred, 49 - 5, 19 - 11);
-            this.result = new PositionedStack(result, 112 - 5, 19 - 11);
-        }
-
-        public List<PositionedStack> getIngredients() {
-        	//»ñµÃ²ÄÁÏ
-            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
-        }
-
-        public PositionedStack getResult() {
-        	//»ñµÃ²úÎï
-            return result;
-        }
-
-        public PositionedStack getOtherStack() {
-        	
-            return afuels.get((cycleticks / 48) % afuels.size()).stack;
-        }
-
-        PositionedStack ingred;
-        PositionedStack result;
-    }
-	//*********************************************************************************************************************************************************************
-    public static class FuelPair
-    {
-        public FuelPair(ItemStack ingred, int burnTime) {
-            this.stack = new PositionedStack(ingred, 80 - 5, 54 - 11, false);
-            this.burnTime = burnTime;
-        }
-
-        public PositionedStack stack;
-        public int burnTime;
-    }
-  //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
     public static ArrayList<FuelPair> afuels;
     public static HashSet<Block> efuels;
 
+    private static Set<Item> excludedFuels() {
+        Set<Item> efuels = new HashSet<Item>();
+        efuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
+        efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
+        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
+        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
+        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
+        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
+        return efuels;
+    }
+
+    private static void findFuels() {
+        afuels = new ArrayList<FuelPair>();
+        Set<Item> efuels = excludedFuels();
+        for (ItemStack item : ItemList.items)
+            if (!efuels.contains(item.getItem())) {
+                int burnTime = TileEntityNmj.getItemBurnTime(item);
+                if (burnTime > 0)
+                    afuels.add(new FuelPair(item.copy(), burnTime));
+            }
+    }
+
     @Override
     public void loadTransferRects() {
-    	//Guiµã»÷
-    	transferRects.add(new RecipeTransferRect(new Rectangle(76 - 5, 21 - 11, 22, 12), "milling"));
+        //Guiï¿½ï¿½ï¿½
+        transferRects.add(new RecipeTransferRect(new Rectangle(76 - 5, 21 - 11, 22, 12), "milling"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUIÀà
+        //GUIï¿½ï¿½
         return com.cfyifei.gui.guis.GuiNmj.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//Ãû×Ö
+        //ï¿½ï¿½ï¿½ï¿½
         return NEIClientUtils.translate("tile.Nmj.name");
     }
 
@@ -133,44 +111,60 @@ public class NmjRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//²ÄÖÊ
+        //ï¿½ï¿½ï¿½ï¿½
         return "foodcraft:textures/gui/nei/nmj.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//½ø¶ÈÌõ
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
-    	drawProgressBar(76 - 5, 21 - 11, 176, 14, 22, 12, 48, 0);
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
+        drawProgressBar(76 - 5, 21 - 11, 176, 14, 22, 12, 48, 0);
         drawProgressBar(81 - 5, 37 - 11, 176, 0, 14, 14, 48, 7);
-    }
-
-    private static Set<Item> excludedFuels() {
-        Set<Item> efuels = new HashSet<Item>();
-        efuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
-        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
-        return efuels;
-    }
-
-    private static void findFuels() {
-        afuels = new ArrayList<FuelPair>();
-        Set<Item> efuels = excludedFuels();
-        for (ItemStack item : ItemList.items)
-            if (!efuels.contains(item.getItem())) {
-                int burnTime = TileEntityNmj.getItemBurnTime(item);
-                if (burnTime > 0)
-                    afuels.add(new FuelPair(item.copy(), burnTime));
-            }
     }
 
     @Override
     public String getOverlayIdentifier() {
-    	//¸²¸Ç±êÊ¶·û
+        //ï¿½ï¿½ï¿½Ç±ï¿½Ê¶ï¿½ï¿½
         return "milling";
+    }
+
+    //*********************************************************************************************************************************************************************
+    public static class FuelPair {
+        public PositionedStack stack;
+        public int burnTime;
+        public FuelPair(ItemStack ingred, int burnTime) {
+            this.stack = new PositionedStack(ingred, 80 - 5, 54 - 11, false);
+            this.burnTime = burnTime;
+        }
+    }
+
+    //*********************************************************************************************************************************************************************
+    public class SmeltingPair extends CachedRecipe {
+        PositionedStack ingred;
+        PositionedStack result;
+
+        public SmeltingPair(ItemStack ingred, ItemStack result) {
+            ingred.stackSize = 1;
+            //ï¿½Ó²ï¿½
+            this.ingred = new PositionedStack(ingred, 49 - 5, 19 - 11);
+            this.result = new PositionedStack(result, 112 - 5, 19 - 11);
+        }
+
+        public List<PositionedStack> getIngredients() {
+            //ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
+            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
+        }
+
+        public PositionedStack getResult() {
+            //ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
+            return result;
+        }
+
+        public PositionedStack getOtherStack() {
+
+            return afuels.get((cycleticks / 48) % afuels.size()).stack;
+        }
     }
 
 }

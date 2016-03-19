@@ -1,101 +1,54 @@
 package com.cfyifei.nei;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry;
-
+import codechicken.nei.NEIClientUtils;
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
+import codechicken.nei.recipe.TemplateRecipeHandler;
 import com.cfyifei.gui.recipes.Caibanrecipe;
 import com.cfyifei.item.ModItem;
 import com.cfyifei.itemstack.FoodcraftItemStack;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import codechicken.nei.ItemList;
-import codechicken.nei.NEIClientUtils;
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
-import codechicken.nei.recipe.TemplateRecipeHandler;
-import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
-import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class CaibanRecipeHandler extends TemplateRecipeHandler {
-	//*********************************************************************************************************************************************************************
-	public class SmeltingPair extends CachedRecipe
-    {
-        public SmeltingPair(FoodcraftItemStack foodcraftItemStack, ItemStack result) {
-           ItemStack[] is = new ItemStack[foodcraftItemStack.Stack.length];
-        int w = 0;
-           for(Item item : foodcraftItemStack.Stack){
-        	   if(item == null){
-        		   is[w] = new ItemStack(ModItem.ItemNull);
-        		   w += 1;
-        		   continue;
-        	   }
-        		is[w] = new ItemStack(item);
-                w += 1;
-           }
-           ingred = new PositionedStack[foodcraftItemStack.Stack.length];
-            //¼Ó²Û
-
-        	this.ingred[0] = new PositionedStack(is[0], 70 - 5, 21 - 11);
-        	this.ingred[1] = new PositionedStack(is[1], 97 - 5, 21 - 11);
-        	this.ingred[2] = new PositionedStack(is[2], 124 - 5, 21 - 11);
-        	
-            this.result = new PositionedStack(result, 97 - 5, 53 - 11);
-            
-            water =  new PositionedStack(new ItemStack(ModItem.ItemCaidao), 31 - 5, 21 - 11);
-        }
-
-        public List<PositionedStack> getIngredients() {
-        	//»ñµÃ²ÄÁÏ
-            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
-        }
-        
-        public PositionedStack getResult() {
-        	//»ñµÃ²úÎï
-            return result;
-        }
-
-        public List<PositionedStack> getOtherStacks() {
-            ArrayList<PositionedStack> stacks = new ArrayList<PositionedStack>();
-            PositionedStack stack = getOtherStack();
-            if (stack != null)
-                stacks.add(stack);
-            stacks.add(water);
-            return stacks;
-        }
-        
-        PositionedStack ingred[];
-        PositionedStack result;
-        PositionedStack water;
-    }
-	//*********************************************************************************************************************************************************************
-  //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
+    //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
+
+    private static Set<Item> excludedFuels() {
+        Set<Item> efuels = new HashSet<Item>();
+        efuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
+        efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
+        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
+        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
+        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
+        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
+        return efuels;
+    }
 
     @Override
     public void loadTransferRects() {
-    	//Guiµã»÷
-    	transferRects.add(new RecipeTransferRect(new Rectangle(97 - 5, 43 - 11, 15, 13), "Chopping"));
+        //Guiï¿½ï¿½ï¿½
+        transferRects.add(new RecipeTransferRect(new Rectangle(97 - 5, 43 - 11, 15, 13), "Chopping"));
     }
 
     @Override
     public Class<? extends GuiContainer> getGuiClass() {
-    	//GUIÀà
+        //GUIï¿½ï¿½
         return com.cfyifei.gui.guis.GuiCaiban.class;
     }
 
     @Override
     public String getRecipeName() {
-    	//Ãû×Ö
+        //ï¿½ï¿½ï¿½ï¿½
         return NEIClientUtils.translate("tile.Caiban.name");
     }
 
@@ -135,8 +88,8 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
         Map<FoodcraftItemStack, ItemStack> recipes = (Map<FoodcraftItemStack, ItemStack>) Caibanrecipe.smelting().getSmeltingList();
         for (Entry<FoodcraftItemStack, ItemStack> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().Stack[0]), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().Stack[1]), ingredient) &&
-            		NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().Stack[2]), ingredient)) {
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().Stack[1]), ingredient) &&
+                    NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().Stack[2]), ingredient)) {
                 SmeltingPair arecipe = new SmeltingPair(recipe.getKey(), recipe.getValue());
                 arecipe.setIngredientPermutation(Arrays.asList(arecipe.ingred), ingredient);
                 arecipes.add(arecipe);
@@ -145,33 +98,70 @@ public class CaibanRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public String getGuiTexture() {
-    	//²ÄÖÊ
+        //ï¿½ï¿½ï¿½ï¿½
         return "foodcraft:textures/gui/nei/caiban.png";
     }
 
     @Override
     public void drawExtras(int recipe) {
-    	//½ø¶ÈÌõ
-      //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //drawProgressBar(X, Y, TX, TY, W, H, Ticks, direction);
     }
-
-    private static Set<Item> excludedFuels() {
-        Set<Item> efuels = new HashSet<Item>();
-        efuels.add(Item.getItemFromBlock(Blocks.brown_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.red_mushroom));
-        efuels.add(Item.getItemFromBlock(Blocks.standing_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wall_sign));
-        efuels.add(Item.getItemFromBlock(Blocks.wooden_door));
-        efuels.add(Item.getItemFromBlock(Blocks.trapped_chest));
-        return efuels;
-    }
-
-
 
     @Override
     public String getOverlayIdentifier() {
-    	//¸²¸Ç±êÊ¶·û
+        //ï¿½ï¿½ï¿½Ç±ï¿½Ê¶ï¿½ï¿½
         return "Chopping";
+    }
+
+    //*********************************************************************************************************************************************************************
+    public class SmeltingPair extends CachedRecipe {
+        PositionedStack ingred[];
+        PositionedStack result;
+        PositionedStack water;
+
+        public SmeltingPair(FoodcraftItemStack foodcraftItemStack, ItemStack result) {
+            ItemStack[] is = new ItemStack[foodcraftItemStack.Stack.length];
+            int w = 0;
+            for (Item item : foodcraftItemStack.Stack) {
+                if (item == null) {
+                    is[w] = null;
+                    w += 1;
+                    continue;
+                }
+                is[w] = new ItemStack(item);
+                w += 1;
+            }
+            ingred = new PositionedStack[foodcraftItemStack.Stack.length];
+            //ï¿½Ó²ï¿½
+
+            this.ingred[0] = new PositionedStack(is[0], 70 - 5, 21 - 11);
+            this.ingred[1] = new PositionedStack(is[1], 97 - 5, 21 - 11);
+            this.ingred[2] = new PositionedStack(is[2], 124 - 5, 21 - 11);
+
+            this.result = new PositionedStack(result, 97 - 5, 53 - 11);
+
+            water = new PositionedStack(new ItemStack(ModItem.ItemCaidao), 31 - 5, 21 - 11);
+        }
+
+        public List<PositionedStack> getIngredients() {
+            //ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
+            return getCycledIngredients(cycleticks / 48, Arrays.asList(ingred));
+        }
+
+        public PositionedStack getResult() {
+            //ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
+            return result;
+        }
+
+        public List<PositionedStack> getOtherStacks() {
+            ArrayList<PositionedStack> stacks = new ArrayList<PositionedStack>();
+            PositionedStack stack = getOtherStack();
+            if (stack != null)
+                stacks.add(stack);
+            stacks.add(water);
+            return stacks;
+        }
     }
 
 }
