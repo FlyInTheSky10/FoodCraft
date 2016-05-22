@@ -1,8 +1,11 @@
-package com.cfyifei.gui.tileentitys;
+package com.cfyifei.gui.tileentities;
 
-import com.cfyifei.gui.recipes.Ntrecipe;
-import com.cfyifei.item.ModItem;
+
+import com.cfyifei.gui.blocks.BlockZl;
+import com.cfyifei.gui.blocks.ModGui;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,14 +18,13 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 
-public class TileEntityNt extends TileEntity implements IInventory {
+public class TileEntityZl extends TileEntity implements IInventory {
     public int tableBurnTime = 0;
     public int maxBurnTime = 0;
     public int currentItemBurnTime;
     public int furnaceCookTime;
     public int water;
-    public ItemStack cai;
-    private ItemStack stack[] = new ItemStack[6];
+    private ItemStack stack[] = new ItemStack[4];
     private String field_145958_o;
 
     public static int getItemBurnTime(ItemStack par0ItemStack) {
@@ -35,24 +37,24 @@ public class TileEntityNt extends TileEntity implements IInventory {
                 Block block = Block.getBlockFromItem(item);
 
                 if (block == Blocks.wooden_slab) {
-                    return 150;
+                    return 300;
                 }
 
                 if (block.getMaterial() == Material.wood) {
-                    return 300;
+                    return 600;
                 }
                 if (block == Blocks.coal_block) {
-                    return 16000;
+                    return 32000;
                 }
             }
-            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 200;
-            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 200;
-            if (item == Items.stick) return 100;
-            if (item == Items.coal) return 1600;
-            if (item == Items.lava_bucket) return 20000;
-            if (item == Item.getItemFromBlock(Blocks.sapling)) return 100;
-            if (item == Items.blaze_rod) return 2400;
+            if (item instanceof ItemTool && ((ItemTool) item).getToolMaterialName().equals("WOOD")) return 400;
+            if (item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().equals("WOOD")) return 400;
+            if (item instanceof ItemHoe && ((ItemHoe) item).getMaterialName().equals("WOOD")) return 400;
+            if (item == Items.stick) return 400;
+            if (item == Items.coal) return 3200;
+            if (item == Items.lava_bucket) return 40000;
+            if (item == Item.getItemFromBlock(Blocks.sapling)) return 200;
+            if (item == Items.blaze_rod) return 4800;
             return GameRegistry.getFuelValue(par0ItemStack);
         }
     }
@@ -62,46 +64,45 @@ public class TileEntityNt extends TileEntity implements IInventory {
 
         boolean flag = this.tableBurnTime > 0;
         boolean flag1 = false;
+        if (this.tableBurnTime > 0) {
+            --this.tableBurnTime;
+
+        }
 
 
         if (!this.worldObj.isRemote) {
-            cai();
 
+            if (this.tableBurnTime == 0 && this.canSmelt()) {
+                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[0]);
 
-            if (cai != null && this.water == 8 && canSmelt()) {
-                ++this.furnaceCookTime;
-
-                if (this.furnaceCookTime == 3600) {
-                    this.furnaceCookTime = 0;
-                    this.smeltItem();
+                if (this.tableBurnTime > 0) {
                     flag1 = true;
-                }
-            } else {
-                this.furnaceCookTime = 0;
-            }
 
+                    if (this.stack[0] != null) {
+                        --this.stack[0].stackSize;
+
+                        if (this.stack[0].stackSize == 0) {
+                            this.stack[0] = stack[0].getItem().getContainerItem(stack[0]);
+                        }
+                    }
+                }
+
+            }
+            BlockZl.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
             if (flag1) {
                 this.markDirty();
             }
-            if (stack[3] != null) {
-                if (water != 8) {
-
-                    if (stack[3].getItem().equals(Items.potionitem)) {
-
-                        stack[3] = new ItemStack(Items.glass_bottle);
-                        ++water;
-
-                    }
-                    if (stack[3].getItem().equals(ModItem.Itemwater)) {
-                        --stack[3].stackSize;
-                        ++water;
-                    }
-                    if (stack[3].stackSize == 0) {
-                        stack[3] = null;
-                    }
-                }
-            }
         }
+
+    }
+
+    public boolean canSmelt() {
+        if (this.worldObj.getBlock(xCoord, yCoord + 1, zCoord) == ModGui.PDG ||
+                this.worldObj.getBlock(xCoord, yCoord + 1, zCoord) == ModGui.Guo) {
+            return true;
+        }
+        return false;
+
     }
 
     @Override
@@ -236,61 +237,23 @@ public class TileEntityNt extends TileEntity implements IInventory {
 
     }
 
-    private boolean canSmelt() {
-        if (this.stack[5] != null) {
-            if (!this.stack[5].isItemEqual(cai)) return false;
-            int result = stack[5].stackSize + cai.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.stack[5].getMaxStackSize();
-        }
-
-        if (this.stack[0] != null && this.stack[1] != null && this.stack[2] != null) {
-            if (cai == null) return false;
-            return true;
-        }
-        return false;
-    }
-
-
-    public void smeltItem() {
-
-        if (this.stack[5] == null) {
-            this.stack[5] = cai.copy();
-        } else if (this.stack[5].getItem() == cai.getItem()) {
-            this.stack[5].stackSize += cai.stackSize; // Forge BugFix: Results may have multiple items
-        }
-
-        --this.stack[0].stackSize;
-        --this.stack[1].stackSize;
-        --this.stack[2].stackSize;
-
-        if (this.stack[0].stackSize <= 0) {
-            this.stack[0] = null;
-        }
-        if (this.stack[1].stackSize <= 0) {
-            this.stack[1] = null;
-        }
-        if (this.stack[2].stackSize <= 0) {
-            this.stack[2] = null;
-        }
-        water = 0;
-        ;
-    }
-
-
-    public int getWater() {
-        return this.water * 7;
-    }
-
-    public void cai() {
-        if (stack[0] != null && stack[1] != null && stack[2] != null) {
-            cai = Ntrecipe.smelting().getOutput(stack[0].getItem(), stack[1].getItem(), stack[2].getItem());
-        } else {
-            cai = null;
-        }
-    }
-
-
     public boolean isBurning() {
-        return this.furnaceCookTime > 0;
+        return this.tableBurnTime > 0;
     }
+
+
+    @SideOnly(Side.CLIENT)
+    public float getBurnTimeRemainingScaled(int int1) {
+        if (this.currentItemBurnTime == 0) {
+            this.currentItemBurnTime = 200;
+        }
+
+        return this.tableBurnTime * int1 / this.currentItemBurnTime;
+    }
+
+    public void name(String int1) {
+        this.field_145958_o = int1;
+    }
+
+
 }

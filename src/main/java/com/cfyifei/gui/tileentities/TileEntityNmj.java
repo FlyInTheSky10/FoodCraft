@@ -1,8 +1,7 @@
-package com.cfyifei.gui.tileentitys;
+package com.cfyifei.gui.tileentities;
 
-import com.cfyifei.gui.blocks.BlockYZJ;
-import com.cfyifei.gui.recipes.YZJrecipe;
-import com.cfyifei.item.ModItem;
+import com.cfyifei.gui.blocks.BlockNmj;
+import com.cfyifei.gui.recipes.Nmjrecipe;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -18,13 +17,12 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
 
-public class TileEntityYZJ extends TileEntity implements IInventory {
+public class TileEntityNmj extends TileEntity implements IInventory {
     public int tableBurnTime = 0;
     public int maxBurnTime = 0;
     public int currentItemBurnTime;
     public int furnaceCookTime;
-    public int water;
-    private ItemStack stack[] = new ItemStack[4];
+    private ItemStack stack[] = new ItemStack[3];
     private String field_145958_o;
 
     public static int getItemBurnTime(ItemStack par0ItemStack) {
@@ -70,26 +68,26 @@ public class TileEntityYZJ extends TileEntity implements IInventory {
         }
 
         if (!this.worldObj.isRemote) {
-            if (this.tableBurnTime == 0 && this.canSmelt() && this.water >= 2) {
-                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[1]);
+            if (this.tableBurnTime == 0 && this.canSmelt()) {
+                this.currentItemBurnTime = this.tableBurnTime = getItemBurnTime(this.stack[2]);
 
                 if (this.tableBurnTime > 0) {
                     flag1 = true;
 
-                    if (this.stack[1] != null) {
-                        --this.stack[1].stackSize;
+                    if (this.stack[2] != null) {
+                        --this.stack[2].stackSize;
 
-                        if (this.stack[1].stackSize == 0) {
-                            this.stack[1] = stack[1].getItem().getContainerItem(stack[1]);
+                        if (this.stack[2].stackSize == 0) {
+                            this.stack[2] = stack[2].getItem().getContainerItem(stack[2]);
                         }
                     }
                 }
             }
 
-            if (this.isBurning() && this.canSmelt() && this.water >= 2) {
+            if (this.isBurning() && this.canSmelt()) {
                 ++this.furnaceCookTime;
 
-                if (this.furnaceCookTime == 400) {
+                if (this.furnaceCookTime == 200) {
                     this.furnaceCookTime = 0;
                     this.smeltItem();
                     flag1 = true;
@@ -97,29 +95,13 @@ public class TileEntityYZJ extends TileEntity implements IInventory {
             } else {
                 this.furnaceCookTime = 0;
             }
-            if (flag != this.tableBurnTime > 0)//û��ȼ��ʱ��
-            {
-                flag1 = true;
-                BlockYZJ.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
-            }
+
+            BlockNmj.updateFurnaceBlockState(this.tableBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);//
+
         }
 
         if (flag1) {
             this.markDirty();
-        }
-        if (stack[2] != null) {
-            if (water != 8) {
-
-
-                if (stack[2].getItem() == ModItem.ItemHuashenyou) {
-
-                    --stack[2].stackSize;
-                    ++water;
-                }
-            }
-            if (stack[2].stackSize == 0) {
-                stack[2] = null;
-            }
         }
     }
 
@@ -234,14 +216,12 @@ public class TileEntityYZJ extends TileEntity implements IInventory {
         }
         this.tableBurnTime = par1NBTTagCompound.getShort("tableBurnTime");
         this.furnaceCookTime = par1NBTTagCompound.getShort("furnaceCookTime");
-        this.water = par1NBTTagCompound.getShort("water");
     }
 
     public void writeToNBT(NBTTagCompound par1NBTTagCompound) {
         super.writeToNBT(par1NBTTagCompound);
         par1NBTTagCompound.setShort("tableBurnTime", (short) this.tableBurnTime);
         par1NBTTagCompound.setShort("furnaceCookTime", (short) this.furnaceCookTime);
-        par1NBTTagCompound.setShort("water", (short) this.water);
         NBTTagList var2 = new NBTTagList();
         for (int var3 = 0; var3 < this.stack.length; ++var3) {
             if (this.stack[var3] != null) {
@@ -259,12 +239,12 @@ public class TileEntityYZJ extends TileEntity implements IInventory {
         if (this.stack[0] == null) {
             return false;
         } else {
-            ItemStack itemstack = YZJrecipe.smelting().getSmeltingResult(this.stack[0]);
+            ItemStack itemstack = Nmjrecipe.smelting().getSmeltingResult(this.stack[0]);
             if (itemstack == null) return false;
-            if (this.stack[3] == null) return true;
-            if (!this.stack[3].isItemEqual(itemstack)) return false;
-            int result = stack[3].stackSize + itemstack.stackSize;
-            return result <= getInventoryStackLimit() && result <= this.stack[3].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
+            if (this.stack[1] == null) return true;
+            if (!this.stack[1].isItemEqual(itemstack)) return false;
+            int result = stack[1].stackSize + itemstack.stackSize;
+            return result <= getInventoryStackLimit() && result <= this.stack[1].getMaxStackSize(); //Forge BugFix: Make it respect stack sizes properly.
         }
     }
 
@@ -274,17 +254,16 @@ public class TileEntityYZJ extends TileEntity implements IInventory {
 
     public void smeltItem() {
         if (this.canSmelt()) {
-            ItemStack itemstack = YZJrecipe.smelting().getSmeltingResult(this.stack[0]);
+            ItemStack itemstack = Nmjrecipe.smelting().getSmeltingResult(this.stack[0]);
 
-            if (this.stack[3] == null) {
-                this.stack[3] = itemstack.copy();
-            } else if (this.stack[3].getItem() == itemstack.getItem()) {
-                this.stack[3].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
+            if (this.stack[1] == null) {
+                this.stack[1] = itemstack.copy();
+            } else if (this.stack[1].getItem() == itemstack.getItem()) {
+                this.stack[1].stackSize += itemstack.stackSize; // Forge BugFix: Results may have multiple items
             }
 
             --this.stack[0].stackSize;
-            --water;
-            --water;
+
             if (this.stack[0].stackSize <= 0) {
                 this.stack[0] = null;
             }
@@ -301,16 +280,11 @@ public class TileEntityYZJ extends TileEntity implements IInventory {
     }
 
     public float getCookProgressScaled(int int1) {
-        return this.furnaceCookTime * int1 / 400;
+        return this.furnaceCookTime * int1 / 200;
     }
 
     public void name(String int1) {
         this.field_145958_o = int1;
-    }
-
-
-    public int getWater() {
-        return this.water * 7;
     }
 
 }

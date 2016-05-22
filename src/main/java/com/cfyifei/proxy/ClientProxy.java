@@ -2,10 +2,10 @@ package com.cfyifei.proxy;
 
 import com.cfyifei.FoodCraft;
 import com.cfyifei.gui.blocks.ModGui;
-import com.cfyifei.gui.tileentitys.TileEntityCaiban;
-import com.cfyifei.gui.tileentitys.TileEntityGuo;
-import com.cfyifei.gui.tileentitys.TileEntityGyg;
-import com.cfyifei.gui.tileentitys.TileEntityPDG;
+import com.cfyifei.gui.tileentities.TileEntityCaiban;
+import com.cfyifei.gui.tileentities.TileEntityGuo;
+import com.cfyifei.gui.tileentities.TileEntityGyg;
+import com.cfyifei.gui.tileentities.TileEntityPDG;
 import com.cfyifei.modelrenderer.*;
 import com.cfyifei.nei.NEIAPI;
 import cpw.mods.fml.client.registry.ClientRegistry;

@@ -1,4 +1,4 @@
-package com.cfyifei.gui.tileentitys;
+package com.cfyifei.gui.tileentities;
 
 
 import com.cfyifei.api.IItemKitchenKnife;
@@ -19,20 +19,20 @@ public class TileEntityCaiban extends TileEntity implements IInventory {
     public int tableBurnTime = 0;
     public int currentItemBurnTime;
     public int furnaceCookTime;
-    public ItemStack cai;
+    public ItemStack vegetable;
     public int q = 0;
     private ItemStack stack[] = new ItemStack[13];
-    private String field_145958_o;
+    private String furnaceCustomName;
 
     @Override
     public void updateEntity() {
 
-        if (!this.worldObj.isRemote) {
+        if (this.worldObj.isRemote) {
 
-            cai = this.canchao();
+            vegetable = this.canchao();
             if (stack[0] != null) {
                 if (stack[0].getItem() == ModItem.ItemCaidao) {
-                    if (cai != null) {
+                    if (vegetable != null) {
                         if (isst()) {
                             q = 0;
                             s();
@@ -45,11 +45,11 @@ public class TileEntityCaiban extends TileEntity implements IInventory {
                     }
                 }
                 if (stack[0].getItem() instanceof IItemKitchenKnife) {
-                    if (cai != null) {
+                    if (vegetable != null) {
                         if (isst()) {
                             IItemKitchenKnife iikk = (IItemKitchenKnife) stack[0].getItem();
 
-                            q = iikk.event(worldObj, xCoord, yCoord, zCoord, cai, cai.stackSize);
+                            q = iikk.event(worldObj, xCoord, yCoord, zCoord, vegetable, vegetable.stackSize);
                             s();
                             if (stack[0].getMetadata() < iikk.getMaxUses()) {
                                 stack[0].setMetadata(stack[0].getMetadata() + 1);
@@ -66,7 +66,7 @@ public class TileEntityCaiban extends TileEntity implements IInventory {
 
     private boolean isst() {
         if (stack[4] != null) {
-            int result = stack[4].stackSize + cai.stackSize;
+            int result = stack[4].stackSize + vegetable.stackSize;
             boolean e = result <= getInventoryStackLimit() && result <= this.stack[4].getMaxStackSize();
             return e;
         }
@@ -77,12 +77,12 @@ public class TileEntityCaiban extends TileEntity implements IInventory {
     private void s() {
 
         if (this.stack[4] == null) {
-            this.stack[4] = cai.copy();
+            this.stack[4] = vegetable.copy();
             if (this.stack[4].stackSize + q <= 64) {
                 this.stack[4].stackSize += q;
             }
-        } else if (this.stack[4].getItem() == cai.getItem()) {
-            this.stack[4].stackSize += cai.stackSize; // Forge BugFix: Results may have multiple items
+        } else if (this.stack[4].getItem() == vegetable.getItem()) {
+            this.stack[4].stackSize += vegetable.stackSize; // Forge BugFix: Results may have multiple items
             if (this.stack[4].stackSize + q <= 64) {
                 this.stack[4].stackSize += q;
             }

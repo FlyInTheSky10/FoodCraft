@@ -1,6 +1,6 @@
 package com.cfyifei.gui.containers;
 
-import com.cfyifei.gui.tileentitys.TileEntityNmj;
+import com.cfyifei.gui.tileentities.TileEntityNmj;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;

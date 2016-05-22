@@ -3,7 +3,7 @@ package com.cfyifei.util;
 import com.cfyifei.GuiID;
 import com.cfyifei.gui.containers.*;
 import com.cfyifei.gui.guis.*;
-import com.cfyifei.gui.tileentitys.*;
+import com.cfyifei.gui.tileentities.*;
 import cpw.mods.fml.common.network.IGuiHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;

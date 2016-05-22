@@ -4,7 +4,7 @@ import com.cfyifei.FoodCraft;
 import com.cfyifei.GuiID;
 import com.cfyifei.block.ModBlocks;
 import com.cfyifei.config.NERConfigHandler;
-import com.cfyifei.gui.tileentitys.TileEntityZl;
+import com.cfyifei.gui.tileentities.TileEntityZl;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;

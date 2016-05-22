@@ -1,4 +1,4 @@
-package com.cfyifei.gui.tileentitys;
+package com.cfyifei.gui.tileentities;
 
 import com.cfyifei.gui.blocks.BlockTpj;
 import com.cfyifei.gui.recipes.Tpjrecipe;

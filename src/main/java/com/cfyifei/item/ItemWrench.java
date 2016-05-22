@@ -2,8 +2,8 @@ package com.cfyifei.item;
 
 import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.gui.blocks.*;
-import com.cfyifei.gui.tileentitys.TileEntityGuo;
-import com.cfyifei.gui.tileentitys.TileEntityPDG;
+import com.cfyifei.gui.tileentities.TileEntityGuo;
+import com.cfyifei.gui.tileentities.TileEntityPDG;
 import com.cfyifei.util.FoodcraftSubscribeEvent;
 import com.cfyifei.util.FoodcraftUtil;
 import net.minecraft.entity.player.EntityPlayer;

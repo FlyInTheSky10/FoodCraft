@@ -1,7 +1,7 @@
 package com.cfyifei.gui.guis;
 
 import com.cfyifei.gui.containers.ContainerCaiban;
-import com.cfyifei.gui.tileentitys.TileEntityCaiban;
+import com.cfyifei.gui.tileentities.TileEntityCaiban;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;

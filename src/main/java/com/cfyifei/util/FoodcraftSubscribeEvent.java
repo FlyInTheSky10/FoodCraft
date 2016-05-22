@@ -1,7 +1,7 @@
 package com.cfyifei.util;
 
-import com.cfyifei.gui.tileentitys.TileEntityGuo;
-import com.cfyifei.gui.tileentitys.TileEntityPDG;
+import com.cfyifei.gui.tileentities.TileEntityGuo;
+import com.cfyifei.gui.tileentities.TileEntityPDG;
 import com.cfyifei.item.ModItem;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.passive.EntitySheep;

@@ -1,7 +1,7 @@
 package com.cfyifei.gui.guis;
 
 import com.cfyifei.gui.containers.ContainerNmj;
-import com.cfyifei.gui.tileentitys.TileEntityNmj;
+import com.cfyifei.gui.tileentities.TileEntityNmj;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
