@@ -4,8 +4,6 @@ import codechicken.nei.NEIClientUtils;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
-import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
-import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
 import com.cfyifei.gui.recipes.Guorecipe;
 import com.cfyifei.itemstack.CookingOutput;
 import com.cfyifei.itemstack.PotCooking;
@@ -20,7 +18,7 @@ import java.util.*;
 import java.util.List;
 import java.util.Map.Entry;
 
-public class GuorecipeHandler extends TemplateRecipeHandler {
+public class GuoRecipeHandler extends TemplateRecipeHandler {
     //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
     //*********************************************************************************************************************************************************************
@@ -61,7 +59,7 @@ public class GuorecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadCraftingRecipes(String outputId, Object... results) {
-        if (outputId.equals("Guocooking") && getClass() == GuorecipeHandler.class) {//don't want subclasses getting a hold of this
+        if (outputId.equals("Guocooking") && getClass() == GuoRecipeHandler.class) {//don't want subclasses getting a hold of this
             Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) Guorecipe.smelting().getSmeltingList();
             for (Entry<PotCooking, CookingOutput> recipe : recipes.entrySet())
                 arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue().is));
@@ -79,7 +77,7 @@ public class GuorecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadUsageRecipes(String inputId, Object... ingredients) {
-        if (inputId.equals("fuel") && getClass() == GuorecipeHandler.class)//don't want subclasses getting a hold of this
+        if (inputId.equals("fuel") && getClass() == GuoRecipeHandler.class)//don't want subclasses getting a hold of this
             loadCraftingRecipes("Guocooking");
         else
             super.loadUsageRecipes(inputId, ingredients);
