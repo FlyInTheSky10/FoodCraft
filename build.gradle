@@ -18,7 +18,9 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = minecraft_version + "-" + mod_version
+version = System.getenv("BUILD_NUMBER") == null ? minecraft_version + "-" + mod_version : 
+ minecraft_version + "-" + mod_version + "." + System.getenv("BUILD_NUMBER")
+
 group= mod_group // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = mod_id
 
