@@ -26,8 +26,8 @@ public class NEIAPI implements codechicken.nei.api.IConfigureNEI {
         API.registerUsageHandler(new GygRecipeHandler());
         API.registerGuiOverlay(GuiGyg.class, "Gygcooking");
 
-        API.registerRecipeHandler(new GuorecipeHandler());
-        API.registerUsageHandler(new GuorecipeHandler());
+        API.registerRecipeHandler(new GuoRecipeHandler());
+        API.registerUsageHandler(new GuoRecipeHandler());
         API.registerGuiOverlay(GuiGuo.class, "Guocooking");
 
         API.registerRecipeHandler(new NtRecipeHandler());
