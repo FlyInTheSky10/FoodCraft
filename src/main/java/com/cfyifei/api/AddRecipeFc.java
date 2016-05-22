@@ -67,6 +67,6 @@ public class AddRecipeFc {
                                     Item StapleInput4, Item ingredients1, Item ingredients2, Item ingredients3
             , Item ingredients4, Item ingredients5, Item ingredients6, Item ingredients7
             , Item ingredients8, ItemStack Output, int min, int max) {
-        GuoRecipe.smelting().addRecipeItem(StapleInput1, StapleInput2, StapleInput3, StapleInput4, ingredients1, ingredients2, ingredients3, ingredients4, ingredients5, ingredients6, ingredients7, ingredients8, Output, min, max);
+        Guorecipe.smelting().addRecipeItem(StapleInput1, StapleInput2, StapleInput3, StapleInput4, ingredients1, ingredients2, ingredients3, ingredients4, ingredients5, ingredients6, ingredients7, ingredients8, Output, min, max);
     }
 }

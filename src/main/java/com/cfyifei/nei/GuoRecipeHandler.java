@@ -6,7 +6,7 @@ import codechicken.nei.PositionedStack;
 import codechicken.nei.recipe.TemplateRecipeHandler;
 import codechicken.nei.recipe.TemplateRecipeHandler.CachedRecipe;
 import codechicken.nei.recipe.TemplateRecipeHandler.RecipeTransferRect;
-import com.cfyifei.gui.recipes.GuoRecipe;
+import com.cfyifei.gui.recipes.Guorecipe;
 import com.cfyifei.itemstack.CookingOutput;
 import com.cfyifei.itemstack.PotCooking;
 import net.minecraft.block.Block;
@@ -20,7 +20,7 @@ import java.util.*;
 import java.util.List;
 import java.util.Map.Entry;
 
-public class GuoRecipeHandler extends TemplateRecipeHandler {
+public class GuorecipeHandler extends TemplateRecipeHandler {
     //*********************************************************************************************************************************************************************
     public static HashSet<Block> efuels;
     //*********************************************************************************************************************************************************************
@@ -61,8 +61,8 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadCraftingRecipes(String outputId, Object... results) {
-        if (outputId.equals("Guocooking") && getClass() == GuoRecipeHandler.class) {//don't want subclasses getting a hold of this
-            Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) GuoRecipe.smelting().getSmeltingList();
+        if (outputId.equals("Guocooking") && getClass() == GuorecipeHandler.class) {//don't want subclasses getting a hold of this
+            Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) Guorecipe.smelting().getSmeltingList();
             for (Entry<PotCooking, CookingOutput> recipe : recipes.entrySet())
                 arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue().is));
         } else
@@ -71,7 +71,7 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadCraftingRecipes(ItemStack result) {
-        Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) GuoRecipe.smelting().getSmeltingList();
+        Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) Guorecipe.smelting().getSmeltingList();
         for (Entry<PotCooking, CookingOutput> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameType(recipe.getValue().is, result))
                 arecipes.add(new SmeltingPair(recipe.getKey(), recipe.getValue().is));
@@ -79,7 +79,7 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadUsageRecipes(String inputId, Object... ingredients) {
-        if (inputId.equals("fuel") && getClass() == GuoRecipeHandler.class)//don't want subclasses getting a hold of this
+        if (inputId.equals("fuel") && getClass() == GuorecipeHandler.class)//don't want subclasses getting a hold of this
             loadCraftingRecipes("Guocooking");
         else
             super.loadUsageRecipes(inputId, ingredients);
@@ -87,7 +87,7 @@ public class GuoRecipeHandler extends TemplateRecipeHandler {
 
     @Override
     public void loadUsageRecipes(ItemStack ingredient) {
-        Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) GuoRecipe.smelting().getSmeltingList();
+        Map<PotCooking, CookingOutput> recipes = (Map<PotCooking, CookingOutput>) Guorecipe.smelting().getSmeltingList();
         for (Entry<PotCooking, CookingOutput> recipe : recipes.entrySet())
             if (NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput1), ingredient) &&
                     NEIServerUtils.areStacksSameTypeCrafting(new ItemStack(recipe.getKey().StapleInput2), ingredient) &&

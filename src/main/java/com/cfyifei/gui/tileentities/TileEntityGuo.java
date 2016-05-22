@@ -2,7 +2,7 @@ package com.cfyifei.gui.tileentities;
 
 
 import com.cfyifei.gui.blocks.ModGui;
-import com.cfyifei.gui.recipes.GuoRecipe;
+import com.cfyifei.gui.recipes.Guorecipe;
 import com.cfyifei.itemstack.CookingOutput;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -498,7 +498,7 @@ public class TileEntityGuo extends TileEntity implements IInventory {
 
     public ItemStack canchao() {
 
-        CookingOutput hj = GuoRecipe.smelting().getOutput(stack[0], stack[1], stack[2], stack[3],
+        CookingOutput hj = Guorecipe.smelting().getOutput(stack[0], stack[1], stack[2], stack[3],
                 stack[4], stack[5], stack[6], stack[7], stack[8], stack[9],
                 stack[10], stack[11]);
         if (hj != null) {
