@@ -1,6 +1,5 @@
-package com.cfyifei.util;
+package com.cfyifei.gui;
 
-import com.cfyifei.GuiID;
 import com.cfyifei.gui.containers.*;
 import com.cfyifei.gui.guis.*;
 import com.cfyifei.gui.tileentities.*;

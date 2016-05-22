@@ -8,7 +8,7 @@ import com.cfyifei.item.ModItem;
 import com.cfyifei.minetweaker.MineTweakerCompact;
 import com.cfyifei.plant.blocks.Plant;
 import com.cfyifei.recipe.Recipe;
-import com.cfyifei.util.GuiHandler;
+import com.cfyifei.gui.GuiHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;

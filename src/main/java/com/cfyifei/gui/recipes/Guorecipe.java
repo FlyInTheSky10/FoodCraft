@@ -13,8 +13,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public class GuoRecipe {
-    private static final GuoRecipe smeltingBase = new GuoRecipe();
+public class Guorecipe {
+    private static final Guorecipe smeltingBase = new Guorecipe();
     public Map<PotCooking, CookingOutput> stack1 = new HashMap();
     public Item IStapleInput1;
     public Item IStapleInput2;
@@ -29,7 +29,7 @@ public class GuoRecipe {
     public Item Iingredients7;
     public Item Iingredients8;
 
-    private GuoRecipe() {
+    private Guorecipe() {
         OreDictionary.getOres("cropTomato").get(0);
         addRecipeItem(Items.egg, OreDictionary.getOres("cropTomato").get(0).getItem(), ModItem.ItemBaifan, null, ModItem.ItemHuashenyou, ModItem.ItemYan, Items.sugar, null, null, null, null, null, new ItemStack(ModItem.ItemFanqiechaojidanfan), 400, 500);
         addRecipeItem(ModItem.ItemTudousi, ModItem.ItemCong, ModItem.ItemBaifan, null, ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, null, null, null, null, null, new ItemStack(ModItem.ItemChaotudousifan), 450, 500);
@@ -54,7 +54,7 @@ public class GuoRecipe {
         addRecipeItem(Items.egg, OreDictionary.getOres("foodGreenonion").get(0).getItem(), ModItem.ItemLajiao, ModItem.ItemBaifan, ModItem.ItemHuashenyou, ModItem.ItemYan, ModItem.ItemJiangyou, ModItem.ItemDianfen, null, null, null, null, new ItemStack(ModItem.ItemRibendoufu), 350, 450);
     }
 
-    public static GuoRecipe smelting() {
+    public static Guorecipe smelting() {
         return smeltingBase;
     }
 

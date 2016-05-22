@@ -1,4 +1,4 @@
-package com.cfyifei;
+package com.cfyifei.gui;
 
 public interface GuiID {
     int GUI_NMJ = 0;

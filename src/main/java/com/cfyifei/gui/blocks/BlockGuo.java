@@ -1,7 +1,7 @@
 package com.cfyifei.gui.blocks;
 
 import com.cfyifei.FoodCraft;
-import com.cfyifei.GuiID;
+import com.cfyifei.gui.GuiID;
 import com.cfyifei.block.ModBlocks;
 import com.cfyifei.config.NERConfigHandler;
 import com.cfyifei.gui.tileentities.TileEntityGuo;
