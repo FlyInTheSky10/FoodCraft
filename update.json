@@ -1,0 +1,10 @@
+{
+  "homepage": "https://www.infstudio.net",
+  "1.11.2": {
+    "1.0.0-SNAPSHOT": "First version", 
+  },
+  "promos": {
+    "1.11.2-latest": "1.0.0-SNAPSHOT",
+    "1.11.2-recommended": "1.0.0-SNAPSHOT",
+  }
+}
