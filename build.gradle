@@ -18,22 +18,28 @@ buildscript {
 
 apply plugin: 'net.minecraftforge.gradle.forge'
 
-version = "1.2.0"
+version = "1.2.3"
 group= "com.foodcraft" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "FoodCraft"
 
 repositories {
     jcenter()
     maven {
-        name = "jeirepo"
-        url "http://dvs1.progwml6.com/files/maven"
-    }
+		// location of the maven that hosts JEI files
+		name = "Progwml6 maven"
+		url = "http://dvs1.progwml6.com/files/maven"
+	}
+	maven {
+		// location of a maven mirror for JEI files, as a fallback
+		name = "ModMaven"
+		url = "modmaven.k-4u.nl"
+	}
 }
 
 minecraft {
     version = "1.8.9-11.15.1.1722"
     runDir = "run"
-    mappings = "stable_20"
+    mappings = "stable_22"
     useDepAts = true
 }
 
@@ -50,6 +56,7 @@ dependencies {
     // for more info...
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+	compile "mezz.jei:jei_1.8.9:2.28.9.177"
 }
 
 processResources

@@ -6,6 +6,4 @@ import mezz.jei.api.recipe.BlankRecipeWrapper;
 import javax.annotation.Nonnull;
 
 public abstract class FcRecipeWrapper extends BlankRecipeWrapper {
-    public FcRecipeWrapper(@Nonnull IJeiHelpers jeiHelpers) {
-    }
 }

@@ -66,7 +66,7 @@ public class FoodCraft implements NetworkMod {
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
         PacketDispatcher.initInstance("foodcraft", this);
-        NERLogManager.log("Loading foodcraft, Version: 1.2.0");
+        NERLogManager.log("Loading foodcraft, Version: 1.2.3");
         JEIIsLoad = Loader.isModLoaded("JustEnoughItems");
         NERConfigHandler.initConfig(event);
         NERConfigHandler.getConfig();
